@@ -4,11 +4,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Apple Silicon 折腾记录" name="description"/>
-<link href=".." rel="prev"/>
-<link href="../windows-xp-apple-silicon/" rel="next"/>
+<link href="../windows-xp-apple-silicon/" rel="prev"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
-<title>Vivado on Apple Silicon - BillFeng Blog</title>
+<title>Vivado on Apple Silicon (X) - Bill</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -24,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#vivado含可用的batch模式-20222-on-apple-silicon-mac不完善">
+<a class="md-skip" href="#vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善">
           Skip to content
         </a>
 </div>
@@ -32,7 +31,7 @@
 </div>
 <header class="md-header md-header--shadow" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="BillFeng Blog" class="md-header__button md-logo" data-md-component="logo" href=".." title="BillFeng Blog">
+<a aria-label="Bill" class="md-header__button md-logo" data-md-component="logo" href=".." title="Bill">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -42,13 +41,13 @@
 <div class="md-header__ellipsis">
 <div class="md-header__topic">
 <span class="md-ellipsis">
-            BillFeng Blog
+            Bill
           </span>
 </div>
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Vivado on Apple Silicon
+              Vivado on Apple Silicon (X)
             
           </span>
 </div>
@@ -105,10 +104,10 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="BillFeng Blog" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BillFeng Blog">
+<a aria-label="Bill" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Bill">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
-    BillFeng Blog
+    Bill
   </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -123,13 +122,25 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../windows-xp-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Windows XP on Apple Silicon
+  
+
+    
+  </span>
+</a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
     
   
-    Vivado on Apple Silicon
+    Vivado on Apple Silicon (X)
   
 
     
@@ -140,7 +151,7 @@
 <span class="md-ellipsis">
     
   
-    Vivado on Apple Silicon
+    Vivado on Apple Silicon (X)
   
 
     
@@ -212,100 +223,100 @@
 <nav aria-label="执行指令并部署" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-0-步xorg-会话背景">
+<a class="md-nav__link" href="#xorg-会话背景">
 <span class="md-ellipsis">
       
-        第 0 步：Xorg 会话背景
+        Xorg 会话背景
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-1-步安装-ubuntu-基础依赖">
+<a class="md-nav__link" href="#安装-ubuntu-基础依赖">
 <span class="md-ellipsis">
       
-        第 1 步：安装 Ubuntu 基础依赖
+        安装 Ubuntu 基础依赖
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-2-步配置-rosettalinux-的-binfmt-路由">
+<a class="md-nav__link" href="#配置-rosettalinux-的-binfmt-路由">
 <span class="md-ellipsis">
       
-        第 2 步：配置 RosettaLinux 的 binfmt 路由
+        配置 RosettaLinux 的 binfmt 路由
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-3-步安装-vivado-所需-amd64-运行库">
+<a class="md-nav__link" href="#安装-vivado-所需-amd64-运行库">
 <span class="md-ellipsis">
       
-        第 3 步：安装 Vivado 所需 amd64 运行库
+        安装 Vivado 所需 amd64 运行库
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-4-步下载并解包-vivado-20222">
+<a class="md-nav__link" href="#下载并解包-vivado-20222">
 <span class="md-ellipsis">
       
-        第 4 步：下载并解包 Vivado 2022.2
+        下载并解包 Vivado 2022.2
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-5-步修改-xsetup-架构检查">
+<a class="md-nav__link" href="#修改-xsetup-架构检查">
 <span class="md-ellipsis">
       
-        第 5 步：修改 xsetup 架构检查
+        修改 xsetup 架构检查
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-6-步运行安装器">
+<a class="md-nav__link" href="#运行安装器">
 <span class="md-ellipsis">
       
-        第 6 步：运行安装器
+        运行安装器
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-65-步切换到-xorg-会话gui-相关步骤前">
+<a class="md-nav__link" href="#切换到-xorg-会话gui-相关步骤前">
 <span class="md-ellipsis">
       
-        第 6.5 步：切换到 Xorg 会话（GUI 相关步骤前）
+        切换到 Xorg 会话（GUI 相关步骤前）
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-7-步安装好后修改官方-gui-启动脚本">
+<a class="md-nav__link" href="#安装好后修改官方-gui-启动脚本">
 <span class="md-ellipsis">
       
-        第 7 步：安装好后，修改官方 GUI 启动脚本
+        安装好后，修改官方 GUI 启动脚本
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-8-步验证batch">
+<a class="md-nav__link" href="#验证batch">
 <span class="md-ellipsis">
       
-        第 8 步：验证（Batch）
+        验证（Batch）
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-9-步gui-启动统一入口">
+<a class="md-nav__link" href="#gui-启动统一入口">
 <span class="md-ellipsis">
       
-        第 9 步：GUI 启动（统一入口）
+        GUI 启动（统一入口）
       
     </span>
 </a>
@@ -324,18 +335,6 @@
 </li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../windows-xp-apple-silicon/">
-<span class="md-ellipsis">
-    
-  
-    Windows XP on Apple Silicon
-  
-
-    
-  </span>
-</a>
 </li>
 </ul>
 </nav>
@@ -411,100 +410,100 @@
 <nav aria-label="执行指令并部署" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-0-步xorg-会话背景">
+<a class="md-nav__link" href="#xorg-会话背景">
 <span class="md-ellipsis">
       
-        第 0 步：Xorg 会话背景
+        Xorg 会话背景
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-1-步安装-ubuntu-基础依赖">
+<a class="md-nav__link" href="#安装-ubuntu-基础依赖">
 <span class="md-ellipsis">
       
-        第 1 步：安装 Ubuntu 基础依赖
+        安装 Ubuntu 基础依赖
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-2-步配置-rosettalinux-的-binfmt-路由">
+<a class="md-nav__link" href="#配置-rosettalinux-的-binfmt-路由">
 <span class="md-ellipsis">
       
-        第 2 步：配置 RosettaLinux 的 binfmt 路由
+        配置 RosettaLinux 的 binfmt 路由
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-3-步安装-vivado-所需-amd64-运行库">
+<a class="md-nav__link" href="#安装-vivado-所需-amd64-运行库">
 <span class="md-ellipsis">
       
-        第 3 步：安装 Vivado 所需 amd64 运行库
+        安装 Vivado 所需 amd64 运行库
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-4-步下载并解包-vivado-20222">
+<a class="md-nav__link" href="#下载并解包-vivado-20222">
 <span class="md-ellipsis">
       
-        第 4 步：下载并解包 Vivado 2022.2
+        下载并解包 Vivado 2022.2
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-5-步修改-xsetup-架构检查">
+<a class="md-nav__link" href="#修改-xsetup-架构检查">
 <span class="md-ellipsis">
       
-        第 5 步：修改 xsetup 架构检查
+        修改 xsetup 架构检查
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-6-步运行安装器">
+<a class="md-nav__link" href="#运行安装器">
 <span class="md-ellipsis">
       
-        第 6 步：运行安装器
+        运行安装器
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-65-步切换到-xorg-会话gui-相关步骤前">
+<a class="md-nav__link" href="#切换到-xorg-会话gui-相关步骤前">
 <span class="md-ellipsis">
       
-        第 6.5 步：切换到 Xorg 会话（GUI 相关步骤前）
+        切换到 Xorg 会话（GUI 相关步骤前）
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-7-步安装好后修改官方-gui-启动脚本">
+<a class="md-nav__link" href="#安装好后修改官方-gui-启动脚本">
 <span class="md-ellipsis">
       
-        第 7 步：安装好后，修改官方 GUI 启动脚本
+        安装好后，修改官方 GUI 启动脚本
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-8-步验证batch">
+<a class="md-nav__link" href="#验证batch">
 <span class="md-ellipsis">
       
-        第 8 步：验证（Batch）
+        验证（Batch）
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#第-9-步gui-启动统一入口">
+<a class="md-nav__link" href="#gui-启动统一入口">
 <span class="md-ellipsis">
       
-        第 9 步：GUI 启动（统一入口）
+        GUI 启动（统一入口）
       
     </span>
 </a>
@@ -528,7 +527,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="vivado含可用的batch模式-20222-on-apple-silicon-mac不完善">Vivado（含可用的<span class="heti-skip"><span class="heti-spacing"> </span>Batch<span class="heti-spacing"> </span></span>模式） 2022.2 on Apple Silicon Mac（不完善）<a class="headerlink" href="#vivado含可用的batch模式-20222-on-apple-silicon-mac不完善" title="Permanent link">¶</a></h1>
+<h1 id="vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善">Vivado（含可用的<span class="heti-skip"><span class="heti-spacing"> </span>Batch<span class="heti-spacing"> </span></span>模式） 2022.2 on Ubuntu with Rosetta（不完善）<a class="headerlink" href="#vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善" title="Permanent link">¶</a></h1>
 <p>最后更新时间：2026-03-26</p>
 <p>注：笔者能力十十十十十分有限，只能写到这个程度了。。。如果以后能力有提升会完善这篇文章的。</p>
 <p>另注：如果您很需要，可以联系我，直接<span class="heti-skip"><span class="heti-spacing"> </span>copy<span class="heti-spacing"> </span></span>一份虚拟机给你（）</p>
@@ -578,7 +577,7 @@
 <p class="admonition-title">Note</p>
 <p>这些指令只是根据此前聊天记录中试错后有效的指令，并未在全新的环境中测试。如有卡壳，请找<span><span class="heti-spacing"> </span>Agent</span>。</p>
 </div>
-<h4 id="第-0-步xorg-会话背景">第<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>步：<span>Xorg<span class="heti-spacing"> </span></span>会话背景<a class="headerlink" href="#第-0-步xorg-会话背景" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<h4 id="xorg-会话背景"><span>Xorg<span class="heti-spacing"> </span></span>会话背景<a class="headerlink" href="#xorg-会话背景" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>这一步的目的：解释为什么文中后续会强调 <code class="language-text highlight">x11/xorg</code>。</p>
 <ul>
 <li><span>Ubuntu 24.04<span class="heti-spacing"> </span></span>桌面默认更偏向<span><span class="heti-spacing"> </span>Wayland</span>，但<span class="heti-skip"><span class="heti-spacing"> </span>Vivado 2022.2<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>组件对<span class="heti-skip"><span class="heti-spacing"> </span>Wayland<span class="heti-spacing"> </span></span>兼容并不稳定。</li>
@@ -590,13 +589,13 @@
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$XDG_SESSION_TYPE</span><span class="s2">"</span>
 </code></pre></div></td></tr></table></div>
 <p>输出为 <code class="language-text highlight">x11</code> 说明已在<span class="heti-skip"><span class="heti-spacing"> </span>Xorg<span class="heti-spacing"> </span></span>会话；输出为 <code class="language-text highlight">wayland</code> 则建议切换（登出并重新登陆时右下角的小齿轮中选择）后再做<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>相关步骤。</p>
-<h3 id="第-1-步安装-ubuntu-基础依赖">第<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>步：安装<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>基础依赖<a class="headerlink" href="#第-1-步安装-ubuntu-基础依赖" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="安装-ubuntu-基础依赖">安装<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>基础依赖<a class="headerlink" href="#安装-ubuntu-基础依赖" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这一步的目的：让系统具备“识别并接管<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>程序”的基础能力。</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>binfmt-support<span class="w"> </span>qemu-user-static
 </code></pre></div></td></tr></table></div>
-<h3 id="第-2-步配置-rosettalinux-的-binfmt-路由">第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>步：配置<span class="heti-skip"><span class="heti-spacing"> </span>RosettaLinux<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>binfmt<span class="heti-spacing"> </span></span>路由<a class="headerlink" href="#第-2-步配置-rosettalinux-的-binfmt-路由" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="配置-rosettalinux-的-binfmt-路由">配置<span class="heti-skip"><span class="heti-spacing"> </span>RosettaLinux<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>binfmt<span class="heti-spacing"> </span></span>路由<a class="headerlink" href="#配置-rosettalinux-的-binfmt-路由" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这条指令在<span class="heti-skip"><span class="heti-spacing"> </span>mac<span class="heti-spacing"> </span></span>中的终端执行，其余均为<span class="heti-skip"><span class="heti-spacing"> </span>linux<span class="heti-spacing"> </span></span>终端指令：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>softwareupdate<span class="w"> </span>--install-rosetta<span class="w"> </span>--agree-to-license
 </code></pre></div></td></tr></table></div>
@@ -701,7 +700,7 @@
 <blockquote>
 <p>如果报错且您没有头绪，请咨询<span><span class="heti-spacing"> </span>Agent</span>。</p>
 </blockquote>
-<h3 id="第-3-步安装-vivado-所需-amd64-运行库">第<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>步：安装<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>所需<span class="heti-skip"><span class="heti-spacing"> </span>amd64<span class="heti-spacing"> </span></span>运行库<a class="headerlink" href="#第-3-步安装-vivado-所需-amd64-运行库" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="安装-vivado-所需-amd64-运行库">安装<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>所需<span class="heti-skip"><span class="heti-spacing"> </span>amd64<span class="heti-spacing"> </span></span>运行库<a class="headerlink" href="#安装-vivado-所需-amd64-运行库" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这一步的目的：补齐<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>自带<span class="heti-skip"><span class="heti-spacing"> </span>x86_64 JRE<span class="heti-spacing"> </span></span>需要的运行库，避免启动时报错。</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
 <span class="normal"><a href="#__codelineno-9-2">2</a></span>
@@ -709,24 +708,24 @@
 <a id="__codelineno-9-2" name="__codelineno-9-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 <a id="__codelineno-9-3" name="__codelineno-9-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>zlib1g:amd64<span class="w"> </span>libstdc++6:amd64<span class="w"> </span>libc6:amd64
 </code></pre></div></td></tr></table></div>
-<h3 id="第-4-步下载并解包-vivado-20222">第<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>步：下载并解包<span><span class="heti-spacing"> </span>Vivado 2022.2</span><a class="headerlink" href="#第-4-步下载并解包-vivado-20222" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="下载并解包-vivado-20222">下载并解包<span><span class="heti-spacing"> </span>Vivado 2022.2</span><a class="headerlink" href="#下载并解包-vivado-20222" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这一步的目的：拿到 <code class="language-text highlight">xsetup</code> 安装器文件。</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>Xilinx_Unified_2022.2_1014_8888_Lin64.bin
 <a id="__codelineno-10-2" name="__codelineno-10-2"></a>./Xilinx_Unified_2022.2_1014_8888_Lin64.bin<span class="w"> </span>--target<span class="w"> </span>~/xilinx_2022.2
 </code></pre></div></td></tr></table></div>
 <p>解包完成后，<code class="language-text highlight">xsetup</code> 路径通常是：<code class="language-scdoc highlight">~/xilinx_2022.2/xsetup</code>。</p>
-<h3 id="第-5-步修改-xsetup-架构检查">第<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>步：修改 <code class="language-text highlight">xsetup</code> 架构检查<a class="headerlink" href="#第-5-步修改-xsetup-架构检查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="修改-xsetup-架构检查">修改 <code class="language-text highlight">xsetup</code> 架构检查<a class="headerlink" href="#修改-xsetup-架构检查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>只改“报错退出”的架构判断分支，其他安装逻辑不要动。仅需把<span class="heti-skip"><span class="heti-spacing"> </span>exit1<span class="heti-spacing"> </span></span>前面加<code class="language-text highlight">#</code>注释掉即可。图片中是<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>修改后的片段，不必这么麻烦。</p>
 <p><img alt="image-20260326184049178" src="../Vivado%28Batch%29%20on%20Apple%20Silicon%20Mac.assets/image-20260326184049178.png"/></p>
-<h3 id="第-6-步运行安装器">第<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>步：运行安装器<a class="headerlink" href="#第-6-步运行安装器" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="运行安装器">运行安装器<a class="headerlink" href="#运行安装器" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这一步的目的：正式安装<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>到系统目录。</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
 <span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>~/xilinx_2022.2
 <a id="__codelineno-11-2" name="__codelineno-11-2"></a>./xsetup
 </code></pre></div></td></tr></table></div>
 <p>按默认路径，推荐安装到 <code class="language-text highlight">/opt/Xilinx</code>，与仓库中<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>的写法一致。</p>
-<h3 id="第-65-步切换到-xorg-会话gui-相关步骤前">第<span class="heti-skip"><span class="heti-spacing"> </span>6.5<span class="heti-spacing"> </span></span>步：切换到<span class="heti-skip"><span class="heti-spacing"> </span>Xorg<span class="heti-spacing"> </span></span>会话（<span>GUI<span class="heti-spacing"> </span></span>相关步骤前）<a class="headerlink" href="#第-65-步切换到-xorg-会话gui-相关步骤前" title="Permanent link">¶</a></h3>
+<h3 id="切换到-xorg-会话gui-相关步骤前">切换到<span class="heti-skip"><span class="heti-spacing"> </span>Xorg<span class="heti-spacing"> </span></span>会话（<span>GUI<span class="heti-spacing"> </span></span>相关步骤前）<a class="headerlink" href="#切换到-xorg-会话gui-相关步骤前" title="Permanent link">¶</a></h3>
 <p>这一步的目的：让后续<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>启动脚本配置在更稳定的显示栈上工作。</p>
 <ol>
 <li>先退出登录（不是重启也可以<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
@@ -737,7 +736,7 @@
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$XDG_SESSION_TYPE</span><span class="s2">"</span>
 </code></pre></div></td></tr></table></div>
 <p>若输出为 <code class="language-text highlight">x11</code>，再继续第<span class="heti-skip"><span class="heti-spacing"> </span>7<span class="heti-spacing"> </span></span>步。</p>
-<h3 id="第-7-步安装好后修改官方-gui-启动脚本">第<span class="heti-skip"><span class="heti-spacing"> </span>7<span class="heti-spacing"> </span></span>步：安装好后，修改官方<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>启动脚本<a class="headerlink" href="#第-7-步安装好后修改官方-gui-启动脚本" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="安装好后修改官方-gui-启动脚本">安装好后，修改官方<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>启动脚本<a class="headerlink" href="#安装好后修改官方-gui-启动脚本" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这一步的目的：把<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>兼容参数收敛到官方入口。</p>
 <p>先备份：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/opt/Xilinx/Vivado/2022.2/bin/vivado<span class="w"> </span>/opt/Xilinx/Vivado/2022.2/bin/vivado.bak
@@ -866,9 +865,9 @@
 <blockquote>
 <p>不要把这两个变量写到 <code class="language-text highlight">/etc/profile</code> 或 <code class="language-text highlight">/etc/profile.d</code>。</p>
 </blockquote>
-<h3 id="第-8-步验证batch">第<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>步：验证（Batch）<a class="headerlink" href="#第-8-步验证batch" title="Permanent link">¶</a></h3>
+<h3 id="验证batch">验证（Batch）<a class="headerlink" href="#验证batch" title="Permanent link">¶</a></h3>
 <p>打开实验仓库，修改<span><span class="heti-spacing"> </span>Makefile</span>，执行<code class="language-text highlight">make bitstream</code>，如果成功生成二进制文件，则完成。否则，如果没有头绪，请继续让<span class="heti-skip"><span class="heti-spacing"> </span>Agent<span class="heti-spacing"> </span></span>帮忙调试<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（实在是无奈，我们本<strong>不该过度依赖<span><span class="heti-spacing"> </span>AI</span></strong>的…奈何刚接触这个环境…）</p>
-<h3 id="第-9-步gui-启动统一入口">第<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>步：<span>GUI<span class="heti-spacing"> </span></span>启动（统一入口）<a class="headerlink" href="#第-9-步gui-启动统一入口" title="Permanent link">¶</a></h3>
+<h3 id="gui-启动统一入口"><span>GUI<span class="heti-spacing"> </span></span>启动（统一入口）<a class="headerlink" href="#gui-启动统一入口" title="Permanent link">¶</a></h3>
 <p>点击桌面图标，查看是否进入程序。点击任意项目，生成波形。</p>
 <p>建议先确认会话类型：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$XDG_SESSION_TYPE</span><span class="s2">"</span>
@@ -888,7 +887,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: 首页" class="md-footer__link md-footer__link--prev" href="..">
+<a aria-label="Previous: Windows XP on Apple Silicon" class="md-footer__link md-footer__link--prev" href="../windows-xp-apple-silicon/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -897,21 +896,8 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                首页
-              </div>
-</div>
-</a>
-<a aria-label="Next: Windows XP on Apple Silicon" class="md-footer__link md-footer__link--next" href="../windows-xp-apple-silicon/">
-<div class="md-footer__title">
-<span class="md-footer__direction">
-                Next
-              </span>
-<div class="md-ellipsis">
                 Windows XP on Apple Silicon
               </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
 </div>
 </a>
 </nav>
