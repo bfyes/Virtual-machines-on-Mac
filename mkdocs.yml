@@ -1,0 +1,87 @@
+site_name: Bill
+site_url: ""
+site_description: Apple Silicon 折腾记录
+dev_addr: '127.0.0.1:5500'
+
+theme:
+  name: material
+  icon:
+    edit: material/pencil
+  features:
+    - content.action.edit
+    - content.code.copy
+    - navigation.tracking
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+  font:
+    code: JetBrains Mono
+    text: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - 首页: index.md
+  - Windows XP on Apple Silicon: windows-xp-apple-silicon.md
+  - Vivado on Apple Silicon (X): vivado-apple-silicon.md
+  
+
+plugins:
+  - search
+  - heti:
+      extra_skipped_class:
+        - arithmatex
+  - macros
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 4
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - meta
+  - def_list
+  - admonition
+  - attr_list
+  - md_in_html
+  - sane_lists
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - pymdownx.highlight:
+      guess_lang: true
+      linenums: true
+      anchor_linenums: true
+      pygments_lang_class: true
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+
+extra_css:
+  - https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&display=fallback
+  - css/custom.css
+
+extra_javascript:
+  - js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
