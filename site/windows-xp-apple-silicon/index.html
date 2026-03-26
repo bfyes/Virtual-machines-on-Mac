@@ -263,14 +263,14 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#最终方案xftp-5--sftp-双向传输">
+<a class="md-nav__link" href="#最终互通方案xftp-5--sftp">
 <span class="md-ellipsis">
       
-        最终方案：Xftp 5 + SFTP 双向传输
+        最终互通方案：Xftp 5 + SFTP
       
     </span>
 </a>
-<nav aria-label="最终方案：Xftp 5 + SFTP 双向传输" class="md-nav">
+<nav aria-label="最终互通方案：Xftp 5 + SFTP" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#方案优势">
@@ -443,14 +443,14 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#最终方案xftp-5--sftp-双向传输">
+<a class="md-nav__link" href="#最终互通方案xftp-5--sftp">
 <span class="md-ellipsis">
       
-        最终方案：Xftp 5 + SFTP 双向传输
+        最终互通方案：Xftp 5 + SFTP
       
     </span>
 </a>
-<nav aria-label="最终方案：Xftp 5 + SFTP 双向传输" class="md-nav">
+<nav aria-label="最终互通方案：Xftp 5 + SFTP" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#方案优势">
@@ -514,17 +514,16 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
 </a>
 <h1 id="windows-xp-on-apple-silicon-mac较完善">Windows XP on Apple Silicon Mac（较完善）<a class="headerlink" href="#windows-xp-on-apple-silicon-mac较完善" title="Permanent link">¶</a></h1>
-<p>最后更新时间：2026-03-26</p>
-<blockquote>
-<p>总想写点什么，日记也写不出。以后总归是要写大量实验报告的，那就先写一些文档来锻炼一下我的写作能力吧。</p>
-</blockquote>
-<p>这篇文章技术含量不高，只是折腾。</p>
+<p>更新时间：2026-03-27，更新说明：<strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
+<p>更新时间：2026-03-26，更新说明：<strong>完善文章框架和步骤。</strong></p>
+<p>这篇文章技术含量并不高，只是略微折腾。现在想来，安装过程和原理都算不上麻烦，但当初前前后后摸索了近两周。所以把方法总结出来，方便有需要的同学复现。</p>
 <ul>
-<li>写作工具：Typora；环境：macOS 26.3.1 (a)；网页构建工具：Mkdocs。</li>
+<li>写作工具：Typora；环境：macOS 26.3.1；网页构建工具：Mkdocs。</li>
 </ul>
 <blockquote>
 <p>文章偏记录向，如有不当之处，请多指教！</p>
 </blockquote>
+<p>另：汇编语言课程的<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机文件我已经打包好，如果实在需要，请联系我拷贝。为了保护老师的成果和隐私，这个网页中暂不提供下载链接。</p>
 <h2 id="概况">概况<a class="headerlink" href="#概况" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="适用场景">适用场景<a class="headerlink" href="#适用场景" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>VMware<span class="heti-spacing"> </span></span>磁盘文件<span><span class="heti-spacing"> </span>(.vmdk)</span> <strong>迁移</strong> 至<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>中的<span><span class="heti-spacing"> </span>UTM +</span> <strong>双向文件传输</strong> 解决方案。</p>
@@ -609,7 +608,7 @@
 <p><strong><span>[<span class="heti-spacing"> </span></span>重要<span class="heti-skip"><span class="heti-spacing"> </span>]<span class="heti-spacing"> </span></span>驱动器</strong>：首位默认的是<code class="language-text highlight">disk-0.qcow2</code>，请下载<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP Professional SP3<span class="heti-spacing"> </span></span>的镜像文件，<strong>并把下载好的<span class="heti-skip"><span class="heti-spacing"> </span>iso<span class="heti-spacing"> </span></span>镜像放在启动顺序的第一位。</strong></p>
 </li>
 <li>
-<p>下面给出了笔者安装时的资源（可以用迅雷等打开。叠甲：非官方资源，请自行甄别。可以寻找官方资源<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>）</p>
+<p>下面给出了笔者安装时的资源（可以用迅雷等打开。⚠️注意：非官方资源，请自行甄别。可以寻找官方资源<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>）</p>
 </li>
 </ul>
 <div class="language-http highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="err">ed2k://|file|zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso|630237184|EC51916C9D9B8B931195EE0D6EE9B40E|/</span>
@@ -651,26 +650,29 @@
 </ul>
 <p>相关<span><span class="heti-spacing"> </span>issue</span>：<a href="https://github.com/utmapp/UTM/issues/3998">https://github.com/utmapp/UTM/issues/3998</a></p>
 </details>
-<h3 id="最终方案xftp-5--sftp-双向传输">最终方案：<span>Xftp 5 + SFTP<span class="heti-spacing"> </span></span>双向传输<a class="headerlink" href="#最终方案xftp-5--sftp-双向传输" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="最终互通方案xftp-5--sftp">最终互通方案：Xftp 5 + SFTP<a class="headerlink" href="#最终互通方案xftp-5--sftp" title="Permanent link">¶</a></h3>
 <h4 id="方案优势">方案优势<a class="headerlink" href="#方案优势" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <ul>
-<li><span>100%<span class="heti-spacing"> </span></span>兼容<span><span class="heti-spacing"> </span>Windows XP</span></li>
-<li>加密传输，无安全风险</li>
+<li>兼容<span><span class="heti-spacing"> </span>Windows XP</span></li>
+<li>加密传输</li>
 <li>双向拖拽操作，简单易用</li>
 <li>断网可用（虚拟机内网独立传输）</li>
-<li>不依赖<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>脆弱系统组件</li>
+<li>不依赖<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>系统组件</li>
 </ul>
 <h4 id="macos-端配置"><span>macOS<span class="heti-spacing"> </span></span>端配置<a class="headerlink" href="#macos-端配置" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <ol>
 <li>
 <p>系统设置 → 通用 → 共享 → 开启「远程登录」</p>
+<blockquote>
+<p>保护好账号密码，以防泄漏！</p>
+</blockquote>
 </li>
 <li>
 <p>查看<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>内网<span class="heti-skip"><span class="heti-spacing"> </span>IP<span class="heti-spacing"> </span></span>地址：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>ifconfig<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inet
 </code></pre></div></td></tr></table></div>
 <p><img alt="1Capture 2026-03-26 14.09.58" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2014.09.58.png" style="display: block; margin: 0 auto;"/></p>
-<p>得到并记住该地址。</p>
+<p>得到并记住该地址<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（高亮部分）</p>
 </li>
 </ol>
 <h4 id="windows-xp-端配置xftp-5"><span>Windows XP<span class="heti-spacing"> </span></span>端配置（Xftp 5）<a class="headerlink" href="#windows-xp-端配置xftp-5" title="Permanent link">¶</a></h4>
@@ -682,10 +684,10 @@
 <p>新建<span class="heti-skip"><span class="heti-spacing"> </span>SFTP<span class="heti-spacing"> </span></span>会话参数</p>
 <ul>
 <li>名称：任意</li>
-<li>主机：刚才的地址。</li>
+<li>主机：刚才的地址</li>
 <li>协议：SFTP</li>
 <li>端口：22</li>
-<li>用户名：<span>macOS<span class="heti-spacing"> </span></span>登录账号名称</li>
+<li>用户名：<span>macOS<span class="heti-spacing"> </span></span>登录账号名称（如果不知道，请按电源键并重新登陆，屏幕上的名字即为账号名称）</li>
 <li>密码：<span>macOS<span class="heti-spacing"> </span></span>登录密码</li>
 </ul>
 </li>
@@ -702,10 +704,10 @@
 <ul>
 <li>断网不影响使用（仅在虚拟机与宿主网络互通时有效<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：仅依赖虚拟机内部局域网</li>
 <li><span>IP<span class="heti-spacing"> </span></span>地址固定：无需频繁修改配置</li>
-<li>无病毒穿透风险：虚拟机隔离<span class="heti-skip"><span class="heti-spacing"> </span>+ SFTP<span class="heti-spacing"> </span></span>加密传输</li>
 </ul>
 <h2 id="结语">结语<a class="headerlink" href="#结语" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>燃尽了。祝汇编学习顺利。</p>
+<p><strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
+<p>祝汇编学习顺利。</p>
 <div class="language-asm highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
