@@ -1,0 +1,130 @@
+h1 {
+  counter-reset: h2;
+}
+h2 {
+  counter-reset: h3;
+}
+h3 {
+  counter-reset: h4;
+}
+h4 {
+  counter-reset: h5;
+}
+h5 {
+  counter-reset: h6;
+}
+h2:before {
+  counter-increment: h2;
+  content: counter(h2);
+  margin-right: 0.8rem;
+}
+h3:before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3);
+  margin-right: 0.8rem;
+}
+h4:before {
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4);
+  margin-right: 0.8rem;
+}
+h5:before {
+  counter-increment: h5;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
+  margin-right: 0.8rem;
+}
+h6:before {
+  counter-increment: h6;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6);
+  margin-right: 0.8rem;
+}
+.md-typeset h1, .md-typeset h2 {
+  font-weight: 600;
+}
+.md-typeset h3 {
+  font-weight: 500;
+}
+[dir=ltr] .md-typeset ol {
+  margin-left: 1.25em;
+}
+
+/* Code token contrast boost (only colors) */
+[data-md-color-scheme="default"] .md-typeset .highlight .k,
+[data-md-color-scheme="default"] .md-typeset .highlight .kc,
+[data-md-color-scheme="default"] .md-typeset .highlight .kd,
+[data-md-color-scheme="default"] .md-typeset .highlight .kn,
+[data-md-color-scheme="default"] .md-typeset .highlight .kp,
+[data-md-color-scheme="default"] .md-typeset .highlight .kr,
+[data-md-color-scheme="default"] .md-typeset .highlight .kt {
+  color: #b42318;
+}
+
+[data-md-color-scheme="default"] .md-typeset .highlight .nf,
+[data-md-color-scheme="default"] .md-typeset .highlight .fm {
+  color: #175cd3;
+}
+
+[data-md-color-scheme="default"] .md-typeset .highlight .s,
+[data-md-color-scheme="default"] .md-typeset .highlight .sa,
+[data-md-color-scheme="default"] .md-typeset .highlight .sb,
+[data-md-color-scheme="default"] .md-typeset .highlight .sc,
+[data-md-color-scheme="default"] .md-typeset .highlight .sd,
+[data-md-color-scheme="default"] .md-typeset .highlight .se,
+[data-md-color-scheme="default"] .md-typeset .highlight .sh,
+[data-md-color-scheme="default"] .md-typeset .highlight .si,
+[data-md-color-scheme="default"] .md-typeset .highlight .sx,
+[data-md-color-scheme="default"] .md-typeset .highlight .sr,
+[data-md-color-scheme="default"] .md-typeset .highlight .s1,
+[data-md-color-scheme="default"] .md-typeset .highlight .s2 {
+  color: #067647;
+}
+
+[data-md-color-scheme="default"] .md-typeset .highlight .c,
+[data-md-color-scheme="default"] .md-typeset .highlight .ch,
+[data-md-color-scheme="default"] .md-typeset .highlight .cm,
+[data-md-color-scheme="default"] .md-typeset .highlight .cp,
+[data-md-color-scheme="default"] .md-typeset .highlight .cpf,
+[data-md-color-scheme="default"] .md-typeset .highlight .c1,
+[data-md-color-scheme="default"] .md-typeset .highlight .cs {
+  color: #667085;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .k,
+[data-md-color-scheme="slate"] .md-typeset .highlight .kc,
+[data-md-color-scheme="slate"] .md-typeset .highlight .kd,
+[data-md-color-scheme="slate"] .md-typeset .highlight .kn,
+[data-md-color-scheme="slate"] .md-typeset .highlight .kp,
+[data-md-color-scheme="slate"] .md-typeset .highlight .kr,
+[data-md-color-scheme="slate"] .md-typeset .highlight .kt {
+  color: #ff6b6b;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nf,
+[data-md-color-scheme="slate"] .md-typeset .highlight .fm {
+  color: #7cc4ff;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .s,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sa,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sb,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sc,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sd,
+[data-md-color-scheme="slate"] .md-typeset .highlight .se,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sh,
+[data-md-color-scheme="slate"] .md-typeset .highlight .si,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sx,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sr,
+[data-md-color-scheme="slate"] .md-typeset .highlight .s1,
+[data-md-color-scheme="slate"] .md-typeset .highlight .s2 {
+  color: #86efac;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .c,
+[data-md-color-scheme="slate"] .md-typeset .highlight .ch,
+[data-md-color-scheme="slate"] .md-typeset .highlight .cm,
+[data-md-color-scheme="slate"] .md-typeset .highlight .cp,
+[data-md-color-scheme="slate"] .md-typeset .highlight .cpf,
+[data-md-color-scheme="slate"] .md-typeset .highlight .c1,
+[data-md-color-scheme="slate"] .md-typeset .highlight .cs {
+  color: #98a2b3;
+}

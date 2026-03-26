@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@600;700&display=swap");
+
+/* Elegant typography */
+body,
+.md-typeset {
+  font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6,
+.md-header__title,
+.md-nav {
+  font-family: "Noto Serif SC", "Noto Sans SC", serif;
+}
+
+code,
+kbd,
+pre,
+.md-typeset code,
+.md-typeset pre {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/* Stronger heading weights */
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h2 {
+  font-weight: 750;
+}
+
+.md-typeset h3 {
+  font-weight: 700;
+}
+
+/* More visible syntax highlight */
+[data-md-color-scheme="default"] {
+  --md-code-fg-color: #0f172a;
+  --md-code-bg-color: #f4f7fb;
+  --md-code-hl-keyword-color: #9f1239;
+  --md-code-hl-name-color: #0f172a;
+  --md-code-hl-function-color: #0c4a6e;
+  --md-code-hl-string-color: #166534;
+  --md-code-hl-number-color: #7c2d12;
+  --md-code-hl-operator-color: #1d4ed8;
+  --md-code-hl-comment-color: #6b7280;
+  --md-code-hl-color: #fff7cc;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-code-fg-color: #e5e7eb;
+  --md-code-bg-color: #0b1220;
+  --md-code-hl-keyword-color: #fb7185;
+  --md-code-hl-name-color: #e5e7eb;
+  --md-code-hl-function-color: #7dd3fc;
+  --md-code-hl-string-color: #86efac;
+  --md-code-hl-number-color: #fdba74;
+  --md-code-hl-operator-color: #93c5fd;
+  --md-code-hl-comment-color: #94a3b8;
+  --md-code-hl-color: #332b00;
+}
+
+.md-typeset pre > code {
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* Stronger code block contrast */
+.md-typeset .highlight pre,
+.md-typeset .highlighttable {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+}
+
+/* Keep default no-wrap code layout and horizontal scrolling */
+.md-typeset .highlight pre,
+.md-typeset .highlighttable .code pre {
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Keep line-number and code columns stable */
+.md-typeset .highlighttable {
+  table-layout: auto;
+  width: 100%;
+}
+
+.md-typeset .highlighttable .linenos,
+.md-typeset .highlighttable .code {
+  vertical-align: top;
+}
+
+/* Keep line number column compact and readable */
+.md-typeset .highlighttable .linenos {
+  width: 3.2rem;
+  min-width: 3.2rem;
+  max-width: 3.2rem;
+  padding-right: 0.75rem;
+  border-right: 1px solid var(--md-default-fg-color--lightest);
+  user-select: none;
+  opacity: 0.75;
+}
+
+.md-typeset .highlighttable .code {
+  width: auto;
+  padding-left: 0.75rem;
+}
+
+/* Body paragraph indentation */
+.md-typeset p {
+  text-indent: 2em;
+}
+
+/* Keep structural blocks readable without forced indent */
+.md-typeset li p,
+.md-typeset blockquote p,
+.md-typeset .admonition p,
+.md-typeset .highlight p,
+.md-typeset table p {
+  text-indent: 0;
+}
+
+/* Hanging layout for ordered-list numbers */
+.md-typeset ol {
+  list-style-position: outside;
+  padding-left: 2.2em;
+}
+
+.md-typeset ol > li {
+  padding-left: 0.15em;
+}
+
+/* Stable heading numbering: 1, 1.1, 1.1.1 */
+.md-content__inner {
+  counter-reset: section;
+}
+
+.md-content__inner h2 {
+  counter-increment: section;
+  counter-reset: subsection;
+}
+
+.md-content__inner h2::before {
+  content: counter(section) ". ";
+  color: var(--md-default-fg-color--light);
+  font-weight: 700;
+}
+
+.md-content__inner h3 {
+  counter-increment: subsection;
+  counter-reset: subsubsection;
+}
+
+.md-content__inner h3::before {
+  content: counter(section) "." counter(subsection) " ";
+  color: var(--md-default-fg-color--light);
+  font-weight: 700;
+}
+
+.md-content__inner h4 {
+  counter-increment: subsubsection;
+}
+
+.md-content__inner h4::before {
+  content: counter(section) "." counter(subsection) "." counter(subsubsection) " ";
+  color: var(--md-default-fg-color--light);
+  font-weight: 700;
+}

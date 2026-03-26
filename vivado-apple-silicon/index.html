@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Apple Silicon 折腾记录" name="description"/>
+<link href="../windows-xp-apple-silicon/" rel="prev"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>Vivado on Apple Silicon (X) - Bill</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Bill" class="md-header__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Bill
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Vivado on Apple Silicon (X)
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Bill" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Bill
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../windows-xp-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Windows XP on Apple Silicon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Vivado on Apple Silicon (X)
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Vivado on Apple Silicon (X)
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#目标与版本">
+<span class="md-ellipsis">
+      
+        目标与版本
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#需要下载的内容">
+<span class="md-ellipsis">
+      
+        需要下载的内容
+      
+    </span>
+</a>
+<nav aria-label="需要下载的内容" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parallels-desktop">
+<span class="md-ellipsis">
+      
+        Parallels Desktop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ubuntu-2404-arm64-镜像在-parallels-中创建虚拟机">
+<span class="md-ellipsis">
+      
+        Ubuntu 24.04 ARM64 镜像（在 Parallels 中创建虚拟机）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado-20222-linux-安装包">
+<span class="md-ellipsis">
+      
+        Vivado 2022.2 Linux 安装包
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#执行指令并部署">
+<span class="md-ellipsis">
+      
+        执行指令并部署
+      
+    </span>
+</a>
+<nav aria-label="执行指令并部署" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xorg-会话背景">
+<span class="md-ellipsis">
+      
+        Xorg 会话背景
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#安装-ubuntu-基础依赖">
+<span class="md-ellipsis">
+      
+        安装 Ubuntu 基础依赖
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#配置-rosettalinux-的-binfmt-路由">
+<span class="md-ellipsis">
+      
+        配置 RosettaLinux 的 binfmt 路由
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#安装-vivado-所需-amd64-运行库">
+<span class="md-ellipsis">
+      
+        安装 Vivado 所需 amd64 运行库
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#下载并解包-vivado-20222">
+<span class="md-ellipsis">
+      
+        下载并解包 Vivado 2022.2
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#修改-xsetup-架构检查">
+<span class="md-ellipsis">
+      
+        修改 xsetup 架构检查
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#运行安装器">
+<span class="md-ellipsis">
+      
+        运行安装器
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#切换到-xorg-会话gui-相关步骤前">
+<span class="md-ellipsis">
+      
+        切换到 Xorg 会话（GUI 相关步骤前）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#安装好后修改官方-gui-启动脚本">
+<span class="md-ellipsis">
+      
+        安装好后，修改官方 GUI 启动脚本
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#验证batch">
+<span class="md-ellipsis">
+      
+        验证（Batch）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gui-启动统一入口">
+<span class="md-ellipsis">
+      
+        GUI 启动（统一入口）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#复现检查">
+<span class="md-ellipsis">
+      
+        复现检查
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#目标与版本">
+<span class="md-ellipsis">
+      
+        目标与版本
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#需要下载的内容">
+<span class="md-ellipsis">
+      
+        需要下载的内容
+      
+    </span>
+</a>
+<nav aria-label="需要下载的内容" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parallels-desktop">
+<span class="md-ellipsis">
+      
+        Parallels Desktop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ubuntu-2404-arm64-镜像在-parallels-中创建虚拟机">
+<span class="md-ellipsis">
+      
+        Ubuntu 24.04 ARM64 镜像（在 Parallels 中创建虚拟机）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado-20222-linux-安装包">
+<span class="md-ellipsis">
+      
+        Vivado 2022.2 Linux 安装包
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#执行指令并部署">
+<span class="md-ellipsis">
+      
+        执行指令并部署
+      
+    </span>
+</a>
+<nav aria-label="执行指令并部署" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xorg-会话背景">
+<span class="md-ellipsis">
+      
+        Xorg 会话背景
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#安装-ubuntu-基础依赖">
+<span class="md-ellipsis">
+      
+        安装 Ubuntu 基础依赖
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#配置-rosettalinux-的-binfmt-路由">
+<span class="md-ellipsis">
+      
+        配置 RosettaLinux 的 binfmt 路由
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#安装-vivado-所需-amd64-运行库">
+<span class="md-ellipsis">
+      
+        安装 Vivado 所需 amd64 运行库
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#下载并解包-vivado-20222">
+<span class="md-ellipsis">
+      
+        下载并解包 Vivado 2022.2
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#修改-xsetup-架构检查">
+<span class="md-ellipsis">
+      
+        修改 xsetup 架构检查
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#运行安装器">
+<span class="md-ellipsis">
+      
+        运行安装器
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#切换到-xorg-会话gui-相关步骤前">
+<span class="md-ellipsis">
+      
+        切换到 Xorg 会话（GUI 相关步骤前）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#安装好后修改官方-gui-启动脚本">
+<span class="md-ellipsis">
+      
+        安装好后，修改官方 GUI 启动脚本
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#验证batch">
+<span class="md-ellipsis">
+      
+        验证（Batch）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gui-启动统一入口">
+<span class="md-ellipsis">
+      
+        GUI 启动（统一入口）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#复现检查">
+<span class="md-ellipsis">
+      
+        复现检查
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善">Vivado（含可用的<span class="heti-skip"><span class="heti-spacing"> </span>Batch<span class="heti-spacing"> </span></span>模式） 2022.2 on Ubuntu with Rosetta（不完善）<a class="headerlink" href="#vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善" title="Permanent link">¶</a></h1>
+<p>最后更新时间：2026-03-26</p>
+<p>注：笔者能力十十十十十分有限，只能写到这个程度了。。。如果以后能力有提升会完善这篇文章的。</p>
+<p>另注：如果您很需要，可以联系我，直接<span class="heti-skip"><span class="heti-spacing"> </span>copy<span class="heti-spacing"> </span></span>一份虚拟机给你（）</p>
+<blockquote>
+<p>本文的部署流程是通过<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>辅助完成的，总结这篇文章也是为了记录在<span class="heti-skip"><span class="heti-spacing"> </span>linux<span class="heti-spacing"> </span></span>系统里的“摸爬滚打”。这篇文章<strong>没有任何技术含量</strong>，只是记录我装机折腾的种种过程。毕竟跟谁学都是学，包括<span><span class="heti-spacing"> </span>AI</span>。现在列出步骤只是为了说明该方案的可行性及便捷性。笔者刚刚接触<span><span class="heti-spacing"> </span>linux</span>，是小白，实在不熟悉这个系统的环境和操作。步骤只是大致的框架，如遇到任何问题，请做“<span>Prompt<span class="heti-spacing"> </span></span>工程师”。</p>
+</blockquote>
+<p>详见：<span>github copilot<span class="heti-spacing"> </span></span>学生认证。<a href="https://github.com/education/students">https://github.com/education/students</a></p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>中打开<span class="heti-skip"><span class="heti-spacing"> </span>VSCode<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>Agent</span> ，直接让它帮你来（hhh<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<ul>
+<li>写作工具：Typora；环境：Ubuntu 24.04 ARM64；网页构建工具：Mkdocs。</li>
+</ul>
+<h2 id="目标与版本">目标与版本<a class="headerlink" href="#目标与版本" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>目标是在 <strong>Apple Silicon Mac + Parallels Desktop + Ubuntu 24.04 ARM64</strong> 上运行 <strong>Vivado 2022.2</strong>。</p>
+<ul>
+<li>宿主机：macOS（Apple Silicon）</li>
+<li>虚拟化：Parallels Desktop 26</li>
+<li>虚拟机系统：Ubuntu 24.04 with Rosetta</li>
+<li><span>Vivado<span class="heti-spacing"> </span></span>版本：<strong>2022.2</strong></li>
+</ul>
+<h2 id="需要下载的内容">需要下载的内容<a class="headerlink" href="#需要下载的内容" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="parallels-desktop"><strong>Parallels Desktop</strong><a class="headerlink" href="#parallels-desktop" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p><strong>这个步骤可能是文章唯一给出的<span style="color:#FF0000;">有用信息</span><span><span class="heti-spacing"> </span>hhh</span>。</strong></p>
+<p>废话不多说，上链接：<a href="https://macwk.cn/app/2941.html">https://macwk.cn/app/2941.html</a>。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><span style="color:#FF0000;"><strong>叠甲</strong></span> 仅供学习使用！请在<span class="heti-skip"><span class="heti-spacing"> </span>24<span class="heti-spacing"> </span></span>小时之内删除。请支持正版软件。</p>
+</div>
+<p>如果签名失败，请先将安装容器的所有文件复制并粘贴到一个新建文件夹中，然后执行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>xattr<span class="w"> </span>-cr<span class="w"> </span><span class="s2">"你的文件名"</span><span class="w">   </span><span class="c1"># 可以通过拖拽的方式添加，不要直接添加安装包中的文件。</span>
+</code></pre></div></td></tr></table></div>
+<p>可能需要在<span class="heti-skip"><span class="heti-spacing"> </span>[<span class="heti-spacing"> </span></span>设置<span class="heti-skip"><span class="heti-spacing"> </span>] - [<span class="heti-spacing"> </span></span>隐私与安全性<span class="heti-skip"><span class="heti-spacing"> </span>]<span class="heti-spacing"> </span></span>中按指纹解锁权限继续安装。</p>
+</li>
+</ul>
+<h3 id="ubuntu-2404-arm64-镜像在-parallels-中创建虚拟机"><strong><span>Ubuntu 24.04 ARM64<span class="heti-spacing"> </span></span>镜像</strong>（在<span class="heti-skip"><span class="heti-spacing"> </span>Parallels<span class="heti-spacing"> </span></span>中创建虚拟机）<a class="headerlink" href="#ubuntu-2404-arm64-镜像在-parallels-中创建虚拟机" title="Permanent link">¶</a></h3>
+<p>点击新建选项，选择<code class="language-text highlight">下载 Ubuntu with Rosetta</code>，等待自动下载完毕。该软件完成度很高，几乎不用手动操作。</p>
+<p><img alt="1Capture 2026-03-26 18.15.01" src="../Vivado%28Batch%29%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2018.15.01-1774520136604-2.png"/></p>
+<h3 id="vivado-20222-linux-安装包"><strong><span>Vivado 2022.2 Linux<span class="heti-spacing"> </span></span>安装包</strong><a class="headerlink" href="#vivado-20222-linux-安装包" title="Permanent link">¶</a></h3>
+<p>常见文件名示例（以官方实际页面为准<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<ul>
+<li><code class="language-scdoc highlight">Xilinx_Unified_2022.2_1014_8888_Lin64.bin</code></li>
+</ul>
+<p>具体下载方式请见课程文档。</p>
+<h2 id="执行指令并部署">执行指令并部署<a class="headerlink" href="#执行指令并部署" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这些指令只是根据此前聊天记录中试错后有效的指令，并未在全新的环境中测试。如有卡壳，请找<span><span class="heti-spacing"> </span>Agent</span>。</p>
+</div>
+<h4 id="xorg-会话背景"><span>Xorg<span class="heti-spacing"> </span></span>会话背景<a class="headerlink" href="#xorg-会话背景" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>这一步的目的：解释为什么文中后续会强调 <code class="language-text highlight">x11/xorg</code>。</p>
+<ul>
+<li><span>Ubuntu 24.04<span class="heti-spacing"> </span></span>桌面默认更偏向<span><span class="heti-spacing"> </span>Wayland</span>，但<span class="heti-skip"><span class="heti-spacing"> </span>Vivado 2022.2<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>组件对<span class="heti-skip"><span class="heti-spacing"> </span>Wayland<span class="heti-spacing"> </span></span>兼容并不稳定。</li>
+<li>在<span class="heti-skip"><span class="heti-spacing"> </span>Wayland<span class="heti-spacing"> </span></span>下常见现象是：启动后闪退、窗口渲染异常、焦点<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>输入异常，或者偶发段错误。</li>
+<li><code class="language-componentpascal highlight"><span class="n">GDK_BACKEND</span><span class="o">=</span><span class="n">x11</span></code> 只能告诉<span class="heti-skip"><span class="heti-spacing"> </span>GTK<span class="heti-spacing"> </span></span>尽量走<span class="heti-skip"><span class="heti-spacing"> </span>X11<span class="heti-spacing"> </span></span>后端，但它<strong>不能替代登录级别的会话切换</strong>。</li>
+<li>所以<span class="heti-skip"><span class="heti-spacing"> </span>Vivado GUI<span class="heti-spacing"> </span></span>场景尽量在 <strong><span>Xorg<span class="heti-spacing"> </span></span>会话（<code class="language-scdoc highlight">XDG_SESSION_TYPE=x11</code>）</strong> 下运行。</li>
+</ul>
+<p>快速判断当前会话：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$XDG_SESSION_TYPE</span><span class="s2">"</span>
+</code></pre></div></td></tr></table></div>
+<p>输出为 <code class="language-text highlight">x11</code> 说明已在<span class="heti-skip"><span class="heti-spacing"> </span>Xorg<span class="heti-spacing"> </span></span>会话；输出为 <code class="language-text highlight">wayland</code> 则建议切换（登出并重新登陆时右下角的小齿轮中选择）后再做<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>相关步骤。</p>
+<h3 id="安装-ubuntu-基础依赖">安装<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>基础依赖<a class="headerlink" href="#安装-ubuntu-基础依赖" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这一步的目的：让系统具备“识别并接管<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>程序”的基础能力。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>binfmt-support<span class="w"> </span>qemu-user-static
+</code></pre></div></td></tr></table></div>
+<h3 id="配置-rosettalinux-的-binfmt-路由">配置<span class="heti-skip"><span class="heti-spacing"> </span>RosettaLinux<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>binfmt<span class="heti-spacing"> </span></span>路由<a class="headerlink" href="#配置-rosettalinux-的-binfmt-路由" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这条指令在<span class="heti-skip"><span class="heti-spacing"> </span>mac<span class="heti-spacing"> </span></span>中的终端执行，其余均为<span class="heti-skip"><span class="heti-spacing"> </span>linux<span class="heti-spacing"> </span></span>终端指令：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>softwareupdate<span class="w"> </span>--install-rosetta<span class="w"> </span>--agree-to-license
+</code></pre></div></td></tr></table></div>
+<p>这一步的目的：告诉<span><span class="heti-spacing"> </span>Ubuntu</span> “遇到<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>程序时该交给谁来运行”。</p>
+<p>先检查：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>ls<span class="w"> </span>/proc/sys/fs/binfmt_misc
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>cat<span class="w"> </span>/proc/sys/fs/binfmt_misc/RosettaLinux
+</code></pre></div></td></tr></table></div>
+<p>如果 <code class="language-scdoc highlight">x86_64</code> 被<span class="heti-skip"><span class="heti-spacing"> </span>box64<span class="heti-spacing"> </span></span>接管，先禁用：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span>-1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/proc/sys/fs/binfmt_misc/x86_64
+</code></pre></div></td></tr></table></div>
+<p>启用<span><span class="heti-spacing"> </span>RosettaLinux</span>：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>update-binfmts<span class="w"> </span>--enable<span class="w"> </span>RosettaLinux
+</code></pre></div></td></tr></table></div>
+<p>持久化（重启后仍生效<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>install<span class="w"> </span>-d<span class="w"> </span>/etc/binfmt.d
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>cat<span class="w"> </span><span class="s">&lt;&lt;'EOF' | sudo tee /etc/binfmt.d/rosetta-linux.conf &gt;/dev/null</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="s">:RosettaLinux:M::\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x3e\x00:\xff\xff\xff\xff\xff\xfe\xfe\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/media/psf/RosettaLinux/rosetta:OCF</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="s">EOF</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>cat<span class="w"> </span><span class="s">&lt;&lt;'EOF' | sudo tee /etc/binfmt.d/x86_64-rosetta.conf &gt;/dev/null</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="s">:x86_64:M::\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x3e\x00::/media/psf/RosettaLinux/rosetta:OCF</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="s">EOF</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-binfmt
+</code></pre></div></td></tr></table></div>
+<p>下面指令解决<span class="heti-skip"><span class="heti-spacing"> </span>psf<span class="heti-spacing"> </span></span>可能晚挂载导致开机失效的问题<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（笔者的<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>在挂载目录中）
+</p><div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt;'EOF' | sudo tee /usr/local/sbin/refresh-rosetta-binfmt &gt;/dev/null</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="s">#!/usr/bin/env bash</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="s">set -euo pipefail</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="s">for i in $(seq 1 120); do</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="s">  if [ -x /media/psf/RosettaLinux/rosetta ]; then</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="s">    systemctl restart systemd-binfmt</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="s">    exit 0</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="s">  fi</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="s">  sleep 1</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="s">done</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="s">echo "Rosetta interpreter not found: /media/psf/RosettaLinux/rosetta" &gt;&amp;2</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="s">exit 1</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="s">EOF</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/sbin/refresh-rosetta-binfmt
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>cat<span class="w"> </span><span class="s">&lt;&lt;'EOF' | sudo tee /etc/systemd/system/refresh-rosetta-binfmt.service &gt;/dev/null</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="s">[Unit]</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="s">Description=Refresh Rosetta binfmt after shared folders are ready</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="s">After=multi-user.target</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="s">[Service]</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="s">Type=oneshot</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="s">ExecStart=/usr/local/sbin/refresh-rosetta-binfmt</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="s">[Install]</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="s">WantedBy=multi-user.target</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a><span class="s">EOF</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a>
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>refresh-rosetta-binfmt.service
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>如果报错且您没有头绪，请咨询<span><span class="heti-spacing"> </span>Agent</span>。</p>
+</blockquote>
+<h3 id="安装-vivado-所需-amd64-运行库">安装<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>所需<span class="heti-skip"><span class="heti-spacing"> </span>amd64<span class="heti-spacing"> </span></span>运行库<a class="headerlink" href="#安装-vivado-所需-amd64-运行库" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这一步的目的：补齐<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>自带<span class="heti-skip"><span class="heti-spacing"> </span>x86_64 JRE<span class="heti-spacing"> </span></span>需要的运行库，避免启动时报错。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>--add-architecture<span class="w"> </span>amd64
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>zlib1g:amd64<span class="w"> </span>libstdc++6:amd64<span class="w"> </span>libc6:amd64
+</code></pre></div></td></tr></table></div>
+<h3 id="下载并解包-vivado-20222">下载并解包<span><span class="heti-spacing"> </span>Vivado 2022.2</span><a class="headerlink" href="#下载并解包-vivado-20222" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这一步的目的：拿到 <code class="language-text highlight">xsetup</code> 安装器文件。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>Xilinx_Unified_2022.2_1014_8888_Lin64.bin
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>./Xilinx_Unified_2022.2_1014_8888_Lin64.bin<span class="w"> </span>--target<span class="w"> </span>~/xilinx_2022.2
+</code></pre></div></td></tr></table></div>
+<p>解包完成后，<code class="language-text highlight">xsetup</code> 路径通常是：<code class="language-scdoc highlight">~/xilinx_2022.2/xsetup</code>。</p>
+<h3 id="修改-xsetup-架构检查">修改 <code class="language-text highlight">xsetup</code> 架构检查<a class="headerlink" href="#修改-xsetup-架构检查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>只改“报错退出”的架构判断分支，其他安装逻辑不要动。仅需把<span class="heti-skip"><span class="heti-spacing"> </span>exit1<span class="heti-spacing"> </span></span>前面加<code class="language-text highlight">#</code>注释掉即可。图片中是<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>修改后的片段，不必这么麻烦。</p>
+<p><img alt="image-20260326184049178" src="../Vivado%28Batch%29%20on%20Apple%20Silicon%20Mac.assets/image-20260326184049178.png"/></p>
+<h3 id="运行安装器">运行安装器<a class="headerlink" href="#运行安装器" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这一步的目的：正式安装<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>到系统目录。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>~/xilinx_2022.2
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>./xsetup
+</code></pre></div></td></tr></table></div>
+<p>按默认路径，推荐安装到 <code class="language-text highlight">/opt/Xilinx</code>，与仓库中<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>的写法一致。</p>
+<h3 id="切换到-xorg-会话gui-相关步骤前">切换到<span class="heti-skip"><span class="heti-spacing"> </span>Xorg<span class="heti-spacing"> </span></span>会话（<span>GUI<span class="heti-spacing"> </span></span>相关步骤前）<a class="headerlink" href="#切换到-xorg-会话gui-相关步骤前" title="Permanent link">¶</a></h3>
+<p>这一步的目的：让后续<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>启动脚本配置在更稳定的显示栈上工作。</p>
+<ol>
+<li>先退出登录（不是重启也可以<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>在登录界面选中你的用户后，点击右下角齿轮图标。</li>
+<li>选择 <strong>Ubuntu on Xorg</strong>（或带<span class="heti-skip"><span class="heti-spacing"> </span>Xorg<span class="heti-spacing"> </span></span>字样的会话<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>登录后执行：</li>
+</ol>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$XDG_SESSION_TYPE</span><span class="s2">"</span>
+</code></pre></div></td></tr></table></div>
+<p>若输出为 <code class="language-text highlight">x11</code>，再继续第<span class="heti-skip"><span class="heti-spacing"> </span>7<span class="heti-spacing"> </span></span>步。</p>
+<h3 id="安装好后修改官方-gui-启动脚本">安装好后，修改官方<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>启动脚本<a class="headerlink" href="#安装好后修改官方-gui-启动脚本" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这一步的目的：把<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>兼容参数收敛到官方入口。</p>
+<p>先备份：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/opt/Xilinx/Vivado/2022.2/bin/vivado<span class="w"> </span>/opt/Xilinx/Vivado/2022.2/bin/vivado.bak
+</code></pre></div></td></tr></table></div>
+<p>编辑文件 <code class="language-text highlight">/opt/Xilinx/Vivado/2022.2/bin/vivado</code>，下面是<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>修改后的启动脚本。务必做好备份，不要盲目修改。建议让<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>接管。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span>
+<span class="normal"><a href="#__codelineno-14-26">26</a></span>
+<span class="normal"><a href="#__codelineno-14-27">27</a></span>
+<span class="normal"><a href="#__codelineno-14-28">28</a></span>
+<span class="normal"><a href="#__codelineno-14-29">29</a></span>
+<span class="normal"><a href="#__codelineno-14-30">30</a></span>
+<span class="normal"><a href="#__codelineno-14-31">31</a></span>
+<span class="normal"><a href="#__codelineno-14-32">32</a></span>
+<span class="normal"><a href="#__codelineno-14-33">33</a></span>
+<span class="normal"><a href="#__codelineno-14-34">34</a></span>
+<span class="normal"><a href="#__codelineno-14-35">35</a></span>
+<span class="normal"><a href="#__codelineno-14-36">36</a></span>
+<span class="normal"><a href="#__codelineno-14-37">37</a></span>
+<span class="normal"><a href="#__codelineno-14-38">38</a></span>
+<span class="normal"><a href="#__codelineno-14-39">39</a></span>
+<span class="normal"><a href="#__codelineno-14-40">40</a></span>
+<span class="normal"><a href="#__codelineno-14-41">41</a></span>
+<span class="normal"><a href="#__codelineno-14-42">42</a></span>
+<span class="normal"><a href="#__codelineno-14-43">43</a></span>
+<span class="normal"><a href="#__codelineno-14-44">44</a></span>
+<span class="normal"><a href="#__codelineno-14-45">45</a></span>
+<span class="normal"><a href="#__codelineno-14-46">46</a></span>
+<span class="normal"><a href="#__codelineno-14-47">47</a></span>
+<span class="normal"><a href="#__codelineno-14-48">48</a></span>
+<span class="normal"><a href="#__codelineno-14-49">49</a></span>
+<span class="normal"><a href="#__codelineno-14-50">50</a></span>
+<span class="normal"><a href="#__codelineno-14-51">51</a></span>
+<span class="normal"><a href="#__codelineno-14-52">52</a></span>
+<span class="normal"><a href="#__codelineno-14-53">53</a></span>
+<span class="normal"><a href="#__codelineno-14-54">54</a></span>
+<span class="normal"><a href="#__codelineno-14-55">55</a></span>
+<span class="normal"><a href="#__codelineno-14-56">56</a></span>
+<span class="normal"><a href="#__codelineno-14-57">57</a></span>
+<span class="normal"><a href="#__codelineno-14-58">58</a></span>
+<span class="normal"><a href="#__codelineno-14-59">59</a></span>
+<span class="normal"><a href="#__codelineno-14-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>.<span class="w"> </span><span class="s2">"`dirname \"</span><span class="nv">$0</span><span class="s2">\"`/setupEnv.sh"</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="c1"># Set XILINX_VIVADO</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="nv">XILINX_VIVADO</span><span class="o">=</span><span class="sb">`</span>dirname<span class="w"> </span><span class="s2">"</span><span class="nv">$RDI_BINROOT</span><span class="s2">"</span><span class="sb">`</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="nb">export</span><span class="w"> </span>XILINX_VIVADO
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDI_DEPENDENCY</span><span class="o">=</span><span class="s2">"XILINX_VIVADO_HLS:XILINX_HLS"</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">_RDI_NEEDS_PYTHON</span><span class="o">=</span>True
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDI_USE_JDK11</span><span class="o">=</span>True
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="nv">RDI_LAUNCH_MODE</span><span class="o">=</span><span class="s2">"gui"</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"-mode"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">        </span><span class="nv">RDI_LAUNCH_MODE</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">        </span><span class="k">break</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">    </span><span class="nb">shift</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="k">done</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a>
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">HOME</span><span class="k">:-</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.Xilinx/Vivado/2022.2/data/layouts"</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="k">fi</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a>
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GDK_BACKEND</span><span class="o">=</span><span class="si">${</span><span class="nv">GDK_BACKEND</span><span class="k">:-</span><span class="nv">x11</span><span class="si">}</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SWT_GTK3</span><span class="o">=</span><span class="si">${</span><span class="nv">SWT_GTK3</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="si">${</span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">XDG_SESSION_TYPE</span><span class="k">:-</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"x11"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-14-28" name="__codelineno-14-28"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">_JAVA_AWT_WM_NONREPARENTING</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-14-29" name="__codelineno-14-29"></a><span class="k">else</span>
+<a id="__codelineno-14-30" name="__codelineno-14-30"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">_JAVA_AWT_WM_NONREPARENTING</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-14-31" name="__codelineno-14-31"></a><span class="k">fi</span>
+<a id="__codelineno-14-32" name="__codelineno-14-32"></a><span class="nb">export</span><span class="w"> </span><span class="nv">XLNX_USE_NATIVE_DECORATION</span><span class="o">=</span><span class="si">${</span><span class="nv">XLNX_USE_NATIVE_DECORATION</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span>
+<a id="__codelineno-14-33" name="__codelineno-14-33"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$RDI_LAUNCH_MODE</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gui"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-14-34" name="__codelineno-14-34"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">HOME</span><span class="k">:-</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-14-35" name="__codelineno-14-35"></a><span class="w">        </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.Xilinx/Vivado/2022.2/data/layouts/application/default.layout"</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-14-36" name="__codelineno-14-36"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-14-37" name="__codelineno-14-37"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">_VIVADO_STABLE_JAVA_OPTS</span><span class="o">=</span><span class="s2">"-Xint -XX:+UseSerialGC -Dsun.java2d.xrender=false -Dsun.java2d.opengl=false -Dsun.awt.disablegrab=true -Dsun.java2d.uiScale=1.0 -Dawt.useSystemAAFontSettings=on"</span>
+<a id="__codelineno-14-38" name="__codelineno-14-38"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$_VIVADO_STABLE_JAVA_OPTS</span><span class="s2">"</span>
+<a id="__codelineno-14-39" name="__codelineno-14-39"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$_VIVADO_STABLE_JAVA_OPTS</span><span class="s2">"</span>
+<a id="__codelineno-14-40" name="__codelineno-14-40"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">JDK_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$_VIVADO_STABLE_JAVA_OPTS</span><span class="s2">"</span>
+<a id="__codelineno-14-41" name="__codelineno-14-41"></a><span class="k">else</span>
+<a id="__codelineno-14-42" name="__codelineno-14-42"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">_VIVADO_STABLE_JAVA_OPTS</span><span class="o">=</span><span class="s2">"-Dsun.java2d.xrender=false -Dsun.awt.disablegrab=true"</span>
+<a id="__codelineno-14-43" name="__codelineno-14-43"></a><span class="w">    </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">_JAVA_OPTIONS</span><span class="k">:-</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$_VIVADO_STABLE_JAVA_OPTS</span><span class="s2">"</span>
+<a id="__codelineno-14-44" name="__codelineno-14-44"></a><span class="w">    </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">JAVA_TOOL_OPTIONS</span><span class="k">:-</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$_VIVADO_STABLE_JAVA_OPTS</span><span class="s2">"</span>
+<a id="__codelineno-14-45" name="__codelineno-14-45"></a><span class="w">    </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">JDK_JAVA_OPTIONS</span><span class="k">:-</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">JDK_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$_VIVADO_STABLE_JAVA_OPTS</span><span class="s2">"</span>
+<a id="__codelineno-14-46" name="__codelineno-14-46"></a><span class="k">fi</span>
+<a id="__codelineno-14-47" name="__codelineno-14-47"></a>
+<a id="__codelineno-14-48" name="__codelineno-14-48"></a><span class="c1"># CR-1074520: Disable bmalloc memory allocator and use the system default one </span>
+<a id="__codelineno-14-49" name="__codelineno-14-49"></a><span class="c1">#   instead. This prevents WebKit from overindulging in virtual memory on high</span>
+<a id="__codelineno-14-50" name="__codelineno-14-50"></a><span class="c1">#   memory machines. https://trac.webkit.org/wiki/EnvironmentVariables</span>
+<a id="__codelineno-14-51" name="__codelineno-14-51"></a><span class="nb">export</span><span class="w"> </span><span class="nv">Malloc</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-14-52" name="__codelineno-14-52"></a><span class="c1">##</span>
+<a id="__codelineno-14-53" name="__codelineno-14-53"></a><span class="c1"># Launch the loader and specify the executable to launch</span>
+<a id="__codelineno-14-54" name="__codelineno-14-54"></a><span class="c1">##</span>
+<a id="__codelineno-14-55" name="__codelineno-14-55"></a><span class="c1">#</span>
+<a id="__codelineno-14-56" name="__codelineno-14-56"></a><span class="c1"># Loader arguments:</span>
+<a id="__codelineno-14-57" name="__codelineno-14-57"></a><span class="c1">#   -exec   -- Name of executable to launch</span>
+<a id="__codelineno-14-58" name="__codelineno-14-58"></a><span class="c1">##</span>
+<a id="__codelineno-14-59" name="__codelineno-14-59"></a><span class="nv">RDI_PROG</span><span class="o">=</span><span class="sb">`</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="sb">`</span>
+<a id="__codelineno-14-60" name="__codelineno-14-60"></a><span class="s2">"</span><span class="nv">$RDI_BINROOT</span><span class="s2">"</span>/loader<span class="w"> </span>-exec<span class="w"> </span><span class="nv">$RDI_PROG</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>不要把这两个变量写到 <code class="language-text highlight">/etc/profile</code> 或 <code class="language-text highlight">/etc/profile.d</code>。</p>
+</blockquote>
+<h3 id="验证batch">验证（Batch）<a class="headerlink" href="#验证batch" title="Permanent link">¶</a></h3>
+<p>打开实验仓库，修改<span><span class="heti-spacing"> </span>Makefile</span>，执行<code class="language-text highlight">make bitstream</code>，如果成功生成二进制文件，则完成。否则，如果没有头绪，请继续让<span class="heti-skip"><span class="heti-spacing"> </span>Agent<span class="heti-spacing"> </span></span>帮忙调试<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（实在是无奈，我们本<strong>不该过度依赖<span><span class="heti-spacing"> </span>AI</span></strong>的…奈何刚接触这个环境…）</p>
+<h3 id="gui-启动统一入口"><span>GUI<span class="heti-spacing"> </span></span>启动（统一入口）<a class="headerlink" href="#gui-启动统一入口" title="Permanent link">¶</a></h3>
+<p>点击桌面图标，查看是否进入程序。点击任意项目，生成波形。</p>
+<p>建议先确认会话类型：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$XDG_SESSION_TYPE</span><span class="s2">"</span>
+</code></pre></div></td></tr></table></div>
+<p>如不是 <code class="language-text highlight">x11</code>，优先回到第<span class="heti-skip"><span class="heti-spacing"> </span>6.5<span class="heti-spacing"> </span></span>步切换<span class="heti-skip"><span class="heti-spacing"> </span>Xorg<span class="heti-spacing"> </span></span>后再测<span><span class="heti-spacing"> </span>GUI</span>。</p>
+<p><img alt="image-20260326185039563" src="../Vivado%28Batch%29%20on%20Apple%20Silicon%20Mac.assets/image-20260326185039563.png"/></p>
+<h2 id="复现检查">复现检查<a class="headerlink" href="#复现检查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>分别登出和重启后重新尝试验证。</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Windows XP on Apple Silicon" class="md-footer__link md-footer__link--prev" href="../windows-xp-apple-silicon/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Windows XP on Apple Silicon
+              </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../js/mathjax.js"></script>
+<script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
