@@ -514,16 +514,18 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
 </a>
 <h1 id="windows-xp-on-apple-silicon-mac较完善">Windows XP on Apple Silicon Mac（较完善）<a class="headerlink" href="#windows-xp-on-apple-silicon-mac较完善" title="Permanent link">¶</a></h1>
+<p>更新时间：2026-03-27，更新说明：<strong>补充硬件设置。</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
 <p>更新时间：2026-03-26，更新说明：<strong>完善文章框架和步骤。</strong></p>
-<p>这篇文章技术含量并不高，只是略微折腾。现在想来，安装过程和原理都算不上麻烦，但当初前前后后摸索了近两周。所以把方法总结出来，方便有需要的同学复现。</p>
+<hr/>
+<p>这篇文章技术含量并不高，只是略微折腾。现在想来，安装过程和原理都算不上麻烦，但当初前前后后摸索了近两周才试验出令人满意的方案。所以把方法总结出来，方便有需要的同学复现～</p>
 <ul>
 <li>写作工具：Typora；环境：macOS 26.3.1；网页构建工具：Mkdocs。</li>
 </ul>
 <blockquote>
 <p>文章偏记录向，如有不当之处，请多指教！</p>
 </blockquote>
-<p>另：汇编语言课程的<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机文件我已经打包好，如果实在需要，请联系我拷贝。为了保护老师的成果和隐私，这个网页中暂不提供下载链接。</p>
+<p>另：汇编语言课程的<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机文件我已经打包好，如果需要，可以联系我拷贝。为了保护老师的成果和隐私，这个网页中暂不提供下载链接。</p>
 <h2 id="概况">概况<a class="headerlink" href="#概况" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="适用场景">适用场景<a class="headerlink" href="#适用场景" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>VMware<span class="heti-spacing"> </span></span>磁盘文件<span><span class="heti-spacing"> </span>(.vmdk)</span> <strong>迁移</strong> 至<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>中的<span><span class="heti-spacing"> </span>UTM +</span> <strong>双向文件传输</strong> 解决方案。</p>
@@ -599,28 +601,33 @@
 <p>内存建议：512MB - 2GB。</p>
 </li>
 <li>
-<p>CPU：不超过<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>核心，建议保持默认。</p>
+<p>CPU：不超过<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>核心，建议保持默认（Standard PC （i440FX + PIIX, 1996） （alias of pc-i440fx-10.0<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>（pc<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 </li>
 <li>
 <p>网络等：已自动配置好。</p>
 </li>
 <li>
-<p><strong><span>[<span class="heti-spacing"> </span></span>重要<span class="heti-skip"><span class="heti-spacing"> </span>]<span class="heti-spacing"> </span></span>驱动器</strong>：首位默认的是<code class="language-text highlight">disk-0.qcow2</code>，请下载<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP Professional SP3<span class="heti-spacing"> </span></span>的镜像文件，<strong>并把下载好的<span class="heti-skip"><span class="heti-spacing"> </span>iso<span class="heti-spacing"> </span></span>镜像放在启动顺序的第一位。</strong></p>
+<p><strong><span>[<span class="heti-spacing"> </span></span>重要<span class="heti-skip"><span class="heti-spacing"> </span>]<span class="heti-spacing"> </span></span>驱动器</strong></p>
 </li>
-<li>
-<p>下面给出了笔者安装时的资源（可以用迅雷等打开。⚠️注意：非官方资源，请自行甄别。可以寻找官方资源<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>）</p>
-</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>启动顺序的首位默认的是<code class="language-text highlight">disk-0.qcow2</code>，请下载<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP Professional SP3<span class="heti-spacing"> </span></span>的镜像文件，<strong>并把下载好的<span class="heti-skip"><span class="heti-spacing"> </span>iso<span class="heti-spacing"> </span></span>镜像放在启动顺序的第一位。</strong></p>
+<ul>
+<li>下面给出了笔者安装时的资源（可以用迅雷等打开。⚠️注意：非官方资源，请自行甄别。可以寻找官方资源<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>）</li>
 </ul>
 <div class="language-http highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="err">ed2k://|file|zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso|630237184|EC51916C9D9B8B931195EE0D6EE9B40E|/</span>
 </code></pre></div></td></tr></table></div>
+</div>
 <p><strong>下载<span class="heti-skip"><span class="heti-spacing"> </span>ISO<span class="heti-spacing"> </span></span>本质上是从<span class="heti-skip"><span class="heti-spacing"> </span>ISO<span class="heti-spacing"> </span></span>恢复<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>系统</strong></p>
 </li>
 <li>
-<p>启动虚拟机，在弹出提示（Press any key to boot Fron CD/DVD..）后立刻按下<span><span class="heti-spacing"> </span>Enter</span>（从光盘执行引导<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。
-    当屏幕显示“ Windows XP Professional 安装程序，欢迎使用安装程序”信息时，按下<strong>Enter</strong>。随后安装程序会自动扫描环境，识别到<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件后会弹出选项，是否修复安装，此时选择修复（R）即可。</p>
+<p>启动虚拟机，在弹出提示（Press any key to boot Fron CD/DVD..）后立刻按下<span><span class="heti-spacing"> </span>Enter</span>（从光盘执行引导<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>当屏幕显示“ <span>Windows XP Professional<span class="heti-spacing"> </span></span>安装程序，欢迎使用安装程序”信息时，再次按下<strong>Enter</strong><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（现在安装<span><span class="heti-spacing"> </span>Windows XP</span>）</p>
+<p>随后安装程序会自动扫描环境，识别到<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件后会弹出选项，是否修复安装，此时选择修复（R）即可。</p>
 <p><img alt="1Capture 2026-03-25 12.59.01" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-25%2012.59.01.png" style="display: block; margin: 0 auto;"/></p>
 <p><img alt="1Capture 2026-03-08 10.38.57" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-08%2010.38.57.png" style="display: block; margin: 0 auto;"/></p>
-<p>等待大约<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>分钟后需要输入激活码<code class="language-text highlight">MRX3F-47B9T-2487J-KWKMF-RPWBY</code><span class="heti-skip"><span class="heti-spacing"> </span>(Windows XP SP3<span class="heti-spacing"> </span></span>批量密钥<span><span class="heti-spacing"> </span>)</span>。</p>
+<p>等待大约<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>分钟后需要输入<code class="language-text highlight">MRX3F-47B9T-2487J-KWKMF-RPWBY</code><span class="heti-skip"><span class="heti-spacing"> </span>(Windows XP SP3<span class="heti-spacing"> </span></span>批量密钥，仅供参考<span><span class="heti-spacing"> </span>)</span>。</p>
 <p><img alt="豆包 2026-03-08 11.17.37" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/豆包%202026-03-08%2011.17.37.png" style="display: block; margin: 0 auto;"/></p>
 <p>继续等待约<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>分钟后即可成功进入桌面！你可以自由调整分辨率和壁纸了。</p>
 <p><img alt="1Capture 2026-03-26 14.02.47" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2014.02.47.png" style="display: block; margin: 0 auto; zoom: 25%;"/></p>
@@ -628,24 +635,24 @@
 </ol>
 <details class="info">
 <summary><span>SPICE Guest Tools<span class="heti-spacing"> </span></span>折腾记录（放弃）</summary>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">尝试目标</span></strong></p>
-<p><span style="text-decoration:line-through; color:#E0E0E0;">实现文件拖拽、剪贴板同步、文件夹共享</span></p>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">核心报错</span></strong></p>
+<p><strong>尝试目标</strong></p>
+<p>实现文件拖拽、剪贴板同步、文件夹共享</p>
+<p><strong>报错内容</strong></p>
 <ol>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>qga-vss.dll<span class="heti-spacing"> </span></span>加载失败：新版<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>组件依赖<span class="heti-skip"><span class="heti-spacing"> </span>Vista<span class="heti-spacing"> </span></span>及以上系统<span><span class="heti-spacing"> </span>API</span>，<span>Windows XP<span class="heti-spacing"> </span></span>无对应接口</span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>spice-webdavd<span class="heti-spacing"> </span></span>服务无法启动：<span>2.4<span class="heti-spacing"> </span></span>及以上版本放弃对<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP<span class="heti-spacing"> </span></span>的支持</span></li>
+<li><span>qga-vss.dll<span class="heti-spacing"> </span></span>加载失败：新版<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>组件依赖<span class="heti-skip"><span class="heti-spacing"> </span>Vista<span class="heti-spacing"> </span></span>及以上系统<span><span class="heti-spacing"> </span>API</span>，<span>Windows XP<span class="heti-spacing"> </span></span>无对应接口</li>
+<li><span>spice-webdavd<span class="heti-spacing"> </span></span>服务无法启动：<span>2.4<span class="heti-spacing"> </span></span>及以上版本放弃对<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP<span class="heti-spacing"> </span></span>的支持</li>
 </ol>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">补救尝试</span></strong></p>
+<p><strong>补救尝试</strong></p>
 <ul>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">降级安装<span class="heti-skip"><span class="heti-spacing"> </span>spice-webdavd 2.2<span class="heti-spacing"> </span></span>版本</span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">安装<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>补丁<span><span class="heti-spacing"> </span>KB907306</span></span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">修改<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>端口为<span><span class="heti-spacing"> </span>80</span></span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">依旧失败</span></li>
+<li>降级安装<span class="heti-skip"><span class="heti-spacing"> </span>spice-webdavd 2.2<span class="heti-spacing"> </span></span>版本</li>
+<li>安装<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>补丁<span><span class="heti-spacing"> </span>KB907306</span></li>
+<li>修改<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>端口为<span><span class="heti-spacing"> </span>80</span>
+<em>依旧失败</em></li>
 </ul>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">结果</span></strong></p>
+<p><strong>结果</strong></p>
 <ul>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>UTM<span class="heti-spacing"> </span></span>两种共享模式（SPICE WebDAV / VirtFS）均在<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>上失效</span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>WebDAV<span class="heti-spacing"> </span></span>无法访问、文件夹无效</span></li>
+<li><span>UTM<span class="heti-spacing"> </span></span>两种共享模式（SPICE WebDAV / VirtFS）均在<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>上失效</li>
+<li><span>WebDAV<span class="heti-spacing"> </span></span>无法访问、文件夹无效</li>
 <li>经过两周的尝试，决定放弃<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>原生共享功能。</li>
 </ul>
 <p>相关<span><span class="heti-spacing"> </span>issue</span>：<a href="https://github.com/utmapp/UTM/issues/3998">https://github.com/utmapp/UTM/issues/3998</a></p>
@@ -683,8 +690,8 @@
 <li>
 <p>新建<span class="heti-skip"><span class="heti-spacing"> </span>SFTP<span class="heti-spacing"> </span></span>会话参数</p>
 <ul>
-<li>名称：任意</li>
-<li>主机：刚才的地址</li>
+<li>名称：任意名称</li>
+<li>主机：上一部分得到的的地址</li>
 <li>协议：SFTP</li>
 <li>端口：22</li>
 <li>用户名：<span>macOS<span class="heti-spacing"> </span></span>登录账号名称（如果不知道，请按电源键并重新登陆，屏幕上的名字即为账号名称）</li>
