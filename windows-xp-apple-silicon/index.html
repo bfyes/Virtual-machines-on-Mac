@@ -742,20 +742,32 @@
 <p><span>7-Zip<span class="heti-spacing"> </span></span>有很好的压缩率，尽管压缩速度慢于原生工具。</p>
 </blockquote>
 <ol>
-<li>安装<span class="heti-skip"><span class="heti-spacing"> </span>7-Zip<span class="heti-spacing"> </span></span>工具（若未安装）
-    在终端（terminal）中输入：<code class="language-text highlight">brew install p7zip</code>。
-    &gt; 还有类似的包，欢迎自行探索！</li>
+<li>
+<p>安装<span class="heti-skip"><span class="heti-spacing"> </span>7-Zip<span class="heti-spacing"> </span></span>工具<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>若未安装<span><span class="heti-spacing"> </span>)</span></p>
+<p>在终端<span class="heti-skip"><span class="heti-spacing"> </span>(terminal)<span class="heti-spacing"> </span></span>中输入<span><span class="heti-spacing"> </span>:</span></p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>brew<span class="w"> </span>install<span class="w"> </span>p7zip
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>还有类似的包，欢迎自行探索！</p>
+</blockquote>
+</li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>压缩前请关闭虚拟机，防止磁盘映像损坏。</p>
 </div>
 <ol start="2">
-<li>指令示例<heti-adjacent class="heti-adjacent-half">：</heti-adjacent><code class="language-cbmbas highlight"><span class="mf">7</span><span class="n">za</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">test</span><span class="mf">.</span><span class="n">zip</span><span class="w"> </span><span class="err">～</span><span class="o">/</span><span class="n">Parallels</span><span class="o">/</span><span class="n">Windows</span><span class="err">\</span><span class="w"> </span><span class="n">XP</span><span class="mf">.</span><span class="n">utm</span></code>（<span>.utm<span class="heti-spacing"> </span></span>并非后缀，而是文件夹名称的一部分<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>
+<p>指令示例<span><span class="heti-spacing"> </span>:</span></p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>7za<span class="w"> </span>a<span class="w"> </span>test.zip<span class="w"> </span>～/Parallels/Windows<span class="se">\ </span>XP.utm
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1"># .utm并非后缀，而是文件夹名称的一部分</span>
+</code></pre></div></td></tr></table></div>
+</li>
 </ol>
 <details class="info">
-<summary><span>7za<span class="heti-spacing"> </span></span>其他指令</summary>
-<p>Commands&gt;
+<summary><span>7za<span class="heti-spacing"> </span></span>指令参考</summary>
+<p><code class="language-actionscript3 highlight"><span class="n">Usage</span><span class="o">:</span><span class="w"> </span><span class="mi">7</span><span class="n">za</span><span class="w"> </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[&lt;</span><span class="n">switches</span><span class="o">&gt;...]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">archive_name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[&lt;</span><span class="n">file_names</span><span class="o">&gt;...]</span></code><br/>
 a : Add files to archive<br/>
 b : Benchmark<br/>
 d : Delete files from archive<br/>
@@ -775,11 +787,11 @@ x : eXtract files with full paths  </p>
 <h2 id="结语">结语<a class="headerlink" href="#结语" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p><strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
 <p>祝汇编学习顺利。</p>
-<div class="language-asm highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="no">Ch</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span>
+<div class="language-asm highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="no">Ch</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span>
 </code></pre></div></td></tr></table></div>
 </article>
 </div>
