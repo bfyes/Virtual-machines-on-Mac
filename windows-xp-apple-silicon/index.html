@@ -635,24 +635,24 @@
 </ol>
 <details class="info">
 <summary><span>SPICE Guest Tools<span class="heti-spacing"> </span></span>折腾记录（放弃）</summary>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">尝试目标</span></strong></p>
-<p><span style="text-decoration:line-through; color:#E0E0E0;">实现文件拖拽、剪贴板同步、文件夹共享</span></p>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">核心报错</span></strong></p>
+<p><strong>尝试目标</strong></p>
+<p>实现文件拖拽、剪贴板同步、文件夹共享</p>
+<p><strong>报错内容</strong></p>
 <ol>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>qga-vss.dll<span class="heti-spacing"> </span></span>加载失败：新版<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>组件依赖<span class="heti-skip"><span class="heti-spacing"> </span>Vista<span class="heti-spacing"> </span></span>及以上系统<span><span class="heti-spacing"> </span>API</span>，<span>Windows XP<span class="heti-spacing"> </span></span>无对应接口</span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>spice-webdavd<span class="heti-spacing"> </span></span>服务无法启动：<span>2.4<span class="heti-spacing"> </span></span>及以上版本放弃对<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP<span class="heti-spacing"> </span></span>的支持</span></li>
+<li><span>qga-vss.dll<span class="heti-spacing"> </span></span>加载失败：新版<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>组件依赖<span class="heti-skip"><span class="heti-spacing"> </span>Vista<span class="heti-spacing"> </span></span>及以上系统<span><span class="heti-spacing"> </span>API</span>，<span>Windows XP<span class="heti-spacing"> </span></span>无对应接口</li>
+<li><span>spice-webdavd<span class="heti-spacing"> </span></span>服务无法启动：<span>2.4<span class="heti-spacing"> </span></span>及以上版本放弃对<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP<span class="heti-spacing"> </span></span>的支持</li>
 </ol>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">补救尝试</span></strong></p>
+<p><strong>补救尝试</strong></p>
 <ul>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">降级安装<span class="heti-skip"><span class="heti-spacing"> </span>spice-webdavd 2.2<span class="heti-spacing"> </span></span>版本</span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">安装<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>补丁<span><span class="heti-spacing"> </span>KB907306</span></span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">修改<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>端口为<span><span class="heti-spacing"> </span>80</span></span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;">依旧失败</span></li>
+<li>降级安装<span class="heti-skip"><span class="heti-spacing"> </span>spice-webdavd 2.2<span class="heti-spacing"> </span></span>版本</li>
+<li>安装<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>补丁<span><span class="heti-spacing"> </span>KB907306</span></li>
+<li>修改<span class="heti-skip"><span class="heti-spacing"> </span>WebDAV<span class="heti-spacing"> </span></span>端口为<span><span class="heti-spacing"> </span>80</span>
+<em>依旧失败</em></li>
 </ul>
-<p><strong><span style="text-decoration:line-through; color:#E0E0E0;">结果</span></strong></p>
+<p><strong>结果</strong></p>
 <ul>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>UTM<span class="heti-spacing"> </span></span>两种共享模式（SPICE WebDAV / VirtFS）均在<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>上失效</span></li>
-<li><span style="text-decoration:line-through; color:#E0E0E0;"><span>WebDAV<span class="heti-spacing"> </span></span>无法访问、文件夹无效</span></li>
+<li><span>UTM<span class="heti-spacing"> </span></span>两种共享模式（SPICE WebDAV / VirtFS）均在<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>上失效</li>
+<li><span>WebDAV<span class="heti-spacing"> </span></span>无法访问、文件夹无效</li>
 <li>经过两周的尝试，决定放弃<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>原生共享功能。</li>
 </ul>
 <p>相关<span><span class="heti-spacing"> </span>issue</span>：<a href="https://github.com/utmapp/UTM/issues/3998">https://github.com/utmapp/UTM/issues/3998</a></p>
