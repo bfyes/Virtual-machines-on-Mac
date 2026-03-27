@@ -311,6 +311,15 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#打包虚拟机映像如需要传输分享">
+<span class="md-ellipsis">
+      
+        打包虚拟机映像（如需要传输/分享）
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -491,6 +500,15 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#打包虚拟机映像如需要传输分享">
+<span class="md-ellipsis">
+      
+        打包虚拟机映像（如需要传输/分享）
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -514,6 +532,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
 </a>
 <h1 id="windows-xp-on-apple-silicon-mac较完善">Windows XP on Apple Silicon Mac（较完善）<a class="headerlink" href="#windows-xp-on-apple-silicon-mac较完善" title="Permanent link">¶</a></h1>
+<p>更新时间：2026-03-28，更新说明：<strong>新增章节：打包虚拟机映像</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>添加<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>中文文件夹乱码的解决方法。</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>补充硬件设置。</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
@@ -718,6 +737,41 @@
 <li><span>IP<span class="heti-spacing"> </span></span>地址固定：无需频繁修改配置</li>
 <li>使用时发现传输速度有提升空间，持续探索中<span><span class="heti-spacing"> </span>...</span></li>
 </ul>
+<h3 id="打包虚拟机映像如需要传输分享">打包虚拟机映像（如需要传输<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>分享）<a class="headerlink" href="#打包虚拟机映像如需要传输分享" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><span>7-Zip<span class="heti-spacing"> </span></span>有很好的压缩率，尽管压缩速度慢于原生工具。</p>
+</blockquote>
+<ol>
+<li>安装<span class="heti-skip"><span class="heti-spacing"> </span>7-Zip<span class="heti-spacing"> </span></span>工具（若未安装）
+    在终端（terminal）中输入：<code class="language-text highlight">brew install p7zip</code>。
+    &gt; 还有类似的包，欢迎自行探索！</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>压缩前请关闭虚拟机，防止磁盘映像损坏。</p>
+</div>
+<ol start="2">
+<li>指令示例<heti-adjacent class="heti-adjacent-half">：</heti-adjacent><code class="language-cbmbas highlight"><span class="mf">7</span><span class="n">za</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">test</span><span class="mf">.</span><span class="n">zip</span><span class="w"> </span><span class="err">～</span><span class="o">/</span><span class="n">Parallels</span><span class="o">/</span><span class="n">Windows</span><span class="err">\</span><span class="w"> </span><span class="n">XP</span><span class="mf">.</span><span class="n">utm</span></code>（<span>.utm<span class="heti-spacing"> </span></span>并非后缀，而是文件夹名称的一部分<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+</ol>
+<details class="info">
+<summary><span>7za<span class="heti-spacing"> </span></span>其他指令</summary>
+<p>Commands&gt;
+a : Add files to archive<br/>
+b : Benchmark<br/>
+d : Delete files from archive<br/>
+e : Extract files from archive (without using directory names)<br/>
+h : Calculate hash values for files<br/>
+i : Show information about supported formats<br/>
+l : List contents of archive<br/>
+rn : Rename files in archive<br/>
+t : Test integrity of archive<br/>
+u : Update files to archive<br/>
+x : eXtract files with full paths  </p>
+</details>
+<div class="admonition information">
+<p class="admonition-title">Information</p>
+<p>关于“包”：在<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>系统中，包（Package）是一种被系统特殊处理的文件夹，它会被伪装成单个文件呈现给用户，比如<span class="heti-skip"><span class="heti-spacing"> </span>.utm<span class="heti-spacing"> </span></span>虚拟机文件、<span>.app<span class="heti-spacing"> </span></span>应用程序都属于这类包。双击它会直接启动关联程序（如<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>或对应<span><span class="heti-spacing"> </span>App</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，右键选择“显示包内容”才能查看内部的目录结构和文件；而在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>系统中并没有原生的“包”概念，这类文件夹会直接以普通目录形式展示，没有封装成单文件的视觉效果，也不会自动关联到对应程序，需要手动进入目录或在应用中选择打开。</p>
+</div>
 <h2 id="结语">结语<a class="headerlink" href="#结语" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p><strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
 <p>祝汇编学习顺利。</p>
