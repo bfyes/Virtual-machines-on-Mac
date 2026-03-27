@@ -552,10 +552,18 @@
 </a>
 <h1 id="vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善">Vivado（含可用的<span class="heti-skip"><span class="heti-spacing"> </span>Batch<span class="heti-spacing"> </span></span>模式） 2022.2 on Ubuntu with Rosetta（不完善）<a class="headerlink" href="#vivado含可用的batch模式-20222-on-ubuntu-with-rosetta不完善" title="Permanent link">¶</a></h1>
 <p>最后更新时间：2026-03-26</p>
+<div class="admonition information">
+<p class="admonition-title">Information</p>
+<p>配置过程繁琐，且不一定<span class="heti-skip"><span class="heti-spacing"> </span>100%<span class="heti-spacing"> </span></span>有效。这种配置方式的唯二优点：可以直接从<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>生成<span class="heti-skip"><span class="heti-spacing"> </span>bitstream(<span class="heti-spacing"> </span></span>很方便且很快速<span><span class="heti-spacing"> </span>)</span>；调用<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>转译，效率较高。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>不建议用这种方法，仍建议<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>原生环境！如果您尝试用<span><span class="heti-spacing"> </span>Apple</span>，请做好文件备份，并准备备用机（可以是<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>电脑，也可以是后文提及的<span class="heti-skip"><span class="heti-spacing"> </span>PD<span class="heti-spacing"> </span></span>虚拟机里的<span><span class="heti-spacing"> </span>Windows 11</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，以防万一。</p>
+</div>
 <p>注：笔者能力十十十分有限，只能写到这个程度了。。。如果以后能力有提升会完善这篇文章的。</p>
-<p>另注：如果您很需要，可以联系我，直接<span class="heti-skip"><span class="heti-spacing"> </span>copy<span class="heti-spacing"> </span></span>一份虚拟机给你（）</p>
+<p>另注：如果您很需要，可以联系我<span class="heti-skip"><span class="heti-spacing"> </span>copy<span class="heti-spacing"> </span></span>一份虚拟机（）</p>
 <blockquote>
-<p>本文的部署流程是通过<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>辅助完成的，总结这篇文章也是为了记录在<span class="heti-skip"><span class="heti-spacing"> </span>linux<span class="heti-spacing"> </span></span>系统里的“摸爬滚打”。这篇文章<strong>没有任何技术含量</strong>，只是记录我装机折腾的种种过程。毕竟跟谁学都是学，包括<span><span class="heti-spacing"> </span>AI</span>。现在列出步骤只是为了说明该方案的可行性及便捷性。笔者刚刚接触<span><span class="heti-spacing"> </span>linux</span>，是小白，实在不熟悉这个系统的环境和操作。步骤只是大致的框架，如遇到任何问题，请做“<span>Prompt<span class="heti-spacing"> </span></span>工程师”。</p>
+<p>本文的部署流程是通过<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>辅助完成的，总结这篇文章也是为了记录在<span class="heti-skip"><span class="heti-spacing"> </span>linux<span class="heti-spacing"> </span></span>系统里的“摸爬滚打”。这篇文章<strong>没有任何技术含量</strong>，只是记录我装机折腾的种种过程。毕竟跟谁学都是学，包括<span><span class="heti-spacing"> </span>AI</span>。现在列出步骤只是为了说明该方案的可行性。笔者刚刚接触<span><span class="heti-spacing"> </span>linux</span>，是小白，实在不熟悉这个系统的环境和操作。步骤只是大致的框架，如遇到任何问题，请做“<span>Prompt<span class="heti-spacing"> </span></span>工程师”。</p>
 </blockquote>
 <p>详见：<span>github copilot<span class="heti-spacing"> </span></span>学生认证。<a href="https://github.com/education/students">https://github.com/education/students</a></p>
 <p>在<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>中打开<span class="heti-skip"><span class="heti-spacing"> </span>VSCode<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>Agent</span> ，直接让它帮你来（hhh<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
@@ -575,12 +583,12 @@
 <ul>
 <li>
 <p><strong>这个步骤可能是文章唯一给出的<span style="color:#FF0000;">有用信息</span><span><span class="heti-spacing"> </span>hhh</span>。</strong></p>
-<p>废话不多说，上链接：<a href="https://macwk.cn/app/2941.html">https://macwk.cn/app/2941.html</a>。</p>
+<p>上链接：<a href="https://macwk.cn/app/2941.html">https://macwk.cn/app/2941.html</a>。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><span style="color:#FF0000;"><strong>叠甲</strong></span> 仅供学习使用！请在<span class="heti-skip"><span class="heti-spacing"> </span>24<span class="heti-spacing"> </span></span>小时之内删除。请支持正版软件。</p>
 </div>
-<p>如果签名失败，请先将安装容器的所有文件复制并粘贴到一个新建文件夹中，然后执行：</p>
+<p>如果签名失败，请先将安装容器的所有文件<strong>复制并粘贴到一个新建文件夹</strong>中，然后执行：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>xattr<span class="w"> </span>-cr<span class="w"> </span><span class="s2">"你的文件名"</span><span class="w">   </span><span class="c1"># 可以通过拖拽的方式添加，不要直接添加安装包中的文件。</span>
 </code></pre></div></td></tr></table></div>
 <p>可能需要在<span class="heti-skip"><span class="heti-spacing"> </span>[<span class="heti-spacing"> </span></span>设置<span class="heti-skip"><span class="heti-spacing"> </span>] - [<span class="heti-spacing"> </span></span>隐私与安全性<span class="heti-skip"><span class="heti-spacing"> </span>]<span class="heti-spacing"> </span></span>中按指纹解锁权限继续安装。</p>
@@ -734,13 +742,19 @@
 <h3 id="下载并解包-vivado-20222">下载并解包<span><span class="heti-spacing"> </span>Vivado 2022.2</span><a class="headerlink" href="#下载并解包-vivado-20222" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这一步的目的：拿到 <code class="language-text highlight">xsetup</code> 安装器文件。</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
-<span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>Xilinx_Unified_2022.2_1014_8888_Lin64.bin
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a>./Xilinx_Unified_2022.2_1014_8888_Lin64.bin<span class="w"> </span>--target<span class="w"> </span>~/xilinx_2022.2
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/Desktop<span class="w"> </span><span class="c1"># 假设.bin文件放置在桌面</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>Xilinx_Unified_2022.2_1014_8888_Lin64.bin
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>./Xilinx_Unified_2022.2_1014_8888_Lin64.bin<span class="w"> </span>--target<span class="w"> </span>~/xilinx_2022.2
 </code></pre></div></td></tr></table></div>
 <p>解包完成后，<code class="language-text highlight">xsetup</code> 路径通常是：<code class="language-scdoc highlight">~/xilinx_2022.2/xsetup</code>。</p>
 <h3 id="修改-xsetup-架构检查">修改 <code class="language-text highlight">xsetup</code> 架构检查<a class="headerlink" href="#修改-xsetup-架构检查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>只改“报错退出”的架构判断分支，其他安装逻辑不要动。仅需把<span class="heti-skip"><span class="heti-spacing"> </span>exit1<span class="heti-spacing"> </span></span>前面加<code class="language-text highlight">#</code>注释掉即可。图片中是<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>修改后的片段，不必这么麻烦。</p>
+<p>只改“报错退出”的架构判断分支，其他安装逻辑不要动。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>仅需把<code class="language-text highlight">exit1</code>前面加<code class="language-text highlight">#</code>注释掉即可。图片中是<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>修改后的片段，不必这么麻烦。</p>
 <p><img alt="image-20260326184049178" src="../Vivado%28Batch%29%20on%20Apple%20Silicon%20Mac.assets/image-20260326184049178.png"/></p>
+</div>
 <h3 id="运行安装器">运行安装器<a class="headerlink" href="#运行安装器" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这一步的目的：正式安装<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>到系统目录。</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
