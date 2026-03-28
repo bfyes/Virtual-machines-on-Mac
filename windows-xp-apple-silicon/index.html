@@ -204,14 +204,23 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#部署流程">
+<a class="md-nav__link" href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况">
 <span class="md-ellipsis">
       
-        部署流程
+        直接从.utm文件夹部署（对应已经下载了.utm文件夹的情况）
       
     </span>
 </a>
-<nav aria-label="部署流程" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#部署流程对应只有vdmk文件的情况">
+<span class="md-ellipsis">
+      
+        部署流程（对应只有vdmk文件的情况）
+      
+    </span>
+</a>
+<nav aria-label="部署流程（对应只有vdmk文件的情况）" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#vmware-磁盘格式转换vmdk-rightarrow-qcow2">
@@ -312,10 +321,10 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#打包虚拟机映像如需要传输分享">
+<a class="md-nav__link" href="#打包虚拟机文件如需要传输分享">
 <span class="md-ellipsis">
       
-        打包虚拟机映像（如需要传输/分享）
+        打包虚拟机文件（如需要传输/分享）
       
     </span>
 </a>
@@ -393,14 +402,23 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#部署流程">
+<a class="md-nav__link" href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况">
 <span class="md-ellipsis">
       
-        部署流程
+        直接从.utm文件夹部署（对应已经下载了.utm文件夹的情况）
       
     </span>
 </a>
-<nav aria-label="部署流程" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#部署流程对应只有vdmk文件的情况">
+<span class="md-ellipsis">
+      
+        部署流程（对应只有vdmk文件的情况）
+      
+    </span>
+</a>
+<nav aria-label="部署流程（对应只有vdmk文件的情况）" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#vmware-磁盘格式转换vmdk-rightarrow-qcow2">
@@ -501,10 +519,10 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#打包虚拟机映像如需要传输分享">
+<a class="md-nav__link" href="#打包虚拟机文件如需要传输分享">
 <span class="md-ellipsis">
       
-        打包虚拟机映像（如需要传输/分享）
+        打包虚拟机文件（如需要传输/分享）
       
     </span>
 </a>
@@ -532,20 +550,24 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
 </a>
 <h1 id="windows-xp-on-apple-silicon-mac">Windows XP on Apple Silicon Mac<a class="headerlink" href="#windows-xp-on-apple-silicon-mac" title="Permanent link">¶</a></h1>
-<p>更新时间：2026-03-28，更新说明：<strong>新增章节：打包虚拟机映像</strong></p>
+<p>更新时间：2026-03-28，更新说明：<strong>新增章节：从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹部署</strong></p>
+<p>更新时间：2026-03-28，更新说明：<strong>新增章节：打包虚拟机文件</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>添加<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>中文文件夹乱码的解决方法。</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>补充硬件设置。</strong></p>
-<p>更新时间：2026-03-27，更新说明：<strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
 <p>更新时间：2026-03-26，更新说明：<strong>完善文章框架和步骤。</strong></p>
 <hr/>
-<p>这篇文章技术含量并不高，只是略微折腾。现在想来，安装过程和原理都算不上麻烦，但当初前前后后摸索了近两周才试验出令人满意的方案。所以把方法总结出来，方便有需要的同学复现～</p>
+<p>这篇文章技术含量并不高，只是略微折腾。现在想来，安装过程和原理都算不上麻烦，但当初前前后后摸索了近两周才试验出令人满意的方案。所以把方法总结出来，方便有需要的同学复现～<br/>
+另：汇编语言课程的 UTM 虚拟机文件可以在老师的主页上查询。  </p>
 <ul>
 <li>写作工具：Typora；环境：macOS 26.3.1；网页构建工具：Mkdocs。</li>
 </ul>
 <blockquote>
-<p>文章偏记录向，如有不当之处，请多指教！</p>
+<p>文章偏记录向，原理部分涉及较少，如有不当之处，请多指教！</p>
 </blockquote>
-<p>另：汇编语言课程的<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机文件我已经打包好，如果需要，可以联系我拷贝。为了保护老师的成果和隐私，这个网页中暂不提供下载链接。</p>
+<div class="admonition information">
+<p class="admonition-title">Information</p>
+<p>对于汇编课友：无需完成后续完整的操作，仅需通过<a href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况">从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹</a>这一章节完成部署。<span>(<span class="heti-spacing"> </span></span>点击可直接跳转到对应章节<span><span class="heti-spacing"> </span>)</span></p>
+</div>
 <h2 id="概况">概况<a class="headerlink" href="#概况" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="适用场景">适用场景<a class="headerlink" href="#适用场景" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>VMware<span class="heti-spacing"> </span></span>磁盘文件<span><span class="heti-spacing"> </span>(.vmdk)</span> <strong>迁移</strong> 至<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>中的<span><span class="heti-spacing"> </span>UTM +</span> <strong>双向文件传输</strong> 解决方案。</p>
@@ -573,7 +595,17 @@
 <p>最终方案：Xftp 5（已经内置在老师给的<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>系统中）<span>+ macOS<span class="heti-spacing"> </span></span>内置<span><span class="heti-spacing"> </span>SFTP</span>（基于<span class="heti-skip"><span class="heti-spacing"> </span>SSH<span class="heti-spacing"> </span></span>远程登录<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，提供稳定可靠的双向文件传输。</p>
 </li>
 </ul>
-<h2 id="部署流程">部署流程<a class="headerlink" href="#部署流程" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h2 id="直接从utm文件夹部署对应已经下载了utm文件夹的情况">直接从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹部署（对应已经下载了<span class="heti-skip"><span class="heti-spacing"> </span>.utm<span class="heti-spacing"> </span></span>文件夹的情况）<a class="headerlink" href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p><strong>软件</strong>。关于<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>的下载，请访问<a href="https://mac.getutm.app"><span><span class="heti-spacing"> </span>https://mac.getutm.app</span></a>。  </p>
+</li>
+<li>
+<p><strong>虚拟机文件</strong>。请将下载好的压缩包解压，得到<span class="heti-skip"><span class="heti-spacing"> </span>utm<span class="heti-spacing"> </span></span>文件包。在安装好<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机的情况下，直接双击该包即可打开虚拟机。随后点击“启动”即可。</p>
+</li>
+<li><strong>文件互传</strong>。根据<a href="#最终互通方案xftp-5--sftp">文件互传方案</a>继续配置。</li>
+</ol>
+<h2 id="部署流程对应只有vdmk文件的情况">部署流程（对应只有<span class="heti-skip"><span class="heti-spacing"> </span>vdmk<span class="heti-spacing"> </span></span>文件的情况）<a class="headerlink" href="#部署流程对应只有vdmk文件的情况" title="Permanent link">¶</a></h2>
 <h3 id="vmware-磁盘格式转换vmdk-rightarrow-qcow2"><span>VMware<span class="heti-spacing"> </span></span>磁盘格式转换（vmdk <span class="arithmatex">\(\rightarrow\)</span> qcow2）<a class="headerlink" href="#vmware-磁盘格式转换vmdk-rightarrow-qcow2" title="Permanent link">¶</a></h3>
 <p><span>Mac<span class="heti-spacing"> </span></span>平台上的<span class="heti-skip"><span class="heti-spacing"> </span>VMware Fusion<span class="heti-spacing"> </span></span>并不支持跨架构虚拟化，必须用<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>中的“模拟”。</p>
 <blockquote>
@@ -737,7 +769,7 @@
 <li><span>IP<span class="heti-spacing"> </span></span>地址固定：无需频繁修改配置</li>
 <li>使用时发现传输速度有提升空间，持续探索中<span><span class="heti-spacing"> </span>...</span></li>
 </ul>
-<h3 id="打包虚拟机映像如需要传输分享">打包虚拟机映像（如需要传输<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>分享）<a class="headerlink" href="#打包虚拟机映像如需要传输分享" title="Permanent link">¶</a></h3>
+<h3 id="打包虚拟机文件如需要传输分享">打包虚拟机文件（如需要传输<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>分享）<a class="headerlink" href="#打包虚拟机文件如需要传输分享" title="Permanent link">¶</a></h3>
 <blockquote>
 <p><span>7-Zip<span class="heti-spacing"> </span></span>有很好的压缩率，尽管压缩速度慢于原生工具。</p>
 </blockquote>
