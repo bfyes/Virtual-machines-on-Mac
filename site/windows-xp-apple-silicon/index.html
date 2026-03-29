@@ -230,37 +230,6 @@
       
     </span>
 </a>
-<nav aria-label="VMware 磁盘格式转换（vmdk \(\rightarrow\) qcow2）" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#安装转换工具">
-<span class="md-ellipsis">
-      
-        安装转换工具：
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#执行转换命令">
-<span class="md-ellipsis">
-      
-        执行转换命令：
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#完成验证得到可被-utm-直接导入的-qcow2-磁盘文件大小应与vmdk文件类似">
-<span class="md-ellipsis">
-      
-        完成验证：得到可被 UTM 直接导入的 .qcow2 磁盘文件，大小应与vmdk文件类似。
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#utm-部署-windows-xp-虚拟机">
@@ -428,37 +397,6 @@
       
     </span>
 </a>
-<nav aria-label="VMware 磁盘格式转换（vmdk \(\rightarrow\) qcow2）" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#安装转换工具">
-<span class="md-ellipsis">
-      
-        安装转换工具：
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#执行转换命令">
-<span class="md-ellipsis">
-      
-        执行转换命令：
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#完成验证得到可被-utm-直接导入的-qcow2-磁盘文件大小应与vmdk文件类似">
-<span class="md-ellipsis">
-      
-        完成验证：得到可被 UTM 直接导入的 .qcow2 磁盘文件，大小应与vmdk文件类似。
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#utm-部署-windows-xp-虚拟机">
@@ -550,7 +488,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
 </a>
 <h1 id="windows-xp-on-apple-silicon-mac">Windows XP on Apple Silicon Mac<a class="headerlink" href="#windows-xp-on-apple-silicon-mac" title="Permanent link">¶</a></h1>
-<p>更新时间：2026-03-30，更新说明：<strong>排版优化；修改若干错别字</strong></p>
+<p>更新时间：2026-03-30，更新说明：<strong>排版优化；修改若干错别字；增加部分内容</strong></p>
 <p>更新时间：2026-03-28，更新说明：<strong>新增章节：打包虚拟机文件、从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹部署；增补压缩方案</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>补充硬件设置；添加<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>中文文件夹乱码的解决方法。</strong></p>
 <p>更新时间：2026-03-26，更新说明：<strong>完善文章框架和步骤。</strong></p>
@@ -558,10 +496,10 @@
 <p>这篇文章技术含量并不高，只是略微折腾。现在想来，安装过程和原理都算不上麻烦，但当初前前后后摸索了近两周才试验出令人满意的方案。所以把方法总结出来，方便有需要的同学复现～<br/>
 另：汇编语言课程的 UTM 虚拟机文件可以在老师的主页上查询。  </p>
 <ul>
-<li>写作工具：Typora；环境：macOS 26.3.1；网页构建工具：Mkdocs。</li>
+<li>写作工具：Typora；环境：macOS 26.4；网页构建工具：Mkdocs。</li>
 </ul>
 <blockquote>
-<p>文章偏记录向，原理部分涉及较少，如有不当之处，请多指教！</p>
+<p>文章偏记录向，流程为主，原理为辅。</p>
 </blockquote>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -611,20 +549,69 @@
 <p>UTM（全称<span><span class="heti-spacing"> </span>Universal Turing Machine</span>）是一款 <strong>全功能开源虚拟机管理器</strong>，由<span class="heti-skip"><span class="heti-spacing"> </span>Turing Software<span class="heti-spacing"> </span></span>开发，核心基于<span><span class="heti-spacing"> </span>QEMU</span>（快速模拟器）后端，提供友好的图形用户界面，让普通用户无需复杂命令即可轻松创建和管理虚拟机。它的独特优势在于同时支持 <strong>硬件虚拟化</strong>（利用<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>硬件加速，性能接近原生）和 <strong>软件模拟</strong>（兼容老旧或非主流架构，如<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>上运行）两种模式，覆盖从现代操作系统到复古系统的广泛需求。</p>
 </blockquote>
 <p>关于<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>的下载，请访问<a href="https://mac.getutm.app"><span><span class="heti-spacing"> </span>https://mac.getutm.app</span></a>。</p>
+<details class="note" open="open">
+<summary>虚拟化<span class="heti-skip"><span class="heti-spacing"> </span>vs<span class="heti-spacing"> </span></span>模拟</summary>
 <p><img alt="1Capture 2026-03-26 12.17.32" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2012.17.32.png" style="display: block; margin: 0 auto; zoom: 33%;"/></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">对比项</th>
+<th style="text-align: left;">虚拟化</th>
+<th style="text-align: left;">模拟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>核心</strong></td>
+<td style="text-align: left;">硬件辅助，直接复用<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>指令集</td>
+<td style="text-align: left;">纯软件翻译指令，完整重建硬件环境</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>性能</strong></td>
+<td style="text-align: left;">接近原生，高效</td>
+<td style="text-align: left;">损耗大，速度较慢</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>架构</strong></td>
+<td style="text-align: left;">同架构运行（如<span><span class="heti-spacing"> </span>x86</span>→x86）</td>
+<td style="text-align: left;">跨架构兼容（如<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>运行<span><span class="heti-spacing"> </span>x86</span>）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>场景</strong></td>
+<td style="text-align: left;">现代系统高效部署</td>
+<td style="text-align: left;">老旧系统、跨平台调试、复古环境</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>工具</strong></td>
+<td style="text-align: left;">VMware、Parallels</td>
+<td style="text-align: left;">QEMU（软件模式<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、<span>UTM<span class="heti-spacing"> </span></span>模拟模式</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p><span>UTM<span class="heti-spacing"> </span></span>不支持直接导入<span class="heti-skip"><span class="heti-spacing"> </span>VMware<span class="heti-spacing"> </span></span>格式，必须转换为<span><span class="heti-spacing"> </span>qcow2</span></p>
-<h4 id="安装转换工具">安装转换工具：<a class="headerlink" href="#安装转换工具" title="Permanent link">¶</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">step 1</label><label for="__tabbed_1_2">step 2</label><label for="__tabbed_1_3">step 3</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><span>(1/3)<span class="heti-spacing"> </span></span>安装转换工具：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>brew<span class="w"> </span>install<span class="w"> </span>qemu
 </code></pre></div></td></tr></table></div>
-<h4 id="执行转换命令">执行转换命令：<a class="headerlink" href="#执行转换命令" title="Permanent link">¶</a></h4>
+</div>
+<div class="tabbed-block">
+<p><span>(2/3)<span class="heti-spacing"> </span></span>执行转换命令：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>qemu-img<span class="w"> </span>convert<span class="w"> </span>-f<span class="w"> </span>vmdk<span class="w"> </span>-O<span class="w"> </span>qcow2<span class="w"> </span>你的虚拟机文件路径.vmdk<span class="w"> </span>输出文件路径.qcow2
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1"># 如：qemu-img convert -f vmdk -O qcow2 ~/Downloads/xp.vmdk ~/Downloads/xp.qcow2</span>
 </code></pre></div></td></tr></table></div>
-<h4 id="完成验证得到可被-utm-直接导入的-qcow2-磁盘文件大小应与vmdk文件类似">完成验证：得到可被<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>直接导入的<span class="heti-skip"><span class="heti-spacing"> </span>.qcow2<span class="heti-spacing"> </span></span>磁盘文件，大小应与<span class="heti-skip"><span class="heti-spacing"> </span>vmdk<span class="heti-spacing"> </span></span>文件类似。<a class="headerlink" href="#完成验证得到可被-utm-直接导入的-qcow2-磁盘文件大小应与vmdk文件类似" title="Permanent link">¶</a></h4>
+</div>
+<div class="tabbed-block">
+<p><span>(3/3)<span class="heti-spacing"> </span></span>完成验证：得到可被<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>直接导入的<span class="heti-skip"><span class="heti-spacing"> </span>.qcow2<span class="heti-spacing"> </span></span>磁盘文件，大小应与<span class="heti-skip"><span class="heti-spacing"> </span>vmdk<span class="heti-spacing"> </span></span>文件类似。</p>
 <blockquote>
 <p>笔者实测<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件的大小要略微小于<span><span class="heti-spacing"> </span>vmdk</span></p>
 </blockquote>
+</div>
+</div>
+</div>
 <h3 id="utm-部署-windows-xp-虚拟机"><span>UTM<span class="heti-spacing"> </span></span>部署<span class="heti-skip"><span class="heti-spacing"> </span>Windows XP<span class="heti-spacing"> </span></span>虚拟机<a class="headerlink" href="#utm-部署-windows-xp-虚拟机" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ol>
 <li>
@@ -677,7 +664,7 @@
 <blockquote>
 <p>以下步骤说明如何安装，每一步都有配图，如未加载请尝试刷新。</p>
 </blockquote>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><input id="__tabbed_1_4" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">step 1</label><label for="__tabbed_1_2">step 2</label><label for="__tabbed_1_3">step 3</label><label for="__tabbed_1_4">step 4</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/><input id="__tabbed_2_2" name="__tabbed_2" type="radio"/><input id="__tabbed_2_3" name="__tabbed_2" type="radio"/><input id="__tabbed_2_4" name="__tabbed_2" type="radio"/><div class="tabbed-labels"><label for="__tabbed_2_1">step 1</label><label for="__tabbed_2_2">step 2</label><label for="__tabbed_2_3">step 3</label><label for="__tabbed_2_4">step 4</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><span>(1/4)<span class="heti-spacing"> </span></span>当屏幕显示“ <span>Windows XP Professional<span class="heti-spacing"> </span></span>安装程序，欢迎使用安装程序”信息时，再次按下<strong>Enter</strong><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（现在安装<span><span class="heti-spacing"> </span>Windows XP</span>）</p>
@@ -769,10 +756,13 @@
 <p><img alt="1Capture 2026-03-26 11.06.44" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2011.06.44.png" style="display: block; margin: 0 auto; zoom:50%;"/></p>
 </li>
 <li>
-<p>连接成功后，左右分栏直接拖拽实现双向文件传输。至此，虚拟机成功安装并完成配置！
-    <img alt="1Capture 2026-03-26 14.13.07" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2014.13.07.png" style="display: block; margin: 0 auto;"/></p>
+<p>连接成功后，左右分栏直接拖拽实现双向文件传输。至此，虚拟机成功安装并完成配置！</p>
 </li>
 </ol>
+<details class="note" open="open">
+<summary>效果图</summary>
+<p><img alt="1Capture 2026-03-26 14.13.07" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2014.13.07.png" style="display: block; margin: 0 auto;"/></p>
+</details>
 <div class="admonition question">
 <p class="admonition-title"><span>Mac<span class="heti-spacing"> </span></span>的共享文件夹乱码</p>
 <p>若<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>的共享文件夹乱码，请点击<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>左上角<code class="language-text highlight">File</code><span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span><code class="language-text highlight">Properties</code><span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span><code class="language-text highlight">Options</code><span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span>勾选<code class="language-text highlight">Use UTF-8 encoding</code>。</p>
@@ -781,7 +771,7 @@
 <ul>
 <li>断网不影响使用（仅在虚拟机与宿主网络互通时有效<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：仅依赖虚拟机内部局域网</li>
 <li><span>IP<span class="heti-spacing"> </span></span>地址固定：无需频繁修改配置</li>
-<li>使用时发现传输速度有提升空间，持续探索中<span><span class="heti-spacing"> </span>...</span></li>
+<li>使用时发现<strong><em>传输速度有提升空间</em></strong>，持续探索中<span><span class="heti-spacing"> </span>...</span></li>
 </ul>
 <h3 id="打包虚拟机文件如需要传输分享">打包虚拟机文件（如需要传输<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>分享）<a class="headerlink" href="#打包虚拟机文件如需要传输分享" title="Permanent link">¶</a></h3>
 <blockquote>
@@ -813,8 +803,8 @@
 </code></pre></div></td></tr></table></div>
 </li>
 </ol>
-<details class="info" open="open">
-<summary><span>7za<span class="heti-spacing"> </span></span>指令参考</summary>
+<details class="info">
+<summary>点击查看：<span>7za<span class="heti-spacing"> </span></span>指令参考</summary>
 <p><code class="language-actionscript3 highlight"><span class="n">Usage</span><span class="o">:</span><span class="w"> </span><span class="mi">7</span><span class="n">za</span><span class="w"> </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[&lt;</span><span class="n">switches</span><span class="o">&gt;...]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">archive_name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[&lt;</span><span class="n">file_names</span><span class="o">&gt;...]</span></code><br/>
 a : Add files to archive<br/>
 b : Benchmark<br/>
