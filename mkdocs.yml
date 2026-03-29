@@ -1,8 +1,8 @@
 site_name: Bill
 repo_url: https://github.com/bfyes/Virtual-machines-on-Mac
 site_url: ""
-site_description: Apple Silicon 折腾记录
-dev_addr: '127.0.0.1:5500'
+site_description: Virtual-machines-on-Mac
+dev_addr: '127.0.0.1:8000'
 
 theme:
   name: material
