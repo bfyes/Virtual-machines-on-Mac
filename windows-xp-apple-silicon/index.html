@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Apple Silicon 折腾记录" name="description"/>
+<meta content="Virtual-machines-on-Mac" name="description"/>
 <link href=".." rel="prev"/>
 <link href="../vivado-apple-silicon/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
@@ -550,10 +550,9 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
 </a>
 <h1 id="windows-xp-on-apple-silicon-mac">Windows XP on Apple Silicon Mac<a class="headerlink" href="#windows-xp-on-apple-silicon-mac" title="Permanent link">¶</a></h1>
-<p>更新时间：2026-03-28，更新说明：<strong>新增章节：从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹部署，增补压缩方案</strong></p>
-<p>更新时间：2026-03-28，更新说明：<strong>新增章节：打包虚拟机文件</strong></p>
-<p>更新时间：2026-03-27，更新说明：<strong>添加<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>中文文件夹乱码的解决方法。</strong></p>
-<p>更新时间：2026-03-27，更新说明：<strong>补充硬件设置。</strong></p>
+<p>更新时间：2026-03-30，更新说明：<strong>排版优化；修改若干错别字</strong></p>
+<p>更新时间：2026-03-28，更新说明：<strong>新增章节：打包虚拟机文件、从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹部署；增补压缩方案</strong></p>
+<p>更新时间：2026-03-27，更新说明：<strong>补充硬件设置；添加<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>中文文件夹乱码的解决方法。</strong></p>
 <p>更新时间：2026-03-26，更新说明：<strong>完善文章框架和步骤。</strong></p>
 <hr/>
 <p>这篇文章技术含量并不高，只是略微折腾。现在想来，安装过程和原理都算不上麻烦，但当初前前后后摸索了近两周才试验出令人满意的方案。所以把方法总结出来，方便有需要的同学复现～<br/>
@@ -564,8 +563,8 @@
 <blockquote>
 <p>文章偏记录向，原理部分涉及较少，如有不当之处，请多指教！</p>
 </blockquote>
-<div class="admonition information">
-<p class="admonition-title">Information</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>对于汇编课友：无需完成后续完整的操作，仅需通过<a href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况">从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹</a>这一章节完成部署。<span>(<span class="heti-spacing"> </span></span>点击可直接跳转对应章节<span><span class="heti-spacing"> </span>)</span></p>
 </div>
 <h2 id="概况">概况<a class="headerlink" href="#概况" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
@@ -641,12 +640,12 @@
 </blockquote>
 </li>
 <li>
-<p>加载转换完成的<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件：右键刚下载的<span class="heti-skip"><span class="heti-spacing"> </span>utm<span class="heti-spacing"> </span></span>文件，选择“显示包内容”，打开<span class="heti-skip"><span class="heti-spacing"> </span>Images<span class="heti-spacing"> </span></span>文件夹，将内部的磁盘文件用转换好的<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件替换，<strong>注意名称要相同</strong>（笔者的是<code class="language-text highlight">disk-0.qcow2</code> <heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果不同或采用在硬件配置时重新定义的方式，后续有概率出现蓝屏的问题，目前没找出原因。</p>
+<p>加载转换完成的<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件：右键刚下载的<code class="language-gas highlight"><span class="na">.utm</span></code>文件，选择“显示包内容”，打开<span class="heti-skip"><span class="heti-spacing"> </span>Images<span class="heti-spacing"> </span></span>文件夹，将内部的磁盘文件用转换好的<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件替换，<strong>注意名称要相同</strong>（笔者的是<code class="language-text highlight">disk-0.qcow2</code> <heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果不同或采用在硬件配置时重新定义的方式，后续有概率出现蓝屏的问题，目前没找出原因。</p>
 <p><img alt="1Capture 2026-03-24 23.09.01" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-24%2023.09.01.png" style="display: block; margin: 0 auto;"/></p>
 </li>
 <li>
 <p><span>Windows XP<span class="heti-spacing"> </span></span>硬件配置：</p>
-<p>双击<span class="heti-skip"><span class="heti-spacing"> </span>utm<span class="heti-spacing"> </span></span>文件，该虚拟机会自动挂载到<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>软件上。点击右上角的“配置”图标。</p>
+<p>双击<code class="language-gas highlight"><span class="na">.utm</span></code>文件，该虚拟机会自动挂载到<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>软件上。点击右上角的“配置”图标。</p>
 <p><img alt="1Capture 2026-03-26 13.38.10" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2013.38.10.png" style="display: block; margin: 0 auto; zoom:50%;"/></p>
 <ul>
 <li>
@@ -674,15 +673,30 @@
 <p><strong>下载<span class="heti-skip"><span class="heti-spacing"> </span>ISO<span class="heti-spacing"> </span></span>本质上是从<span class="heti-skip"><span class="heti-spacing"> </span>ISO<span class="heti-spacing"> </span></span>恢复<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>系统</strong></p>
 </li>
 <li>
-<p>启动虚拟机，在弹出提示（Press any key to boot Fron CD/DVD..）后立刻按下<strong>Enter</strong>（从光盘执行引导<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
-<p>当屏幕显示“ <span>Windows XP Professional<span class="heti-spacing"> </span></span>安装程序，欢迎使用安装程序”信息时，再次按下<strong>Enter</strong><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（现在安装<span><span class="heti-spacing"> </span>Windows XP</span>）</p>
+<p>启动虚拟机，在弹出提示（Press any key to boot From CD/DVD..）后立刻按下<strong>Enter</strong>（从光盘执行引导<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<blockquote>
+<p>以下步骤说明如何安装，每一步都有配图，如未加载请尝试刷新。</p>
+</blockquote>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><input id="__tabbed_1_4" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">step 1</label><label for="__tabbed_1_2">step 2</label><label for="__tabbed_1_3">step 3</label><label for="__tabbed_1_4">step 4</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><span>(1/4)<span class="heti-spacing"> </span></span>当屏幕显示“ <span>Windows XP Professional<span class="heti-spacing"> </span></span>安装程序，欢迎使用安装程序”信息时，再次按下<strong>Enter</strong><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（现在安装<span><span class="heti-spacing"> </span>Windows XP</span>）</p>
 <p><img alt="1Capture 2026-03-25 12.59.01" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-25%2012.59.01.png" style="display: block; margin: 0 auto;"/></p>
-<p>随后安装程序会自动扫描环境，识别到<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件后会弹出选项，是否修复安装，此时选择修复（R）即可。</p>
+</div>
+<div class="tabbed-block">
+<p><span>(2/4)<span class="heti-spacing"> </span></span>随后安装程序会自动扫描环境，识别到<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件后会弹出选项，是否修复安装，此时选择修复（R）即可。</p>
 <p><img alt="1Capture 2026-03-08 10.38.57" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-08%2010.38.57.png" style="display: block; margin: 0 auto;"/></p>
-<p>等待大约<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>分钟后需要输入<code class="language-text highlight">MRX3F-47B9T-2487J-KWKMF-RPWBY</code><span class="heti-skip"><span class="heti-spacing"> </span>(Windows XP SP3<span class="heti-spacing"> </span></span>批量密钥，仅供参考<span><span class="heti-spacing"> </span>)</span>。</p>
+</div>
+<div class="tabbed-block">
+<p><span>(3/4)<span class="heti-spacing"> </span></span>等待大约<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>分钟后需要输入<code class="language-text highlight">MRX3F-47B9T-2487J-KWKMF-RPWBY</code><span class="heti-skip"><span class="heti-spacing"> </span>(Windows XP SP3<span class="heti-spacing"> </span></span>批量密钥，仅供参考<span><span class="heti-spacing"> </span>)</span>。</p>
 <p><img alt="豆包 2026-03-08 11.17.37" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/豆包%202026-03-08%2011.17.37.png" style="display: block; margin: 0 auto;"/></p>
-<p>继续等待约<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>分钟后即可成功进入桌面！你可以自由调整分辨率和壁纸了。</p>
+</div>
+<div class="tabbed-block">
+<p><span>(4/4)<span class="heti-spacing"> </span></span>继续等待约<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>分钟后即可成功进入桌面！你可以自由调整分辨率和壁纸了。</p>
 <p><img alt="1Capture 2026-03-26 14.02.47" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2014.02.47.png" style="display: block; margin: 0 auto; zoom: 25%;"/></p>
+</div>
+</div>
+</div>
 </li>
 </ol>
 <details class="info">
@@ -759,8 +773,8 @@
     <img alt="1Capture 2026-03-26 14.13.07" src="../Windows%20XP%20on%20Apple%20Silicon%20Mac.assets/1Capture%202026-03-26%2014.13.07.png" style="display: block; margin: 0 auto;"/></p>
 </li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition question">
+<p class="admonition-title"><span>Mac<span class="heti-spacing"> </span></span>的共享文件夹乱码</p>
 <p>若<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>的共享文件夹乱码，请点击<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>左上角<code class="language-text highlight">File</code><span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span><code class="language-text highlight">Properties</code><span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span><code class="language-text highlight">Options</code><span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span>勾选<code class="language-text highlight">Use UTF-8 encoding</code>。</p>
 </div>
 <h4 id="说明">说明<a class="headerlink" href="#说明" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
@@ -792,14 +806,14 @@
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>7za<span class="w"> </span>a<span class="w"> </span>test.7z<span class="w"> </span>～/Parallels/Windows<span class="se">\ </span>XP.utm
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>7za<span class="w"> </span>a<span class="w"> </span>test.7z<span class="w"> </span>~/Parallels/Windows<span class="se">\ </span>XP.utm
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1"># .utm并非后缀，而是文件夹名称的一部分</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1"># 这里7z压缩效率较高</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1"># 详见“指令参考”</span>
 </code></pre></div></td></tr></table></div>
 </li>
 </ol>
-<details class="info">
+<details class="info" open="open">
 <summary><span>7za<span class="heti-spacing"> </span></span>指令参考</summary>
 <p><code class="language-actionscript3 highlight"><span class="n">Usage</span><span class="o">:</span><span class="w"> </span><span class="mi">7</span><span class="n">za</span><span class="w"> </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[&lt;</span><span class="n">switches</span><span class="o">&gt;...]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">archive_name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[&lt;</span><span class="n">file_names</span><span class="o">&gt;...]</span></code><br/>
 a : Add files to archive<br/>
@@ -818,9 +832,9 @@ x : eXtract files with full paths  </p>
 <li>其他方案<span><span class="heti-spacing"> </span>:</span>
     如果你的压缩软件（如BandiZip）支持<code class="language-text highlight">XZ</code>算法，也可以选用该算法进行压缩，效果与7-Zip一致。</li>
 </ol>
-<div class="admonition information">
-<p class="admonition-title">Information</p>
-<p>关于“包”：在<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>系统中，包（Package）是一种被系统特殊处理的文件夹，它会被伪装成单个文件呈现给用户，比如<span class="heti-skip"><span class="heti-spacing"> </span>.utm<span class="heti-spacing"> </span></span>虚拟机文件、<span>.app<span class="heti-spacing"> </span></span>应用程序都属于这类包。双击它会直接启动关联程序（如<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>或对应<span><span class="heti-spacing"> </span>App</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，右键选择“显示包内容”才能查看内部的目录结构和文件；而在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>系统中并没有原生的“包”概念，这类文件夹会直接以普通目录形式展示，没有封装成单文件的视觉效果，也不会自动关联到对应程序，需要手动进入目录或在应用中选择打开。</p>
+<div class="admonition note">
+<p class="admonition-title">关于“包”</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>系统中，包（Package）是一种被系统特殊处理的文件夹，它会被伪装成单个文件呈现给用户，比如<span class="heti-skip"><span class="heti-spacing"> </span>.utm<span class="heti-spacing"> </span></span>虚拟机文件、<span>.app<span class="heti-spacing"> </span></span>应用程序都属于这类包。双击它会直接启动关联程序（如<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>或对应<span><span class="heti-spacing"> </span>App</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，右键选择“显示包内容”才能查看内部的目录结构和文件；而在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>系统中并没有原生的“包”概念，这类文件夹会直接以普通目录形式展示，没有封装成单文件的视觉效果，也不会自动关联到对应程序，需要手动进入目录或在应用中选择打开。</p>
 </div>
 <h2 id="结语">结语<a class="headerlink" href="#结语" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p><strong>刚才发现<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>可以调用<span><span class="heti-spacing"> </span>XShell5</span>，能直接访问终端。看来这个<span class="heti-skip"><span class="heti-spacing"> </span>xp<span class="heti-spacing"> </span></span>系统里有很多宝贝等待探索！</strong></p>
