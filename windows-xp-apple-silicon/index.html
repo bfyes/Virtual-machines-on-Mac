@@ -593,19 +593,19 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">step 1</label><label for="__tabbed_1_2">step 2</label><label for="__tabbed_1_3">step 3</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>安装转换工具：</p>
+<p><span>(1/3)<span class="heti-spacing"> </span></span>安装转换工具：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>brew<span class="w"> </span>install<span class="w"> </span>qemu
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<p>执行转换命令：</p>
+<p><span>(2/3)<span class="heti-spacing"> </span></span>执行转换命令：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>qemu-img<span class="w"> </span>convert<span class="w"> </span>-f<span class="w"> </span>vmdk<span class="w"> </span>-O<span class="w"> </span>qcow2<span class="w"> </span>你的虚拟机文件路径.vmdk<span class="w"> </span>输出文件路径.qcow2
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1"># 如：qemu-img convert -f vmdk -O qcow2 ~/Downloads/xp.vmdk ~/Downloads/xp.qcow2</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<p>完成验证：得到可被<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>直接导入的<span class="heti-skip"><span class="heti-spacing"> </span>.qcow2<span class="heti-spacing"> </span></span>磁盘文件，大小应与<span class="heti-skip"><span class="heti-spacing"> </span>vmdk<span class="heti-spacing"> </span></span>文件类似。</p>
+<p><span>(3/3)<span class="heti-spacing"> </span></span>完成验证：得到可被<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>直接导入的<span class="heti-skip"><span class="heti-spacing"> </span>.qcow2<span class="heti-spacing"> </span></span>磁盘文件，大小应与<span class="heti-skip"><span class="heti-spacing"> </span>vmdk<span class="heti-spacing"> </span></span>文件类似。</p>
 <blockquote>
 <p>笔者实测<span class="heti-skip"><span class="heti-spacing"> </span>qcow2<span class="heti-spacing"> </span></span>文件的大小要略微小于<span><span class="heti-spacing"> </span>vmdk</span></p>
 </blockquote>
