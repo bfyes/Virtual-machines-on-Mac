@@ -34,7 +34,7 @@ nav:
   - 首页: index.md
   - Windows XP on Apple Silicon: windows-xp-apple-silicon.md
   - Vivado on Apple Silicon (X): vivado-apple-silicon.md
-  
+  - mac上好用的第三方记事本软件: mac上好用的第三方记事本软件.md
 
 plugins:
   - search

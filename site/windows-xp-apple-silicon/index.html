@@ -488,6 +488,11 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
 </a>
 <h1 id="windows-xp-on-apple-silicon-mac">Windows XP on Apple Silicon Mac<a class="headerlink" href="#windows-xp-on-apple-silicon-mac" title="Permanent link">¶</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>对于汇编课友：无需完成后续完整的操作，仅需通过<a href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况">从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹</a>这一章节完成部署。<span>(<span class="heti-spacing"> </span></span>点击可直接跳转对应章节<span><span class="heti-spacing"> </span>)</span></p>
+</div>
+<p>更新时间：2026-03-31，更新说明：<strong>梳理文章流程</strong></p>
 <p>更新时间：2026-03-30，更新说明：<strong>排版优化；修改若干错别字；增加部分内容</strong></p>
 <p>更新时间：2026-03-28，更新说明：<strong>新增章节：打包虚拟机文件、从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹部署；增补压缩方案</strong></p>
 <p>更新时间：2026-03-27，更新说明：<strong>补充硬件设置；添加<span class="heti-skip"><span class="heti-spacing"> </span>Xftp5<span class="heti-spacing"> </span></span>中文文件夹乱码的解决方法。</strong></p>
@@ -501,11 +506,9 @@
 <blockquote>
 <p>文章偏记录向，流程为主，原理为辅。</p>
 </blockquote>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>对于汇编课友：无需完成后续完整的操作，仅需通过<a href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况">从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹</a>这一章节完成部署。<span>(<span class="heti-spacing"> </span></span>点击可直接跳转对应章节<span><span class="heti-spacing"> </span>)</span></p>
-</div>
 <h2 id="概况">概况<a class="headerlink" href="#概况" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<details class="info">
+<summary>点击展开</summary>
 <h3 id="适用场景">适用场景<a class="headerlink" href="#适用场景" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>VMware<span class="heti-spacing"> </span></span>磁盘文件<span><span class="heti-spacing"> </span>(.vmdk)</span> <strong>迁移</strong> 至<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>中的<span><span class="heti-spacing"> </span>UTM +</span> <strong>双向文件传输</strong> 解决方案。</p>
 <div class="admonition warning">
@@ -532,18 +535,25 @@
 <p>最终方案：Xftp 5（已经内置在老师给的<span class="heti-skip"><span class="heti-spacing"> </span>XP<span class="heti-spacing"> </span></span>系统中）<span>+ macOS<span class="heti-spacing"> </span></span>内置<span><span class="heti-spacing"> </span>SFTP</span>（基于<span class="heti-skip"><span class="heti-spacing"> </span>SSH<span class="heti-spacing"> </span></span>远程登录<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，提供稳定可靠的双向文件传输。</p>
 </li>
 </ul>
+</details>
 <h2 id="直接从utm文件夹部署对应已经下载了utm文件夹的情况">直接从<code class="language-gas highlight"><span class="na">.utm</span></code>文件夹部署（对应已经下载了<span class="heti-skip"><span class="heti-spacing"> </span>.utm<span class="heti-spacing"> </span></span>文件夹的情况）<a class="headerlink" href="#直接从utm文件夹部署对应已经下载了utm文件夹的情况" title="Permanent link">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>对于汇编课友：无需完成后续完整的操作，根据本节的指导即可。</p>
+</div>
 <ol>
 <li>
 <p><strong>软件</strong>。关于<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>的下载，请访问<a href="https://mac.getutm.app"><span><span class="heti-spacing"> </span>https://mac.getutm.app</span></a>。  </p>
 </li>
 <li>
-<p><strong>虚拟机文件</strong>。请将下载好的压缩包解压，得到<span class="heti-skip"><span class="heti-spacing"> </span>utm<span class="heti-spacing"> </span></span>文件包。在安装好<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机的情况下，直接双击该包即可打开虚拟机。随后点击“启动”即可。</p>
+<p><strong>虚拟机文件</strong>。请将下载好的压缩包<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span><code class="language-scdoc highlight">xp_mac.zip</code><span class="heti-skip"><span class="heti-spacing"> </span>)<span class="heti-spacing"> </span></span>解压，得到<span class="heti-skip"><span class="heti-spacing"> </span>utm<span class="heti-spacing"> </span></span>文件包。在安装好<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机的情况下，<strong>直接双击该包</strong>即可打开虚拟机。随后点击“启动”即可，理论上无需其他操作即可进入系统。<span>(<span class="heti-spacing"> </span></span>不必下载<code class="language-gas highlight"><span class="na">.iso</span></code>等文件，也无需执行后续<a href="#utm-部署-windows-xp-虚拟机"><span class="heti-skip"><span class="heti-spacing"> </span>3.1<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>3.2<span class="heti-spacing"> </span></span>的修复</a>过程。)</p>
 <blockquote>
 <p>可通过<a href="#打包虚拟机文件如需要传输分享"><span class="heti-skip"><span class="heti-spacing"> </span>7za<span class="heti-spacing"> </span></span>命令</a>或部分解压软件<span class="heti-skip"><span class="heti-spacing"> </span>(BandiZip<span class="heti-spacing"> </span></span>等<span class="heti-skip"><span class="heti-spacing"> </span>)<span class="heti-spacing"> </span></span>解压。</p>
 </blockquote>
 </li>
-<li><strong>文件互传</strong>。根据<a href="#最终互通方案xftp-5--sftp">文件互传方案</a>继续配置。</li>
+<li>
+<p><strong>文件互传</strong>。根据<a href="#最终互通方案xftp-5--sftp"><span class="heti-skip"><span class="heti-spacing"> </span>3.3<span class="heti-spacing"> </span></span>文件互传方案</a>继续配置。</p>
+</li>
 </ol>
 <h2 id="部署流程对应只有vmdk文件的情况">部署流程（对应只有<span class="heti-skip"><span class="heti-spacing"> </span>vmdk<span class="heti-spacing"> </span></span>文件的情况）<a class="headerlink" href="#部署流程对应只有vmdk文件的情况" title="Permanent link">¶</a></h2>
 <h3 id="vmware-磁盘格式转换vmdk-rightarrow-qcow2"><span>VMware<span class="heti-spacing"> </span></span>磁盘格式转换（vmdk <span class="arithmatex">\(\rightarrow\)</span> qcow2）<a class="headerlink" href="#vmware-磁盘格式转换vmdk-rightarrow-qcow2" title="Permanent link">¶</a></h3>
