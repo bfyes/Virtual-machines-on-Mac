@@ -7,7 +7,8 @@ dev_addr: '127.0.0.1:8000'
 theme:
   name: material
   icon:
-    edit: material/pencil
+    edit: material/github
+    repo: material/github
   features:
     - content.action.edit
     - content.code.copy
