@@ -1,3 +1,3 @@
 <https://github.com/dail8859/NotepadNext/releases>
 
-开源软件“NotepadNext”，支持`.asm`等文件的高亮显示。
+开源多平台(macOS/Linux/Windows)软件“NotepadNext”，支持`.asm`等文件的高亮显示。
