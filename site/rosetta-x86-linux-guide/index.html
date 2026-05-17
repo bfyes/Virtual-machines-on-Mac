@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Virtual-machines-on-Mac" name="description"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>利用 Rosetta 在 M 系列 Mac 上高效运行 x86 Linux 应用的完整指南 - Bill</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#利用-rosetta-在-m-系列-mac-上高效运行-x86-linux-应用的完整指南">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Bill" class="md-header__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Bill
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              利用 Rosetta 在 M 系列 Mac 上高效运行 x86 Linux 应用的完整指南
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bfyes/Virtual-machines-on-Mac" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Bill" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Bill
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bfyes/Virtual-machines-on-Mac" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../windows-xp-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Windows XP on Apple Silicon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../vivado-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Vivado on Apple Silicon (X)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mac%E4%B8%8A%E5%A5%BD%E7%94%A8%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E8%AE%B0%E4%BA%8B%E6%9C%AC%E8%BD%AF%E4%BB%B6/">
+<span class="md-ellipsis">
+    
+  
+    mac上好用的第三方记事本软件
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#为什么需要-rosetta-在-m-系列-mac-上运行-x86-linux-应用">
+<span class="md-ellipsis">
+      
+        为什么需要 Rosetta 在 M 系列 Mac 上运行 x86 Linux 应用
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#环境准备与工具选择">
+<span class="md-ellipsis">
+      
+        环境准备与工具选择
+      
+    </span>
+</a>
+<nav aria-label="环境准备与工具选择" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#硬件和系统要求">
+<span class="md-ellipsis">
+      
+        硬件和系统要求
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#虚拟化工具比较">
+<span class="md-ellipsis">
+      
+        虚拟化工具比较
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#核心原理为什么是-utm--rosetta">
+<span class="md-ellipsis">
+      
+        核心原理：为什么是 UTM + Rosetta？
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#五分钟极速配置从零创建-utm-虚拟机">
+<span class="md-ellipsis">
+      
+        五分钟极速配置：从零创建 UTM 虚拟机
+      
+    </span>
+</a>
+<nav aria-label="五分钟极速配置：从零创建 UTM 虚拟机" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#第一步准备安装镜像">
+<span class="md-ellipsis">
+      
+        第一步：准备安装镜像
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#第二步安装并配置-utm">
+<span class="md-ellipsis">
+      
+        第二步：安装并配置 UTM
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#第三步安装-ubuntu-系统">
+<span class="md-ellipsis">
+      
+        第三步：安装 Ubuntu 系统
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#系统内部精调配置-rosetta-与增强体验">
+<span class="md-ellipsis">
+      
+        系统内部精调：配置 Rosetta 与增强体验
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#实战检验编译与运行-x86-程序">
+<span class="md-ellipsis">
+      
+        实战检验：编译与运行 x86 程序
+      
+    </span>
+</a>
+<nav aria-label="实战检验：编译与运行 x86 程序" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#第一步安装-x86_64-交叉编译工具链">
+<span class="md-ellipsis">
+      
+        第一步：安装 x86_64 交叉编译工具链
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#第二步编写并编译一个测试程序">
+<span class="md-ellipsis">
+      
+        第二步：编写并编译一个测试程序
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#第三步通过-rosetta-运行">
+<span class="md-ellipsis">
+      
+        第三步：通过 Rosetta 运行
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#进阶技巧与避坑指南">
+<span class="md-ellipsis">
+      
+        进阶技巧与避坑指南
+      
+    </span>
+</a>
+<nav aria-label="进阶技巧与避坑指南" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#高效连接使用-ssh-替代-utm-窗口">
+<span class="md-ellipsis">
+      
+        高效连接：使用 SSH 替代 UTM 窗口
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#性能优化资源分配与源替换">
+<span class="md-ellipsis">
+      
+        性能优化：资源分配与源替换
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#常见问题排查">
+<span class="md-ellipsis">
+      
+        常见问题排查
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#替代方案浅析lima">
+<span class="md-ellipsis">
+      
+        替代方案浅析：Lima
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#总结">
+<span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/bfyes/Virtual-machines-on-Mac/edit/master/docs/rosetta-x86-linux-guide.md" rel="edit" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</a>
+<h1 id="利用-rosetta-在-m-系列-mac-上高效运行-x86-linux-应用的完整指南">利用<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>系列<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>上高效运行<span class="heti-skip"><span class="heti-spacing"> </span>x86 Linux<span class="heti-spacing"> </span></span>应用的完整指南<a class="headerlink" href="#利用-rosetta-在-m-系列-mac-上高效运行-x86-linux-应用的完整指南" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<blockquote>
+<p>原文链接<a href="https://blog.csdn.net/weixin_29305313/article/details/159103754">点击跳转</a></p>
+</blockquote>
+<h2 id="为什么需要-rosetta-在-m-系列-mac-上运行-x86-linux-应用">为什么需要<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>系列<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>上运行<span class="heti-skip"><span class="heti-spacing"> </span>x86 Linux<span class="heti-spacing"> </span></span>应用<a class="headerlink" href="#为什么需要-rosetta-在-m-系列-mac-上运行-x86-linux-应用" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>自从苹果推出搭载<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>系列芯片的<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>电脑后，很多开发者都面临一个现实问题：如何在<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>架构的<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>上运行传统的<span class="heti-skip"><span class="heti-spacing"> </span>x86 Linux<span class="heti-spacing"> </span></span>应用。<span>M<span class="heti-spacing"> </span></span>系列芯片采用<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>架构，而大多数<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>应用都是为<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>架构编译的，这就导致了兼容性问题。</p>
+<p><span>Rosetta<span class="heti-spacing"> </span></span>是苹果开发的动态二进制翻译器，最初是为了让<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>架构的<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>应用能在<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>系列芯片上运行。后来苹果进一步扩展了它的能力，允许在<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>虚拟机中使用<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>来运行<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>程序。这相当于在<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>架构的<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>系统中增加了一个“翻译层”，能够实时将<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>指令转换为<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>指令。</p>
+<p>我实测下来，这种方式的性能损失比纯模拟要小得多。举个例子，通过<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>运行<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>版本的<span><span class="heti-spacing"> </span>Neofetch</span>，速度几乎和原生<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>版本相当。而如果使用<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>等模拟器，性能可能会下降<span class="heti-skip"><span class="heti-spacing"> </span>50%<span class="heti-spacing"> </span></span>以上。</p>
+<hr/>
+<h2 id="环境准备与工具选择">环境准备与工具选择<a class="headerlink" href="#环境准备与工具选择" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="硬件和系统要求">硬件和系统要求<a class="headerlink" href="#硬件和系统要求" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>要使用这个方案，你需要：</p>
+<ul>
+<li>搭载<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>系列芯片的<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>电脑（<span>M1/M2/M3<span class="heti-spacing"> </span></span>等）</li>
+<li>macOS Ventura（13.0）或更高版本</li>
+<li>至少<span class="heti-skip"><span class="heti-spacing"> </span>8GB<span class="heti-spacing"> </span></span>内存（<span>16GB<span class="heti-spacing"> </span></span>以上更佳）</li>
+<li>足够的存储空间（建议预留<span class="heti-skip"><span class="heti-spacing"> </span>20GB<span class="heti-spacing"> </span></span>以上）</li>
+</ul>
+<p>我推荐使用<span class="heti-skip"><span class="heti-spacing"> </span>MacBook Pro 14<span class="heti-spacing"> </span></span>寸<span class="heti-skip"><span class="heti-spacing"> </span>M1 Pro<span class="heti-spacing"> </span></span>作为开发机，<span>16GB<span class="heti-spacing"> </span></span>内存版本。实测下来，这个配置可以流畅运行<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>虚拟机并转译多个<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>应用。</p>
+<h3 id="虚拟化工具比较">虚拟化工具比较<a class="headerlink" href="#虚拟化工具比较" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>目前主要有三种方案可以在<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>系列<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>上运行<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>虚拟机：</p>
+<ul>
+<li><strong>UTM</strong>：提供图形界面，适合新手</li>
+<li>优点：操作简单，支持<span class="heti-skip"><span class="heti-spacing"> </span>SPICE<span class="heti-spacing"> </span></span>协议实现剪贴板共享</li>
+<li>缺点：性能略低于命令行方案</li>
+<li><strong>Lima</strong>：轻量级命令行工具</li>
+<li>优点：启动快，资源占用少</li>
+<li>缺点：纯命令行，上手略难</li>
+<li><strong>OrbStack</strong>：新型容器<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>虚拟机管理工具</li>
+<li>优点：性能强、界面简洁、支持<span><span class="heti-spacing"> </span>Docker</span></li>
+<li>缺点：收费，部分高级功能需付费</li>
+</ul>
+<blockquote>
+<p>本文主要讲解<span class="heti-skip"><span class="heti-spacing"> </span>UTM + Rosetta<span class="heti-spacing"> </span></span>方案，兼顾易用性和性能。</p>
+</blockquote>
+<hr/>
+<h2 id="核心原理为什么是-utm--rosetta">核心原理：为什么是<span><span class="heti-spacing"> </span>UTM + Rosetta</span>？<a class="headerlink" href="#核心原理为什么是-utm--rosetta" title="Permanent link">¶</a></h2>
+<p>这套方案的核心优势，源于苹果自家技术的深度整合。</p>
+<p>首先，<span>Apple Virtualization Framework<span class="heti-spacing"> </span></span>是基石。这是苹果为<span class="heti-skip"><span class="heti-spacing"> </span>Apple Silicon<span class="heti-spacing"> </span></span>芯片提供的原生虚拟化框架。相比传统的<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>全系统模拟，它允许虚拟机以近乎裸机的性能访问<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>和内存资源。<span>UTM<span class="heti-spacing"> </span></span>从某个版本开始，在创建<span class="heti-skip"><span class="heti-spacing"> </span>ARM Linux<span class="heti-spacing"> </span></span>虚拟机时，可以选择使用这个框架，从而获得极高的运行效率。</p>
+<p>其次，<span>Rosetta 2<span class="heti-spacing"> </span></span>的角色发生了转变。我们都知道<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta 2<span class="heti-spacing"> </span></span>能让<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>芯片<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>直接运行<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>应用。但很多人不知道的是，从<span class="heti-skip"><span class="heti-spacing"> </span>macOS 13<span class="heti-spacing"> </span></span>开始，苹果允许在<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>架构的<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>虚拟机内部启用<span><span class="heti-spacing"> </span>Rosetta 2</span>。这意味着，虚拟机本身是<span class="heti-skip"><span class="heti-spacing"> </span>ARM64<span class="heti-spacing"> </span></span>系统，但系统内可以安装一个特殊的“<span>Rosetta<span class="heti-spacing"> </span></span>兼容层”。当你在虚拟机里尝试执行一个<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>程序时，这个兼容层会动态地将<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>指令转译为<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>指令。</p>
+<p>这种“嵌套”模式的优势非常明显：</p>
+<ul>
+<li>性能极佳：虚拟机本身通过虚拟化框架高效运行，程序转译由高度优化的<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>完成，远胜于<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>软件模拟<span><span class="heti-spacing"> </span>x86 CPU</span>。</li>
+<li>资源占用合理：你只需要运行一个<span class="heti-skip"><span class="heti-spacing"> </span>ARM Linux<span class="heti-spacing"> </span></span>系统，而不是同时运行一个完整的<span class="heti-skip"><span class="heti-spacing"> </span>x86 Linux<span class="heti-spacing"> </span></span>系统。</li>
+<li>无缝兼容：对应用程序而言，它仿佛运行在一个真正的<span class="heti-skip"><span class="heti-spacing"> </span>x86 Linux<span class="heti-spacing"> </span></span>环境中。</li>
+</ul>
+<blockquote>
+<p>注意：确保你的<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>版本在<span><span class="heti-spacing"> </span>13</span>（Ventura）或以上，这是该功能的最低系统要求。M1、M2、<span>M3<span class="heti-spacing"> </span></span>系列芯片均支持。</p>
+</blockquote>
+<hr/>
+<h2 id="五分钟极速配置从零创建-utm-虚拟机">五分钟极速配置：从零创建<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机<a class="headerlink" href="#五分钟极速配置从零创建-utm-虚拟机" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>下面我们以<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu 22.04 LTS<span class="heti-spacing"> </span></span>为例，展示最简化的配置流程。</p>
+<h3 id="第一步准备安装镜像">第一步：准备安装镜像<a class="headerlink" href="#第一步准备安装镜像" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>你需要下载的是<span class="heti-skip"><span class="heti-spacing"> </span>ARM64<span class="heti-spacing"> </span></span>架构的<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>服务器版镜像。记住，虚拟机本身是<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>系统。不要下错成<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>的版本。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># 在Mac的终端里，使用wget下载（也可以浏览器直接下载）</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>wget<span class="w"> </span>https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04.4-live-server-arm64.iso
+</code></pre></div></td></tr></table></div>
+<p>我推荐使用服务器版（Server<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，因为它更轻量，没有图形桌面那些不必要的开销。后续所有操作我们都可以通过<span class="heti-skip"><span class="heti-spacing"> </span>SSH<span class="heti-spacing"> </span></span>连接进行，效率更高。</p>
+<h3 id="第二步安装并配置-utm">第二步：安装并配置<span><span class="heti-spacing"> </span>UTM</span><a class="headerlink" href="#第二步安装并配置-utm" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>从<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>官网或<span class="heti-skip"><span class="heti-spacing"> </span>Mac App Store<span class="heti-spacing"> </span></span>下载并安装<span><span class="heti-spacing"> </span>UTM</span>。</li>
+<li>打开<span><span class="heti-spacing"> </span>UTM</span>，点击 “+” 号创建一个新虚拟机。</li>
+<li>在 “虚拟化” 与 “模拟” 之间，选择 “虚拟化”。这一步至关重要。</li>
+<li>系统架构选择 “ARM64 (aarch64)”。</li>
+<li>在 “Linux” 标签页下，勾选两个核心选项：</li>
+<li>使用<span class="heti-skip"><span class="heti-spacing"> </span>Apple<span class="heti-spacing"> </span></span>虚拟化</li>
+<li>启用<span><span class="heti-spacing"> </span>Rosetta</span></li>
+<li>点击 “浏览”，选择你刚才下载的<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu ARM64<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>ISO<span class="heti-spacing"> </span></span>文件。</li>
+<li>内存和<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>核心数根据你的<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>配置分配，通常<span class="heti-skip"><span class="heti-spacing"> </span>4GB<span class="heti-spacing"> </span></span>内存、<span>2-4<span class="heti-spacing"> </span></span>个核心足以流畅运行。</li>
+<li>创建一个新的虚拟硬盘，大小建议<span class="heti-skip"><span class="heti-spacing"> </span>20GB<span class="heti-spacing"> </span></span>以上。</li>
+<li>在网络设置中，确保 “启用网络” 已勾选，并选择 “共享网络”（NAT<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，这样虚拟机就能上网了。</li>
+<li>其他设置保持默认，点击 “保存”，给你的虚拟机起个名字，比如 “Ubuntu-ARM-Rosetta”。</li>
+</ul>
+<h3 id="第三步安装-ubuntu-系统">第三步：安装<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>系统<a class="headerlink" href="#第三步安装-ubuntu-系统" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>启动虚拟机，它会从<span class="heti-skip"><span class="heti-spacing"> </span>ISO<span class="heti-spacing"> </span></span>镜像引导进入<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>安装程序。</li>
+<li>跟随图形化安装步骤进行。语言、键盘布局按喜好选择。</li>
+<li>网络连接通常会自动配置好。</li>
+<li>在 “存储配置” 步骤，选择我们刚才创建的虚拟硬盘，使用整个磁盘即可。</li>
+<li>设置你的用户名、密码和主机名。</li>
+<li>在 “<span>SSH<span class="heti-spacing"> </span></span>设置” 步骤，务必勾选 “Install OpenSSH server”。这是我们后续通过本地终端高效管理虚拟机的关键。</li>
+<li>其他选项默认，开始安装。安装完成后，它会提示重启。</li>
+<li>重启前，回到<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>的虚拟机窗口，点击窗口上方工具栏的 “光盘” 图标，弹出安装<span><span class="heti-spacing"> </span>ISO</span>。这样虚拟机才会从硬盘正常启动。</li>
+</ul>
+<p>至此，一个基础的、支持<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>ARM Ubuntu<span class="heti-spacing"> </span></span>虚拟机就创建好了。整个过程熟练的话，确实可以在五分钟内完成。</p>
+<hr/>
+<h2 id="系统内部精调配置-rosetta-与增强体验">系统内部精调：配置<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>与增强体验<a class="headerlink" href="#系统内部精调配置-rosetta-与增强体验" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>虚拟机启动并登录后，我们还需要在<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>内部进行一些配置，才能让<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>真正工作起来，并优化使用体验。</p>
+<p>首先，更新系统并安装必要组件：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>binfmt-support<span class="w"> </span>-y
+</code></pre></div></td></tr></table></div>
+<p><span>binfmt-support<span class="heti-spacing"> </span></span>是让<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>内核识别并调用<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>来处理<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>二进制文件的关键包。</p>
+<p>接着，挂载<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>文件系统：</p>
+<p><span>UTM<span class="heti-spacing"> </span></span>已经在主机和虚拟机之间创建了一个名为<span class="heti-skip"><span class="heti-spacing"> </span>rosetta<span class="heti-spacing"> </span></span>的虚拟文件系统（virtiofs<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，里面包含了<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>转译器。我们需要把它挂载到虚拟机内部。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># 创建挂载点</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/media/rosetta
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># 临时挂载</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>virtiofs<span class="w"> </span>rosetta<span class="w"> </span>/media/rosetta
+</code></pre></div></td></tr></table></div>
+<p>为了让每次启动自动挂载，需要将其写入 <code class="language-text highlight">/etc/fstab</code> 文件：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rosetta /media/rosetta virtiofs ro,nofail 0 0"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab
+</code></pre></div></td></tr></table></div>
+<p>参数<span class="heti-skip"><span class="heti-spacing"> </span>nofail<span class="heti-spacing"> </span></span>很重要，即使挂载失败也不影响系统启动。</p>
+<p>然后，注册<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>为二进制格式解释器：</p>
+<p>这是最关键的一步，告诉系统：遇到<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>ELF<span class="heti-spacing"> </span></span>可执行文件，就交给 <code class="language-text highlight">/media/rosetta/rosetta</code> 这个程序来处理。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>/usr/sbin/update-binfmts<span class="w"> </span>--install<span class="w"> </span>rosetta<span class="w"> </span>/media/rosetta/rosetta<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span>--magic<span class="w"> </span><span class="s2">"\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x3e\x00"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">  </span>--mask<span class="w"> </span><span class="s2">"\xff\xff\xff\xff\xff\xfe\xfe\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">  </span>--credentials<span class="w"> </span>yes<span class="w"> </span>--preserve<span class="w"> </span>no<span class="w"> </span>--fix-binary<span class="w"> </span>yes
+</code></pre></div></td></tr></table></div>
+<p>执行后，你可以检查是否成功：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>cat<span class="w"> </span>/proc/sys/fs/binfmt_misc/rosetta
+</code></pre></div></td></tr></table></div>
+<p>如果输出显示<span class="heti-skip"><span class="heti-spacing"> </span>enabled<span class="heti-spacing"> </span></span>和正确的解释器路径，就说明注册成功了。</p>
+<p>最后，安装<span class="heti-skip"><span class="heti-spacing"> </span>SPICE<span class="heti-spacing"> </span></span>增强工具（可选但推荐<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<p>这能提供剪贴板共享、更好的鼠标集成等功能。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>spice-vdagent<span class="w"> </span>-y
+</code></pre></div></td></tr></table></div>
+<p>安装后重启虚拟机生效。</p>
+<hr/>
+<h2 id="实战检验编译与运行-x86-程序">实战检验：编译与运行<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>程序<a class="headerlink" href="#实战检验编译与运行-x86-程序" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>配置好了，总得跑点东西试试。我们来实际编译并运行一个简单的<span class="heti-skip"><span class="heti-spacing"> </span>x86_64 C++<span class="heti-spacing"> </span></span>程序。</p>
+<h3 id="第一步安装-x86_64-交叉编译工具链">第一步：安装<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>交叉编译工具链<a class="headerlink" href="#第一步安装-x86_64-交叉编译工具链" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>虽然<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>能运行<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>程序，但如果你需要在虚拟机内编译<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>代码，就需要对应的工具链。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gcc-multilib-x86-64-linux-gnu<span class="w"> </span>g++-multilib-x86-64-linux-gnu<span class="w"> </span>-y
+</code></pre></div></td></tr></table></div>
+<p>这个包组提供了能在<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>系统上生成<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>代码的<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>G++</span>。</p>
+<h3 id="第二步编写并编译一个测试程序">第二步：编写并编译一个测试程序<a class="headerlink" href="#第二步编写并编译一个测试程序" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>用你喜欢的编辑器（如<span class="heti-skip"><span class="heti-spacing"> </span>nano<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>vim</span>）创建一个文件<span><span class="heti-spacing"> </span>test.cpp</span>：</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Hello from an x86_64 program running on ARM via Rosetta!</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>使用刚安装的<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>交叉编译器进行编译：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>x86_64-linux-gnu-g++<span class="w"> </span>-o<span class="w"> </span>test_x86<span class="w"> </span>test.cpp
+</code></pre></div></td></tr></table></div>
+<p>这会生成一个名为<span class="heti-skip"><span class="heti-spacing"> </span>test_x86<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>架构可执行文件。</p>
+<h3 id="第三步通过-rosetta-运行">第三步：通过<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>运行<a class="headerlink" href="#第三步通过-rosetta-运行" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>直接运行即可，系统会自动调用<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>转译器：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>./test_x86
+</code></pre></div></td></tr></table></div>
+<p>如果一切顺利，你将看到输出的欢迎信息。你可以用<span class="heti-skip"><span class="heti-spacing"> </span>file<span class="heti-spacing"> </span></span>命令验证其架构：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>file<span class="w"> </span>test_x86
+</code></pre></div></td></tr></table></div>
+<p>输出应为：test_x86: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, ...</p>
+<blockquote>
+<p>可能遇到的动态库问题：</p>
+<p>对于一些更复杂的、动态链接的<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>程序，你可能会遇到缺少<span class="heti-skip"><span class="heti-spacing"> </span>libc<span class="heti-spacing"> </span></span>等动态库的错误。这是因为<span class="heti-skip"><span class="heti-spacing"> </span>ARM<span class="heti-spacing"> </span></span>系统里没有<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>的动态库。解决方法通常是从一个<span class="heti-skip"><span class="heti-spacing"> </span>x86 Linux<span class="heti-spacing"> </span></span>系统（或<span class="heti-skip"><span class="heti-spacing"> </span>Docker<span class="heti-spacing"> </span></span>镜像）里复制对应的<span class="heti-skip"><span class="heti-spacing"> </span>.so<span class="heti-spacing"> </span></span>文件到虚拟机的某个目录（例如<span><span class="heti-spacing"> </span>/lib64</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，并确保路径正确。不过，对于很多基础程序，<span>Rosetta<span class="heti-spacing"> </span></span>能处理得很好。</p>
+</blockquote>
+<hr/>
+<h2 id="进阶技巧与避坑指南">进阶技巧与避坑指南<a class="headerlink" href="#进阶技巧与避坑指南" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>掌握了基本流程后，下面这些技巧能让你用得更舒服，并避开一些常见的“坑”。</p>
+<h3 id="高效连接使用-ssh-替代-utm-窗口">高效连接：使用<span class="heti-skip"><span class="heti-spacing"> </span>SSH<span class="heti-spacing"> </span></span>替代<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>窗口<a class="headerlink" href="#高效连接使用-ssh-替代-utm-窗口" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>UTM<span class="heti-spacing"> </span></span>的图形控制台有时反应较慢。既然安装了<span><span class="heti-spacing"> </span>OpenSSH</span>，我们完全可以用<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>本地终端（如<span><span class="heti-spacing"> </span>iTerm2</span>）通过<span class="heti-skip"><span class="heti-spacing"> </span>SSH<span class="heti-spacing"> </span></span>连接管理虚拟机，体验丝滑的终端操作。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机启动后，查看其<span class="heti-skip"><span class="heti-spacing"> </span>IP<span class="heti-spacing"> </span></span>地址。可以在虚拟机内执行 <code class="language-text highlight">ip a</code> 命令，找到<span class="heti-skip"><span class="heti-spacing"> </span>eth0<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>ens<span class="heti-spacing"> </span></span>开头的网卡，查看<span class="heti-skip"><span class="heti-spacing"> </span>inet<span class="heti-spacing"> </span></span>地址。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>的终端里：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>ssh<span class="w"> </span>your_username@&lt;虚拟机IP地址&gt;
+</code></pre></div></td></tr></table></div>
+<p>输入密码即可连接。你还可以配置<span class="heti-skip"><span class="heti-spacing"> </span>SSH<span class="heti-spacing"> </span></span>密钥登录，彻底告别密码。</p>
+<h3 id="性能优化资源分配与源替换">性能优化：资源分配与源替换<a class="headerlink" href="#性能优化资源分配与源替换" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li><strong><span>CPU<span class="heti-spacing"> </span></span>与内存</strong>：不要过度分配。通常，分配给虚拟机的核心数不超过你<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>物理核心数的一半，内存不超过总内存的一半，能保证宿主系统和虚拟机都流畅运行。你可以在<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>的“设置”-&gt;“系统”里随时调整。</li>
+<li><strong>软件源</strong>：为了获得更快的软件下载速度，可以将<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu<span class="heti-spacing"> </span></span>的软件源替换为国内镜像，如清华源或阿里云源。编辑 <code class="language-text highlight">/etc/apt/sources.list</code> 文件进行替换。</li>
+</ul>
+<h3 id="常见问题排查">常见问题排查<a class="headerlink" href="#常见问题排查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li><strong><span>Rosetta<span class="heti-spacing"> </span></span>挂载失败</strong>：检查<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>虚拟机设置中“启用<span><span class="heti-spacing"> </span>Rosetta</span>”是否勾选。确认 <code class="language-text highlight">/etc/fstab</code> 条目正确，且 <code class="language-text highlight">/media/rosetta</code> 目录存在。</li>
+<li><strong><span>x86<span class="heti-spacing"> </span></span>程序无法执行</strong>：运行 <code class="language-scdoc highlight">cat /proc/sys/fs/binfmt_misc/rosetta</code> 确认<span class="heti-skip"><span class="heti-spacing"> </span>Rosetta<span class="heti-spacing"> </span></span>已启用且状态正常。检查程序是否真的是<span class="heti-skip"><span class="heti-spacing"> </span>x86_64<span class="heti-spacing"> </span></span>架构。尝试安装必要的<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>兼容库（如<span><span class="heti-spacing"> </span>libc6:amd64</span>，但需先 <code class="language-text highlight">sudo dpkg --add-architecture amd64</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li><strong>网络不通</strong>：确保<span class="heti-skip"><span class="heti-spacing"> </span>UTM<span class="heti-spacing"> </span></span>网络设置是“共享网络”。在虚拟机内检查 <code class="language-text highlight">/etc/netplan</code> 的配置文件，<span>UTM<span class="heti-spacing"> </span></span>新版可能会改变网络设备名（如从<span class="heti-skip"><span class="heti-spacing"> </span>enp0s9<span class="heti-spacing"> </span></span>变为<span><span class="heti-spacing"> </span>enp0s1</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果网络设备名不匹配会导致启动后无网络，需要手动修改<span class="heti-skip"><span class="heti-spacing"> </span>netplan<span class="heti-spacing"> </span></span>配置。</li>
+</ul>
+<h3 id="替代方案浅析lima">替代方案浅析：Lima<a class="headerlink" href="#替代方案浅析lima" title="Permanent link">¶</a></h3>
+<p>在搜索资料时，你肯定会看到<span class="heti-skip"><span class="heti-spacing"> </span>Lima<span class="heti-spacing"> </span></span>这个方案。它更像一个轻量级的虚拟机管理器，通过命令行快速创建和管理基于<span class="heti-skip"><span class="heti-spacing"> </span>Apple<span class="heti-spacing"> </span></span>虚拟化框架的<span><span class="heti-spacing"> </span>Linux VM</span>，并且原生支持<span><span class="heti-spacing"> </span>Rosetta</span>。对于喜欢命令行、追求极致简洁和自动化的开发者，<span>Lima<span class="heti-spacing"> </span></span>是非常好的选择。它用一条命令就能启动一个预配置好的<span><span class="heti-spacing"> </span>Debian/Ubuntu VM</span>：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>brew<span class="w"> </span>install<span class="w"> </span>lima
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>limactl<span class="w"> </span>start<span class="w"> </span>template://debian<span class="w"> </span>--rosetta<span class="w"> </span>--vm-type<span class="o">=</span>vz
+</code></pre></div></td></tr></table></div>
+<p>但对于大多数刚接触<span class="heti-skip"><span class="heti-spacing"> </span>Mac<span class="heti-spacing"> </span></span>虚拟化的用户，<span>UTM<span class="heti-spacing"> </span></span>直观的图形界面和详细的设置选项，更能降低学习和排错的门槛。</p>
+<hr/>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>从我的实际体验来看，这套<span class="heti-skip"><span class="heti-spacing"> </span>UTM+Rosetta<span class="heti-spacing"> </span></span>的方案稳定性相当不错。日常的开发编译、运行一些<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>的测试工具链都没有问题。性能损耗感知很小，尤其是相比纯模拟的方案，简直是天壤之别。最大的好处是，它把复杂的技术封装成了简单的操作，让你能快速得到一个“全能”的<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>环境，把精力重新放回开发本身，而不是没完没了地折腾环境。</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../js/mathjax.js"></script>
+<script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
