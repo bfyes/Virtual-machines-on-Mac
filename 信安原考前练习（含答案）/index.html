@@ -1244,25 +1244,25 @@ P\to(Q\to R) &amp;\iff \neg P\lor(\neg Q\lor R) \\
 <details class="info">
 <summary>点击查看答案</summary>
 <p><strong>数学归纳法</strong>。</p>
-<p><strong>基础</strong> <span class="arithmatex">\(n=2\)</span>：
-$<span class="arithmatex">\((1+\frac{1}{3})=\frac{4}{3},\qquad \frac{\sqrt{5}}{2}\approx1.118,\qquad \frac{4}{3}&gt;1.118 \;\Rightarrow\; \text{成立。}\)</span>$</p>
-<p><strong>归纳假设</strong>：设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=k\)</span><span class="heti-spacing"> </span></span>时成立，即
-$<span class="arithmatex">\(\left(1+\frac{1}{3}\right)\cdots\left(1+\frac{1}{2k-1}\right)\ge\frac{\sqrt{2k+1}}{2}\)</span>$</p>
-<p><strong>归纳递推</strong> <span class="arithmatex">\(n=k+1\)</span>：
-$$
-\begin{aligned}
-\text{左边} &amp;= \left[\left(1+\frac{1}{3}\right)\cdots\left(1+\frac{1}{2k-1}\right)\right]\cdot\left(1+\frac{1}{2k+1}\right) \
-&amp;\ge \frac{\sqrt{2k+1}}{2}\cdot\frac{2k+2}{2k+1} \qquad\text{（归纳假设）}\
-&amp;= \frac{\sqrt{2k+1}}{2}\cdot\frac{2(k+1)}{2k+1} \
+<p><strong>基础</strong> <span class="arithmatex">\(n=2\)</span>：</p>
+<div class="arithmatex">\[(1+\frac{1}{3})=\frac{4}{3},\qquad \frac{\sqrt{5}}{2}\approx1.118,\qquad \frac{4}{3}&gt;1.118 \;\Rightarrow\; \text{成立。}\]</div>
+<p><strong>归纳假设</strong>：设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=k\)</span><span class="heti-spacing"> </span></span>时成立，即</p>
+<div class="arithmatex">\[\left(1+\frac{1}{3}\right)\cdots\left(1+\frac{1}{2k-1}\right)\ge\frac{\sqrt{2k+1}}{2}\]</div>
+<p><strong>归纳递推</strong> <span class="arithmatex">\(n=k+1\)</span>：</p>
+<div class="arithmatex">\[\begin{align*}
+\text{左边} &amp;= \left[\left(1+\frac{1}{3}\right)\cdots\left(1+\frac{1}{2k-1}\right)\right]\cdot\left(1+\frac{1}{2k+1}\right) \\
+&amp;\ge \frac{\sqrt{2k+1}}{2}\cdot\frac{2k+2}{2k+1} \qquad\text{（归纳假设）}\\
+&amp;= \frac{\sqrt{2k+1}}{2}\cdot\frac{2(k+1)}{2k+1} \\
 &amp;= \frac{k+1}{2k+1}\sqrt{2k+1}
-\end{aligned}
-$$</p>
-<p>只需证<span><span class="heti-spacing"> </span><span class="arithmatex">\(\displaystyle\frac{k+1}{2k+1}\sqrt{2k+1}\ge\frac{\sqrt{2k+3}}{2}\)</span></span>，两边平方等价于：
-$<span class="arithmatex">\(\frac{(k+1)^2}{(2k+1)^2}\cdot(2k+1)\ge\frac{2k+3}{4}\)</span>$
-$<span class="arithmatex">\(\frac{(k+1)^2}{2k+1}\ge\frac{2k+3}{4}\)</span>$
-$<span class="arithmatex">\(4(k^2+2k+1)\ge(2k+1)(2k+3)\)</span>$
-$<span class="arithmatex">\(4k^2+8k+4\ge4k^2+8k+3\)</span>$
-$<span class="arithmatex">\(4\ge3\qquad\checkmark\)</span>$</p>
+\end{align*}\]</div>
+<p>只需证<span><span class="heti-spacing"> </span><span class="arithmatex">\(\displaystyle\frac{k+1}{2k+1}\sqrt{2k+1}\ge\frac{\sqrt{2k+3}}{2}\)</span></span>，两边平方等价于：</p>
+<div class="arithmatex">\[\begin{align*}
+\frac{(k+1)^2}{(2k+1)^2}\cdot(2k+1) &amp;\ge \frac{2k+3}{4} \\
+\frac{(k+1)^2}{2k+1} &amp;\ge \frac{2k+3}{4} \\
+4(k^2+2k+1) &amp;\ge (2k+1)(2k+3) \\
+4k^2+8k+4 &amp;\ge 4k^2+8k+3 \\
+4 &amp;\ge 3 \qquad\checkmark
+\end{align*}\]</div>
 <p>故<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=k+1\)</span><span class="heti-spacing"> </span></span>时也成立。由数学归纳法，原不等式对任意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n&gt;1\)</span><span class="heti-spacing"> </span></span>成立。</p>
 </details>
 </div>
