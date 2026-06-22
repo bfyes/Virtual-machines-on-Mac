@@ -1094,10 +1094,13 @@ P\to(Q\to R) &amp;\iff \neg P\lor(\neg Q\lor R) \\
 <p><span>(A) <span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>有最大元<span><span class="heti-spacing"> </span><span class="arithmatex">\(6\)</span></span>，无最小元</p>
 <p><span>(B) <span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>有上确界，无下确界</p>
 <p><span>(C) <span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>无最大元，有极大元<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(4\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(6\)</span></span></p>
-<p><span>(D) <span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>的上确界不存在</p>
+<p><span>(D) <span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>的上确界是<span><span class="heti-spacing"> </span><span class="arithmatex">\(6\)</span></span></p>
 <details class="info">
 <summary>点击查看答案</summary>
 <p><strong>C（<span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>无最大元，有极大元<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(4\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(6\)</span></span>）</strong>。在整除关系下：<span class="arithmatex">\(2\mid4\)</span>，<span class="arithmatex">\(2\mid6\)</span>，但<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(4\nmid6\)</span><span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span><span class="arithmatex">\(6\nmid4\)</span></span>，故<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(4\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(6\)</span><span class="heti-spacing"> </span></span>不可比较，无最大元。<span><span class="arithmatex">\(2\)</span><span class="heti-spacing"> </span></span>是极小元（整除<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(4\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(6\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>✗ <span>(A) <span class="arithmatex">\(2\)</span><span class="heti-spacing"> </span></span>是最小元（整除<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(4\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(6\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，无最大元。</p>
+<p>✗ <span>(B)<span class="heti-spacing"> </span></span>下确界为<span><span class="heti-spacing"> </span><span class="arithmatex">\(2\)</span></span>（<span class="arithmatex">\(\gcd(2,4,6)=2\)</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；上界需是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\operatorname{lcm}(2,4,6)=12\)</span><span class="heti-spacing"> </span></span>的倍数，<span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>中没有，故无上确界。</p>
+<p>✗ <span>(D) <span class="arithmatex">\(6\)</span><span class="heti-spacing"> </span></span>不是上界（<span class="arithmatex">\(4\nmid6\)</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，上确界不存在。</p>
 </details>
 </div>
 <div class="admonition question">
@@ -1604,15 +1607,15 @@ P\to(Q\to R) &amp;\iff \neg P\lor(\neg Q\lor R) \\
 </details>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><strong>(1)</strong>
-$$
+<p><strong>(1)</strong></p>
+<div class="arithmatex">\[
 \begin{aligned}
-P(\text{戴口罩}) &amp;= P(\text{有雾})\cdot P(\text{戴口罩}\mid\text{有雾}) + P(\text{无雾})\cdot P(\text{戴口罩}\mid\text{无雾}) \
+P(\text{戴口罩}) &amp;= P(\text{有雾})\cdot P(\text{戴口罩}\mid\text{有雾}) + P(\text{无雾})\cdot P(\text{戴口罩}\mid\text{无雾}) \\
 &amp;= 0.4\times 0.2 + 0.6\times 0.01 = 0.08 + 0.006 = 0.086
 \end{aligned}
-$$</p>
-<p><strong>(2)</strong>
-$<span class="arithmatex">\(P(\text{至少一人戴}) = 1 - (1-0.086)^3 = 1 - 0.914^3 \approx 1 - 0.7636 = 0.2364\)</span>$</p>
+\]</div>
+<p><strong>(2)</strong></p>
+<div class="arithmatex">\[P(\text{至少一人戴}) = 1 - (1-0.086)^3 = 1 - 0.914^3 \approx 1 - 0.7636 = 0.2364\]</div>
 </details>
 </div>
 <div class="admonition question">
@@ -1628,10 +1631,10 @@ $<span class="arithmatex">\(P(\text{至少一人戴}) = 1 - (1-0.086)^3 = 1 - 0.
 </details>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><strong>(1)</strong>
-$<span class="arithmatex">\(P(\text{戴口罩}) = 0.2\times 0.3 + 0.8\times 0.05 = 0.06 + 0.04 = 0.10\)</span>$</p>
-<p><strong>(2)</strong>
-$<span class="arithmatex">\(P(\text{至少一人戴}) = 1 - (1-0.10)^3 = 1 - 0.9^3 = 1 - 0.729 = 0.271\)</span>$</p>
+<p><strong>(1)</strong></p>
+<div class="arithmatex">\[P(\text{戴口罩}) = 0.2\times 0.3 + 0.8\times 0.05 = 0.06 + 0.04 = 0.10\]</div>
+<p><strong>(2)</strong></p>
+<div class="arithmatex">\[P(\text{至少一人戴}) = 1 - (1-0.10)^3 = 1 - 0.9^3 = 1 - 0.729 = 0.271\]</div>
 </details>
 </div>
 <hr/>
@@ -1666,8 +1669,8 @@ $<span class="arithmatex">\(P(\text{至少一人戴}) = 1 - (1-0.10)^3 = 1 - 0.9
 <details class="info">
 <summary>点击查看答案</summary>
 <p><span class="arithmatex">\(X\sim\text{泊松分布}(\lambda=10)\)</span>（每<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>分钟<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
-<p><strong>(1)</strong>
-$<span class="arithmatex">\(P(X\ge 1) = 1 - P(X=0) = 1 - e^{-10} \approx 1 - 4.54\times10^{-5} \approx 0.99995\)</span>$</p>
+<p><strong>(1)</strong></p>
+<div class="arithmatex">\[P(X\ge 1) = 1 - P(X=0) = 1 - e^{-10} \approx 1 - 4.54\times10^{-5} \approx 0.99995\]</div>
 <p><strong>(2)</strong> <span>8<span class="heti-spacing"> </span></span>分钟参数：<span class="arithmatex">\(\lambda_8 = 10\times\frac{8}{20}=4\)</span>。</p>
 <div class="arithmatex">\[P(X_8=2) = \dfrac{e^{-4}\cdot 4^2}{2!} = e^{-4}\cdot 8 \approx 0.1465\]</div>
 </details>
@@ -1687,10 +1690,10 @@ $<span class="arithmatex">\(P(X\ge 1) = 1 - P(X=0) = 1 - e^{-10} \approx 1 - 4.5
 </details>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><strong>(1)</strong>
-$<span class="arithmatex">\(E(W) = \dfrac{4\times5}{4} = 5,\qquad \text{Var}(W) = \dfrac{4\times 20}{16} = 5\)</span>$</p>
-<p><strong>(2)</strong> 切比雪夫不等式：
-$<span class="arithmatex">\(P(W\ge 20) = P(W-5\ge 15) \le P(|W-5|\ge 15) \le \dfrac{5}{15^2} = \dfrac{5}{225} \approx 0.0222\)</span>$</p>
+<p><strong>(1)</strong></p>
+<div class="arithmatex">\[E(W) = \dfrac{4\times5}{4} = 5,\qquad \text{Var}(W) = \dfrac{4\times 20}{16} = 5\]</div>
+<p><strong>(2)</strong> 切比雪夫不等式：</p>
+<div class="arithmatex">\[P(W\ge 20) = P(W-5\ge 15) \le P(|W-5|\ge 15) \le \dfrac{5}{15^2} = \dfrac{5}{225} \approx 0.0222\]</div>
 <p><strong>(3)</strong> 中心极限定理：
 <span class="arithmatex">\(Z = \dfrac{20-5}{\sqrt{5}} = \dfrac{15}{\sqrt{5}} \approx 6.708\)</span></p>
 <div class="arithmatex">\[P(W\ge 20) \approx 1 - \Phi(6.708) \approx 0 \quad \text{（极其小）}\]</div>
@@ -1874,12 +1877,12 @@ $<span class="arithmatex">\(P(W\ge 20) = P(W-5\ge 15) \le P(|W-5|\ge 15) \le \df
 </details>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><strong>(1)</strong> 由归一化条件：
-$<span class="arithmatex">\(\int_0^1 k(1-x)\mathrm{d}x + \int_1^2 \frac{1}{2}x\,\mathrm{d}x = k\cdot\frac{1}{2} + \frac{1}{4}(2^2-1^2) = \frac{k}{2} + \frac{3}{4} = 1 \;\Rightarrow\; k = \frac{1}{2}\)</span>$</p>
+<p><strong>(1)</strong> 由归一化条件：</p>
+<div class="arithmatex">\[\int_0^1 k(1-x)\mathrm{d}x + \int_1^2 \frac{1}{2}x\,\mathrm{d}x = k\cdot\frac{1}{2} + \frac{1}{4}(2^2-1^2) = \frac{k}{2} + \frac{3}{4} = 1 \;\Rightarrow\; k = \frac{1}{2}\]</div>
 <p><strong>(2)</strong> 累积分布函数：</p>
 <div class="arithmatex">\[F_X(x)=\begin{cases}0,&amp;x\le 0\\[4pt]\displaystyle\int_0^x\frac{1}{2}(1-t)\mathrm{d}t=\frac{x}{2}-\frac{x^2}{4},&amp;0&lt;x&lt;1\\[8pt]\dfrac{1}{4}+\displaystyle\int_1^x\frac{t}{2}\mathrm{d}t=\dfrac{x^2}{4},&amp;1\le x\le 2\\[8pt]1,&amp;x&gt;2\end{cases}\]</div>
-<p><strong>(3)</strong>
-$<span class="arithmatex">\(P[X\ge 1.5] = 1 - F_X(1.5) = 1 - \dfrac{2.25}{4} = 1 - 0.5625 = 0.4375\)</span>$</p>
+<p><strong>(3)</strong></p>
+<div class="arithmatex">\[P[X\ge 1.5] = 1 - F_X(1.5) = 1 - \dfrac{2.25}{4} = 1 - 0.5625 = 0.4375\]</div>
 </details>
 </div>
 <div class="admonition question">
@@ -1898,12 +1901,12 @@ $<span class="arithmatex">\(P[X\ge 1.5] = 1 - F_X(1.5) = 1 - \dfrac{2.25}{4} = 1
 </details>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><strong>(1)</strong> 由归一化条件：
-$<span class="arithmatex">\(\int_0^2 c(4-x^2)\mathrm{d}x = c\left[4x-\frac{x^3}{3}\right]_0^2 = c(8-\frac{8}{3}) = c\cdot\frac{16}{3} = 1 \;\Rightarrow\; c = \dfrac{3}{16}\)</span>$</p>
+<p><strong>(1)</strong> 由归一化条件：</p>
+<div class="arithmatex">\[\int_0^2 c(4-x^2)\mathrm{d}x = c\left[4x-\frac{x^3}{3}\right]_0^2 = c(8-\frac{8}{3}) = c\cdot\frac{16}{3} = 1 \;\Rightarrow\; c = \dfrac{3}{16}\]</div>
 <p><strong>(2)</strong> 累积分布函数：</p>
 <div class="arithmatex">\[F_X(x)=\begin{cases}0,&amp;x\le 0\\[4pt]\displaystyle\int_0^x\frac{3}{16}(4-t^2)\mathrm{d}t=\frac{3}{16}\Bigl(4x-\frac{x^3}{3}\Bigr),&amp;0&lt;x&lt;2\\[8pt]1,&amp;x\ge 2\end{cases}\]</div>
-<p><strong>(3)</strong>
-$<span class="arithmatex">\(P[-1&lt;X&lt;1.5] = F_X(1.5) - F_X(0) = \dfrac{3}{16}\Bigl(4\cdot1.5-\dfrac{3.375}{3}\Bigr) = \dfrac{3}{16}(6-1.125) = \dfrac{3}{16}\cdot4.875 \approx 0.9141\)</span>$</p>
+<p><strong>(3)</strong></p>
+<div class="arithmatex">\[P[-1&lt;X&lt;1.5] = F_X(1.5) - F_X(0) = \dfrac{3}{16}\Bigl(4\cdot1.5-\dfrac{3.375}{3}\Bigr) = \dfrac{3}{16}(6-1.125) = \dfrac{3}{16}\cdot4.875 \approx 0.9141\]</div>
 </details>
 </div>
 <div class="admonition question">
