@@ -1244,8 +1244,26 @@ P\to(Q\to R) &amp;\iff \neg P\lor(\neg Q\lor R) \\
 <details class="info">
 <summary>点击查看答案</summary>
 <p><strong>数学归纳法</strong>。</p>
-<p><span class="arithmatex">\(n=2\)</span>：<span class="arithmatex">\((1+\frac{1}{3})=\frac{4}{3}\)</span>，<span class="arithmatex">\(\frac{\sqrt{5}}{2}\approx1.118\)</span>，<span class="arithmatex">\(\frac{4}{3}\approx1.333&gt;1.118\)</span>，成立。</p>
-<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=k\)</span><span class="heti-spacing"> </span></span>成立。<span><span class="arithmatex">\(n=k+1\)</span><span class="heti-spacing"> </span></span>时左边多乘<span><span class="heti-spacing"> </span><span class="arithmatex">\((1+\frac{1}{2k+1})\)</span></span>。利用归纳假设可证。</p>
+<p><strong>基础</strong> <span class="arithmatex">\(n=2\)</span>：
+$<span class="arithmatex">\((1+\frac{1}{3})=\frac{4}{3},\qquad \frac{\sqrt{5}}{2}\approx1.118,\qquad \frac{4}{3}&gt;1.118 \;\Rightarrow\; \text{成立。}\)</span>$</p>
+<p><strong>归纳假设</strong>：设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=k\)</span><span class="heti-spacing"> </span></span>时成立，即
+$<span class="arithmatex">\(\left(1+\frac{1}{3}\right)\cdots\left(1+\frac{1}{2k-1}\right)\ge\frac{\sqrt{2k+1}}{2}\)</span>$</p>
+<p><strong>归纳递推</strong> <span class="arithmatex">\(n=k+1\)</span>：
+$$
+\begin{aligned}
+\text{左边} &amp;= \left[\left(1+\frac{1}{3}\right)\cdots\left(1+\frac{1}{2k-1}\right)\right]\cdot\left(1+\frac{1}{2k+1}\right) \
+&amp;\ge \frac{\sqrt{2k+1}}{2}\cdot\frac{2k+2}{2k+1} \qquad\text{（归纳假设）}\
+&amp;= \frac{\sqrt{2k+1}}{2}\cdot\frac{2(k+1)}{2k+1} \
+&amp;= \frac{k+1}{2k+1}\sqrt{2k+1}
+\end{aligned}
+$$</p>
+<p>只需证<span><span class="heti-spacing"> </span><span class="arithmatex">\(\displaystyle\frac{k+1}{2k+1}\sqrt{2k+1}\ge\frac{\sqrt{2k+3}}{2}\)</span></span>，两边平方等价于：
+$<span class="arithmatex">\(\frac{(k+1)^2}{(2k+1)^2}\cdot(2k+1)\ge\frac{2k+3}{4}\)</span>$
+$<span class="arithmatex">\(\frac{(k+1)^2}{2k+1}\ge\frac{2k+3}{4}\)</span>$
+$<span class="arithmatex">\(4(k^2+2k+1)\ge(2k+1)(2k+3)\)</span>$
+$<span class="arithmatex">\(4k^2+8k+4\ge4k^2+8k+3\)</span>$
+$<span class="arithmatex">\(4\ge3\qquad\checkmark\)</span>$</p>
+<p>故<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=k+1\)</span><span class="heti-spacing"> </span></span>时也成立。由数学归纳法，原不等式对任意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n&gt;1\)</span><span class="heti-spacing"> </span></span>成立。</p>
 </details>
 </div>
 <hr/>
@@ -1451,8 +1469,44 @@ P\to(Q\to R) &amp;\iff \neg P\lor(\neg Q\lor R) \\
 <p>证明：任意正整数<span><span class="heti-spacing"> </span><span class="arithmatex">\(n\in \mathbb{N}^*\)</span></span>，<span><span class="arithmatex">\(n^5-n\)</span><span class="heti-spacing"> </span></span>都能被<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(5\)</span><span class="heti-spacing"> </span></span>整除。</p>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><span class="arithmatex">\(n^5-n=n(n^4-1)=n(n^2-1)(n^2+1)=n(n-1)(n+1)(n^2+1)\)</span>。
-连续三个整数中必有 5 的倍数，或利用费马小定理 <span class="arithmatex">\(n^5\equiv n\pmod{5}\)</span> 直接得证。</p>
+<p>考虑模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(5\)</span><span class="heti-spacing"> </span></span>的同余类：<span class="arithmatex">\(\mathbb{Z}_5=\{[0],[1],[2],[3],[4]\}\)</span>，任意正整数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>必属于其中一类。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(n\bmod 5\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(n^5\bmod 5\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(n^5-n\bmod 5\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\([0]\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0^5=0\equiv0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0-0\equiv0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\([1]\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1^5=1\equiv1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1-1\equiv0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\([2]\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2^5=32\equiv2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2-2\equiv0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\([3]\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3^5=243\equiv3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3-3\equiv0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\([4]\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\equiv-1,\;(-1)^5=-1\equiv4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4-4\equiv0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>五种情形均有<span><span class="heti-spacing"> </span><span class="arithmatex">\(n^5\equiv n\pmod{5}\)</span></span>，故<span><span class="heti-spacing"> </span><span class="arithmatex">\(5\mid(n^5-n)\)</span></span>。<span class="arithmatex">\(\square\)</span></p>
 </details>
 </div>
 <hr/>
