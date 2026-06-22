@@ -764,7 +764,7 @@
 </blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><span>AI<span class="heti-spacing"> </span></span>补全与推测内容已标注<code class="language-text highlight">[猜测]</code><span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>老师给出的模拟题标注为<code class="language-text highlight">[模拟]</code><span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>答案尚未人工验证<span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>仅供参考<span><span class="heti-spacing"> </span>.</span></p>
+<p><span>AI<span class="heti-spacing"> </span></span>补全与推测内容已标注<code class="language-text highlight">[猜测]</code><span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>老师给出的模拟题标注为<code class="language-text highlight">[模拟]</code><span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>答案尚未人工验证<span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>仅供参考<span class="heti-skip"><span class="heti-spacing"> </span>.<span class="heti-spacing"> </span></span>该参考资料质量尚未得到验证<span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>请谨慎使用<span><span class="heti-spacing"> </span>.</span></p>
 </div>
 <hr/>
 <h2 id="离散数学">离散数学<a class="headerlink" href="#离散数学" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
@@ -805,6 +805,14 @@
 <summary>点击查看答案</summary>
 <p><strong>D（既非单射也非满射）</strong>。<span><span class="arithmatex">\(f(x)=x^2\)</span><span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{Z}\)</span><span class="heti-spacing"> </span></span>上：<span><span class="arithmatex">\(f(1)=f(-1)=1\)</span><span class="heti-spacing"> </span></span>非单射；负数不在值域中，非满射。</p>
 </details>
+<details class="tip">
+<summary>单射<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>满射<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>双射</summary>
+<ul>
+<li><strong>单射</strong>：<span class="arithmatex">\(f(a)=f(b)\Rightarrow a=b\)</span>（不同输入不同输出）</li>
+<li><strong>满射</strong>：<span class="arithmatex">\(\forall y\in Y,\exists x\in X,\ f(x)=y\)</span>（值域<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>陪域）</li>
+<li><strong>双射</strong>：既单又满，可逆。</li>
+</ul>
+</details>
 </div>
 <div class="admonition question">
 <p class="admonition-title"><span>4. [<span class="heti-spacing"> </span></span>猜测<span><span class="heti-spacing"> </span>]</span></p>
@@ -841,6 +849,13 @@
 <summary>点击查看答案</summary>
 <p><strong>A（所有顶点的度数均为偶数）</strong>。欧拉图的充要条件：连通且每个顶点度数为偶数。</p>
 </details>
+<details class="tip">
+<summary>欧拉图<span class="heti-skip"><span class="heti-spacing"> </span>vs<span class="heti-spacing"> </span></span>欧拉通路</summary>
+<ul>
+<li><strong>欧拉通路</strong>：经过每条边恰好一次的<strong>路径</strong>（不要求回到起点）→ 充要：连通<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>恰有<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个奇度顶点</li>
+<li><strong>欧拉图（欧拉回路）</strong>：经过每条边恰好一次的<strong>回路</strong>（回到起点）→ 充要：连通<span class="heti-skip"><span class="heti-spacing"> </span>+ 0<span class="heti-spacing"> </span></span>个奇度顶点</li>
+</ul>
+</details>
 </div>
 <div class="admonition question">
 <p class="admonition-title"><span>7. [<span class="heti-spacing"> </span></span>猜测<span><span class="heti-spacing"> </span>]</span></p>
@@ -867,6 +882,15 @@
 <summary>点击查看答案</summary>
 <p><strong>ABC</strong>。<span><span class="arithmatex">\(\mathbb{Z},\mathbb{Q}\)</span><span class="heti-spacing"> </span></span>对加法构成群；偶数集也是加法子群。<span><span class="arithmatex">\(\mathbb{N}\)</span><span class="heti-spacing"> </span></span>无负元（逆元<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 </details>
+<details class="tip">
+<summary>群的四条公理</summary>
+<ol>
+<li><strong>封闭性</strong>：<span class="arithmatex">\(\forall a,b\in G,\ a*b\in G\)</span></li>
+<li><strong>结合律</strong>：<span class="arithmatex">\(\forall a,b,c\in G,\ (a*b)*c=a*(b*c)\)</span></li>
+<li><strong>单位元</strong>：<span class="arithmatex">\(\exists e\in G,\forall a\in G,\ e*a=a*e=a\)</span></li>
+<li><strong>逆元</strong>：<span class="arithmatex">\(\forall a\in G,\exists a^{-1}\in G,\ a*a^{-1}=a^{-1}*a=e\)</span></li>
+</ol>
+</details>
 </div>
 <div class="admonition question">
 <p class="admonition-title"><span>2. [<span class="heti-spacing"> </span></span>猜测<span><span class="heti-spacing"> </span>]</span></p>
@@ -877,7 +901,7 @@
 <p><span>(D) <span class="arithmatex">\(A\in\mathcal{P}(A)\)</span><span class="heti-spacing"> </span></span>恒成立</p>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><strong>ABC</strong>。<span>(A)<span class="heti-spacing"> </span></span>空集是任何集合的子集；<span>(B)<span class="heti-spacing"> </span></span>幂集单调性；<span>(C)<span class="heti-spacing"> </span></span>幂集保交；<span>(D) <span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{P}(A)\)</span><span class="heti-spacing"> </span></span>的子集而非元素，错误。</p>
+<p><strong>ABC</strong>。<span>(A)<span class="heti-spacing"> </span></span>空集是任何集合的子集；<span>(B)<span class="heti-spacing"> </span></span>幂集单调性；<span>(C)<span class="heti-spacing"> </span></span>幂集保交<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>不保并<span><span class="heti-spacing"> </span>)</span>；<span>(D) <span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{P}(A)\)</span><span class="heti-spacing"> </span></span>的子集而非元素，错误。</p>
 </details>
 </div>
 <div class="admonition question">
@@ -902,6 +926,16 @@
 <details class="info">
 <summary>点击查看答案</summary>
 <p><strong>ABCD</strong>。均为关系性质的等价刻画。</p>
+</details>
+<details class="tip">
+<summary>关系四性质速记</summary>
+<ul>
+<li><strong>自反</strong>：<span class="arithmatex">\(\forall x,\ xRx\)</span>（对角线全在）</li>
+<li><strong>反自反</strong>：<span class="arithmatex">\(\forall x,\ \neg(xRx)\)</span>（对角线全不在）</li>
+<li><strong>对称</strong>：<span class="arithmatex">\(xRy\Rightarrow yRx\)</span>（矩阵对称）</li>
+<li><strong>反对称</strong>：<span class="arithmatex">\(xRy\land yRx\Rightarrow x=y\)</span>（矩阵非对角线无对称对）</li>
+<li><strong>传递</strong>：<span class="arithmatex">\(xRy\land yRz\Rightarrow xRz\)</span></li>
+</ul>
 </details>
 </div>
 <div class="admonition question">
@@ -993,15 +1027,13 @@ P\to(Q\to R) &amp;\iff \neg P\lor(\neg Q\lor R) \\
 <p><strong>数学归纳法</strong>。</p>
 <p><span class="arithmatex">\(n=0\)</span>：<span class="arithmatex">\(4^1+3^2=4+9=13\)</span>，成立。</p>
 <p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=k\)</span><span class="heti-spacing"> </span></span>成立：<span class="arithmatex">\(4^{2k+1}+3^{k+2}=13m\)</span>。</p>
-<p><span class="arithmatex">\(n=k+1\)</span>：
-$$
-\begin{aligned}
-4^{2k+3}+3^{k+3} &amp;= 16\cdot4^{2k+1}+3\cdot3^{k+2} \
-&amp;= 13\cdot4^{2k+1}+3(4^{2k+1}+3^{k+2}) \
+<p><span class="arithmatex">\(n=k+1\)</span>：</p>
+<div class="arithmatex">\[\begin{align*}
+4^{2k+3}+3^{k+3} &amp;= 16\cdot4^{2k+1}+3\cdot3^{k+2} \\
+&amp;= 13\cdot4^{2k+1}+3(4^{2k+1}+3^{k+2}) \\
 &amp;= 13(4^{2k+1}+3m)
-\end{aligned}
-$$
-能被 13 整除。得证。</p>
+\end{align*}\]</div>
+<p>能被<span class="heti-skip"><span class="heti-spacing"> </span>13<span class="heti-spacing"> </span></span>整除。得证。</p>
 </details>
 </div>
 <hr/>
@@ -1078,6 +1110,14 @@ $$
 <details class="info">
 <summary>点击查看答案</summary>
 <p><strong>C（<span class="arithmatex">\(\exists x(A(x)\land B(x))\iff\exists x A(x)\land\exists x B(x)\)</span>）</strong>。方向<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\to\)</span><span class="heti-spacing"> </span></span>成立，但<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\gets\)</span><span class="heti-spacing"> </span></span>不成立（两个存在量词可能指不同<span><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</details>
+<details class="tip">
+<summary>量词转换口诀</summary>
+<ul>
+<li><span class="arithmatex">\(\neg\forall x A \iff \exists x\neg A\)</span>，<span class="arithmatex">\(\neg\exists x A \iff \forall x\neg A\)</span></li>
+<li><span><span class="arithmatex">\(\forall\)</span><span class="heti-spacing"> </span></span>对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\land\)</span><span class="heti-spacing"> </span></span>可分配；<span><span class="arithmatex">\(\exists\)</span><span class="heti-spacing"> </span></span>对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\lor\)</span><span class="heti-spacing"> </span></span>可分配</li>
+<li><span><span class="arithmatex">\(\forall\)</span><span class="heti-spacing"> </span></span>对<span><span class="heti-spacing"> </span><span class="arithmatex">\(\lor\)</span></span>、<span><span class="arithmatex">\(\exists\)</span><span class="heti-spacing"> </span></span>对<span><span class="heti-spacing"> </span><span class="arithmatex">\(\land\)</span></span> <strong>不可</strong>分配（不同<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>可能不同）</li>
+</ul>
 </details>
 </div>
 <hr/>
@@ -1485,6 +1525,16 @@ $$
 <blockquote>
 <p>真题确认为“场景匹配分布模型”题型，但具体场景为推测补全。</p>
 </blockquote>
+</details>
+<details class="tip">
+<summary>离散分布速记</summary>
+<ul>
+<li><strong>Bernoulli</strong><span>: 1<span class="heti-spacing"> </span></span>次试验，<span class="arithmatex">\(P(X=1)=p\)</span></li>
+<li><strong>Binomial</strong><span>: <span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>次试验成功次数，<span class="arithmatex">\(X\sim B(n,p)\)</span>，<span class="arithmatex">\(E=np\)</span></li>
+<li><strong>Poisson</strong><span>:<span class="heti-spacing"> </span></span>单位时间事件数，<span class="arithmatex">\(X\sim P(\lambda)\)</span>，<span class="arithmatex">\(E=\lambda\)</span>（<span><span class="arithmatex">\(\lambda=np\)</span><span class="heti-spacing"> </span></span>时可近似二项）</li>
+<li><strong>Geometric</strong><span>:<span class="heti-spacing"> </span></span>直到首次成功，<span class="arithmatex">\(P(X=k)=(1-p)^{k-1}p\)</span></li>
+<li><strong>Pascal</strong><span>:<span class="heti-spacing"> </span></span>直到第<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(r\)</span><span class="heti-spacing"> </span></span>次成功，几何的推广</li>
+</ul>
 </details>
 </div>
 <div class="admonition question">
