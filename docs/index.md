@@ -11,4 +11,3 @@
 - [Vivado（含可用的Batch模式）on Apple Silicon Mac](vivado-apple-silicon.md)
 - [mac上好用的第三方记事本软件](mac上好用的第三方记事本软件.md)
 - [参考文章：利用 Rosetta 在 M 系列 Mac 上高效运行 x86 Linux 应用](rosetta-x86-linux-guide.md)
-- [《信息安全原理与数学基础》考前练习](is_math_practice.md)
