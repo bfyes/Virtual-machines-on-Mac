@@ -152,7 +152,7 @@
 
 ## 单选题
 
-!!! question "13."
+!!! question "1."
     设 AL=7Fh，执行 `add AL, 1` 后，SF 和 OF 的值分别是（）
 
     (A) SF=0, OF=0
@@ -166,7 +166,7 @@
     ??? info "点击查看答案"
         **D（SF=1, OF=1）**。7Fh+1=80h，最高位=1→SF=1；127+1=−128，正+正→负→OF=1。
 
-!!! question "14."
+!!! question "2."
     设 AL=0FFh，执行 `add AL, 1` 后，CF 和 OF 的值分别是（）
 
     (A) CF=0, OF=0
@@ -180,7 +180,7 @@
     ??? info "点击查看答案"
         **C（CF=1, OF=0）**。0FFh+1=100h，8 位溢出→CF=1。但 −1+1=0，正负相加永不溢出→OF=0。此例说明 CF 是非符号数溢出，OF 是有符号数溢出。
 
-!!! question "15."
+!!! question "3."
     `repne scasb` 扫描 "Hello\0"（6字节）结束后，要得到字符串长度 6，应对 CX 做（）
 
     (A) `inc cx`
@@ -194,7 +194,7 @@
     ??? info "点击查看答案"
         **C（not cx）**。初始 CX=0FFFFh，扫描 6 次后 CX=0FFF9h，`not cx` = 0006h = 6。这是巧妙替代减法。
 
-!!! question "16."
+!!! question "4."
     关于 `sal` 和 `shl` 的说法正确的是（）
 
     (A) `sal` 是算术左移，`shl` 是逻辑左移，行为不同
@@ -208,7 +208,7 @@
     ??? info "点击查看答案"
         **B（完全等价）**。讲义中明确：`sal` ≡ `shl`，左移时算术和逻辑行为一致。
 
-!!! question "17."
+!!! question "5."
     设 AL=0FEh（−2），执行 `sar AL, 1` 和 `shr AL, 1` 的结果分别是（）
 
     (A) 0FFh, 7Fh
@@ -222,7 +222,7 @@
     ??? info "点击查看答案"
         **A（0FFh, 7Fh）**。`sar`：高位用符号位(1)填充→11111111=0FFh=−1；`shr`：高位用 0 填充→01111111=7Fh=127。对应 C 语言 `signed char` 和 `unsigned char` 右移差异。
 
-!!! question "18."
+!!! question "6."
     关于 `lodsb` 和 `stosb`，以下说法错误的是（）
 
     (A) `lodsb` = AL←DS:[SI], SI±1（DF=0 时递增）
@@ -236,7 +236,7 @@
     ??? info "点击查看答案"
         **D**。注意：`lodsb` 从**源**取数用 DS:SI；`stosb` 存到**目标**用 ES:DI。源和目标不能混。
 
-!!! question "19."
+!!! question "7."
     `xlat` 指令的功能是（）
 
     (A) AL = DS:[BX + SI]
@@ -250,7 +250,7 @@
     ??? info "点击查看答案"
         **B（AL = DS:[BX + AL]）**。以 AL 为下标、DS:BX 为基址查表，结果放回 AL。
 
-!!! question "20."
+!!! question "8."
     近调用 `call`（near call）执行时，CPU 将什么压入堆栈？（）
 
     (A) 只压入 FLAGS
@@ -264,7 +264,7 @@
     ??? info "点击查看答案"
         **B（只压入 IP）**。总结：近调用 = 1 个 push(IP) + jmp。对应 `ret`（pop IP）。
 
-!!! question "21."
+!!! question "9."
     远调用 `call far` 执行时，CPU 的压栈顺序是（）
 
     (A) 先压入 IP，再压入 CS
@@ -278,7 +278,7 @@
     ??? info "点击查看答案"
         **B（先 CS，再 IP）**。远调用 = 2 个 push(CS,IP) + jmp。压栈顺序 CS 先、IP 后，返回时 `retf` 先 pop IP 再 pop CS。
 
-!!! question "22."
+!!! question "10."
     `int` 指令执行时，CPU 的压栈顺序是（）
 
     (A) FLAGS → CS → IP
@@ -292,7 +292,7 @@
     ??? info "点击查看答案"
         **A（FLAGS → CS → IP）**。总结：`int` = 3 个 push + jmp。顺序是 FLAGS 先、CS 次之、IP 最后。对应 `iret`（pop IP→CS→FLAGS）。
 
-!!! question "23."
+!!! question "11."
     关于 `call` / `call far` / `int` 三种调用，以下正确的是（）
 
     (A) 三者压栈内容完全一样
@@ -306,7 +306,7 @@
     ??? info "点击查看答案"
         **B**。总结：`call` = 1 push (IP)；`call far` = 2 push (CS,IP)；`int` = 3 push (FLAGS,CS,IP)。返回指令对应 `ret`、`retf`、`iret`。
 
-!!! question "24."
+!!! question "12."
     在堆栈框架 `push bp; mov bp, sp` 之后（near call + Pascal 方式），`[bp+4]` 指向（）
 
     (A) old BP
@@ -320,7 +320,7 @@
     ??? info "点击查看答案"
         **C（最后一个参数）**。说“倒背如流”：`[bp+0]`=old BP, `[bp+2]`=返回地址, `[bp+4]`=最后一个参数。用 BP+N 引用参数，BP−N 引用局部变量。
 
-!!! question "25."
+!!! question "13."
     关于 C 语言和 Pascal 语言调用约定的区别，正确的是（）
 
     (A) C：参数从左到右压栈，调用者清理
@@ -334,7 +334,7 @@
     ??? info "点击查看答案"
         **B**。C：从右到左 + 调用者清理（`add sp, n`）；Pascal：从左到右 + 被调用者清理（`ret n`）。C 从右到左是为支持 `printf` 可变参数。
 
-!!! question "26."
+!!! question "14."
     DOS 中断 `int 21h` 中，AH=9 的功能是（）
 
     (A) 显示字符，入口 DL=字符
@@ -348,7 +348,7 @@
     ??? info "点击查看答案"
         **C**。AH=1 键盘输入、AH=2 显示字符（DL）、AH=9 显示 `$` 结尾串（DS:DX）、AH=4Ch 退出。
 
-!!! question "27."
+!!! question "15."
     8086 的中断向量表位于内存何处？（）
 
     (A) 0:0 ~ 0:3FFh
@@ -362,7 +362,7 @@
     ??? info "点击查看答案"
         **A（0:0 ~ 0:3FFh）**。256 个中断向量，每个 4 字节（IP:CS），占 400h 字节。int 8h 向量在 8×4=20h 处。
 
-!!! question "28."
+!!! question "16."
     修改中断向量（hook int 8h）的正确流程是（）
 
     (A) 直接写入新地址即可
@@ -376,7 +376,7 @@
     ??? info "点击查看答案"
         **C**。int 8h 示例的完整流程：(1)保存旧向量；(2)`cli`；(3)写新向量到 0:8×4；(4)`sti`；(5)退出前恢复旧向量。`cli`/`sti` 之间操作须原子化防止竞态。
 
-!!! question "29."
+!!! question "17."
     调试中跟踪到 `call` 指令，想进入被调用函数内部应用（）
 
     (A) F7（trace into）
@@ -390,7 +390,7 @@
     ??? info "点击查看答案"
         **A（F7）**。F7=trace into（进入函数），F8=step over（跳过）。调试 `repne scasb` 等也必须用 F7 才能逐步观察，F8 一步执行完。
 
-!!! question "30."
+!!! question "18."
     关于硬件断点，正确的是（）
 
     (A) `bpm x` 在变量被读取时中断
