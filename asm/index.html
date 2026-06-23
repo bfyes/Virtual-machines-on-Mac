@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Virtual-machines-on-Mac" name="description"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>《汇编语言程序设计与调试》考前练习 - Bill</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#汇编语言程序设计与调试考前练习">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Bill" class="md-header__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Bill
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              《汇编语言程序设计与调试》考前练习
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bfyes/Virtual-machines-on-Mac" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Bill" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Bill
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bfyes/Virtual-machines-on-Mac" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../windows-xp-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Windows XP on Apple Silicon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../vivado-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Vivado on Apple Silicon (X)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mac%E4%B8%8A%E5%A5%BD%E7%94%A8%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E8%AE%B0%E4%BA%8B%E6%9C%AC%E8%BD%AF%E4%BB%B6/">
+<span class="md-ellipsis">
+    
+  
+    mac上好用的第三方记事本软件
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#判断题">
+<span class="md-ellipsis">
+      
+        判断题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#填空题">
+<span class="md-ellipsis">
+      
+        填空题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#单选题">
+<span class="md-ellipsis">
+      
+        单选题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#附录核心速查">
+<span class="md-ellipsis">
+      
+        附录：核心速查
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/bfyes/Virtual-machines-on-Mac/edit/master/docs/asm.md" rel="edit" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</a>
+<h1 id="汇编语言程序设计与调试考前练习">《汇编语言程序设计与调试》考前练习<a class="headerlink" href="#汇编语言程序设计与调试考前练习" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<details class="note">
+<summary>参考资料</summary>
+<blockquote>
+<p><strong>参考资料</strong></p>
+<ul>
+<li><strong><span>2026-06-17<span class="heti-spacing"> </span></span>第<span class="heti-skip"><span class="heti-spacing"> </span>11-13<span class="heti-spacing"> </span></span>节 课堂录音识别稿</strong></li>
+<li><code class="language-text highlight">汇编复习1.asm</code> 补充知识点</li>
+<li>课程讲义（第<span class="heti-skip"><span class="heti-spacing"> </span>2-16<span class="heti-spacing"> </span></span>周）示例程序</li>
+</ul>
+</blockquote>
+</details>
+<hr/>
+<p><span style="font-size:1.2em; color:#808080;"><strong>更新日志</strong></span></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">2026-06-23</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p>按考试形式（判断<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>单选）整理，覆盖课堂重点：标志位、<code class="language-text highlight">jl</code>(SF≠OF)、字符串指令、三种调用（call/call far/int）的<span class="heti-skip"><span class="heti-spacing"> </span>push<span class="heti-spacing"> </span></span>顺序、中断编程（<span>int 8h/<span class="heti-spacing"> </span></span>中断向量表<span class="heti-skip"><span class="heti-spacing"> </span>/hook<span class="heti-spacing"> </span></span>流程<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、堆栈框架、调试技巧等。答案标注 <code class="language-text highlight">[推测]</code>，未经人工验证。</p>
+<hr/>
+<h2 id="判断题">判断题<a class="headerlink" href="#判断题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">1.</p>
+<p><code class="language-text highlight">mov ax, 0</code> 执行后，零标志<span class="heti-skip"><span class="heti-spacing"> </span>ZF<span class="heti-spacing"> </span></span>会变为<span><span class="heti-spacing"> </span>1</span><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✗（错误）</strong>。课堂反复强调：<code class="language-text highlight">mov</code> <strong>不影响任何标志位</strong>。<span>AX<span class="heti-spacing"> </span></span>变成<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>但<span class="heti-skip"><span class="heti-spacing"> </span>ZF<span class="heti-spacing"> </span></span>不变。要让<span class="heti-skip"><span class="heti-spacing"> </span>ZF=1<span class="heti-spacing"> </span></span>必须用 <code class="language-text highlight">sub ax, ax</code> 或 <code class="language-text highlight">xor ax, ax</code>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">2.</p>
+<p><code class="language-text highlight">jl</code>（有符号小于则跳）的跳转条件是<span><span class="heti-spacing"> </span>SF</span> ≠ OF，与<span class="heti-skip"><span class="heti-spacing"> </span>ZF<span class="heti-spacing"> </span></span>的值无关<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。调试器演示：比较<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>2</span>（SF=1,OF=0<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，手动把<span class="heti-skip"><span class="heti-spacing"> </span>ZF<span class="heti-spacing"> </span></span>改成<span><span class="heti-spacing"> </span>1</span>，<code class="language-text highlight">jl</code> 箭头依然亮——<strong>只看<span class="heti-skip"><span class="heti-spacing"> </span>SF<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>OF<span class="heti-spacing"> </span></span>是否不等</strong>，无视<span><span class="heti-spacing"> </span>ZF</span>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">3.</p>
+<p>两个正数相加变成负数时<span><span class="heti-spacing"> </span>OF=1</span>，两个负数相加变成正数时<span><span class="heti-spacing"> </span>OF=1</span><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。举例：7Fh(127)+1=80h(-128)→OF=1；80h(-128)+0FFh(-1)=7Fh(+127)→OF=1。<span>OF<span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>假设操作数为<strong>有符号数</strong>设置的，非符号数的溢出看<span><span class="heti-spacing"> </span>CF</span>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">4.</p>
+<p><code class="language-text highlight">repne scasb</code> 和 <code class="language-teratermmacro highlight"><span class="k">loop</span></code> 对<span class="heti-skip"><span class="heti-spacing"> </span>CX<span class="heti-spacing"> </span></span>的处理方式相同：<span>CX=0<span class="heti-spacing"> </span></span>时都循环<span class="heti-skip"><span class="heti-spacing"> </span>10000h<span class="heti-spacing"> </span></span>次<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✗（错误）</strong>。需注意：<code class="language-text highlight">repne</code> <strong>先判断</strong> CX=0，为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>则<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>次循环；<code class="language-teratermmacro highlight"><span class="k">loop</span></code> <strong>先<span class="heti-skip"><span class="heti-spacing"> </span>dec<span class="heti-spacing"> </span></span>再判断</strong>，<span>CX=0<span class="heti-spacing"> </span></span>时循环<span class="heti-skip"><span class="heti-spacing"> </span>10000h<span class="heti-spacing"> </span></span>次。二者相反。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">5.</p>
+<p><code class="language-text highlight">cmp</code> 与 <code class="language-text highlight">sub</code> 的区别在于 <code class="language-text highlight">cmp</code> 不保存运算结果但影响标志位<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。<code class="language-text highlight">cmp ax, bx</code> 等价 <code class="language-text highlight">sub ax, bx</code> 但不写回<span><span class="heti-spacing"> </span>AX</span>。<code class="language-text highlight">cmp</code> 后跟 <code class="language-text highlight">je</code> 等于 <code class="language-text highlight">sub</code> 后跟 <code class="language-text highlight">jz</code>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">6.</p>
+<p>短跳（short jump）用<span class="heti-skip"><span class="heti-spacing"> </span>delta<span class="heti-spacing"> </span></span>编码而非绝对地址，目的是代码被复制到其他位置后仍能正确跳转<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。<code class="language-text highlight">EB 06</code> 中<span class="heti-skip"><span class="heti-spacing"> </span>06 =<span class="heti-spacing"> </span></span>目标 − 下条指令<span><span class="heti-spacing"> </span>= delta</span>。代码从<span class="heti-skip"><span class="heti-spacing"> </span>1000:2000<span class="heti-spacing"> </span></span>复制到<span class="heti-skip"><span class="heti-spacing"> </span>1000:8000<span class="heti-spacing"> </span></span>后仍跳到正确相对位置。近跳（E9）用<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>字节<span><span class="heti-spacing"> </span>delta</span>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">7.</p>
+<p><code class="language-text highlight">test ah, 1</code> 和 <code class="language-text highlight">and ah, 1</code> 的唯一区别是前者不保存结果，其余行为完全相同<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。<code class="language-text highlight">test</code> 做按位与但丢弃结果，仅影响标志位；<code class="language-text highlight">and</code> 写回目的操作数。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">8.</p>
+<p><code class="language-text highlight">neg ax</code> 等价于 <code class="language-text highlight">not ax</code> 后 <code class="language-text highlight">inc ax</code><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。<code class="language-text highlight">neg ax = (not ax) + 1</code>，结果值相同。唯一差异在<span><span class="heti-spacing"> </span>CF</span>：<code class="language-text highlight">neg</code> 对非零操作数置<span><span class="heti-spacing"> </span>CF=1</span>（内部做<span><span class="heti-spacing"> </span>0</span>−<span>AX<span class="heti-spacing"> </span></span>产生借位<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<code class="language-text highlight">inc</code> 不影响<span><span class="heti-spacing"> </span>CF</span>。</p>
+<p><strong>举例</strong>：设<span><span class="heti-spacing"> </span>AX=2</span>，初始<span><span class="heti-spacing"> </span>CF=0</span>。
+- <code class="language-text highlight">neg ax</code>：AX=0FFFEh(−2)，<strong>CF=1</strong>（2≠0，0−<span>2<span class="heti-spacing"> </span></span>有借位）
+- <code class="language-text highlight">not ax; inc ax</code>：AX=0FFFEh(−2)，<strong>CF=0</strong>（<span>inc<span class="heti-spacing"> </span></span>不改<span><span class="heti-spacing"> </span>CF</span>）</p>
+<p>二者<span class="heti-skip"><span class="heti-spacing"> </span>AX<span class="heti-spacing"> </span></span>结果相同，<span>CF<span class="heti-spacing"> </span></span>不同。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">9.</p>
+<p><code class="language-text highlight">sub</code> 指令执行后，可以直接跟 <code class="language-text highlight">js</code> 判断结果是否为负，不需要中间再写 <code class="language-text highlight">cmp</code><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。老师强调：<code class="language-text highlight">sub</code> 之后已影响标志位，马上可以判断。再写 <code class="language-text highlight">cmp</code> 是“啰嗦”“没学透”。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">10.</p>
+<p><code class="language-text highlight">cbw</code> 的典型用途是为 <code class="language-text highlight">idiv</code> 准备被除数，把<span class="heti-skip"><span class="heti-spacing"> </span>AL<span class="heti-spacing"> </span></span>符号扩展到<span><span class="heti-spacing"> </span>AX</span><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✓（正确）</strong>。<code class="language-text highlight">cbw</code><span>/<span class="heti-spacing"> </span></span><code class="language-text highlight">cwd</code><span>/<span class="heti-spacing"> </span></span><code class="language-text highlight">cdq</code>的“意图”就是为 <code class="language-text highlight">idiv</code> 服务。<code class="language-text highlight">cwd</code> 把<span class="heti-skip"><span class="heti-spacing"> </span>AX<span class="heti-spacing"> </span></span>扩到<span><span class="heti-spacing"> </span>DX:AX</span>，正是为<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>位 <code class="language-text highlight">idiv</code> 做准备。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">11.</p>
+<p>除法溢出（如除数为<span><span class="heti-spacing"> </span>0</span>）产生 <code class="language-text highlight">int 0</code> 中断，该中断插在 <code class="language-text highlight">div</code> 指令的<strong>下方</strong><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✗（错误）</strong>。注意：<code class="language-text highlight">int 0</code> 插在 <code class="language-text highlight">div</code> 指令的<strong>上方</strong>（前面<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-quarter">。</heti-adjacent>“必然是<span class="heti-skip"><span class="heti-spacing"> </span>div<span class="heti-spacing"> </span></span>的上方会插到<span><span class="heti-spacing"> </span>int 0</span>，不是在下面的”。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">12.</p>
+<p>在 <code class="language-text highlight">mov ax, [bp+2]</code> 中，缺省的段寄存器是<span><span class="heti-spacing"> </span>DS</span><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（）</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>✗（错误）</strong>。<code class="language-text highlight">[]</code> 中有<span class="heti-skip"><span class="heti-spacing"> </span>BP<span class="heti-spacing"> </span></span>时，缺省段寄存器是 <strong>SS</strong>（堆栈段<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；无<span class="heti-skip"><span class="heti-spacing"> </span>BP<span class="heti-spacing"> </span></span>只有<span class="heti-skip"><span class="heti-spacing"> </span>BX/SI/DI<span class="heti-spacing"> </span></span>时才是<span><span class="heti-spacing"> </span>DS</span>。</p>
+</details>
+</div>
+<hr/>
+<h2 id="填空题">填空题<a class="headerlink" href="#填空题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">1.</p>
+<p>十进制数<span class="heti-skip"><span class="heti-spacing"> </span>-12<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位二进制补码为<span><span class="heti-spacing"> </span>______ B</span>。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>1111 0100</strong>。12=00001100B，取反加一。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">2.</p>
+<p>逻辑地址<span class="heti-skip"><span class="heti-spacing"> </span>1234h:0058h<span class="heti-spacing"> </span></span>对应的物理地址为<span><span class="heti-spacing"> </span>______ h</span>。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>12398h</strong>。物理地址<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>段地址<span class="heti-skip"><span class="heti-spacing"> </span>×10h +<span class="heti-spacing"> </span></span>偏移<span><span class="heti-spacing"> </span>= 12340h + 0058h</span>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">3.</p>
+<p>设<span><span class="heti-spacing"> </span>AL=00h</span>，执行 <code class="language-text highlight">sub AL, 01h</code> 后，CF= ______。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>1</strong>。0−<span>1<span class="heti-spacing"> </span></span>产生借位。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">4.</p>
+<p>从地址<span class="heti-skip"><span class="heti-spacing"> </span>1000h:2000h<span class="heti-spacing"> </span></span>开始顺序存放<span class="heti-skip"><span class="heti-spacing"> </span>12h, 34h, 56h, 78h<span class="heti-spacing"> </span></span>四个字节，则<code class="language-text highlight">word ptr [1000h:2002h]</code><span><span class="heti-spacing"> </span>= ______ h</span>。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>7856h</strong>。小端序：2000→12h, 2001→34h, 2002→<span>56h(<span class="heti-spacing"> </span></span>低<span><span class="heti-spacing"> </span>), 2003</span>→<span>78h(<span class="heti-spacing"> </span></span>高<span><span class="heti-spacing"> </span>)</span>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">5.</p>
+<p>近调用 <code class="language-text highlight">call</code> 压栈 <strong><em>_</em><span>_<span class="heti-spacing"> </span></span>个值（仅压入 </strong><strong><em>_<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；远调用 <code class="language-text highlight">call far</code> 压栈 </em></strong><strong><em> 个值（先 </em></strong><strong><em> 后 </em></strong><strong><em><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；<code class="language-text highlight">int</code> 压栈 </em></strong><strong><em> 个值（顺序为 </em></strong><strong><em> → </em></strong><strong><em> → </em></strong>___<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>1</strong>、<strong>IP</strong>；<strong>2</strong>、<strong>CS</strong>、<strong>IP</strong>；<strong>3</strong>、<strong>FLAGS</strong>、<strong>CS</strong>、<strong>IP</strong>。返回指令对应 <code class="language-text highlight">ret</code>、<code class="language-text highlight">retf</code>、<code class="language-text highlight">iret</code>。总结<heti-adjacent class="heti-adjacent-quarter">：</heti-adjacent>“一个<span><span class="heti-spacing"> </span>push</span>、两个<span><span class="heti-spacing"> </span>push</span>、三个<span class="heti-skip"><span class="heti-spacing"> </span>push<span class="heti-spacing"> </span></span>的区别”。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">6.</p>
+<p><code class="language-text highlight">neg ax</code> 与 <code class="language-text highlight">not ax</code> 的关系：neg ax = (not ax) ______。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>+ 1</strong>。<code class="language-text highlight">-ax = ~ax + 1</code> 恒成立。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">7.</p>
+<p>在 <code class="language-text highlight">push bp; mov bp, sp</code> 建立的堆栈框架中（<span>near call + Pascal<span class="heti-spacing"> </span></span>方式<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<code class="language-text highlight">[bp+0]</code>=<strong><em>_</em>_，<code class="language-text highlight">[bp+2]</code>=</strong><strong><em>_，<code class="language-text highlight">[bp+4]</code>=</em></strong>___。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>old BP</strong>、<strong>返回地址<span><span class="heti-spacing"> </span>(IP)</span></strong>、<strong>最后一个参数</strong>。参数用<span class="heti-skip"><span class="heti-spacing"> </span>BP+N<span class="heti-spacing"> </span></span>引用，局部变量用<span><span class="heti-spacing"> </span>BP</span>−<span>N<span class="heti-spacing"> </span></span>引用。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">8.</p>
+<p><code class="language-text highlight">jl</code> 的跳转条件为 <strong><em>_</em>_（用标志位表达式<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，该指令 </strong>____（会<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>不会）受<span class="heti-skip"><span class="heti-spacing"> </span>ZF<span class="heti-spacing"> </span></span>影响。</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>SF ≠ OF</strong>、<strong>不会</strong>。调试器验证：即使<span><span class="heti-spacing"> </span>ZF=1</span>，<code class="language-text highlight">jl</code> 仍只看<span class="heti-skip"><span class="heti-spacing"> </span>SF<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>OF</span>。</p>
+</details>
+</div>
+<hr/>
+<h2 id="单选题">单选题<a class="headerlink" href="#单选题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">13.</p>
+<p>设<span><span class="heti-spacing"> </span>AL=7Fh</span>，执行 <code class="language-text highlight">add AL, 1</code> 后，<span>SF<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>OF<span class="heti-spacing"> </span></span>的值分别是（）</p>
+<p>(A) SF=0, OF=0</p>
+<p>(B) SF=0, OF=1</p>
+<p>(C) SF=1, OF=0</p>
+<p>(D) SF=1, OF=1</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>D（SF=1, OF=1）</strong>。7Fh+1=80h，最高位<span><span class="heti-spacing"> </span>=1</span>→SF=1；127+1=−128，正<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>正→负→OF=1。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">14.</p>
+<p>设<span><span class="heti-spacing"> </span>AL=0FFh</span>，执行 <code class="language-text highlight">add AL, 1</code> 后，<span>CF<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>OF<span class="heti-spacing"> </span></span>的值分别是（）</p>
+<p>(A) CF=0, OF=0</p>
+<p>(B) CF=1, OF=1</p>
+<p>(C) CF=1, OF=0</p>
+<p>(D) CF=0, OF=1</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>C（CF=1, OF=0）</strong>。0FFh+1=100h，<span>8<span class="heti-spacing"> </span></span>位溢出→CF=1。但 −1+1=0，正负相加永不溢出→OF=0。此例说明<span class="heti-skip"><span class="heti-spacing"> </span>CF<span class="heti-spacing"> </span></span>是非符号数溢出，<span>OF<span class="heti-spacing"> </span></span>是有符号数溢出。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">15.</p>
+<p><code class="language-text highlight">repne scasb</code> 扫描<span><span class="heti-spacing"> </span>"Hello\0"</span>（<span>6<span class="heti-spacing"> </span></span>字节）结束后，要得到字符串长度<span><span class="heti-spacing"> </span>6</span>，应对<span class="heti-skip"><span class="heti-spacing"> </span>CX<span class="heti-spacing"> </span></span>做（）</p>
+<p>(A) <code class="language-text highlight">inc cx</code></p>
+<p>(B) <code class="language-text highlight">dec cx</code></p>
+<p>(C) <code class="language-text highlight">not cx</code></p>
+<p>(D) <code class="language-text highlight">neg cx</code></p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>C（not cx）</strong>。初始<span><span class="heti-spacing"> </span>CX=0FFFFh</span>，扫描<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>次后<span><span class="heti-spacing"> </span>CX=0FFF9h</span>，<code class="language-text highlight">not cx</code> = 0006h = 6。这是巧妙替代减法。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">16.</p>
+<p>关于 <code class="language-text highlight">sal</code> 和 <code class="language-text highlight">shl</code> 的说法正确的是（）</p>
+<p><span>(A)<span class="heti-spacing"> </span></span><code class="language-text highlight">sal</code>是算术左移，<code class="language-text highlight">shl</code> 是逻辑左移，行为不同</p>
+<p><span>(B)<span class="heti-spacing"> </span></span><code class="language-text highlight">sal</code>和 <code class="language-text highlight">shl</code> 完全等价</p>
+<p><span>(C)<span class="heti-spacing"> </span></span><code class="language-text highlight">sal</code>保持符号位不变</p>
+<p><span>(D)<span class="heti-spacing"> </span></span><code class="language-text highlight">sal</code>不能用于无符号数</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>B（完全等价）</strong>。讲义中明确：<code class="language-text highlight">sal</code> ≡ <code class="language-text highlight">shl</code>，左移时算术和逻辑行为一致。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">17.</p>
+<p>设<span><span class="heti-spacing"> </span>AL=0FEh</span>（−2<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，执行 <code class="language-text highlight">sar AL, 1</code> 和 <code class="language-text highlight">shr AL, 1</code> 的结果分别是（）</p>
+<p>(A) 0FFh, 7Fh</p>
+<p>(B) 7Fh, 0FFh</p>
+<p>(C) 0FFh, 0FFh</p>
+<p>(D) 7Fh, 7Fh</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>A（0FFh, 7Fh）</strong>。<code class="language-text highlight">sar</code>：高位用符号位<span class="heti-skip"><span class="heti-spacing"> </span>(1)<span class="heti-spacing"> </span></span>填充→11111111=0FFh=−1；<code class="language-text highlight">shr</code>：高位用<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>填充→01111111=7Fh=127。对应<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言 <code class="language-text highlight">signed char</code> 和 <code class="language-text highlight">unsigned char</code> 右移差异。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">18.</p>
+<p>关于 <code class="language-text highlight">lodsb</code> 和 <code class="language-text highlight">stosb</code>，以下说法错误的是（）</p>
+<p>(A) <code class="language-text highlight">lodsb</code> = AL←DS:[SI], SI±1（<span>DF=0<span class="heti-spacing"> </span></span>时递增）</p>
+<p>(B) <code class="language-text highlight">stosb</code> = ES:[DI]←AL, DI±1（<span>DF=0<span class="heti-spacing"> </span></span>时递增）</p>
+<p><span>(C) DF=1<span class="heti-spacing"> </span></span>时<span class="heti-skip"><span class="heti-spacing"> </span>SI/DI<span class="heti-spacing"> </span></span>递减</p>
+<p><span>(D)<span class="heti-spacing"> </span></span><code class="language-text highlight">lodsb</code>使用目标指针<span><span class="heti-spacing"> </span>ES:DI</span></p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>D</strong>。注意：<code class="language-text highlight">lodsb</code> 从<strong>源</strong>取数用<span><span class="heti-spacing"> </span>DS:SI</span>；<code class="language-text highlight">stosb</code> 存到<strong>目标</strong>用<span><span class="heti-spacing"> </span>ES:DI</span>。源和目标不能混。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">19.</p>
+<p><code class="language-text highlight">xlat</code> 指令的功能是（）</p>
+<p>(A) AL = DS:[BX + SI]</p>
+<p>(B) AL = DS:[BX + AL]</p>
+<p>(C) AL = ES:[DI + AL]</p>
+<p>(D) AL = DS:[SI]</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>B（AL = DS:[BX + AL]）</strong>。以<span class="heti-skip"><span class="heti-spacing"> </span>AL<span class="heti-spacing"> </span></span>为下标、<span>DS:BX<span class="heti-spacing"> </span></span>为基址查表，结果放回<span><span class="heti-spacing"> </span>AL</span>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">20.</p>
+<p>近调用 <code class="language-text highlight">call</code>（near call）执行时，<span>CPU<span class="heti-spacing"> </span></span>将什么压入堆栈<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（）</p>
+<p><span>(A)<span class="heti-spacing"> </span></span>只压入<span><span class="heti-spacing"> </span>FLAGS</span></p>
+<p><span>(B)<span class="heti-spacing"> </span></span>只压入<span><span class="heti-spacing"> </span>IP</span>（返回偏移地址）</p>
+<p><span>(C)<span class="heti-spacing"> </span></span>先压入<span class="heti-skip"><span class="heti-spacing"> </span>CS<span class="heti-spacing"> </span></span>再压入<span><span class="heti-spacing"> </span>IP</span></p>
+<p><span>(D)<span class="heti-spacing"> </span></span>先压入<span class="heti-skip"><span class="heti-spacing"> </span>FLAGS<span class="heti-spacing"> </span></span>再<span class="heti-skip"><span class="heti-spacing"> </span>CS<span class="heti-spacing"> </span></span>再<span><span class="heti-spacing"> </span>IP</span></p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>B（只压入<span><span class="heti-spacing"> </span>IP</span>）</strong>。总结：近调用<span class="heti-skip"><span class="heti-spacing"> </span>= 1<span class="heti-spacing"> </span></span>个<span><span class="heti-spacing"> </span>push(IP) + jmp</span>。对应 <code class="language-text highlight">ret</code>（pop IP<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">21.</p>
+<p>远调用 <code class="language-text highlight">call far</code> 执行时，<span>CPU<span class="heti-spacing"> </span></span>的压栈顺序是（）</p>
+<p><span>(A)<span class="heti-spacing"> </span></span>先压入<span><span class="heti-spacing"> </span>IP</span>，再压入<span><span class="heti-spacing"> </span>CS</span></p>
+<p><span>(B)<span class="heti-spacing"> </span></span>先压入<span><span class="heti-spacing"> </span>CS</span>，再压入<span><span class="heti-spacing"> </span>IP</span></p>
+<p><span>(C)<span class="heti-spacing"> </span></span>先压入<span><span class="heti-spacing"> </span>FLAGS</span>，再压入<span><span class="heti-spacing"> </span>CS</span>，最后<span><span class="heti-spacing"> </span>IP</span></p>
+<p><span>(D)<span class="heti-spacing"> </span></span>只压入<span><span class="heti-spacing"> </span>CS</span></p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>B（先<span><span class="heti-spacing"> </span>CS</span>，再<span><span class="heti-spacing"> </span>IP</span>）</strong>。远调用<span class="heti-skip"><span class="heti-spacing"> </span>= 2<span class="heti-spacing"> </span></span>个<span><span class="heti-spacing"> </span>push(CS,IP) + jmp</span>。压栈顺序<span class="heti-skip"><span class="heti-spacing"> </span>CS<span class="heti-spacing"> </span></span>先、<span>IP<span class="heti-spacing"> </span></span>后，返回时 <code class="language-text highlight">retf</code> 先<span class="heti-skip"><span class="heti-spacing"> </span>pop IP<span class="heti-spacing"> </span></span>再<span><span class="heti-spacing"> </span>pop CS</span>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">22.</p>
+<p><code class="language-text highlight">int</code> 指令执行时，<span>CPU<span class="heti-spacing"> </span></span>的压栈顺序是（）</p>
+<p>(A) FLAGS → CS → IP</p>
+<p>(B) IP → CS → FLAGS</p>
+<p>(C) CS → IP → FLAGS</p>
+<p>(D) FLAGS → IP → CS</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>A（FLAGS → CS → IP）</strong>。总结：<code class="language-text highlight">int</code> <span>= 3<span class="heti-spacing"> </span></span>个<span><span class="heti-spacing"> </span>push + jmp</span>。顺序是<span class="heti-skip"><span class="heti-spacing"> </span>FLAGS<span class="heti-spacing"> </span></span>先、<span>CS<span class="heti-spacing"> </span></span>次之、<span>IP<span class="heti-spacing"> </span></span>最后。对应 <code class="language-text highlight">iret</code>（pop IP→CS→FLAGS<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">23.</p>
+<p>关于<code class="language-text highlight">call</code><span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span><code class="language-text highlight">call far</code><span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span><code class="language-text highlight">int</code>三种调用，以下正确的是（）</p>
+<p><span>(A)<span class="heti-spacing"> </span></span>三者压栈内容完全一样</p>
+<p><span>(B)<span class="heti-spacing"> </span></span><code class="language-text highlight">call</code>压<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>个值，<code class="language-text highlight">call far</code> 压<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个值，<code class="language-text highlight">int</code> 压<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个值</p>
+<p><span>(C)<span class="heti-spacing"> </span></span><code class="language-text highlight">int</code>不压入<span><span class="heti-spacing"> </span>FLAGS</span></p>
+<p><span>(D)<span class="heti-spacing"> </span></span>三者都用 <code class="language-text highlight">ret</code> 返回</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>B</strong>。总结：<code class="language-text highlight">call</code> = 1 push (IP)；<code class="language-text highlight">call far</code> = 2 push (CS,IP)；<code class="language-text highlight">int</code> = 3 push (FLAGS,CS,IP)。返回指令对应 <code class="language-text highlight">ret</code>、<code class="language-text highlight">retf</code>、<code class="language-text highlight">iret</code>。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">24.</p>
+<p>在堆栈框架 <code class="language-text highlight">push bp; mov bp, sp</code> 之后（<span>near call + Pascal<span class="heti-spacing"> </span></span>方式<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<code class="language-text highlight">[bp+4]</code> 指向（）</p>
+<p>(A) old BP</p>
+<p><span>(B)<span class="heti-spacing"> </span></span>返回地址（back / IP）</p>
+<p><span>(C)<span class="heti-spacing"> </span></span>最后一个参数</p>
+<p><span>(D)<span class="heti-spacing"> </span></span>第一个局部变量</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>C（最后一个参数）</strong>。说“倒背如流”：<code class="language-text highlight">[bp+0]</code><span>=old BP,<span class="heti-spacing"> </span></span><code class="language-text highlight">[bp+2]</code><span>=<span class="heti-spacing"> </span></span>返回地址<span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span><code class="language-text highlight">[bp+4]</code><span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>最后一个参数。用<span class="heti-skip"><span class="heti-spacing"> </span>BP+N<span class="heti-spacing"> </span></span>引用参数，BP−<span>N<span class="heti-spacing"> </span></span>引用局部变量。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">25.</p>
+<p>关于<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言和<span class="heti-skip"><span class="heti-spacing"> </span>Pascal<span class="heti-spacing"> </span></span>语言调用约定的区别，正确的是（）</p>
+<p>(A) C：参数从左到右压栈，调用者清理</p>
+<p>(B) C：参数从右到左压栈，调用者清理</p>
+<p>(C) Pascal：参数从右到左压栈，被调用者用 <code class="language-text highlight">ret n</code> 清理</p>
+<p>(D) Pascal：参数从右到左压栈，调用者清理</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>B</strong>。C：从右到左<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>调用者清理（<code class="language-text highlight">add sp, n</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；Pascal：从左到右<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>被调用者清理（<code class="language-text highlight">ret n</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。<span>C<span class="heti-spacing"> </span></span>从右到左是为支持 <code class="language-text highlight">printf</code> 可变参数。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">26.</p>
+<p><span>DOS<span class="heti-spacing"> </span></span>中断 <code class="language-text highlight">int 21h</code> 中，<span>AH=9<span class="heti-spacing"> </span></span>的功能是（）</p>
+<p><span>(A)<span class="heti-spacing"> </span></span>显示字符，入口<span class="heti-skip"><span class="heti-spacing"> </span>DL=<span class="heti-spacing"> </span></span>字符</p>
+<p><span>(B)<span class="heti-spacing"> </span></span>键盘输入，出口<span class="heti-skip"><span class="heti-spacing"> </span>AL=<span class="heti-spacing"> </span></span>字符</p>
+<p><span>(C)<span class="heti-spacing"> </span></span>显示以 <code class="language-maxima highlight"><span class="p">$</span></code> 结尾的字符串，入口<span><span class="heti-spacing"> </span>DS:DX</span>→字符串</p>
+<p><span>(D)<span class="heti-spacing"> </span></span>退出程序，入口<span class="heti-skip"><span class="heti-spacing"> </span>AL=<span class="heti-spacing"> </span></span>返回码</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>C</strong>。<span>AH=1<span class="heti-spacing"> </span></span>键盘输入、<span>AH=2<span class="heti-spacing"> </span></span>显示字符（DL<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、<span>AH=9<span class="heti-spacing"> </span></span>显示 <code class="language-maxima highlight"><span class="p">$</span></code> 结尾串（DS:DX<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、<span>AH=4Ch<span class="heti-spacing"> </span></span>退出。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">27.</p>
+<p><span>8086<span class="heti-spacing"> </span></span>的中断向量表位于内存何处<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（）</p>
+<p>(A) 0:0 ~ 0:3FFh</p>
+<p>(B) 40:0 ~ 40:3FFh</p>
+<p>(C) F000:0 ~ F000:FFFFh</p>
+<p>(D) B800:0 ~ B800:FFFFh</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>A（0:0 ~ 0:3FFh）</strong>。<span>256<span class="heti-spacing"> </span></span>个中断向量，每个<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>字节（IP:CS<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，占<span class="heti-skip"><span class="heti-spacing"> </span>400h<span class="heti-spacing"> </span></span>字节。<span>int 8h<span class="heti-spacing"> </span></span>向量在<span class="heti-skip"><span class="heti-spacing"> </span>8×4=20h<span class="heti-spacing"> </span></span>处。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">28.</p>
+<p>修改中断向量（hook int 8h）的正确流程是（）</p>
+<p><span>(A)<span class="heti-spacing"> </span></span>直接写入新地址即可</p>
+<p>(B) <code class="language-text highlight">cli</code> → 写入新向量 → <code class="language-text highlight">sti</code></p>
+<p><span>(C)<span class="heti-spacing"> </span></span>保存旧向量 → <code class="language-text highlight">cli</code> → 写入新向量 → <code class="language-text highlight">sti</code> → 退出前恢复旧向量</p>
+<p><span>(D)<span class="heti-spacing"> </span></span>保存旧向量 → 写入新向量 → <code class="language-text highlight">iret</code> 返回</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>C</strong>。<span>int 8h<span class="heti-spacing"> </span></span>示例的完整流程：<span>(1)<span class="heti-spacing"> </span></span>保存旧向量；(2)<code class="language-text highlight">cli</code>；<span>(3)<span class="heti-spacing"> </span></span>写新向量到<span><span class="heti-spacing"> </span>0:8×4</span>；(4)<code class="language-text highlight">sti</code>；<span>(5)<span class="heti-spacing"> </span></span>退出前恢复旧向量。<code class="language-text highlight">cli</code><span>/<span class="heti-spacing"> </span></span><code class="language-text highlight">sti</code>之间操作须原子化防止竞态。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">29.</p>
+<p>调试中跟踪到 <code class="language-text highlight">call</code> 指令，想进入被调用函数内部应用（）</p>
+<p>(A) F7（trace into）</p>
+<p>(B) F8（step over）</p>
+<p>(C) F9</p>
+<p>(D) F5</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>A（F7）</strong>。F7=trace into（进入函数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，F8=step over（跳过<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。调试 <code class="language-text highlight">repne scasb</code> 等也必须用<span class="heti-skip"><span class="heti-spacing"> </span>F7<span class="heti-spacing"> </span></span>才能逐步观察，<span>F8<span class="heti-spacing"> </span></span>一步执行完。</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">30.</p>
+<p>关于硬件断点，正确的是（）</p>
+<p><span>(A)<span class="heti-spacing"> </span></span><code class="language-text highlight">bpm x</code>在变量被读取时中断</p>
+<p><span>(B)<span class="heti-spacing"> </span></span><code class="language-text highlight">bpm r</code>在变量被执行时中断</p>
+<p><span>(C)<span class="heti-spacing"> </span></span><code class="language-text highlight">bpm w</code>在变量被写入时中断</p>
+<p><span>(D) 8086<span class="heti-spacing"> </span></span>不支持硬件断点</p>
+<details class="info">
+<summary>点击查看答案</summary>
+<p><strong>C（<span>bpm w<span class="heti-spacing"> </span></span>在写入时中断）</strong>。注意：<code class="language-text highlight">bpm x</code><span>=<span class="heti-spacing"> </span></span>执行断点、<code class="language-text highlight">bpm r</code><span>=<span class="heti-spacing"> </span></span>读断点、<code class="language-text highlight">bpm w</code><span>=<span class="heti-spacing"> </span></span>写断点。三者必须分清。</p>
+</details>
+</div>
+<hr/>
+<hr/>
+<h2 id="附录核心速查">附录：核心速查<a class="headerlink" href="#附录核心速查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<details class="info">
+<summary>三种调用对比（call / call far / int）</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">near call</th>
+<th style="text-align: center;">far call</th>
+<th style="text-align: center;">int</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span>push<span class="heti-spacing"> </span></span>数量</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span>push<span class="heti-spacing"> </span></span>顺序</td>
+<td style="text-align: center;">IP</td>
+<td style="text-align: center;">CS → IP</td>
+<td style="text-align: center;">FLAGS → CS → IP</td>
+</tr>
+<tr>
+<td style="text-align: left;">返回指令</td>
+<td style="text-align: center;"><code class="language-text highlight">ret</code></td>
+<td style="text-align: center;"><code class="language-text highlight">retf</code></td>
+<td style="text-align: center;"><code class="language-text highlight">iret</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">返回时<span><span class="heti-spacing"> </span>pop</span></td>
+<td style="text-align: center;">IP</td>
+<td style="text-align: center;">IP → CS</td>
+<td style="text-align: center;">IP → CS → FLAGS</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>课堂原话：近调用<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>一个<span class="heti-skip"><span class="heti-spacing"> </span>push +<span class="heti-spacing"> </span></span>一个<span><span class="heti-spacing"> </span>jmp</span>；远调用<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>两个<span class="heti-skip"><span class="heti-spacing"> </span>push +<span class="heti-spacing"> </span></span>一个<span><span class="heti-spacing"> </span>jmp</span>；<span>int =<span class="heti-spacing"> </span></span>三个<span class="heti-skip"><span class="heti-spacing"> </span>push +<span class="heti-spacing"> </span></span>一个<span><span class="heti-spacing"> </span>jmp</span>。顺序不能错。</p>
+</blockquote>
+</details>
+<details class="info">
+<summary>堆栈框架（<span>near call + Pascal<span class="heti-spacing"> </span></span>方式）</summary>
+<div class="language-actionscript3 highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FF8</span><span class="w"> </span><span class="n">old</span><span class="w"> </span><span class="n">bp</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">BP</span><span class="w"> </span><span class="err">指向此处</span><span class="w"> </span><span class="o">([</span><span class="n">bp</span><span class="o">+</span><span class="mi">0</span><span class="o">])</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFA</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="err">返回地址</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="o">([</span><span class="n">bp</span><span class="o">+</span><span class="mi">2</span><span class="o">])</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFC</span><span class="w"> </span><span class="err">参数</span><span class="mi">2</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="o">[</span><span class="n">bp</span><span class="o">+</span><span class="mi">4</span><span class="o">]</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFE</span><span class="w"> </span><span class="err">参数</span><span class="mi">1</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="o">[</span><span class="n">bp</span><span class="o">+</span><span class="mi">6</span><span class="o">]</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">SS</span><span class="o">:</span><span class="mi">1000</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="err">初始</span><span class="w"> </span><span class="n">SP</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>口诀：<code class="language-text highlight">[bp+0]</code>=old_bp，<code class="language-text highlight">[bp+2]</code><span>=<span class="heti-spacing"> </span></span>返回地址，<code class="language-text highlight">[bp+N]</code>(N≥<span>4)=<span class="heti-spacing"> </span></span>参数。<span>BP+N<span class="heti-spacing"> </span></span>引用参数，BP−<span>N<span class="heti-spacing"> </span></span>引用局部变量。</p>
+</blockquote>
+</details>
+<details class="info">
+<summary>中断向量与<span class="heti-skip"><span class="heti-spacing"> </span>Hook<span class="heti-spacing"> </span></span>流程</summary>
+<ol>
+<li>中断向量表位于 <strong>0:0 ~ 0:3FFh</strong>（<span>256<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>×4<span class="heti-spacing"> </span></span>字节）</li>
+<li><span>int N<span class="heti-spacing"> </span></span>的向量地址<span><span class="heti-spacing"> </span>= 0:N×4</span></li>
+<li><span>Hook int 8h<span class="heti-spacing"> </span></span>流程：保存旧向量 → <code class="language-text highlight">cli</code> → 写新向量到<span><span class="heti-spacing"> </span>0:8×4</span> → <code class="language-text highlight">sti</code> → 退出前恢复旧向量</li>
+</ol>
+</details>
+<details class="info">
+<summary><span>DOS<span class="heti-spacing"> </span></span>中断</summary>
+<ol>
+<li>int 21h</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">AH</th>
+<th>功能</th>
+<th>入口</th>
+<th>出口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>键盘输入<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>回显</td>
+<td>—</td>
+<td><span>AL=<span class="heti-spacing"> </span></span>字符</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>显示字符</td>
+<td><span>DL=<span class="heti-spacing"> </span></span>字符</td>
+<td>—</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>显示 <code class="language-maxima highlight"><span class="p">$</span></code> 结尾串</td>
+<td>DS:DX→串</td>
+<td>—</td>
+</tr>
+<tr>
+<td style="text-align: center;">4Ch</td>
+<td>退出</td>
+<td><span>AL=<span class="heti-spacing"> </span></span>返回码</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>
+<p>int 00h：<strong>除法溢出</strong>（除数为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>或商超出寄存器范围时触发，插在<code class="language-text highlight">div</code><span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span><code class="language-text highlight">idiv</code>指令上方）</p>
+</li>
+<li>
+<p>int 01h：<strong>单步调试</strong>（<span>TF=1<span class="heti-spacing"> </span></span>时每条指令后自动触发，用于调试器单步执行）</p>
+</li>
+<li>
+<p>int 08h：<strong>定时器中断</strong>（硬件时钟，约每秒<span class="heti-skip"><span class="heti-spacing"> </span>18.2<span class="heti-spacing"> </span></span>次，常用于延时和周期性任务）</p>
+</li>
+<li>
+<p>int 09h：<strong>键盘中断</strong>（按键时触发，可<span class="heti-skip"><span class="heti-spacing"> </span>hook<span class="heti-spacing"> </span></span>来拦截键盘输入）</p>
+</li>
+</ol>
+<blockquote>
+<p>课堂涉及：int 00h（<span>div<span class="heti-spacing"> </span></span>溢出<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、int 08h（<span>hook<span class="heti-spacing"> </span></span>定时器实现<span><span class="heti-spacing"> </span>delay_1s</span>、<span>pclife<span class="heti-spacing"> </span></span>游戏外挂<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、int 09h（“英特<span><span class="heti-spacing"> </span>9</span>”键盘中断<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</blockquote>
+</details>
+<details class="info">
+<summary>标志位速查（AF、<span>PF<span class="heti-spacing"> </span></span>不作考试要求）</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">标志</th>
+<th>说明</th>
+<th>相关指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">CF</td>
+<td>进位<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>借位<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>移位末位</td>
+<td><code class="language-text highlight">clc</code>,<code class="language-text highlight">stc</code>,<code class="language-text highlight">jc</code>≡<code class="language-text highlight">jb</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">ZF</td>
+<td>结果为零</td>
+<td><code class="language-text highlight">jz</code>≡<code class="language-text highlight">je</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">SF</td>
+<td>结果最高位</td>
+<td><code class="language-text highlight">js</code><span>;<span class="heti-spacing"> </span></span><code class="language-text highlight">jl</code>条件之一</td>
+</tr>
+<tr>
+<td style="text-align: center;">OF</td>
+<td>有符号溢出</td>
+<td><code class="language-text highlight">jo</code>; <strong><code class="language-text highlight">jl</code>=SF≠OF</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">IF</td>
+<td>中断允许</td>
+<td><code class="language-text highlight">cli</code><span>(<span class="heti-spacing"> </span></span>关<span class="heti-skip"><span class="heti-spacing"> </span>),<span class="heti-spacing"> </span></span><code class="language-text highlight">sti</code><span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>开<span><span class="heti-spacing"> </span>)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">DF</td>
+<td>串方向</td>
+<td><code class="language-text highlight">cld</code><span>(DF=0,<span class="heti-spacing"> </span></span>正向<span class="heti-skip"><span class="heti-spacing"> </span>),<span class="heti-spacing"> </span></span><code class="language-text highlight">std</code><span class="heti-skip"><span class="heti-spacing"> </span>(DF=1,<span class="heti-spacing"> </span></span>逆向<span><span class="heti-spacing"> </span>)</span></td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="info">
+<summary>条件跳转核心</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指令</th>
+<th style="text-align: left;">条件</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code class="language-text highlight">jl</code></strong></td>
+<td style="text-align: left;"><strong>SF ≠ OF</strong></td>
+<td style="text-align: left;"><strong>无视<span><span class="heti-spacing"> </span>ZF</span>！调试器验证</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">jg</code></td>
+<td style="text-align: left;"><span>SF=OF<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>ZF=0</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">jb</code>/<code class="language-text highlight">jc</code></td>
+<td style="text-align: left;">CF=1</td>
+<td style="text-align: left;">等价</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">je</code>/<code class="language-text highlight">jz</code></td>
+<td style="text-align: left;">ZF=1</td>
+<td style="text-align: left;">等价</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-teratermmacro highlight"><span class="k">loop</span></code></td>
+<td style="text-align: left;">CX←CX−1, ≠<span>0<span class="heti-spacing"> </span></span>跳</td>
+<td style="text-align: left;"><span>CX=0<span class="heti-spacing"> </span></span>时循环<span class="heti-skip"><span class="heti-spacing"> </span>10000h<span class="heti-spacing"> </span></span>次</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">repne</code></td>
+<td style="text-align: left;"><span>CX=0<span class="heti-spacing"> </span></span>先判<span class="heti-skip"><span class="heti-spacing"> </span>,0<span class="heti-spacing"> </span></span>次循环</td>
+<td style="text-align: left;"><strong>与<span class="heti-skip"><span class="heti-spacing"> </span>loop<span class="heti-spacing"> </span></span>相反！</strong></td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="info">
+<summary>字符串指令速查</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指令</th>
+<th style="text-align: left;">功能</th>
+<th style="text-align: left;">寄存器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">repne scasb</code></td>
+<td style="text-align: left;">扫描找<span><span class="heti-spacing"> </span>AL</span>，等效<span><span class="heti-spacing"> </span>strlen</span></td>
+<td style="text-align: left;">ES:DI, CX, AL</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">rep movsb</code></td>
+<td style="text-align: left;">复制<span class="heti-skip"><span class="heti-spacing"> </span>CX<span class="heti-spacing"> </span></span>字节</td>
+<td style="text-align: left;">DS:SI→ES:DI, CX</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">lodsb</code></td>
+<td style="text-align: left;">AL=DS:[SI], SI±1</td>
+<td style="text-align: left;">DS:SI</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">stosb</code></td>
+<td style="text-align: left;">ES:[DI]=AL, DI±1</td>
+<td style="text-align: left;">ES:DI</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">xlat</code></td>
+<td style="text-align: left;">AL=DS:[BX+AL]</td>
+<td style="text-align: left;">DS:BX</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>方向由<span class="heti-skip"><span class="heti-spacing"> </span>DF<span class="heti-spacing"> </span></span>控制：<code class="language-text highlight">cld</code>→递增，<code class="language-text highlight">std</code>→递减。</p>
+</blockquote>
+</details>
+<details class="info">
+<summary>调试器速查</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">按键<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">trace into（进入函数）</td>
+<td style="text-align: left;">F7</td>
+</tr>
+<tr>
+<td style="text-align: left;">step over（跳过函数）</td>
+<td style="text-align: left;">F8</td>
+</tr>
+<tr>
+<td style="text-align: left;">硬件执行断点</td>
+<td style="text-align: left;"><code class="language-text highlight">bpm x</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">硬件读断点</td>
+<td style="text-align: left;"><code class="language-text highlight">bpm r</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">硬件写断点</td>
+<td style="text-align: left;"><code class="language-text highlight">bpm w</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="info">
+<summary>间接寻址缺省段址</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">寻址方式</th>
+<th style="text-align: center;">缺省段寄存器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code class="language-tsql highlight"><span class="o">[</span><span class="n">bx</span><span class="o">]</span></code>, <code class="language-tsql highlight"><span class="o">[</span><span class="n">si</span><span class="o">]</span></code>, <code class="language-tsql highlight"><span class="o">[</span><span class="n">di</span><span class="o">]</span></code></td>
+<td style="text-align: center;">DS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code class="language-tsql highlight"><span class="o">[</span><span class="n">bp</span><span class="o">]</span></code></strong></td>
+<td style="text-align: center;"><strong>SS</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">[bx+si]</code>, <code class="language-text highlight">[bx+di]</code></td>
+<td style="text-align: center;">DS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">[bp+si]</code>, <code class="language-text highlight">[bp+di]</code></td>
+<td style="text-align: center;">SS</td>
+</tr>
+</tbody>
+</table>
+</details>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../js/mathjax.js"></script>
+<script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
