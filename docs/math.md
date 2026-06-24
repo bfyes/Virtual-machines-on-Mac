@@ -31,6 +31,9 @@
 === "2026-06-22下午"
     收集了习题。吃了个晚饭。
 
+=== "2026-06-24中午"
+    AI生成一份低质概统补天指南，留着自己吃。
+
 
 !!! warning
     AI 补全与推测内容已标注 `[猜测]`, 老师给出的模拟题标注为 `[模拟]`, 答案尚未人工验证, 仅供参考. 标注 `[真题]`的部分由于选项部分缺失等问题, 可能有AI补全的成分.
@@ -1373,6 +1376,193 @@
         **(2)** $P[X>1] = 1-F_X(1) = e^{-2} \approx 0.1353$。
 
         **(3)** $E(X)=\dfrac{1}{\lambda}=\dfrac{1}{2}=0.5$，$\text{Var}(X)=\dfrac{1}{\lambda^2}=\dfrac{1}{4}=0.25$。
+
+---
+## 概率论补天
+
+以下按考试出现的**题型**组织。每个题型给出**你需要知道的公式**和**解题步骤**。不需要的暂时别看，做题遇到再翻回来。
+
+---
+
+### 题型A：全概率公式（有雾/有霾 + 戴口罩）
+
+---
+
+### 题型B：分布模型匹配
+
+| 场景 | 分布 (Distribution) |
+|------|---------------------|
+| 单次试验，成功/失败 | Bernoulli（两点分布） |
+| n 次试验，数成功次数 | Binomial（二项分布） |
+| 单位时间事件数，已知平均值 | Poisson（泊松分布） |
+| 直到第一次成功，数总次数 | Geometric（几何分布） |
+| 直到第 k 次成功，数总次数 | Pascal（帕斯卡分布） |
+| 有限个等可能结果 | Discrete Uniform（离散均匀分布） |
+
+---
+
+### 题型C：连续型随机变量 — 给 PDF，求常数/CDF/概率
+
+**求常数** — PDF 总面积必须等于 1：
+
+$$\int_{-\infty}^{\infty}f_X(x)\,\mathrm{d}x=1$$
+
+分段函数就分段积分加起来，解出常数。
+
+**求 CDF** — 从 $-\infty$ 积到 $x$：
+
+$$F_X(x)=\int_{-\infty}^x f_X(t)\,\mathrm{d}t$$
+
+分段函数要分段积，每段累积到上一段的结果。
+
+**求概率**：
+
+$$P(a<X<b)=\int_a^b f_X(x)\,\mathrm{d}x = F_X(b)-F_X(a)$$
+
+**其他**：
+
+指数分布（Exponential Distribution）带参数 $\lambda$：
+- PDF: $f_X(x)=\lambda e^{-\lambda x}\;(x>0)$
+- CDF: $F_X(x)=1-e^{-\lambda x}\;(x>0)$
+- 期望: $E(X)=\frac{1}{\lambda}$，方差: $\mathrm{Var}(X)=\frac{1}{\lambda^2}$
+
+---
+
+### 题型D：泊松分布计算
+
+**公式** — 泊松分布 PMF：
+
+$$P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}$$
+
+其中 $\lambda$ 是该时间段内的**平均次数**。
+
+**注意**：$\lambda$ 按时间比例缩放。比如“每 20 分钟平均 10 个”，则 8 分钟的 $\lambda=10\times\frac{8}{20}=4$。
+
+**至少一个**：$P(X\ge 1)=1-P(X=0)=1-e^{-\lambda}$。
+
+---
+
+### 题型E：离散二元 — 联合频数表
+
+**题目特征**：给一张大表，行是 $Y$ 取值，列是 $X$ 取值，格子里的数是频数。四问：(1) 联合 PMF；(2) 边缘 PMF；(3) 是否独立；(4) 协方差和相关系数。
+
+**解题步骤**：
+
+**第一步**：频数转概率。每个格子 ÷ 总数 $N$，得到 $P(X=x_i,Y=y_j)$。
+
+**第二步**：边缘 PMF。对行求和得 $P(Y=y_j)$，对列求和得 $P(X=x_i)$。
+
+**第三步**：判独立。挑一格，看 $P(X=x_i,Y=y_j)$ 是否等于 $P(X=x_i)\times P(Y=y_j)$。只要有一格不等，就不独立。
+
+**第四步**：协方差和相关系数。
+
+先算期望：
+
+$$E(X)=\sum x_i\cdot P(X=x_i),\qquad E(Y)=\sum y_j\cdot P(Y=y_j)$$
+
+$$E(XY)=\sum_i\sum_j x_i y_j\cdot P(X=x_i,Y=y_j)$$
+
+协方差（Covariance）：
+
+$$\mathrm{Cov}(X,Y)=E(XY)-E(X)E(Y)$$
+
+方差用 $E(X^2)-[E(X)]^2$，$X^2$ 就是每个 $x_i$ 先平方再按边缘概率加权。
+
+相关系数（Correlation Coefficient）：
+
+$$\rho_{XY}=\frac{\mathrm{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\cdot\mathrm{Var}(Y)}}$$
+
+---
+
+### 题型F：连续二元 — 联合 PDF 求边缘 PDF 和条件 PDF
+
+**题目特征**：给 $f_{X,Y}(x,y)$ 和一个区域（如 $y^2<x<1$），求：(1) 某个概率；(2) 边缘 PDF $f_Y(y)$；(3) 条件 PDF $f_{X\mid Y}(x\mid y)$。
+
+**需要知道的公式**：
+
+边缘 PDF — 把另一个变量积掉：
+
+$$f_Y(y)=\int f_{X,Y}(x,y)\,\mathrm{d}x$$
+
+条件 PDF — 类比条件概率的公式：
+
+$$f_{X\mid Y}(x\mid y)=\frac{f_{X,Y}(x,y)}{f_Y(y)}$$
+
+**求概率**：在给定区域上对联合 PDF 做二重积分。关键是**画图确定积分限**。
+
+---
+
+### 题型G：切比雪夫不等式
+
+**题目特征**：给 $E(X)$ 和 $\mathrm{Var}(X)$，让你估计 $P(X\ge a)$。
+
+**公式**：
+
+$$P(|X-\mu|\ge c)\le\frac{\sigma^2}{c^2}$$
+
+$\mu=E(X)$，$\sigma^2=\mathrm{Var}(X)$。
+
+**用法**：$P(X\ge a)=P(X-\mu\ge a-\mu)\le P(|X-\mu|\ge a-\mu)\le\frac{\sigma^2}{(a-\mu)^2}$。
+
+> 这个不等式给的是**上界**，不是精确值。考试会让比较切比雪夫和 CLT 的结果。
+
+---
+
+### 题型H：中心极限定理（CLT）
+
+**题目特征**：要么说“用 CLT 估计概率”，要么给二项分布大样本（$n$ 很大）。
+
+**需要知道的公式**：
+
+$n$ 个独立同分布的变量之和 $S_n$，近似服从正态分布：
+
+$$S_n\approx N(n\mu,\,n\sigma^2)$$
+
+标准化：
+
+$$Z=\frac{S_n-n\mu}{\sqrt{n}\,\sigma}\approx N(0,1)$$
+
+**二项分布特例**：$X\sim B(n,p)$，$\mu=np$，$\sigma=\sqrt{np(1-p)}$。
+
+$$Z=\frac{X-np}{\sqrt{np(1-p)}}$$
+
+然后 $P(X\ge k)\approx 1-\Phi(Z)$，$\Phi$ 是标准正态的 CDF（考试会给你值）。
+
+**和 LLN 的区别（偶尔考概念）**：
+
+- 大数定律（LLN）：样本均值**趋近**期望（不给具体概率）
+- CLT：样本均值的**分布**近似正态（给具体概率）
+
+---
+
+### 题型I：期望和方差的基本运算
+
+**题目特征**：给几个独立变量，求 $W=\frac{X_1+\cdots+X_n}{n}$ 的期望和方差。
+
+**公式**（独立时）：
+
+$$E(aX+bY)=aE(X)+bE(Y)$$
+
+$$\mathrm{Var}(aX+bY)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)\quad\text{（独立时协方差项为 0）}$$
+
+> 注意：$\mathrm{Var}$ 里常数 $a$ 出来是 $a^2$，不是 $a$。
+
+---
+
+### 公式速查
+
+| 用途 | 公式 |
+|------|------|
+| 方差 | $\mathrm{Var}(X)=E(X^2)-[E(X)]^2$ |
+| 协方差 | $\mathrm{Cov}(X,Y)=E(XY)-E(X)E(Y)$ |
+| 相关系数 | $\rho=\mathrm{Cov}(X,Y)/\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}$ |
+| 泊松 PMF | $P(X=k)=e^{-\lambda}\lambda^k/k!$ |
+| 指数分布 | $f(x)=\lambda e^{-\lambda x},\;F(x)=1-e^{-\lambda x}\;(x>0)$ |
+| 边缘 PDF | $f_Y(y)=\int f_{X,Y}(x,y)\,\mathrm{d}x$ |
+| 条件 PDF | $f_{X\mid Y}(x\mid y)=f_{X,Y}(x,y)/f_Y(y)$ |
+| 切比雪夫 | $P(|X-\mu|\ge c)\le\sigma^2/c^2$ |
+| CLT | $Z=\dfrac{S_n-n\mu}{\sqrt{n}\,\sigma}\approx N(0,1)$ |
+| LLN | $\lim\limits_{n\to\infty}P(|\bar{X}_n-\mu|\ge\varepsilon)=0$ |
 
 ---
 
