@@ -3,7 +3,7 @@
 ??? note "参考资料"
     > **参考资料**
     >
-    > - **2026-06-17 第11-13节 课堂录音识别稿**
+    > - **2026-06-17 讲义录音识别稿**
     > - `汇编复习1.asm` 补充知识点
     > - 课程讲义（第2-16周）示例程序
 
@@ -11,8 +11,16 @@
 
 <span style="font-size:1.2em; color:#808080;">**更新日志**</span>
 
+=== "2026-06-25"
+    增加并验证补充习题及答案。让ai整理了教学内容。
+    
+    祝考试顺利。
+
+=== "2026-06-24"
+    验证答案。
+
 === "2026-06-23"
- 按考试形式（判断+单选）整理，覆盖课堂重点：标志位、`jl`(SF≠OF)、字符串指令、三种调用（call/call far/int）的 push 顺序、中断编程（int 8h/中断向量表/hook 流程）、堆栈框架、调试技巧等。答案标注 `[推测]`，未经人工验证。
+    按考试形式（判断+单选）整理，覆盖重点：标志位、`jl`(SF≠OF)、字符串指令、三种调用（call/call far/int）的 push 顺序、中断编程（int 8h/中断向量表/修改中断向量流程）、堆栈框架、调试技巧等。答案标注 `[推测]`，未经人工验证。
 
 ---
 
@@ -22,7 +30,7 @@
     `mov ax, 0` 执行后，零标志 ZF 会变为 1。（）
 
     ??? info "点击查看答案"
-        **✗（错误）**。课堂反复强调：`mov` **不影响任何标志位**。AX 变成 0 但 ZF 不变。要让 ZF=1 必须用 `sub ax, ax` 或 `xor ax, ax`。
+        **✗（错误）**。`mov` **不影响任何标志位**。AX 变成 0 但 ZF 不变。要让 ZF=1 必须用 `sub ax, ax` 或 `xor ax, ax`。
 
 !!! question "2."
     `jl`（有符号小于则跳）的跳转条件是 SF ≠ OF，与 ZF 的值无关。（）
@@ -76,7 +84,7 @@
     `sub` 指令执行后，可以直接跟 `js` 判断结果是否为负，不需要中间再写 `cmp`。（）
 
     ??? info "点击查看答案"
-        **✓（正确）**。老师强调：`sub` 之后已影响标志位，马上可以判断。再写 `cmp` 是“啰嗦”“没学透”。
+        **✓（正确）**。`sub` 之后已影响标志位，马上可以判断。再写 `cmp` 是多余的。
 
 !!! question "10."
     `cbw` 的典型用途是为 `idiv` 准备被除数，把 AL 符号扩展到 AX。（）
@@ -363,7 +371,7 @@
         **A（0:0 ~ 0:3FFh）**。256 个中断向量，每个 4 字节（IP:CS），占 400h 字节。int 8h 向量在 8×4=20h 处。
 
 !!! question "16."
-    修改中断向量（hook int 8h）的正确流程是（）
+    修改中断向量（修改 int 8h 中断向量）的正确流程是（）
 
     (A) 直接写入新地址即可
 
@@ -393,19 +401,578 @@
 !!! question "18."
     关于硬件断点，正确的是（）
 
-    (A) `bpm x` 在变量被读取时中断
+    (A) `bpmb x` 在变量被读取时中断
 
-    (B) `bpm r` 在变量被执行时中断
+    (B) `bpmb r` 在变量被执行时中断
 
-    (C) `bpm w` 在变量被写入时中断
+    (C) `bpmb w` 在变量被写入时中断
 
-    (D) 8086 不支持硬件断点
+    (D) 80386 不支持硬件断点
 
     ??? info "点击查看答案"
-        **C（bpm w 在写入时中断）**。注意：`bpm x`=执行断点、`bpm r`=读断点、`bpm w`=写断点。三者必须分清。
+        **C（bpmb w 在写入时中断）**。注意：`bpmb x`=执行断点、`bpmb r`=读断点、`bpmb w`=写断点。8086不支持硬件断点，80386支持。
 
+## 补充习题（调试经验向）
+
+!!! question "1.（单选）"
+    用 TD 调试 `repne scasb` 时，在 `repne scasb` 这行按 F8，会发生什么？（）
+
+    (A) 进入 `scasb` 内部逐步执行
+
+    (B) 一次性执行完整个 `repne` 循环，停在下一行
+
+    (C) 执行一次扫描比较后停在下一行
+
+    (D) 程序崩溃
+
+    ??? info "点击查看答案"
+        **B**。`repne scasb` 是一个指令，F8（step over）会把它当作一步执行完。要用 **F7（trace into）** 才能每次只执行一次扫描（DI++、CX--），逐步观察循环过程。
+
+!!! question "2.（单选）"
+    在 TD 中，执行 `call f` 时按 F7，下一步会停在哪里？（）
+
+    (A) `call` 的下一行
+
+    (B) 函数 `f` 的第一条指令
+
+    (C) `ret` 指令
+
+    (D) 随机位置
+
+    ??? info "点击查看答案"
+        **B**。F7=trace into，会进入 `f` 内部。F8=step over，会把整个 `call` 当作一步停在下一行。
+
+!!! question "3.（单选）"
+    在 SoftICE 中，想在 `var` 变量被写入时中断，应使用（）
+
+    (A) `bpm x var`
+
+    (B) `bpm r var`
+
+    (C) `bpm w var`
+
+    (D) `bpx var`
+
+    ??? info "点击查看答案"
+        **C（bpm w）**。`bpm x`=执行断点（execute）、`bpm r`=读断点（read）、`bpm w`=写断点（write）。`bpx` 是普通执行断点（软件断点），不是硬件断点。
+
+!!! question "4.（填空）"
+    SoftICE 中，T 命令（F7）的功能是 ______，P 命令（F8）的功能是 ______，X 命令（F9/Ctrl+D）的功能是 ______。
+
+    ??? info "点击查看答案"
+        **跟踪进入（trace into）**、**步过（step over）**、**运行程序（execute/go）**。
+
+        | 命令 | 快捷键 | 含义 |
+        |:--|:--|:--|
+        | `T` | F7 | trace into，遇 call 进入函数内部 |
+        | `P` | F8 | step over，call 当一步执行 |
+        | **`X`** | **F9 / Ctrl+D** | **execute / go，运行程序直到断点** |
+        | `BPX` | F2 | 设软件断点 |
+        | `HERE` | F4 | 运行到光标处 |
+        | `U` | — | 反汇编 |
+        | `D` | — | dump 查看内存 |
+        | `R reg` | — | 修改寄存器值 |
+        | `RS` | F5 | 观察用户屏幕 |
+        | `SRC` | F3 | 切换源码/机器码显示 |
+        | `CLS` | — | 清除命令窗 |
+        | `.` | — | 代码窗显示 CS:IP 指向的指令 |
+
+        | 命令 | 含义 |
+        |:--|:--|
+        | `bpmb/w/d addr x` | 硬件执行断点（x=execute） |
+        | `bpmb/w/d addr r` | 硬件读断点（r=read） |
+        | `bpmb/w/d addr w` | 硬件写断点（w=write） |
+        | `bpmb/w/d addr rw` | 硬件读写断点 |
+        | `bpx addr` | 软件断点 |
+        | `bl` | 列出所有断点 |
+        | `be * / num` | 激活断点（* = 全部，num = 编号） |
+        | `bd * / num` | 禁用断点 |
+        | `bc * / num` | 清除断点 |
+
+!!! question "5.（单选）"
+    在 TD 中调试 `div bl` 时，若 BL=0，执行后会发生什么？（）
+
+    (A) 跳过该指令继续执行
+
+    (B) 程序结束
+
+    (C) 触发 int 00h，调试器可能弹出异常提示
+
+    (D) AX 变成 0
+
+    ??? info "点击查看答案"
+        **C**。除数为 0 触发 `int 00h`（除法溢出中断），在调试器中会看到异常或中断发生。`int 00h` 插在 `div` 指令**上方**，不是在下方。
+
+!!! question "6.（填空）"
+    在 SoftICE 中，要查看地址 0:8×4 处的内容（即 int 8h 的中断向量），应先执行 `d ______`，该地址低字是 ______，高字是 ______。
+
+    ??? info "点击查看答案"
+        **0:20**（8×4=32=20h）、**中断处理程序偏移地址(IP)**、**中断处理程序段地址(CS)**。每个中断向量占 4 字节，小端格式排列。
+
+!!! question "7.（单选）"
+    用 TD 调试时，`push bp; mov bp, sp` 之后查看 SS:SP 区域，`[bp+2]` 处存储的是（）
+
+    (A) 调用者的 BP 值
+
+    (B) 返回地址（call 的下一条指令偏移）
+
+    (C) 第一个参数
+
+    (D) 垃圾值
+
+    ??? info "点击查看答案"
+        **B**。`[bp+0]`=old BP、`[bp+2]`=返回地址(IP)、`[bp+4]`=第一个压入的参数。只有亲手 dump 过堆栈才能记住这个顺序。
+
+!!! question "8.（单选）"
+    PSP（程序段前缀）的长度是多少？PSP 位于程序内存映像的什么位置？（）
+
+    (A) 100h 字节，位于 code segment 之后
+
+    (B) 100h 字节，位于程序开头（code segment 之前）
+
+    (C) 200h 字节，位于 data segment 之前
+
+    (D) 0 字节，不存在
+
+    ??? info "点击查看答案"
+        **B（100h 字节，程序开头）**。PSP 长 256 字节，在 DOS 加载 .exe 时放在程序内存最前面。用 TD 的 dump 功能查看 DS 指向的位置就能看到 PSP。pclife.asm 中通过 `ds:[985h]` 访问游戏状态就是跨 PSP 操作。
+
+!!! question "9.（填空）"
+    在 TD/SoftICE 中调试时发现 `movsb` 执行后 SI 和 DI **减小**了，说明当前 DF=______，之前一定执行过 ______ 指令。
+
+    ??? info "点击查看答案"
+        **1**、**std**。DF=1 时字符串方向逆向（SI--/DI--），DF=0 时正向（SI++/DI++）。`cld` 清 DF、`std` 置 DF。在调试器中通过观察 SI/DI 的增减就能反推 DF 状态。
+
+!!! question "10.（单选）"
+    在 SoftICE 中调试时，代码窗显示混乱难以阅读，想要在源码（.asm）、源码+机器码、纯机器码三种视图间切换，应使用什么命令？（）
+
+    (A) `U`
+
+    (B) `SRC`（F3）
+
+    (C) `RS`（F5）
+
+    (D) `EC`（F6）
+
+    ??? info "点击查看答案"
+        **B（`SRC` / F3）**。`SRC` 循环切换三种显示模式。`U` 是反汇编、`RS` 是看用户屏幕、`EC` 是代码窗与命令窗切换。调试时合理切换视图能大幅提高效率。
+
+!!! question "11.（单选）"
+    在 SoftICE 中修改 int 9h 中断向量后，如果忘记在中断处理程序中发 EOI，会发生什么？（）
+
+    (A) 键盘完全失灵
+
+    (B) 只有第一次按键有效，之后键盘无响应
+
+    (C) 程序正常运行，无影响
+
+    (D) 系统崩溃
+
+    ??? info "点击查看答案"
+        **B（只有第一次按键有效）**。不发 EOI（`mov al,20h; out 20h,al`），中断控制器不会响应后续中断请求，键盘就“死”了。
+
+        ??? info "拓展：EOI 与 8259A 中断控制器"
+            x86 使用 8259A PIC 管理硬件中断，端口如下：
+
+            | 端口 | 用途 |
+            |:--|:--|
+            | 20h | 主 PIC 命令端口（发 EOI 的地址） |
+            | 21h | 主 PIC 屏蔽字端口（IMR，可屏蔽特定中断） |
+            | A0h | 从 PIC 命令端口 |
+            | A1h | 从 PIC 屏蔽字端口 |
+
+            **为什么必须发 EOI？** 当中断发生时，PIC 会记录“当前正在服务的中断优先级”。如果不发 EOI（End Of Interrupt），PIC 认为中断仍在处理中，会**阻塞所有同优先级或更低优先级的中断**。int 9h 优先级较低，不发 EOI 后所有后续中断都被阻拦。
+
+            **正确写法：**
+            ```asm
+            int_9h:
+                push ax
+                in al, 60h       ; 读键盘扫描码
+                ; ... 处理键盘事件 ...
+                mov al, 20h      ; EOI 命令字 = 20h
+                out 20h, al      ; 发送到主 PIC 命令端口
+                pop ax
+                iret
+            ```
+            必须在 `iret` 之前发 EOI，否则等于告诉 PIC “我还没处理完，别来烦我”。
+
+!!! question "12.（单选）"
+    用 TD 调试时，想观察 `int 8h` 被调用的实际过程，最可靠的方法是（）
+
+    (A) 在 `int 8h` 的中断处理程序入口设断点
+
+    (B) 反复按 F8 等待
+
+    (C) 在用户代码中设断点
+
+    (D) 无法观察，因为 int 8h 是硬件中断
+
+    ??? info "点击查看答案"
+        **D**。用 TD **无法**观察硬件中断的调用过程，原因如下：
+
+        1. **硬件中断不是指令流的一部分**——`int 8h` 由外部定时器芯片触发，CPU 在两条用户指令之间“插入”执行，不经过 `call`/`int` 指令。F7/F8 只能跟踪用户程序的指令流，永远跟踪不到硬件中断的触发瞬间。
+
+        2. **TD 的断点机制与硬件中断冲突**——TD 的软件断点通过 `int 3` 实现，而 `int 3` 和硬件中断共享中断机制。当定时器中断触发时，CPU 已在中断上下文中（IF 被自动清除），此时若再触发 `int 3` 断点，TD 可能因嵌套中断而卡死或忽略断点。
+
+        3. **结论**：TD 适合观察中断的**副作用**（如修改 int 8h 中断向量后用 `inc [counter]` 看计数器变化），但无法断点进入中断处理程序。要调试中断处理程序内部逻辑，必须用 ring-0 调试器 **SoftICE**，配合硬件断点 `bpmb addr x` 才能正常中断。
+
+!!! question "13.（单选·陷阱）"
+    设 CF=0，执行 `inc ax` 和 `add ax, 1` 后，关于 CF 正确的是（）
+
+    (A) 两者执行后 CF 都保持为 0
+
+    (B) `inc ax` 后 CF=0，`add ax, 1` 后 CF 取决于运算是否进位
+
+    (C) `inc ax` 后 CF 取决于运算是否进位，`add ax, 1` 后 CF=0
+
+    (D) 两者执行后 CF 都取决于运算是否进位
+
+    ??? info "点击查看答案"
+        **B**。`inc`/`dec` 是少数**不影响 CF** 的算术指令（只影响 OF/SF/ZF/AF/PF），设计初衷是方便在循环中对指针做 ±1 操作而不破坏之前的进位状态。`add ax, 1` 正常影响所有标志位包括 CF。这是一个经典陷阱——看起来 `inc` 就像 `add ... , 1` 的缩写，但 CF 行为不同。
+
+!!! question "14.（单选·陷阱）"
+    设 AX=0FFFFh，执行 `inc ax` 后，AX 和 OF 分别是（）
+
+    (A) AX=0, OF=0
+
+    (B) AX=0, OF=1
+
+    (C) AX=0, 溢出触发 int 4
+
+    (D) AX=10000h, OF=1
+
+    ??? info "点击查看答案"
+        **A（AX=0, OF=0）**。0FFFFh+1=10000h，AX 截断为 0000h（回绕）。`inc` 不影响 CF，但 OF 在 0FFFFh→0 时也不会置 1——因为对于有符号数，-1+1=0 没有溢出。`inc` 的 OF 只在 7FFFh→8000h（正+正→负）时置 1。
+
+!!! question "15.（单选）"
+    `mul bl` 执行后，如何判断乘积是否超出 AL 的范围？（）
+
+    (A) 看 CF
+
+    (B) 看 OF
+
+    (C) 看 CF 和 OF，两者都被 mul 设置
+
+    (D) 看 ZF
+
+    ??? info "点击查看答案"
+        **C**。`mul bl` 的结果 AL×BL 存于 AX。若 AH≠0（即乘积超过 8 位），CF 和 OF 都被置 1；若 AH=0 则 CF=OF=0。这是 `mul` 独有的标志位行为——CF 和 OF 在这里**用来判断乘积是否超出目的寄存器宽度**，而不是传统的进位/溢出含义。`imul` 同理。
+
+!!! question "16.（判断·陷阱）"
+    设 AX=8000h（-32768），CX=0FFFFh（-1）。执行 `idiv cx` 后，AX=32768。（）
+
+    ??? info "点击查看答案"
+        **✗（错误）**。不会得到 32768，而是触发**除法溢出（int 00h）**——商 +32768 超出 16 位有符号数范围（-32768~+32767）。除数为 0 不是唯一触发 `int 00h` 的条件，商溢出也会。类似地 `mov ax, 1234h; mov bl, 10h; div bl` 也会溢出（商 123h > 8 位）。
+
+!!! question "17.（单选·陷阱）"
+    设 AX=80h, BX=7Fh。`cmp ax, bx` 后，以下哪条指令会跳转？（）
+
+    (A) `jb label`
+
+    (B) `jl label`
+
+    (C) `jb label` 和 `jl label` 都会跳
+
+    (D) `jb label` 和 `jl label` 都不会跳
+
+    ??? info "点击查看答案"
+        **D（两者都不跳）**。`cmp ax, bx`（16位）：0080h-007Fh=0001h，CF=0, SF=0, OF=0, ZF=0。`jb` 看 CF=1 才跳→不跳；`jl` 看 SF≠OF 才跳→不跳。有符号 128>127、无符号 128>127，`jl` 和 `jb` 都不跳是正确的。**陷阱在于如果换成 8 位**：`cmp al, bh`，80h-7Fh=01h，CF=0, SF=0, OF=1（-128-127=-255 溢出），SF≠OF → `jl` 跳、`jb` 不跳——同样的数值、不同的位宽，结果完全不同。
+
+!!! question "18.（填空）"
+    设 CX=1，执行 `loop again` 后，CX=______，程序 ______（会/不会）跳转到 again。
+
+    ??? info "点击查看答案"
+        **0**、**不会**。`loop` 的逻辑是：先 `dec cx`，再判断 CX≠0 则跳。CX=1 → dec 后 CX=0 → 不跳。所以 `loop` 在 CX=1 时只执行一次（循环体跑完就退出），而不是循环一次再跳一次。很多人误以为 CX 的值等于循环次数，实际是 CX 初始值减到 0 的差才是循环次数。
+
+!!! question "19.（判断·陷阱）"
+    `dec cx` 和 `sub cx, 1` 完全相同，都会影响 CF 标志位。（）
+
+    ??? info "点击查看答案"
+        **✗（错误）**。`dec` 不影响 CF（和 `inc` 一样，只影响 OF/SF/ZF/AF/PF），而 `sub cx, 1` 会正常影响 CF。如果 `dec cx` 用在 `loop` 之前检查借位，CF 不会被改变。
+
+!!! question "20.（判断·陷阱）"
+    `not ax` 执行后，会根据结果是否为 0 来设置 ZF。（）
+
+    ??? info "点击查看答案"
+        **✗（错误）**。`not` 是极少数**不影响任何标志位**的逻辑指令。和 `mov` 一样，不论结果是多少，所有标志位保持原值。`neg` 则会影响 CF/OF/SF/ZF。
+
+!!! question "21.（判断·陷阱）"
+    `repne scasb` 扫描到匹配字节后，DI 指向该匹配字节的位置。（）
+
+    ??? info "点击查看答案"
+        **✗（错误）**。`repne scasb` 每轮操作是：比较 → DI++（或 DI--）→ CX--。找到匹配后 DI 已经递增过了，实际指向匹配字节的**下一个字节**。用 `not cx` 求长度也要注意这个偏移。
+
+!!! question "22.（判断·陷阱）"
+    `sal al, 1` 和 `shl al, 1` 执行后，AL 结果相同，但移入 CF 的位可能不同。（）
+
+    ??? info "点击查看答案"
+        **✗（错误）**。`sal` ≡ `shl`，完全等价。不仅 AL 结果相同，移入 CF 的位也相同（都是移出的最高位）。右移才区分 `sar`（符号填充）和 `shr`（0 填充）。
+
+!!! question "23.（判断·陷阱）"
+    `lea ax, [bx+si+4]` 会访问内存地址 [bx+si+4] 并将该地址的值载入 AX。（）
+
+    ??? info "点击查看答案"
+        **✗（错误）**。`lea`（Load Effective Address）**不访问内存**，只计算 `[]` 中的地址表达式结果。`lea ax, [bx+si+4]` 等价于 `ax = bx+si+4`（纯地址计算），而 `mov ax, [bx+si+4]` 才是从内存取值。`lea` 常用于做加法而不用 `add`。
+
+!!! question "24.（判断·陷阱）"
+    `iret` 从堆栈弹出 FLAGS 后，IF 恢复为中断发生前的值，因此硬件中断返回后中断自动重新开启。（）
+
+    ??? info "点击查看答案"
+        **✓（正确）**。`int` 执行时 `pushf` 保存的 FLAGS 中 IF 通常是 1（中断发生前中断是开启的）。`iret` 的 `popf` 会恢复这个 FLAGS，IF 自动变回 1。但如果用 `pushf; popf` 手动修改了堆栈中的 FLAGS 使 IF=0，`iret` 后中断就仍然是关的。
 ---
 
+## 讲义整理（第2-16周）
+
+### 第2周 — 第一个汇编程序
+
+**程序框架**，`mov`/`add`/`cmp`/`jg`/`jmp`，C 到汇编的 if-else 翻译：
+
+```asm
+code segment
+assume cs:code
+main:
+   mov ax, 2
+   mov bx, 3
+   cmp ax, bx
+   jg ax_is_bigger       ; 有符号大于则跳
+   mov cx, bx
+   jmp done
+ax_is_bigger:
+   mov cx, ax
+done:
+code ends
+end main
+```
+
+### 第3周 — 除法指令 div
+
+`div` 三种用法：16/8→al..ah，32/16→ax..dx，64/32→eax..edx。
+
+```asm
+mov ax, 123
+mov bl, 10
+div bl    ; al=12(商), ah=3(余)
+```
+
+### 第4周 — 有符号除法 idiv / imul
+
+```asm
+mov dx, -1
+mov ax, -5          ; dx:ax = -5
+mov bx, 2
+idiv bx             ; ax=-2(商), dx=-1(余)
+```
+
+`mul` 无符号乘：`mul bl` → AX=AL×BL；`mul bx` → DX:AX=AX×BX。`imul` 有符号乘，支持双操作数 `imul ax, bx`。
+
+```asm
+mov ax, 1234h
+mov bx, 100h
+imul ax, bx         ; ax = 1234h * 100h
+mov ax, -2
+mov bx, 2
+imul bx             ; ax = -4
+```
+
+### 第5周 — 段地址与偏移地址
+
+物理地址 = 段地址×10h + 偏移地址。`ds` 只能通过寄存器赋值。`byte ptr`/`word ptr`/`dword ptr` 指定操作宽度。
+
+```asm
+mov ax, 1000h
+mov ds, ax
+mov bx, 2345h
+mov al, ds:[bx]     ; al = *(ds:bx)
+```
+
+### 第6周 — 内存填充
+
+`sub cx, 1` + `jnz` 实现循环，`byte ptr` 在宽度明确时可省略。
+
+### 第8周 — 数据定义与间接寻址
+
+`db`/`dw`/`dd` 定义数据，小端序存储。`w[1]` 等价于 `w+1` 偏移。间接寻址寄存器仅限 `BX, BP, SI, DI`；`[]` 中有 BP 时段址默认 SS，否则默认 DS。
+
+```asm
+data segment
+abc db "ABCD"
+w   dw 1234h, 5678h
+data ends
+   mov ax, w[2]     ; ax = 5678h (w+2偏移)
+   mov al, abc[0]   ; al = 'A' (直接寻址)
+   mov bx, offset abc
+   mov dl, [bx]     ; dl = 'A' (间接寻址)
+```
+
+### 第9周 — 堆栈框架
+
+`push bp; mov bp, sp` 建立框架，`[bp+4]` 起引用参数。堆栈变化：
+
+```
+SS:0FF8  old bp    ← bp
+SS:0FFA  back      ← 返回地址
+SS:0FFC  参数2     ← [bp+4]
+SS:0FFE  参数1     ← [bp+6]
+```
+
+### 第10周 — 三种调用约定
+
+| | C | Pascal | stdcall |
+|:--|:--|:--|:--|
+| 压栈方向 | 右→左 | 左→右 | 右→左 |
+| 参数清理 | 调用者 | 被调用者(`ret n`) | 被调用者 |
+
+C 从右到左是为支持 `printf` 可变参数。Pascal 方式例：
+
+```asm
+f: push bp
+   mov bp, sp
+   mov ax, [bp+6]     ; 参数1
+   sub ax, [bp+4]     ; 减参数2
+   pop bp
+   ret 4              ; 返回并清理2个参数
+```
+
+### 第11周 — 远指针与显存操作
+
+远指针 = 段址:偏移，存为 32 位（dd）时偏移在前段址在后。`les di, [addr]` 加载远指针。显存地址：文本模式 B800:0（彩色）/ B000:0（单色），图形模式 A000:0。每字符 2 字节（ASCII + 颜色）。
+
+```asm
+video_addr1 dd 0B8000000h     ; 低字=偏移, 高字=段址
+   les di, [video_addr1]
+   mov byte ptr es:[di], 'A'
+   mov byte ptr es:[di+1], 71h  ; 颜色属性
+```
+
+### 第12周 — 中断原理
+
+软中断（int 21h）由程序发起，硬中断（int 8h/int 9h）由外部事件触发。`int` 执行时 push 顺序：**FLAGS → CS → IP**，再 `jmp dword ptr 0:[n*4]`。`iret` 按 IP → CS → FLAGS 顺序恢复。
+
+### 第13周 — 修改定时器中断 int 8h 向量
+
+```
+保存旧向量 → cli → 写新向量到 0:8*4 → sti → 退出前恢复旧向量
+```
+
+`out 20h, al`（al=20h）发 EOI 信号到中断控制器。`int 21h AH=31h` 实现 TSR（驻留）。
+
+```asm
+int_8h:
+   cmp [ticks], 0
+   je skip
+   dec [ticks]
+skip:
+   push ax
+   mov al, 20h
+   out 20h, al          ; EOI
+   pop ax
+   iret
+```
+
+### 第14周 — 修改键盘中断 int 9h 向量
+
+`in al, 60h` 读键盘端口获取扫描码。最高位=1 表示释放，=0 表示按下。`0E0h`/`0E1h` 是扩展键前缀。
+
+```asm
+int_9h:
+   in al, 60h           ; AL=扫描码
+   test al, 80h         ; 最高位=1?
+   jz down              ; 0→按下
+up:                     ; 1→释放
+   ...
+   mov al, 20h
+   out 20h, al          ; EOI
+   iret
+```
+
+### 第15周 — 除法溢出 int 00h
+
+除数=0 或商超出寄存器范围时触发 int 00h，插在 `div` 指令**上方**。可修改 int 00h 中断向量来修改返回地址跳过错误指令：
+
+```asm
+int_00h:
+   push bp
+   mov bp, sp
+   mov word ptr [bp+2], offset back  ; 修改返回IP
+   pop bp
+   iret
+```
+
+### 第16周 — 补充知识点
+
+`loop`（先 dec cx 再 jnz，cx=0 时循环 10000h 次）、`jcxz`（cx=0 则跳）、`xlat`（AL=DS:[BX+AL]）、`neg ax = (not ax)+1`、`test` vs `and`（前者不保存结果）。
+
+**字符串操作**（`cld`/`std` 控制 DF 方向，DF=0→SI/DI 递增，DF=1→递减）：
+
+| 指令 | 功能 | 等效 C |
+|:--|:--|:--|
+| `repne scasb` | 在 ES:DI 中扫描 AL，不等则继续；结束条件：找到相等或 CX=0 | `strlen(s)` |
+| `rep movsb` | 复制 CX 字节 DS:SI → ES:DI | `memcpy(t,s,n)` |
+| `lodsb` | AL=DS:[SI]，SI±1 | `al = *si++` |
+| `stosb` | ES:[DI]=AL，DI±1 | `*di++ = al` |
+
+> `repne` 先判 CX=0（0 次循环），`loop` 先 dec 再判（10000h 次），二者相反。`repne scasb` 后 `not cx` 得字符串长度。
+
+```asm
+; strlen 用 repne scasb
+mov di, offset s
+mov cx, 0FFFFh
+mov al, 0
+cld
+repne scasb          ; 扫描找0
+not cx               ; CX=长度(含末尾0)
+
+; memcpy 用 rep movsb
+mov si, offset s
+mov di, offset t
+cld
+rep movsb            ; CX次复制
+
+; 过滤：lodsb + stosb
+mov si, offset s
+mov di, offset t
+mov cx, len
+cld
+again:
+   lodsb             ; AL=DS:[SI], SI++
+   cmp al, '#'
+   je skip
+   stosb             ; ES:[DI]=AL, DI++
+skip:
+   loop again
+```
+
+**字符串输入输出**（int 21h）：
+
+| AH | 功能 | 入口 | 出口 |
+|:--:|------|------|------|
+| 2 | 显示单个字符 | DL=字符 | — |
+| 9 | 显示 `$` 结尾字符串 | DS:DX→串 | — |
+| 1 | 键盘输入单字符（回显） | — | AL=字符 |
+| 0Ah | 键盘输入字符串（缓冲） | DS:DX→缓冲区 | 缓冲区被填充 |
+
+> AH=0Ah 缓冲区格式：`[max_len][实际读取长度][字符串内容...]`
+
+```asm
+data segment
+buf db 20, ?, 20 dup(0)  ; buf[0]=最大长度20, buf[1]=实际长度, buf[2:]=内容
+msg db "You typed: $"
+data ends
+   ; 输入字符串
+   mov ah, 0Ah
+   mov dx, offset buf
+   int 21h              ; 用户输入存入buf
+   ; 显示提示+输入内容
+   mov ah, 9
+   mov dx, offset msg
+   int 21h
+   mov bl, buf[1]       ; 实际长度
+   mov bh, 0
+   mov byte ptr buf[bx+2], '$'  ; 末尾加$
+   mov ah, 9
+   mov dx, offset buf+2
+   int 21h              ; 显示用户输入的字符串
+```
 
 ---
 
@@ -420,7 +987,7 @@
     | 返回指令 | `ret` | `retf` | `iret` |
     | 返回时 pop | IP | IP → CS | IP → CS → FLAGS |
 
-    > 课堂原话：近调用 = 一个 push + 一个 jmp；远调用 = 两个 push + 一个 jmp；int = 三个 push + 一个 jmp。顺序不能错。
+    > 近调用 = 一个 push + 一个 jmp；远调用 = 两个 push + 一个 jmp；int = 三个 push + 一个 jmp。顺序不能错。
 
 ??? info "堆栈框架（near call + Pascal 方式）"
 
@@ -434,11 +1001,11 @@
 
     > 口诀：`[bp+0]`=old_bp，`[bp+2]`=返回地址，`[bp+N]`(N≥4)=参数。BP+N 引用参数，BP−N 引用局部变量。
 
-??? info "中断向量与 Hook 流程"
+??? info "中断向量与修改流程"
 
     1. 中断向量表位于 **0:0 ~ 0:3FFh**（256个×4字节）
     2. int N 的向量地址 = 0:N×4
-    3. Hook int 8h 流程：保存旧向量 → `cli` → 写新向量到 0:8×4 → `sti` → 退出前恢复旧向量
+    3. 修改 int 8h 中断向量流程：保存旧向量 → `cli` → 写新向量到 0:8×4 → `sti` → 退出前恢复旧向量
 
 ??? info "DOS 中断"
 
@@ -457,9 +1024,9 @@
 
     4. int 08h：**定时器中断**（硬件时钟，约每秒 18.2 次，常用于延时和周期性任务）
 
-    5. int 09h：**键盘中断**（按键时触发，可 hook 来拦截键盘输入）
+    5. int 09h：**键盘中断**（按键时触发，可修改中断向量来拦截键盘输入）
 
-    > 课堂涉及：int 00h（div 溢出）、int 08h（hook 定时器实现 delay_1s、pclife 游戏外挂）、int 09h（“英特9”键盘中断）。
+    > 涉及：int 00h（div 溢出）、int 08h（修改定时器中断向量实现 delay_1s、pclife 游戏外挂）、int 09h（键盘中断）。
 
 ??? info "标志位速查（AF、PF 不作考试要求）"
 
