@@ -12,7 +12,7 @@
 <span style="font-size:1.2em; color:#808080;">**更新日志**</span>
 
 === "2026-06-25"
-    增加并验证补充习题及答案。让ai整理了教学内容。
+    增加并验证大量补充习题及答案。让ai整理了教学内容。
     
     祝考试顺利。
 
@@ -412,7 +412,7 @@
     ??? info "点击查看答案"
         **C（bpmb w 在写入时中断）**。注意：`bpmb x`=执行断点、`bpmb r`=读断点、`bpmb w`=写断点。8086不支持硬件断点，80386支持。
 
-## 补充习题（调试经验向）
+## 补充习题（选择性看）
 
 !!! question "1.（单选）"
     用 TD 调试 `repne scasb` 时，在 `repne scasb` 这行按 F8，会发生什么？（）
@@ -976,256 +976,256 @@
 
 ## 讲义整理（第2-16周）
 
-### 第2周 — 第一个汇编程序
+!!! tip "第2周 — 第一个汇编程序"
 
-**程序框架**，`mov`/`add`/`cmp`/`jg`/`jmp`，C 到汇编的 if-else 翻译：
+    **程序框架**，`mov`/`add`/`cmp`/`jg`/`jmp`，C 到汇编的 if-else 翻译：
 
-```asm
-code segment
-assume cs:code
-main:
-   mov ax, 2
-   mov bx, 3
-   cmp ax, bx
-   jg ax_is_bigger       ; 有符号大于则跳
-   mov cx, bx
-   jmp done
-ax_is_bigger:
-   mov cx, ax
-done:
-code ends
-end main
-```
+    ```asm
+    code segment
+    assume cs:code
+    main:
+       mov ax, 2
+       mov bx, 3
+       cmp ax, bx
+       jg ax_is_bigger       ; 有符号大于则跳
+       mov cx, bx
+       jmp done
+    ax_is_bigger:
+       mov cx, ax
+    done:
+    code ends
+    end main
+    ```
 
-### 第3周 — 除法指令 div
+!!! tip "第3周 — 除法指令 div"
 
-`div` 三种用法：16/8→al..ah，32/16→ax..dx，64/32→eax..edx。
+    `div` 三种用法：16/8→al..ah，32/16→ax..dx，64/32→eax..edx。
 
-```asm
-mov ax, 123
-mov bl, 10
-div bl    ; al=12(商), ah=3(余)
-```
+    ```asm
+    mov ax, 123
+    mov bl, 10
+    div bl    ; al=12(商), ah=3(余)
+    ```
 
-### 第4周 — 有符号除法 idiv / imul
+!!! tip "第4周 — 有符号除法 idiv / imul"
 
-```asm
-mov dx, -1
-mov ax, -5          ; dx:ax = -5
-mov bx, 2
-idiv bx             ; ax=-2(商), dx=-1(余)
-```
+    ```asm
+    mov dx, -1
+    mov ax, -5          ; dx:ax = -5
+    mov bx, 2
+    idiv bx             ; ax=-2(商), dx=-1(余)
+    ```
 
-`mul` 无符号乘：`mul bl` → AX=AL×BL；`mul bx` → DX:AX=AX×BX。`imul` 有符号乘，支持双操作数 `imul ax, bx`。
+    `mul` 无符号乘：`mul bl` → AX=AL×BL；`mul bx` → DX:AX=AX×BX。`imul` 有符号乘，支持双操作数 `imul ax, bx`。
 
-```asm
-mov ax, 1234h
-mov bx, 100h
-imul ax, bx         ; ax = 1234h * 100h
-mov ax, -2
-mov bx, 2
-imul bx             ; ax = -4
-```
+    ```asm
+    mov ax, 1234h
+    mov bx, 100h
+    imul ax, bx         ; ax = 1234h * 100h
+    mov ax, -2
+    mov bx, 2
+    imul bx             ; ax = -4
+    ```
 
-### 第5周 — 段地址与偏移地址
+!!! tip "第5周 — 段地址与偏移地址"
 
-物理地址 = 段地址×10h + 偏移地址。`ds` 只能通过寄存器赋值。`byte ptr`/`word ptr`/`dword ptr` 指定操作宽度。
+    物理地址 = 段地址×10h + 偏移地址。`ds` 只能通过寄存器赋值。`byte ptr`/`word ptr`/`dword ptr` 指定操作宽度。
 
-```asm
-mov ax, 1000h
-mov ds, ax
-mov bx, 2345h
-mov al, ds:[bx]     ; al = *(ds:bx)
-```
+    ```asm
+    mov ax, 1000h
+    mov ds, ax
+    mov bx, 2345h
+    mov al, ds:[bx]     ; al = *(ds:bx)
+    ```
 
-### 第6周 — 内存填充
+!!! tip "第6周 — 内存填充"
 
-`sub cx, 1` + `jnz` 实现循环，`byte ptr` 在宽度明确时可省略。
+    `sub cx, 1` + `jnz` 实现循环，`byte ptr` 在宽度明确时可省略。
 
-### 第8周 — 数据定义与间接寻址
+!!! tip "第8周 — 数据定义与间接寻址"
 
-`db`/`dw`/`dd` 定义数据，小端序存储。`w[1]` 等价于 `w+1` 偏移。间接寻址寄存器仅限 `BX, BP, SI, DI`；`[]` 中有 BP 时段址默认 SS，否则默认 DS。
+    `db`/`dw`/`dd` 定义数据，小端序存储。`w[1]` 等价于 `w+1` 偏移。间接寻址寄存器仅限 `BX, BP, SI, DI`；`[]` 中有 BP 时段址默认 SS，否则默认 DS。
 
-```asm
-data segment
-abc db "ABCD"
-w   dw 1234h, 5678h
-data ends
-   mov ax, w[2]     ; ax = 5678h (w+2偏移)
-   mov al, abc[0]   ; al = 'A' (直接寻址)
-   mov bx, offset abc
-   mov dl, [bx]     ; dl = 'A' (间接寻址)
-```
+    ```asm
+    data segment
+    abc db "ABCD"
+    w   dw 1234h, 5678h
+    data ends
+       mov ax, w[2]     ; ax = 5678h (w+2偏移)
+       mov al, abc[0]   ; al = 'A' (直接寻址)
+       mov bx, offset abc
+       mov dl, [bx]     ; dl = 'A' (间接寻址)
+    ```
 
-### 第9周 — 堆栈框架
+!!! tip "第9周 — 堆栈框架"
 
-`push bp; mov bp, sp` 建立框架，`[bp+4]` 起引用参数。堆栈变化：
+    `push bp; mov bp, sp` 建立框架，`[bp+4]` 起引用参数。堆栈变化：
 
-```
-SS:0FF8  old bp    ← bp
-SS:0FFA  back      ← 返回地址
-SS:0FFC  参数2     ← [bp+4]
-SS:0FFE  参数1     ← [bp+6]
-```
+    ```
+    SS:0FF8  old bp    ← bp
+    SS:0FFA  back      ← 返回地址
+    SS:0FFC  参数2     ← [bp+4]
+    SS:0FFE  参数1     ← [bp+6]
+    ```
 
-### 第10周 — 三种调用约定
+!!! tip "第10周 — 三种调用约定"
 
-| | C | Pascal | stdcall |
-|:--|:--|:--|:--|
-| 压栈方向 | 右→左 | 左→右 | 右→左 |
-| 参数清理 | 调用者 | 被调用者(`ret n`) | 被调用者 |
+    | | C | Pascal | stdcall |
+    |:--|:--|:--|:--|
+    | 压栈方向 | 右→左 | 左→右 | 右→左 |
+    | 参数清理 | 调用者 | 被调用者(`ret n`) | 被调用者 |
 
-C 从右到左是为支持 `printf` 可变参数。Pascal 方式例：
+    C 从右到左是为支持 `printf` 可变参数。Pascal 方式例：
 
-```asm
-f: push bp
-   mov bp, sp
-   mov ax, [bp+6]     ; 参数1
-   sub ax, [bp+4]     ; 减参数2
-   pop bp
-   ret 4              ; 返回并清理2个参数
-```
+    ```asm
+    f: push bp
+       mov bp, sp
+       mov ax, [bp+6]     ; 参数1
+       sub ax, [bp+4]     ; 减参数2
+       pop bp
+       ret 4              ; 返回并清理2个参数
+    ```
 
-### 第11周 — 远指针与显存操作
+!!! tip "第11周 — 远指针与显存操作"
 
-远指针 = 段址:偏移，存为 32 位（dd）时偏移在前段址在后。`les di, [addr]` 加载远指针。显存地址：文本模式 B800:0（彩色）/ B000:0（单色），图形模式 A000:0。每字符 2 字节（ASCII + 颜色）。
+    远指针 = 段址:偏移，存为 32 位（dd）时偏移在前段址在后。`les di, [addr]` 加载远指针。显存地址：文本模式 B800:0（彩色）/ B000:0（单色），图形模式 A000:0。每字符 2 字节（ASCII + 颜色）。
 
-```asm
-video_addr1 dd 0B8000000h     ; 低字=偏移, 高字=段址
-   les di, [video_addr1]
-   mov byte ptr es:[di], 'A'
-   mov byte ptr es:[di+1], 71h  ; 颜色属性
-```
+    ```asm
+    video_addr1 dd 0B8000000h     ; 低字=偏移, 高字=段址
+       les di, [video_addr1]
+       mov byte ptr es:[di], 'A'
+       mov byte ptr es:[di+1], 71h  ; 颜色属性
+    ```
 
-### 第12周 — 中断原理
+!!! tip "第12周 — 中断原理"
 
-软中断（int 21h）由程序发起，硬中断（int 8h/int 9h）由外部事件触发。`int` 执行时 push 顺序：**FLAGS → CS → IP**，再 `jmp dword ptr 0:[n*4]`。`iret` 按 IP → CS → FLAGS 顺序恢复。
+    软中断（int 21h）由程序发起，硬中断（int 8h/int 9h）由外部事件触发。`int` 执行时 push 顺序：**FLAGS → CS → IP**，再 `jmp dword ptr 0:[n*4]`。`iret` 按 IP → CS → FLAGS 顺序恢复。
 
-### 第13周 — 修改定时器中断 int 8h 向量
+!!! tip "第13周 — 修改定时器中断 int 8h 向量"
 
-```
-保存旧向量 → cli → 写新向量到 0:8*4 → sti → 退出前恢复旧向量
-```
+    ```
+    保存旧向量 → cli → 写新向量到 0:8*4 → sti → 退出前恢复旧向量
+    ```
 
-`out 20h, al`（al=20h）发 EOI 信号到中断控制器。`int 21h AH=31h` 实现 TSR（驻留）。
+    `out 20h, al`（al=20h）发 EOI 信号到中断控制器。`int 21h AH=31h` 实现 TSR（驻留）。
 
-```asm
-int_8h:
-   cmp [ticks], 0
-   je skip
-   dec [ticks]
-skip:
-   push ax
-   mov al, 20h
-   out 20h, al          ; EOI
-   pop ax
-   iret
-```
+    ```asm
+    int_8h:
+       cmp [ticks], 0
+       je skip
+       dec [ticks]
+    skip:
+       push ax
+       mov al, 20h
+       out 20h, al          ; EOI
+       pop ax
+       iret
+    ```
 
-### 第14周 — 修改键盘中断 int 9h 向量
+!!! tip "第14周 — 修改键盘中断 int 9h 向量"
 
-`in al, 60h` 读键盘端口获取扫描码。最高位=1 表示释放，=0 表示按下。`0E0h`/`0E1h` 是扩展键前缀。
+    `in al, 60h` 读键盘端口获取扫描码。最高位=1 表示释放，=0 表示按下。`0E0h`/`0E1h` 是扩展键前缀。
 
-```asm
-int_9h:
-   in al, 60h           ; AL=扫描码
-   test al, 80h         ; 最高位=1?
-   jz down              ; 0→按下
-up:                     ; 1→释放
-   ...
-   mov al, 20h
-   out 20h, al          ; EOI
-   iret
-```
+    ```asm
+    int_9h:
+       in al, 60h           ; AL=扫描码
+       test al, 80h         ; 最高位=1?
+       jz down              ; 0→按下
+    up:                     ; 1→释放
+       ...
+       mov al, 20h
+       out 20h, al          ; EOI
+       iret
+    ```
 
-### 第15周 — 除法溢出 int 00h
+!!! tip "第15周 — 除法溢出 int 00h"
 
-除数=0 或商超出寄存器范围时触发 int 00h，插在 `div` 指令**上方**。可修改 int 00h 中断向量来修改返回地址跳过错误指令：
+    除数=0 或商超出寄存器范围时触发 int 00h，插在 `div` 指令**上方**。可修改 int 00h 中断向量来修改返回地址跳过错误指令：
 
-```asm
-int_00h:
-   push bp
-   mov bp, sp
-   mov word ptr [bp+2], offset back  ; 修改返回IP
-   pop bp
-   iret
-```
+    ```asm
+    int_00h:
+       push bp
+       mov bp, sp
+       mov word ptr [bp+2], offset back  ; 修改返回IP
+       pop bp
+       iret
+    ```
 
-### 第16周 — 补充知识点
+!!! tip "第16周 — 补充知识点"
 
-`loop`（先 dec cx 再 jnz，cx=0 时循环 10000h 次）、`jcxz`（cx=0 则跳）、`xlat`（AL=DS:[BX+AL]）、`neg ax = (not ax)+1`、`test` vs `and`（前者不保存结果）。
+    `loop`（先 dec cx 再 jnz，cx=0 时循环 10000h 次）、`jcxz`（cx=0 则跳）、`xlat`（AL=DS:[BX+AL]）、`neg ax = (not ax)+1`、`test` vs `and`（前者不保存结果）。
 
-**字符串操作**（`cld`/`std` 控制 DF 方向，DF=0→SI/DI 递增，DF=1→递减）：
+    **字符串操作**（`cld`/`std` 控制 DF 方向，DF=0→SI/DI 递增，DF=1→递减）：
 
-| 指令 | 功能 | 等效 C |
-|:--|:--|:--|
-| `repne scasb` | 在 ES:DI 中扫描 AL，不等则继续；结束条件：找到相等或 CX=0 | `strlen(s)` |
-| `rep movsb` | 复制 CX 字节 DS:SI → ES:DI | `memcpy(t,s,n)` |
-| `lodsb` | AL=DS:[SI]，SI±1 | `al = *si++` |
-| `stosb` | ES:[DI]=AL，DI±1 | `*di++ = al` |
+    | 指令 | 功能 | 等效 C |
+    |:--|:--|:--|
+    | `repne scasb` | 在 ES:DI 中扫描 AL，不等则继续；结束条件：找到相等或 CX=0 | `strlen(s)` |
+    | `rep movsb` | 复制 CX 字节 DS:SI → ES:DI | `memcpy(t,s,n)` |
+    | `lodsb` | AL=DS:[SI]，SI±1 | `al = *si++` |
+    | `stosb` | ES:[DI]=AL，DI±1 | `*di++ = al` |
 
-> `repne` 先判 CX=0（0 次循环），`loop` 先 dec 再判（10000h 次），二者相反。`repne scasb` 后 `not cx` 得字符串长度。
+    > `repne` 先判 CX=0（0 次循环），`loop` 先 dec 再判（10000h 次），二者相反。`repne scasb` 后 `not cx` 得字符串长度。
 
-```asm
-; strlen 用 repne scasb
-mov di, offset s
-mov cx, 0FFFFh
-mov al, 0
-cld
-repne scasb          ; 扫描找0
-not cx               ; CX=长度(含末尾0)
+    ```asm
+    ; strlen 用 repne scasb
+    mov di, offset s
+    mov cx, 0FFFFh
+    mov al, 0
+    cld
+    repne scasb          ; 扫描找0
+    not cx               ; CX=长度(含末尾0)
 
-; memcpy 用 rep movsb
-mov si, offset s
-mov di, offset t
-cld
-rep movsb            ; CX次复制
+    ; memcpy 用 rep movsb
+    mov si, offset s
+    mov di, offset t
+    cld
+    rep movsb            ; CX次复制
 
-; 过滤：lodsb + stosb
-mov si, offset s
-mov di, offset t
-mov cx, len
-cld
-again:
-   lodsb             ; AL=DS:[SI], SI++
-   cmp al, '#'
-   je skip
-   stosb             ; ES:[DI]=AL, DI++
-skip:
-   loop again
-```
+    ; 过滤：lodsb + stosb
+    mov si, offset s
+    mov di, offset t
+    mov cx, len
+    cld
+    again:
+       lodsb             ; AL=DS:[SI], SI++
+       cmp al, '#'
+       je skip
+       stosb             ; ES:[DI]=AL, DI++
+    skip:
+       loop again
+    ```
 
-**字符串输入输出**（int 21h）：
+    **字符串输入输出**（int 21h）：
 
-| AH | 功能 | 入口 | 出口 |
-|:--:|------|------|------|
-| 2 | 显示单个字符 | DL=字符 | — |
-| 9 | 显示 `$` 结尾字符串 | DS:DX→串 | — |
-| 1 | 键盘输入单字符（回显） | — | AL=字符 |
-| 0Ah | 键盘输入字符串（缓冲） | DS:DX→缓冲区 | 缓冲区被填充 |
+    | AH | 功能 | 入口 | 出口 |
+    |:--:|------|------|------|
+    | 2 | 显示单个字符 | DL=字符 | — |
+    | 9 | 显示 `$` 结尾字符串 | DS:DX→串 | — |
+    | 1 | 键盘输入单字符（回显） | — | AL=字符 |
+    | 0Ah | 键盘输入字符串（缓冲） | DS:DX→缓冲区 | 缓冲区被填充 |
 
-> AH=0Ah 缓冲区格式：`[max_len][实际读取长度][字符串内容...]`
+    > AH=0Ah 缓冲区格式：`[max_len][实际读取长度][字符串内容...]`
 
-```asm
-data segment
-buf db 20, ?, 20 dup(0)  ; buf[0]=最大长度20, buf[1]=实际长度, buf[2:]=内容
-msg db "You typed: $"
-data ends
-   ; 输入字符串
-   mov ah, 0Ah
-   mov dx, offset buf
-   int 21h              ; 用户输入存入buf
-   ; 显示提示+输入内容
-   mov ah, 9
-   mov dx, offset msg
-   int 21h
-   mov bl, buf[1]       ; 实际长度
-   mov bh, 0
-   mov byte ptr buf[bx+2], '$'  ; 末尾加$
-   mov ah, 9
-   mov dx, offset buf+2
-   int 21h              ; 显示用户输入的字符串
-```
+    ```asm
+    data segment
+    buf db 20, ?, 20 dup(0)  ; buf[0]=最大长度20, buf[1]=实际长度, buf[2:]=内容
+    msg db "You typed: $"
+    data ends
+       ; 输入字符串
+       mov ah, 0Ah
+       mov dx, offset buf
+       int 21h              ; 用户输入存入buf
+       ; 显示提示+输入内容
+       mov ah, 9
+       mov dx, offset msg
+       int 21h
+       mov bl, buf[1]       ; 实际长度
+       mov bh, 0
+       mov byte ptr buf[bx+2], '$'  ; 末尾加$
+       mov ah, 9
+       mov dx, offset buf+2
+       int 21h              ; 显示用户输入的字符串
+    ```
 
 ---
 
