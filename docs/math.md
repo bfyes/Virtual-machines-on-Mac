@@ -25,6 +25,12 @@
 
 <span style="font-size:1.2em; color:#808080;">**更新日志**</span>
 
+=== "2026-06-30凌晨"
+    困了。概统补天中。调整概统答案和解析。还差离散试卷2和模拟卷的校对。
+    
+=== "2026-06-29晚上"
+    被气到了。调整概统解析，删除低质指南。
+
 === "2026-06-24中午"
     AI生成一份低质概统补天指南，留着自己吃。
 
@@ -951,7 +957,7 @@
 
 ---
 
-## 概率论与数理统计（Probability and Statistics）
+## Probability and Statistics
 
 ### 填空题
 
@@ -999,15 +1005,6 @@
         | (e) | **Geometric**（几何分布） | 直到第一次成功（Pascal 的特例 $k=1$） |
         | (f) | **Discrete Uniform**（离散均匀分布） | 有限个等可能结果 |
 
-        > 真题确认为“场景匹配分布模型”题型，但具体场景为推测补全。
-
-    ??? tip "离散分布速记"
-        - **Bernoulli**: 1次试验，$P(X=1)=p$
-        - **Binomial**: $n$次试验成功次数，$X\sim B(n,p)$，$E=np$
-        - **Poisson**: 单位时间事件数，$X\sim P(\lambda)$，$E=\lambda$（$\lambda=np$ 时可近似二项）
-        - **Geometric**: 直到首次成功，$P(X=k)=(1-p)^{k-1}p$
-        - **Pascal**: 直到第$r$次成功，几何的推广
-
 !!! question "2. [23-24 真题]"
     The probability of fog in a city on any given day is $0.4$. On foggy days, the probability that a resident wears a mask is $0.2$; on non-foggy days, the probability is $0.01$.
 
@@ -1036,6 +1033,12 @@
 
         $$P(\text{至少一人戴}) = 1 - (1-0.086)^3 = 1 - 0.914^3 \approx 1 - 0.7636 = 0.2364$$
 
+    ??? info "解法提示"
+        **全概率公式**：$P(A)=P(B_1)P(A\mid B_1)+P(B_2)P(A\mid B_2)$
+
+        - $B_1$ = 有雾，$B_2$ = 无雾
+        - 先算 $P(\text{戴口罩})$，再算 $P(\text{至少一人戴})=1-(1-p)^3$
+
 !!! question "3. [24-25 真题]"
     The probability of haze in a city is $0.2$. On hazy days, the probability that a resident wears a mask is $0.3$; on non-hazy days, the probability is $0.05$.
 
@@ -1059,6 +1062,12 @@
 
         $$P(\text{至少一人戴}) = 1 - (1-0.10)^3 = 1 - 0.9^3 = 1 - 0.729 = 0.271$$
 
+    ??? info "解法提示"
+        **全概率公式**：$P(A)=P(B_1)P(A\mid B_1)+P(B_2)P(A\mid B_2)$，其中 $B_1,B_2$ 是样本空间的一个分割。
+
+        - 本题 $B_1$ = 有霾，$B_2$ = 无霾
+        - 先算 $P(\text{戴口罩})$，再用补事件算 $P(\text{至少一人戴})=1-(1-p)^3$
+
 ---
 
 ### 计算题
@@ -1079,6 +1088,17 @@
         $Z = \dfrac{502\,000 - 500\,000}{500} = 4$。
 
         $P(X \ge 502\,000) \approx 1 - \Phi(4) \approx 1 - 0.9999683 \approx 3.17\times 10^{-5}$。
+
+    ??? info "解法提示"
+        二项分布用 CLT 近似（De Moivre-Laplace 公式）：
+
+        - $\mu=np$，$\sigma=\sqrt{np(1-p)}$
+        - 标准化：$Z=\dfrac{X-np}{\sqrt{np(1-p)}}\approx N(0,1)$
+        - $P(X\ge k)\approx 1-\Phi(Z)$，查标准正态表得概率
+
+        **连续性校正**：二项分布离散，正态分布连续，严格来说 $P(X\ge 502\,000)$ 应对应 $Z=\dfrac{501\,999.5-500\,000}{500}=3.999$（边界左移 $0.5$）。但 $n=10^6$ 极大，校正量 $0.5/\sigma=0.001$，对结果几乎无影响，可省略。
+
+        本题与 **LLN**（大数定律）的区别：LLN 说样本均值趋近期望，不给具体概率；CLT 给出近似分布，能算具体概率。
 
 !!! question "2. [24-25 真题] — 泊松分布"
     Customer arrivals at a store follow a Poisson distribution, with an average of $10$ customers arriving in $20$ minutes.
@@ -1104,6 +1124,15 @@
         **(2)** 8 分钟参数：$\lambda_8 = 10\times\frac{8}{20}=4$。
 
         $$P(X_8=2) = \dfrac{e^{-4}\cdot 4^2}{2!} = e^{-4}\cdot 8 \approx 0.1465$$
+
+    ??? info "解法提示"
+        泊松分布公式：$P(X=k)=\dfrac{e^{-\lambda}\lambda^k}{k!}$
+
+        - **$\lambda$ 按时间比例缩放**：如本题每 20 分钟 $\lambda=10$，则 8 分钟 $\lambda_8=10\times\frac{8}{20}=4$
+
+        - **至少一个**用补事件：$P(X\ge 1)=1-P(X=0)=1-e^{-\lambda}$
+
+        - **恰好 k 个**直接代入公式
 
 !!! question "3. [23-24 真题] — 切比雪夫 + CLT"
     Let $W = \dfrac{X_1+X_2+X_3+X_4}{4}$, where $E(X_i)=5$, $\text{Var}(X_i)=20$, and $X_1,X_2,X_3,X_4$ are mutually independent.
@@ -1136,6 +1165,19 @@
         $Z = \dfrac{20-5}{\sqrt{5}} = \dfrac{15}{\sqrt{5}} \approx 6.708$
 
         $$P(W\ge 20) \approx 1 - \Phi(6.708) \approx 0 \quad \text{（极其小）}$$
+
+    ??? info "解法提示"
+        - **马尔科夫不等式**（Markov Inequality）：$P[X\ge c]\le E[X]/c$
+        - **切比雪夫不等式**（Chebyshev Inequality）：$P[|Y-\mu_Y|\ge c]\le \mathrm{Var}[Y]/c^2$
+
+        **期望/方差运算**（独立时）：
+
+        - $E(aX+bY)=aE(X)+bE(Y)$
+        - $\mathrm{Var}(aX+bY)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)$（协方差项为 0）
+
+        **CLT**：$Z=\dfrac{W-\mu_W}{\sigma_W}\approx N(0,1)$，查标准正态表得概率。
+
+        本题中 $W=\frac{X_1+X_2+X_3+X_4}{4}$，$E(W)=5$，$\mathrm{Var}(W)=5$。切比雪夫给出上界约 0.0222，CLT 给出近似值约 0（$Z=6.708$ 远在 3$\sigma$ 之外）。
 
 !!! question "4. [23-24 真题] — 联合分布 / 协方差 / 相关系数"
     The joint frequency distribution of a two-dimensional discrete random variable $(X,Y)$ is given below:
@@ -1181,14 +1223,32 @@
 
         **(3)**
         $E(X)=0\cdot0.5+1\cdot0.15+2\cdot0.35=0.85$，
+
         $E(Y)=0\cdot0.45+1\cdot0.55=0.55$。
-        $E(XY)=0\cdot0\cdot0.2+0\cdot1\cdot0.3+1\cdot0\cdot0.1+1\cdot1\cdot0.05+2\cdot0\cdot0.15+2\cdot1\cdot0.2=0.05+0.4=0.45$。
+
+        $E(XY)=0.05+0.4=0.45$。
+
         $\text{Cov}(X,Y)=0.45-0.85\times0.55=-0.0175$。
 
         **(4)**
-        $\text{Var}(X)=E(X^2)-(E(X))^2=(0\cdot0.5+1\cdot0.15+4\cdot0.35)-0.85^2=1.55-0.7225=0.8275$。
+        $\text{Var}(X)=E(X^2)-(E(X))^2=1.55-0.7225=0.8275$。
+
         $\text{Var}(Y)=0.55-0.55^2=0.2475$。
+
         $\rho_{XY}=\dfrac{-0.0175}{\sqrt{0.8275\times0.2475}}\approx -0.0386$。
+
+    ??? info "解法提示"
+        离散二元联合频数表：
+
+        1. **频数转概率**：每个格子 $\div$ 总数 $N$ 得 $P(X=x_i,Y=y_j)$
+        2. **边缘 PMF**：对行求和得 $P(Y=y_j)$，对列求和得 $P(X=x_i)$
+        3. **判独立**：检查 $P(X=x_i,Y=y_j) \stackrel{?}{=} P(X=x_i)P(Y=y_j)$
+        4. **协方差/相关系数**：
+
+           - $E(X)=\sum x_i P(X=x_i)$，$E(Y)=\sum y_j P(Y=y_j)$
+           - $E(XY)=\sum\sum x_i y_j P(X=x_i,Y=y_j)$
+           - $\mathrm{Cov}(X,Y)=E(XY)-E(X)E(Y)$
+           - $\rho_{XY}=\dfrac{\mathrm{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}$
 
 !!! question "5. [24-25 真题] — 联合分布 / 协方差 / 相关系数"
     For a total of $1200$ samples, the joint frequencies of hair color ($0$ = white / $1$ = grey / $2$ = dark) and length ($0$ = short / $1$ = long) are as follows:
@@ -1275,6 +1335,15 @@
 
         $$P[X\ge 1.5] = 1 - F_X(1.5) = 1 - \dfrac{2.25}{4} = 1 - 0.5625 = 0.4375$$
 
+    ??? info "解法提示"
+        给 PDF 求常数/CDF/概率的三步法：
+
+        - **求常数**：$\displaystyle\int_{-\infty}^{\infty}f_X(x)\,\mathrm{d}x=1$，分段积分解出常数
+        - **求 CDF**：$F_X(x)=\displaystyle\int_{-\infty}^x f_X(t)\,\mathrm{d}t$，分段积分，每段累积
+        - **求概率**：$P(a<X<b)=F_X(b)-F_X(a)$
+
+        本题 PDF 分段：$0<x<1$ 时 $f(x)=k(1-x)$，$1\le x\le2$ 时 $f(x)=\frac12 x$，注意分段积分时 CDF 每段要加上前一段的累积值。
+
 !!! question "7. [24-25 真题] — 连续型随机变量 PDF/CDF"
     Let the probability density function of a random variable $X$ be
 
@@ -1351,6 +1420,15 @@
 
         **(3)** $f_{X\mid Y}(x\mid y) = \dfrac{f(x,y)}{f_Y(y)} = \dfrac{\frac{5}{4}x}{\frac{5}{8}(1-y^4)} = \dfrac{2x}{1-y^4}$，$y^2<x<1$。
 
+    ??? info "解法提示"
+        给联合 PDF $f_{X,Y}(x,y)$ 和区域（如 $y^2<x<1$），三步走：
+
+        - **边缘 PDF**：把另一个变量积掉 $f_Y(y)=\int f_{X,Y}(x,y)\,\mathrm{d}x$
+        - **条件 PDF**：$f_{X\mid Y}(x\mid y)=\dfrac{f_{X,Y}(x,y)}{f_Y(y)}$
+        - **求概率**：在给定区域上对联合 PDF 做二重积分，关键是**画图确定积分限**
+
+        本题区域为 $-1<y<1$，$y^2<x<1$。求 $P[Y\le X]$ 时要分 $y\le0$ 和 $y>0$ 两段讨论。
+
 !!! question "9. [模拟] — 指数分布"
     Let $X$ be a random variable following an exponential distribution with parameter $\lambda=2$.
 
@@ -1378,192 +1456,14 @@
 
         **(3)** $E(X)=\dfrac{1}{\lambda}=\dfrac{1}{2}=0.5$，$\text{Var}(X)=\dfrac{1}{\lambda^2}=\dfrac{1}{4}=0.25$。
 
----
-## 概率论补天
+    ??? info "解法提示"
+        指数分布参数 $\lambda$：
 
-以下按考试出现的**题型**组织。每个题型给出**你需要知道的公式**和**解题步骤**。不需要的暂时别看，做题遇到再翻回来。
+        - PDF：$f_X(x)=\lambda e^{-\lambda x},\ x>0$
+        - CDF：$F_X(x)=1-e^{-\lambda x},\ x>0$
+        - 期望 $E(X)=\frac{1}{\lambda}$，方差 $\mathrm{Var}(X)=\frac{1}{\lambda^2}$
 
----
-
-### 题型A：全概率公式（有雾/有霾 + 戴口罩）
-
----
-
-### 题型B：分布模型匹配
-
-| 场景 | 分布 (Distribution) |
-|------|---------------------|
-| 单次试验，成功/失败 | Bernoulli（两点分布） |
-| n 次试验，数成功次数 | Binomial（二项分布） |
-| 单位时间事件数，已知平均值 | Poisson（泊松分布） |
-| 直到第一次成功，数总次数 | Geometric（几何分布） |
-| 直到第 k 次成功，数总次数 | Pascal（帕斯卡分布） |
-| 有限个等可能结果 | Discrete Uniform（离散均匀分布） |
-
----
-
-### 题型C：连续型随机变量 — 给 PDF，求常数/CDF/概率
-
-**求常数** — PDF 总面积必须等于 1：
-
-$$\int_{-\infty}^{\infty}f_X(x)\,\mathrm{d}x=1$$
-
-分段函数就分段积分加起来，解出常数。
-
-**求 CDF** — 从 $-\infty$ 积到 $x$：
-
-$$F_X(x)=\int_{-\infty}^x f_X(t)\,\mathrm{d}t$$
-
-分段函数要分段积，每段累积到上一段的结果。
-
-**求概率**：
-
-$$P(a<X<b)=\int_a^b f_X(x)\,\mathrm{d}x = F_X(b)-F_X(a)$$
-
-**其他**：
-
-指数分布（Exponential Distribution）带参数 $\lambda$：
-- PDF: $f_X(x)=\lambda e^{-\lambda x}\;(x>0)$
-- CDF: $F_X(x)=1-e^{-\lambda x}\;(x>0)$
-- 期望: $E(X)=\frac{1}{\lambda}$，方差: $\mathrm{Var}(X)=\frac{1}{\lambda^2}$
-
----
-
-### 题型D：泊松分布计算
-
-**公式** — 泊松分布 PMF：
-
-$$P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}$$
-
-其中 $\lambda$ 是该时间段内的**平均次数**。
-
-**注意**：$\lambda$ 按时间比例缩放。比如“每 20 分钟平均 10 个”，则 8 分钟的 $\lambda=10\times\frac{8}{20}=4$。
-
-**至少一个**：$P(X\ge 1)=1-P(X=0)=1-e^{-\lambda}$。
-
----
-
-### 题型E：离散二元 — 联合频数表
-
-**题目特征**：给一张大表，行是 $Y$ 取值，列是 $X$ 取值，格子里的数是频数。四问：(1) 联合 PMF；(2) 边缘 PMF；(3) 是否独立；(4) 协方差和相关系数。
-
-**解题步骤**：
-
-**第一步**：频数转概率。每个格子 ÷ 总数 $N$，得到 $P(X=x_i,Y=y_j)$。
-
-**第二步**：边缘 PMF。对行求和得 $P(Y=y_j)$，对列求和得 $P(X=x_i)$。
-
-**第三步**：判独立。挑一格，看 $P(X=x_i,Y=y_j)$ 是否等于 $P(X=x_i)\times P(Y=y_j)$。只要有一格不等，就不独立。
-
-**第四步**：协方差和相关系数。
-
-先算期望：
-
-$$E(X)=\sum x_i\cdot P(X=x_i),\qquad E(Y)=\sum y_j\cdot P(Y=y_j)$$
-
-$$E(XY)=\sum_i\sum_j x_i y_j\cdot P(X=x_i,Y=y_j)$$
-
-协方差（Covariance）：
-
-$$\mathrm{Cov}(X,Y)=E(XY)-E(X)E(Y)$$
-
-方差用 $E(X^2)-[E(X)]^2$，$X^2$ 就是每个 $x_i$ 先平方再按边缘概率加权。
-
-相关系数（Correlation Coefficient）：
-
-$$\rho_{XY}=\frac{\mathrm{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\cdot\mathrm{Var}(Y)}}$$
-
----
-
-### 题型F：连续二元 — 联合 PDF 求边缘 PDF 和条件 PDF
-
-**题目特征**：给 $f_{X,Y}(x,y)$ 和一个区域（如 $y^2<x<1$），求：(1) 某个概率；(2) 边缘 PDF $f_Y(y)$；(3) 条件 PDF $f_{X\mid Y}(x\mid y)$。
-
-**需要知道的公式**：
-
-边缘 PDF — 把另一个变量积掉：
-
-$$f_Y(y)=\int f_{X,Y}(x,y)\,\mathrm{d}x$$
-
-条件 PDF — 类比条件概率的公式：
-
-$$f_{X\mid Y}(x\mid y)=\frac{f_{X,Y}(x,y)}{f_Y(y)}$$
-
-**求概率**：在给定区域上对联合 PDF 做二重积分。关键是**画图确定积分限**。
-
----
-
-### 题型G：切比雪夫不等式
-
-**题目特征**：给 $E(X)$ 和 $\mathrm{Var}(X)$，让你估计 $P(X\ge a)$。
-
-**公式**：
-
-$$P(|X-\mu|\ge c)\le\frac{\sigma^2}{c^2}$$
-
-$\mu=E(X)$，$\sigma^2=\mathrm{Var}(X)$。
-
-**用法**：$P(X\ge a)=P(X-\mu\ge a-\mu)\le P(|X-\mu|\ge a-\mu)\le\frac{\sigma^2}{(a-\mu)^2}$。
-
-> 这个不等式给的是**上界**，不是精确值。考试会让比较切比雪夫和 CLT 的结果。
-
----
-
-### 题型H：中心极限定理（CLT）
-
-**题目特征**：要么说“用 CLT 估计概率”，要么给二项分布大样本（$n$ 很大）。
-
-**需要知道的公式**：
-
-$n$ 个独立同分布的变量之和 $S_n$，近似服从正态分布：
-
-$$S_n\approx N(n\mu,\,n\sigma^2)$$
-
-标准化：
-
-$$Z=\frac{S_n-n\mu}{\sqrt{n}\,\sigma}\approx N(0,1)$$
-
-**二项分布特例**：$X\sim B(n,p)$，$\mu=np$，$\sigma=\sqrt{np(1-p)}$。
-
-$$Z=\frac{X-np}{\sqrt{np(1-p)}}$$
-
-然后 $P(X\ge k)\approx 1-\Phi(Z)$，$\Phi$ 是标准正态的 CDF（考试会给你值）。
-
-**和 LLN 的区别（偶尔考概念）**：
-
-- 大数定律（LLN）：样本均值**趋近**期望（不给具体概率）
-- CLT：样本均值的**分布**近似正态（给具体概率）
-
----
-
-### 题型I：期望和方差的基本运算
-
-**题目特征**：给几个独立变量，求 $W=\frac{X_1+\cdots+X_n}{n}$ 的期望和方差。
-
-**公式**（独立时）：
-
-$$E(aX+bY)=aE(X)+bE(Y)$$
-
-$$\mathrm{Var}(aX+bY)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)\quad\text{（独立时协方差项为 0）}$$
-
-> 注意：$\mathrm{Var}$ 里常数 $a$ 出来是 $a^2$，不是 $a$。
-
----
-
-### 公式速查
-
-| 用途 | 公式 |
-|------|------|
-| 方差 | $\mathrm{Var}(X)=E(X^2)-[E(X)]^2$ |
-| 协方差 | $\mathrm{Cov}(X,Y)=E(XY)-E(X)E(Y)$ |
-| 相关系数 | $\rho=\mathrm{Cov}(X,Y)/\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}$ |
-| 泊松 PMF | $P(X=k)=e^{-\lambda}\lambda^k/k!$ |
-| 指数分布 | $f(x)=\lambda e^{-\lambda x},\;F(x)=1-e^{-\lambda x}\;(x>0)$ |
-| 边缘 PDF | $f_Y(y)=\int f_{X,Y}(x,y)\,\mathrm{d}x$ |
-| 条件 PDF | $f_{X\mid Y}(x\mid y)=f_{X,Y}(x,y)/f_Y(y)$ |
-| 切比雪夫 | $P(|X-\mu|\ge c)\le\sigma^2/c^2$ |
-| CLT | $Z=\dfrac{S_n-n\mu}{\sqrt{n}\,\sigma}\approx N(0,1)$ |
-| LLN | $\lim\limits_{n\to\infty}P(|\bar{X}_n-\mu|\ge\varepsilon)=0$ |
+        本题 $\lambda=2$，直接代入公式即可。
 
 ---
 
