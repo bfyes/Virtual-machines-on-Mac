@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Virtual-machines-on-Mac" name="description"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>CS1028 计算机系统Ⅰ — 半开卷速查手册（A4正反面手写用） - Bill</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#cs1028-计算机系统ⅰ--半开卷速查手册a4正反面手写用">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Bill" class="md-header__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Bill
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              CS1028 计算机系统Ⅰ — 半开卷速查手册（A4正反面手写用）
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bfyes/Virtual-machines-on-Mac" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Bill" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Bill">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Bill
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bfyes/Virtual-machines-on-Mac" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../windows-xp-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Windows XP on Apple Silicon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../vivado-apple-silicon/">
+<span class="md-ellipsis">
+    
+  
+    Vivado on Apple Silicon (X)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mac%E4%B8%8A%E5%A5%BD%E7%94%A8%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E8%AE%B0%E4%BA%8B%E6%9C%AC%E8%BD%AF%E4%BB%B6/">
+<span class="md-ellipsis">
+    
+  
+    mac上好用的第三方记事本软件
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#性能performance">
+<span class="md-ellipsis">
+      
+        性能（Performance）
+      
+    </span>
+</a>
+<nav aria-label="性能（Performance）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#核心公式">
+<span class="md-ellipsis">
+      
+        核心公式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#单周期-cpu-时钟周期">
+<span class="md-ellipsis">
+      
+        单周期 CPU 时钟周期
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#数据表示data-representation">
+<span class="md-ellipsis">
+      
+        数据表示（Data Representation）
+      
+    </span>
+</a>
+<nav aria-label="数据表示（Data Representation）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#进位计数制positional-numeral-system">
+<span class="md-ellipsis">
+      
+        进位计数制（Positional Numeral System）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#有符号整数编码">
+<span class="md-ellipsis">
+      
+        有符号整数编码
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ieee-754-浮点数floating-point">
+<span class="md-ellipsis">
+      
+        IEEE 754 浮点数（Floating-Point）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#booth-乘法booths-algorithm">
+<span class="md-ellipsis">
+      
+        Booth 乘法（Booth's Algorithm）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bcd-码binary-coded-decimal">
+<span class="md-ellipsis">
+      
+        BCD 码（Binary-Coded Decimal）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#大小端endianness">
+<span class="md-ellipsis">
+      
+        大小端（Endianness）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#布尔代数--组合逻辑">
+<span class="md-ellipsis">
+      
+        布尔代数 &amp; 组合逻辑
+      
+    </span>
+</a>
+<nav aria-label="布尔代数 &amp; 组合逻辑" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#布尔代数基本定律">
+<span class="md-ellipsis">
+      
+        布尔代数基本定律
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#逻辑门符号速查">
+<span class="md-ellipsis">
+      
+        逻辑门符号速查
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#三态缓冲器tri-state-buffer">
+<span class="md-ellipsis">
+      
+        三态缓冲器（Tri-State Buffer）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#门输入成本gate-input-cost">
+<span class="md-ellipsis">
+      
+        门输入成本（Gate Input Cost）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#卡诺图karnaugh-map--k-map">
+<span class="md-ellipsis">
+      
+        卡诺图（Karnaugh Map / K-Map）
+      
+    </span>
+</a>
+<nav aria-label="卡诺图（Karnaugh Map / K-Map）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#k-map-布局gray-code-顺序">
+<span class="md-ellipsis">
+      
+        K-Map 布局（Gray Code 顺序）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#k-map-优化步骤">
+<span class="md-ellipsis">
+      
+        K-Map 优化步骤
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#规范式canonical-forms">
+<span class="md-ellipsis">
+      
+        规范式（Canonical Forms）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#组合功能块combinational-blocks">
+<span class="md-ellipsis">
+      
+        组合功能块（Combinational Blocks）
+      
+    </span>
+</a>
+<nav aria-label="组合功能块（Combinational Blocks）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#译码器decoder">
+<span class="md-ellipsis">
+      
+        译码器（Decoder）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#多路选择器multiplexer--mux">
+<span class="md-ellipsis">
+      
+        多路选择器（Multiplexer / MUX）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#编码器encoder">
+<span class="md-ellipsis">
+      
+        编码器（Encoder）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#运算单元arithmetic-unit">
+<span class="md-ellipsis">
+      
+        运算单元（Arithmetic Unit）
+      
+    </span>
+</a>
+<nav aria-label="运算单元（Arithmetic Unit）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#加法器">
+<span class="md-ellipsis">
+      
+        加法器
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#减法">
+<span class="md-ellipsis">
+      
+        减法
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#标志位flags">
+<span class="md-ellipsis">
+      
+        标志位（Flags）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#乘法器">
+<span class="md-ellipsis">
+      
+        乘法器
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aluarithmetic-logic-unit--算术逻辑单元">
+<span class="md-ellipsis">
+      
+        ALU（Arithmetic Logic Unit / 算术逻辑单元）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#时序逻辑sequential-logic">
+<span class="md-ellipsis">
+      
+        时序逻辑（Sequential Logic）
+      
+    </span>
+</a>
+<nav aria-label="时序逻辑（Sequential Logic）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#基本概念">
+<span class="md-ellipsis">
+      
+        基本概念
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#锁存器--触发器latch--flip-flop">
+<span class="md-ellipsis">
+      
+        锁存器 &amp; 触发器（Latch &amp; Flip-Flop）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#时序分析参数">
+<span class="md-ellipsis">
+      
+        时序分析参数
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计数器counter">
+<span class="md-ellipsis">
+      
+        计数器（Counter）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#寄存器register-寄存器传输">
+<span class="md-ellipsis">
+      
+        寄存器（Register）&amp; 寄存器传输
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#isa--risc-v">
+<span class="md-ellipsis">
+      
+        ISA &amp; RISC-V
+      
+    </span>
+</a>
+<nav aria-label="ISA &amp; RISC-V" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#设计原则">
+<span class="md-ellipsis">
+      
+        设计原则
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#risc-v-指令格式">
+<span class="md-ellipsis">
+      
+        RISC-V 指令格式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#risc-v-核心指令--编码">
+<span class="md-ellipsis">
+      
+        RISC-V 核心指令 &amp; 编码
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#伪指令pseudoinstructions">
+<span class="md-ellipsis">
+      
+        伪指令（Pseudoinstructions）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#risc-v-寄存器约定">
+<span class="md-ellipsis">
+      
+        RISC-V 寄存器约定
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#函数调用约定calling-convention">
+<span class="md-ellipsis">
+      
+        函数调用约定（Calling Convention）
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#寻址方式addressing-modes">
+<span class="md-ellipsis">
+      
+        寻址方式（Addressing Modes）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#单周期-cpu-数据通路single-cycle-datapath">
+<span class="md-ellipsis">
+      
+        单周期 CPU 数据通路（Single-Cycle Datapath）
+      
+    </span>
+</a>
+<nav aria-label="单周期 CPU 数据通路（Single-Cycle Datapath）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#核心部件">
+<span class="md-ellipsis">
+      
+        核心部件
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#控制信号表">
+<span class="md-ellipsis">
+      
+        控制信号表
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#关键数据通路连线">
+<span class="md-ellipsis">
+      
+        关键数据通路连线
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#单周期数据通路的局限性">
+<span class="md-ellipsis">
+      
+        单周期数据通路的局限性
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#多周期-cpu-设计multi-cycle-cpu">
+<span class="md-ellipsis">
+      
+        多周期 CPU 设计（Multi-Cycle CPU）
+      
+    </span>
+</a>
+<nav aria-label="多周期 CPU 设计（Multi-Cycle CPU）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#多周期-vs-单周期">
+<span class="md-ellipsis">
+      
+        多周期 vs 单周期
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#多周期额外寄存器">
+<span class="md-ellipsis">
+      
+        多周期额外寄存器
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#执行阶段5-阶段">
+<span class="md-ellipsis">
+      
+        执行阶段（5 阶段）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#控制器实现方式">
+<span class="md-ellipsis">
+      
+        控制器实现方式
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#指令格式设计汇总公式">
+<span class="md-ellipsis">
+      
+        指令格式设计（汇总公式）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#逻辑电路分析补充">
+<span class="md-ellipsis">
+      
+        逻辑电路分析补充
+      
+    </span>
+</a>
+<nav aria-label="逻辑电路分析补充" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-mux-通用实现法">
+<span class="md-ellipsis">
+      
+        4×1 MUX 通用实现法
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#译码器级联">
+<span class="md-ellipsis">
+      
+        译码器级联
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#比较器设计">
+<span class="md-ellipsis">
+      
+        比较器设计
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#高频易错点">
+<span class="md-ellipsis">
+      
+        高频易错点
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#考试解题套路">
+<span class="md-ellipsis">
+      
+        考试解题套路
+      
+    </span>
+</a>
+<nav aria-label="考试解题套路" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#性能题">
+<span class="md-ellipsis">
+      
+        性能题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ieee-754-转换题">
+<span class="md-ellipsis">
+      
+        IEEE 754 转换题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#补码溢出题">
+<span class="md-ellipsis">
+      
+        补码/溢出题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#risc-v-编码题">
+<span class="md-ellipsis">
+      
+        RISC-V 编码题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#数据通路题">
+<span class="md-ellipsis">
+      
+        数据通路题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#k-map-题">
+<span class="md-ellipsis">
+      
+        K-Map 题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#时序电路题">
+<span class="md-ellipsis">
+      
+        时序电路题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计数器题">
+<span class="md-ellipsis">
+      
+        计数器题
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#指令格式设计题">
+<span class="md-ellipsis">
+      
+        指令格式设计题
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/bfyes/Virtual-machines-on-Mac/edit/master/docs/sys1.md" rel="edit" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
+</a>
+<h1 id="cs1028-计算机系统ⅰ--半开卷速查手册a4正反面手写用"><span>CS1028<span class="heti-spacing"> </span></span>计算机系统Ⅰ — 半开卷速查手册（<span>A4<span class="heti-spacing"> </span></span>正反面手写用）<a class="headerlink" href="#cs1028-计算机系统ⅰ--半开卷速查手册a4正反面手写用" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>涵盖大纲<span><span class="heti-spacing"> </span>§1~§8</span>。英文术语带（中文释义<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。精简但覆盖绝大多数题型。</p>
+</blockquote>
+<hr/>
+<h2 id="性能performance">性能（Performance）<a class="headerlink" href="#性能performance" title="Permanent link">¶</a></h2>
+<h3 id="核心公式">核心公式<a class="headerlink" href="#核心公式" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<div class="arithmatex">\[ \text{CPU Time（CPU执行时间）} = \text{IC（指令数）} \times \text{CPI} \times T_c \text{（时钟周期）} \]</div>
+<div class="arithmatex">\[ T_c = \frac{1}{f} \quad\text{（时钟频率 Clock Rate）} \]</div>
+<div class="arithmatex">\[ \text{CPU Time} = \frac{\text{IC} \times \text{CPI}}{f} \]</div>
+<p><strong>平均<span><span class="heti-spacing"> </span>CPI</span>（Average CPI）</strong>：<span class="arithmatex">\( \displaystyle \text{CPI}_{\text{avg}} = \sum_{i} (\text{Freq}_i \times \text{CPI}_i) \)</span></p>
+<p><strong><span>Amdahl<span class="heti-spacing"> </span></span>定律（Amdahl's Law）</strong>：优化比例<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>的部分提速<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s\)</span><span class="heti-spacing"> </span></span>倍，整体加速比：</p>
+<div class="arithmatex">\[ S = \frac{1}{(1-f) + \frac{f}{s}} \]</div>
+<p><strong>MIPS（Million Instructions Per Second）</strong>：<span class="arithmatex">\( \displaystyle \text{MIPS} = \frac{f}{\text{CPI} \times 10^6} \)</span></p>
+<h3 id="单周期-cpu-时钟周期">单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>时钟周期<a class="headerlink" href="#单周期-cpu-时钟周期" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>取所有指令类型中<strong>最长路径延迟</strong>作为时钟周期：
+$$ T_c = \max(T_{\text{fetch}} + T_{\text{reg}} + T_{\text{ALU}} + T_{\text{mem}} + T_{\text{wb}}) $$</p>
+<p>R-type: Fetch→RegRead→ALU→RegWrite（无<span><span class="heti-spacing"> </span>Mem</span>）<br/>
+lw: Fetch→RegRead→ALU→MemRead→RegWrite（最长）<br/>
+sw: Fetch→RegRead→ALU→MemWrite<br/>
+Branch: Fetch→RegRead→ALU  </p>
+<blockquote>
+<p>CPI（单周期）= 1（每条指令<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>个周期）</p>
+</blockquote>
+<hr/>
+<h2 id="数据表示data-representation">数据表示（Data Representation）<a class="headerlink" href="#数据表示data-representation" title="Permanent link">¶</a></h2>
+<h3 id="进位计数制positional-numeral-system">进位计数制（Positional Numeral System）<a class="headerlink" href="#进位计数制positional-numeral-system" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">进制</th>
+<th style="text-align: center;">基数</th>
+<th>数码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Binary（二进制）</td>
+<td style="text-align: center;">2</td>
+<td>0,1</td>
+</tr>
+<tr>
+<td style="text-align: center;">Octal（八进制）</td>
+<td style="text-align: center;">8</td>
+<td>0~7</td>
+</tr>
+<tr>
+<td style="text-align: center;">Decimal（十进制）</td>
+<td style="text-align: center;">10</td>
+<td>0~9</td>
+</tr>
+<tr>
+<td style="text-align: center;">Hexadecimal（十六进制）</td>
+<td style="text-align: center;">16</td>
+<td>0~9, A~F</td>
+</tr>
+</tbody>
+</table>
+<p><strong>快速转换</strong>：<span>1<span class="heti-spacing"> </span></span>位八进制<span><span class="heti-spacing"> </span>= 3 bit</span>；<span>1<span class="heti-spacing"> </span></span>位十六进制<span><span class="heti-spacing"> </span>= 4 bit</span>。<br/>
+例：<code class="language-text highlight">(17.5)₈ = (001 111.101)₂ = (F.A)₁₆ = 15.625₁₀</code></p>
+<h3 id="有符号整数编码">有符号整数编码<a class="headerlink" href="#有符号整数编码" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">编码方式</th>
+<th style="text-align: left;">公式</th>
+<th style="text-align: center;"><span>8-bit<span class="heti-spacing"> </span></span>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Unsigned（无符号）</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sum b_i \cdot 2^i\)</span></td>
+<td style="text-align: center;">0 ~ 255</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sign-Magnitude（原码）</td>
+<td style="text-align: left;"><span class="arithmatex">\((-1)^{b_{n-1}} \cdot \sum_{i=0}^{n-2} b_i \cdot 2^i\)</span></td>
+<td style="text-align: center;">−127 ~ +127</td>
+</tr>
+<tr>
+<td style="text-align: left;">1's Complement（反码）</td>
+<td style="text-align: left;">正数同原码；负数各位取反</td>
+<td style="text-align: center;">−127 ~ +127</td>
+</tr>
+<tr>
+<td style="text-align: left;">2's Complement（补码）</td>
+<td style="text-align: left;">反码<span><span class="heti-spacing"> </span>+ 1</span></td>
+<td style="text-align: center;"><strong>−128 ~ +127</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Biased/Excess（移码<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>偏移码）</td>
+<td style="text-align: left;">真值<span><span class="heti-spacing"> </span>+ Bias</span>，Bias = <span class="arithmatex">\(2^{n-1}-1\)</span></td>
+<td style="text-align: center;">−127 ~ +128</td>
+</tr>
+</tbody>
+</table>
+<p><strong>补码快速求法</strong>：从右向左，遇到第一个<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>之前抄下来，之后全部取反。<br/>
+<strong>扩展（Sign Extension）</strong>：复制符号位到高位。<br/>
+<strong>溢出（Overflow）判定</strong>：<span class="arithmatex">\(c_n \oplus c_{n-1} = 1\)</span>（<span>MSB<span class="heti-spacing"> </span></span>进位<span class="heti-skip"><span class="heti-spacing"> </span>XOR<span class="heti-spacing"> </span></span>次高位进位<span class="heti-skip"><span class="heti-spacing"> </span>= 1<span class="heti-spacing"> </span></span>则溢出<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。<br/>
+同号相加得异号→溢出；异号相加永不溢出。</p>
+<h3 id="ieee-754-浮点数floating-point"><span>IEEE 754<span class="heti-spacing"> </span></span>浮点数（Floating-Point）<a class="headerlink" href="#ieee-754-浮点数floating-point" title="Permanent link">¶</a></h3>
+<p><strong>单精度<span><span class="heti-spacing"> </span>Single Precision</span>（32-bit）</strong>：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a> 1     8 bits        23 bits
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>┌───┬──────────┬──────────────────────┐
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>│ S │  E(移码)  │       F(尾数)         │
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>└───┴──────────┴──────────────────────┘
+</code></pre></div></td></tr></table></div>
+<div class="arithmatex">\[ V = (-1)^S \times (1.F)_2 \times 2^{E - \text{Bias}} \]</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参数</th>
+<th style="text-align: center;">单精度<span><span class="heti-spacing"> </span>(32-bit)</span></th>
+<th style="text-align: center;">双精度<span><span class="heti-spacing"> </span>(64-bit)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Sign（符号）S</td>
+<td style="text-align: center;">1 bit</td>
+<td style="text-align: center;">1 bit</td>
+</tr>
+<tr>
+<td style="text-align: left;">Exponent（阶码）E</td>
+<td style="text-align: center;">8 bits</td>
+<td style="text-align: center;">11 bits</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fraction（尾数）F</td>
+<td style="text-align: center;">23 bits</td>
+<td style="text-align: center;">52 bits</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bias（偏移量）</td>
+<td style="text-align: center;"><strong>127</strong></td>
+<td style="text-align: center;"><strong>1023</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>特殊值</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">E</th>
+<th>F=0</th>
+<th>F≠0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">E=0（全<span><span class="heti-spacing"> </span>0</span>）</td>
+<td><strong>±0</strong></td>
+<td><strong>Denormalized（非规格化）</strong>：<span class="arithmatex">\(V = (-1)^S \times (0.F) \times 2^{1-\text{Bias}}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">0&lt;E&lt;255（全<span><span class="heti-spacing"> </span>1</span>）</td>
+<td>规格化数（Normalized）</td>
+<td>规格化数</td>
+</tr>
+<tr>
+<td style="text-align: left;">E=255（全<span><span class="heti-spacing"> </span>1</span>）</td>
+<td><strong>±∞</strong></td>
+<td><strong>NaN（Not a Number）</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>转换步骤</strong>：十进制→二进制科学记数法→<span>S=<span class="heti-spacing"> </span></span>符号<span class="heti-skip"><span class="heti-spacing"> </span>, E=<span class="heti-spacing"> </span></span>指数<span class="heti-skip"><span class="heti-spacing"> </span>+Bias, F=<span class="heti-spacing"> </span></span>小数部分（去前导<span><span class="heti-spacing"> </span>1</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<blockquote>
+<p>例：−23.3125₁₀ → 1.01110101₂×2⁴ → S=1, E=4+127=131=10000011₂, F=01110101000000000000000₂</p>
+</blockquote>
+<h3 id="booth-乘法booths-algorithm"><span>Booth<span class="heti-spacing"> </span></span>乘法（Booth's Algorithm）<a class="headerlink" href="#booth-乘法booths-algorithm" title="Permanent link">¶</a></h3>
+<p>每次看当前位<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y_i\)</span><span class="heti-spacing"> </span></span>和上一位<span><span class="heti-spacing"> </span><span class="arithmatex">\(y_{i-1}\)</span></span>（隐含<span><span class="heti-spacing"> </span><span class="arithmatex">\(y_{-1}=0\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(y_i\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(y_{i-1}\)</span></th>
+<th style="text-align: left;">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">仅右移</td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><span>+<span class="heti-spacing"> </span></span>被乘数，右移</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">−被乘数，右移</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">仅右移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bcd-码binary-coded-decimal"><span>BCD<span class="heti-spacing"> </span></span>码（Binary-Coded Decimal）<a class="headerlink" href="#bcd-码binary-coded-decimal" title="Permanent link">¶</a></h3>
+<p><span>4<span class="heti-spacing"> </span></span>位二进制表示<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>位十进制。例：34₁₀ → <code class="language-cbmbas highlight"><span class="mf">0011</span><span class="w"> </span><span class="mf">0100</span></code>BCD。</p>
+<h3 id="大小端endianness">大小端（Endianness）<a class="headerlink" href="#大小端endianness" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Big-Endian（大端）</th>
+<th style="text-align: left;">Little-Endian（小端）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">存储</td>
+<td style="text-align: left;">高字节在低地址</td>
+<td style="text-align: left;"><strong>低字节在低地址</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">例<span class="heti-skip"><span class="heti-spacing"> </span>0x11223344<span class="heti-spacing"> </span></span>在<span><span class="heti-spacing"> </span>0x1000</span></td>
+<td style="text-align: left;"><code class="language-cbmbas highlight"><span class="mf">11</span><span class="w"> </span><span class="mf">22</span><span class="w"> </span><span class="mf">33</span><span class="w"> </span><span class="mf">44</span></code></td>
+<td style="text-align: left;"><code class="language-cbmbas highlight"><span class="mf">44</span><span class="w"> </span><span class="mf">33</span><span class="w"> </span><span class="mf">22</span><span class="w"> </span><span class="mf">11</span></code></td>
+</tr>
+<tr>
+<td style="text-align: left;">代表架构</td>
+<td style="text-align: left;">MIPS, SPARC, network</td>
+<td style="text-align: left;"><strong>x86, RISC-V</strong></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="布尔代数--组合逻辑">布尔代数<span class="heti-skip"><span class="heti-spacing"> </span>&amp;<span class="heti-spacing"> </span></span>组合逻辑<a class="headerlink" href="#布尔代数--组合逻辑" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="布尔代数基本定律">布尔代数基本定律<a class="headerlink" href="#布尔代数基本定律" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">定律</th>
+<th style="text-align: left;"><span>AND<span class="heti-spacing"> </span></span>形式</th>
+<th style="text-align: left;"><span>OR<span class="heti-spacing"> </span></span>形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Identity（同一律）</td>
+<td style="text-align: left;"><span class="arithmatex">\(A \cdot 1 = A\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(A + 0 = A\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Null（零律）</td>
+<td style="text-align: left;"><span class="arithmatex">\(A \cdot 0 = 0\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(A + 1 = 1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Idempotent（幂等律）</td>
+<td style="text-align: left;"><span class="arithmatex">\(A \cdot A = A\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(A + A = A\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Complement（互补律）</td>
+<td style="text-align: left;"><span class="arithmatex">\(A \cdot \overline{A} = 0\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(A + \overline{A} = 1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Commutative（交换律）</td>
+<td style="text-align: left;"><span class="arithmatex">\(A \cdot B = B \cdot A\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(A + B = B + A\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Associative（结合律）</td>
+<td style="text-align: left;"><span class="arithmatex">\((AB)C = A(BC)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\((A+B)+C = A+(B+C)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Distributive（分配律）</td>
+<td style="text-align: left;"><span class="arithmatex">\(A(B+C)=AB+AC\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(A+BC=(A+B)(A+C)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Absorption（吸收律）</td>
+<td style="text-align: left;"><span class="arithmatex">\(A(A+B)=A\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(A+AB=A\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>De Morgan</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(\overline{AB} = \overline{A}+\overline{B}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\overline{A+B} = \overline{A}\ \overline{B}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="逻辑门符号速查">逻辑门符号速查<a class="headerlink" href="#逻辑门符号速查" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">门</th>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">表达式</th>
+<th style="text-align: left;">真值表特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">AND（与门）</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="arithmatex">\(F=AB\)</span></td>
+<td style="text-align: left;">全<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>出<span><span class="heti-spacing"> </span>1</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">OR（或门）</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="arithmatex">\(F=A+B\)</span></td>
+<td style="text-align: left;">有<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>出<span><span class="heti-spacing"> </span>1</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">NOT（非门<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>反相器）</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="arithmatex">\(F=\overline{A}\)</span></td>
+<td style="text-align: left;">取反</td>
+</tr>
+<tr>
+<td style="text-align: left;">NAND（与非门）</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="arithmatex">\(F=\overline{AB}\)</span></td>
+<td style="text-align: left;">全<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>出<span><span class="heti-spacing"> </span>0</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">NOR（或非门）</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="arithmatex">\(F=\overline{A+B}\)</span></td>
+<td style="text-align: left;">有<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>出<span><span class="heti-spacing"> </span>0</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">XOR（异或门）</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="arithmatex">\(F=A\oplus B\)</span></td>
+<td style="text-align: left;">不同为<span><span class="heti-spacing"> </span>1</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">XNOR（同或门）</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="arithmatex">\(F=\overline{A\oplus B}\)</span></td>
+<td style="text-align: left;">相同为<span><span class="heti-spacing"> </span>1</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>完备集</strong>：<span>{NAND}<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>{NOR}<span class="heti-spacing"> </span></span>单独可实现任意逻辑。<br/>
+<strong>Bubble Pushing（气泡推演）</strong>：沿信号线推气泡，AND↔<span>OR<span class="heti-spacing"> </span></span>互换。</p>
+<h3 id="三态缓冲器tri-state-buffer">三态缓冲器（Tri-State Buffer）<a class="headerlink" href="#三态缓冲器tri-state-buffer" title="Permanent link">¶</a></h3>
+<p>输出有三种状态：<strong><span>0, 1,<span class="heti-spacing"> </span></span>高阻（Hi-Z/High Impedance）</strong>。<br/>
+使能 E=1 时输出=输入；E=0 时高阻（相当于断开）。<br/>
+多个三态门输出可并联到同一总线，<strong>同时最多<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>个使能</strong>。</p>
+<h3 id="门输入成本gate-input-cost">门输入成本（Gate Input Cost）<a class="headerlink" href="#门输入成本gate-input-cost" title="Permanent link">¶</a></h3>
+<div class="arithmatex">\[ G = \text{所有门输入端口总数} $$
+$$ GN = G + \text{非门数（取反操作数）} \]</div>
+<p>例：<span class="arithmatex">\(F = A + B\overline{C}(A\overline{B}+\overline{A}B)\)</span>，直接算<span><span class="heti-spacing"> </span><span class="arithmatex">\(G = 11\)</span></span>。</p>
+<hr/>
+<h2 id="卡诺图karnaugh-map--k-map">卡诺图（Karnaugh Map / K-Map）<a class="headerlink" href="#卡诺图karnaugh-map--k-map" title="Permanent link">¶</a></h2>
+<h3 id="k-map-布局gray-code-顺序"><span>K-Map<span class="heti-spacing"> </span></span>布局（<span>Gray Code<span class="heti-spacing"> </span></span>顺序）<a class="headerlink" href="#k-map-布局gray-code-顺序" title="Permanent link">¶</a></h3>
+<p><strong><span>2<span class="heti-spacing"> </span></span>变量</strong>：<code class="language-scdoc highlight">\begin{matrix} &amp; B=0 &amp; B=1 \\ A=0 &amp; m_0 &amp; m_1 \\ A=1 &amp; m_2 &amp; m_3 \end{matrix}</code></p>
+<p><strong><span>3<span class="heti-spacing"> </span></span>变量</strong>（<span>BC<span class="heti-spacing"> </span></span>用<span><span class="heti-spacing"> </span>Gray</span>：00,01,11,10<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>     BC
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>      00  01  11  10
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>A=0  m0  m1  m3  m2
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>A=1  m4  m5  m7  m6
+</code></pre></div></td></tr></table></div>
+<p><strong><span>4<span class="heti-spacing"> </span></span>变量</strong>（<span>AB<span class="heti-spacing"> </span></span>行<span class="heti-skip"><span class="heti-spacing"> </span>, CD<span class="heti-spacing"> </span></span>列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>       CD
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>       00  01  11  10
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>AB=00  m0  m1  m3  m2
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>AB=01  m4  m5  m7  m6
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>AB=11  m12 m13 m15 m14
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>AB=10  m8  m9  m11 m10
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>边缘相邻！四角可以圈。圈大小必须是<span><span class="heti-spacing"> </span><span class="arithmatex">\(2^n\)</span></span>（1,2,4,8,16<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</blockquote>
+<h3 id="k-map-优化步骤"><span>K-Map<span class="heti-spacing"> </span></span>优化步骤<a class="headerlink" href="#k-map-优化步骤" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ol>
+<li>圈 <strong>Essential Prime Implicant（必要质蕴含）</strong>：包含至少一个仅被它覆盖的<span><span class="heti-spacing"> </span>1</span>。</li>
+<li>圈其余<span><span class="heti-spacing"> </span>Prime Implicant</span>（质蕴含<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：最大矩形，不可再扩大。</li>
+<li>覆盖所有<span><span class="heti-spacing"> </span>1</span>，<strong>Don't Care（无关项<span><span class="heti-spacing"> </span>/d</span>）</strong> 可选圈可不圈。</li>
+<li>SOP（Sum of Products<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：圈<span><span class="heti-spacing"> </span>1</span>，写出<span class="heti-skip"><span class="heti-spacing"> </span>AND<span class="heti-spacing"> </span></span>项的<span><span class="heti-spacing"> </span>OR</span>。</li>
+<li>POS（Product of Sums<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：圈<span><span class="heti-spacing"> </span>0</span>，写出<span class="heti-skip"><span class="heti-spacing"> </span>OR<span class="heti-spacing"> </span></span>项的<span><span class="heti-spacing"> </span>AND</span>（取反后<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+</ol>
+<h3 id="规范式canonical-forms">规范式（Canonical Forms）<a class="headerlink" href="#规范式canonical-forms" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Minterm（最小项）</strong>：每个变量都出现的<span class="heti-skip"><span class="heti-spacing"> </span>AND<span class="heti-spacing"> </span></span>项，使函数为<span><span class="heti-spacing"> </span>1</span>。记作<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sum m(\dots)\)</span></span>。</li>
+<li><strong>Maxterm（最大项）</strong>：每个变量都出现的<span class="heti-skip"><span class="heti-spacing"> </span>OR<span class="heti-spacing"> </span></span>项，使函数为<span><span class="heti-spacing"> </span>0</span>。记作<span><span class="heti-spacing"> </span><span class="arithmatex">\(\prod M(\dots)\)</span></span>。</li>
+<li><span class="arithmatex">\(\sum m(\dots) \leftrightarrow \prod M(\text{补集})\)</span>。</li>
+</ul>
+<hr/>
+<h2 id="组合功能块combinational-blocks">组合功能块（Combinational Blocks）<a class="headerlink" href="#组合功能块combinational-blocks" title="Permanent link">¶</a></h2>
+<h3 id="译码器decoder">译码器（Decoder）<a class="headerlink" href="#译码器decoder" title="Permanent link">¶</a></h3>
+<p><span>n<span class="heti-spacing"> </span></span>输入 → <span><span class="arithmatex">\(2^n\)</span><span class="heti-spacing"> </span></span>输出，每次仅一根输出有效。<br/>
+可用 Enable（使能端）级联扩展。<br/>
+例：3-to-8 Decoder（3×8 译码器）；2-to-4 带使能可级联成 4-to-16。</p>
+<h3 id="多路选择器multiplexer--mux">多路选择器（Multiplexer / MUX）<a class="headerlink" href="#多路选择器multiplexer--mux" title="Permanent link">¶</a></h3>
+<p><span><span class="arithmatex">\(2^n\)</span><span class="heti-spacing"> </span></span>数据输入<span class="heti-skip"><span class="heti-spacing"> </span>+ n<span class="heti-spacing"> </span></span>选择线 → <span>1<span class="heti-spacing"> </span></span>输出。<br/>
+<strong>通用逻辑实现</strong>：<span>n<span class="heti-spacing"> </span></span>变量 → <span><span class="arithmatex">\(2^{n-1}\)</span>-to-1 MUX +<span class="heti-spacing"> </span></span>可选反相器。<br/>
+4-to-1 MUX 输出公式：
+$$ O = \overline{S_1}\,\overline{S_0}\,I_0 + \overline{S_1}\,S_0\,I_1 + S_1\,\overline{S_0}\,I_2 + S_1\,S_0\,I_3 $$</p>
+<p><strong><span>Verilog<span class="heti-spacing"> </span></span>三元运算符</strong><heti-adjacent class="heti-adjacent-half">：</heti-adjacent><code class="language-verilog highlight"><span class="k">assign</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">S0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">I1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">I0</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">S0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">I3</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">I2</span><span class="p">);</span></code>（注意顺序取决于<span class="heti-skip"><span class="heti-spacing"> </span>MSB<span class="heti-spacing"> </span></span>定义）</p>
+<h3 id="编码器encoder">编码器（Encoder）<a class="headerlink" href="#编码器encoder" title="Permanent link">¶</a></h3>
+<p><span><span class="arithmatex">\(2^n\)</span><span class="heti-spacing"> </span></span>输入 → <span>n<span class="heti-spacing"> </span></span>输出。优先级编码器（Priority Encoder）处理多输入同时有效。</p>
+<hr/>
+<h2 id="运算单元arithmetic-unit">运算单元（Arithmetic Unit）<a class="headerlink" href="#运算单元arithmetic-unit" title="Permanent link">¶</a></h2>
+<h3 id="加法器">加法器<a class="headerlink" href="#加法器" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><strong>Ripple-Carry Adder（行波进位加法器）</strong>：串联<span class="heti-skip"><span class="heti-spacing"> </span>n<span class="heti-spacing"> </span></span>个全加器（Full Adder/FA<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，延迟<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(n)\)</span></span>。</p>
+<p><strong>Carry Lookahead Adder（超前进位加法器<span><span class="heti-spacing"> </span>/CLA</span>）</strong>：
+- Generate（生成）：<span class="arithmatex">\(G_i = A_i \cdot B_i\)</span>
+- Propagate（传播）：<span class="arithmatex">\(P_i = A_i \oplus B_i\)</span>
+- Carry：<span class="arithmatex">\(C_{i+1} = G_i + P_i \cdot C_i\)</span>
+- 展开：<span class="arithmatex">\(C_1=G_0+P_0C_0\)</span>, <span class="arithmatex">\(C_2=G_1+P_1G_0+P_1P_0C_0\)</span>, …</p>
+<h3 id="减法">减法<a class="headerlink" href="#减法" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span class="arithmatex">\(A - B = A + (\sim B) + 1\)</span>（补码加法<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。用加法器<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>取反<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>进位输入<span><span class="heti-spacing"> </span>=1</span>。</p>
+<h3 id="标志位flags">标志位（Flags）<a class="headerlink" href="#标志位flags" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">标志</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">C（<span>Carry/<span class="heti-spacing"> </span></span>进位）</td>
+<td style="text-align: left;">无符号溢出</td>
+<td style="text-align: left;">最高位有进位<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>借位</td>
+</tr>
+<tr>
+<td style="text-align: left;">V（<span>Overflow/<span class="heti-spacing"> </span></span>溢出）</td>
+<td style="text-align: left;">有符号溢出</td>
+<td style="text-align: left;"><span class="arithmatex">\(c_n \oplus c_{n-1}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">N（<span>Negative/<span class="heti-spacing"> </span></span>负）</td>
+<td style="text-align: left;">结果最高位<span><span class="heti-spacing"> </span>=1</span></td>
+<td style="text-align: left;">符号位</td>
+</tr>
+<tr>
+<td style="text-align: left;">Z（<span>Zero/<span class="heti-spacing"> </span></span>零）</td>
+<td style="text-align: left;">结果为<span><span class="heti-spacing"> </span>0</span></td>
+<td style="text-align: left;">所有位<span><span class="heti-spacing"> </span>=0</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="乘法器">乘法器<a class="headerlink" href="#乘法器" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span><span class="arithmatex">\(n \times n\)</span><span class="heti-spacing"> </span></span>位乘法 → 结果最多<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(2n\)</span><span class="heti-spacing"> </span></span>位。<br/>
+例：5-bit × 5-bit → <strong>10 bits</strong>。</p>
+<h3 id="aluarithmetic-logic-unit--算术逻辑单元">ALU（<span>Arithmetic Logic Unit /<span class="heti-spacing"> </span></span>算术逻辑单元）<a class="headerlink" href="#aluarithmetic-logic-unit--算术逻辑单元" title="Permanent link">¶</a></h3>
+<p>支持：ADD, SUB, AND, OR, XOR, SLT（Set Less Than）, SLL/SRL/SRA（移位）等。</p>
+<hr/>
+<h2 id="时序逻辑sequential-logic">时序逻辑（Sequential Logic）<a class="headerlink" href="#时序逻辑sequential-logic" title="Permanent link">¶</a></h2>
+<h3 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li><strong>Combinational（组合）</strong> vs <strong>Sequential（时序）</strong>：后者输出依赖当前输入<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>历史状态。</li>
+<li><strong>Synchronous（同步）</strong>：由时钟边沿统一驱动。<strong>Asynchronous（异步）</strong>：无统一时钟。</li>
+<li><strong>Moore（摩尔机）</strong>：输出仅依赖状态。<strong>Mealy（米利机）</strong>：输出依赖状态<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>输入。</li>
+<li><strong>State Diagram（状态图）</strong>：圆圈<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>状态，箭头<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>转移（<span>label:<span class="heti-spacing"> </span></span>输入<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>输出<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li><strong>State Table（状态表）</strong>：当前状态<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>输入 → 下一状态<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>输出。</li>
+</ul>
+<h3 id="锁存器--触发器latch--flip-flop">锁存器<span class="heti-skip"><span class="heti-spacing"> </span>&amp;<span class="heti-spacing"> </span></span>触发器（Latch &amp; Flip-Flop）<a class="headerlink" href="#锁存器--触发器latch--flip-flop" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">SR Latch（<span>SR<span class="heti-spacing"> </span></span>锁存器）</td>
+<td style="text-align: left;"><span>S=Set(<span class="heti-spacing"> </span></span>置<span class="heti-skip"><span class="heti-spacing"> </span>1), R=Reset(<span class="heti-spacing"> </span></span>置<span class="heti-skip"><span class="heti-spacing"> </span>0); S=R=1<span class="heti-spacing"> </span></span>非法（<span>NOR<span class="heti-spacing"> </span></span>型）<span>/ S=R=0<span class="heti-spacing"> </span></span>非法（<span>NAND<span class="heti-spacing"> </span></span>型）</td>
+</tr>
+<tr>
+<td style="text-align: left;">D Latch（<span>D<span class="heti-spacing"> </span></span>锁存器）</td>
+<td style="text-align: left;">电平触发（Level-Triggered<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>CLK=1<span class="heti-spacing"> </span></span>时透明</td>
+</tr>
+<tr>
+<td style="text-align: left;">D Flip-Flop（<span>D<span class="heti-spacing"> </span></span>触发器）</td>
+<td style="text-align: left;"><strong>边沿触发（Edge-Triggered）</strong>，上升沿采样</td>
+</tr>
+<tr>
+<td style="text-align: left;">Master-Slave（主从触发器）</td>
+<td style="text-align: left;">两个锁存器级联，上升沿主锁存，下降沿从锁存</td>
+</tr>
+</tbody>
+</table>
+<p><strong>特性方程</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;"><span class="arithmatex">\(Q(t+1)\)</span> =</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">D-FF</td>
+<td style="text-align: left;"><span class="arithmatex">\(D\)</span>（输出<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>输入）</td>
+</tr>
+<tr>
+<td style="text-align: left;">SR-FF</td>
+<td style="text-align: left;"><span class="arithmatex">\(S + \overline{R}\,Q\)</span>（<span>SR=11<span class="heti-spacing"> </span></span>非法）</td>
+</tr>
+<tr>
+<td style="text-align: left;">JK-FF</td>
+<td style="text-align: left;"><span class="arithmatex">\(J\,\overline{Q} + \overline{K}\,Q\)</span>（<span>JK=11<span class="heti-spacing"> </span></span>翻转）</td>
+</tr>
+<tr>
+<td style="text-align: left;">T-FF</td>
+<td style="text-align: left;"><span class="arithmatex">\(T \oplus Q\)</span>（<span>T=1<span class="heti-spacing"> </span></span>翻转，<span>T=0<span class="heti-spacing"> </span></span>保持）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong><span>D-FF<span class="heti-spacing"> </span></span>为主流</strong>：<span>SR<span class="heti-spacing"> </span></span>有非法态；<span>JK<span class="heti-spacing"> </span></span>功能全但复杂。</p>
+</blockquote>
+<h3 id="时序分析参数">时序分析参数<a class="headerlink" href="#时序分析参数" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参数</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(t_{\text{pd}}\)</span>（<span>Propagation Delay /<span class="heti-spacing"> </span></span>传播延迟）</td>
+<td style="text-align: left;">输入变化到输出稳定的时间</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(t_s\)</span>（<span>Setup Time /<span class="heti-spacing"> </span></span>建立时间）</td>
+<td style="text-align: left;">时钟边沿前输入必须稳定的时间</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(t_h\)</span>（<span>Hold Time /<span class="heti-spacing"> </span></span>保持时间）</td>
+<td style="text-align: left;">时钟边沿后输入必须保持的时间</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(t_{\text{pcq}}\)</span>（<span>Clock-to-Q /<span class="heti-spacing"> </span></span>时钟到输出延迟）</td>
+<td style="text-align: left;">时钟边沿到输出变化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>时钟周期约束</strong>：<span class="arithmatex">\(T_c \ge t_{\text{pcq}} + t_{\text{pd(comb)}} + t_s\)</span></p>
+<p><strong><span>Hold Time<span class="heti-spacing"> </span></span>约束</strong>：<span class="arithmatex">\(t_{\text{pcq(min)}} + t_{\text{pd(comb,min)}} \ge t_h\)</span></p>
+<h3 id="计数器counter">计数器（Counter）<a class="headerlink" href="#计数器counter" title="Permanent link">¶</a></h3>
+<p><strong><span>N<span class="heti-spacing"> </span></span>位二进制计数器</strong>：<span><span class="arithmatex">\(2^N\)</span><span class="heti-spacing"> </span></span>个状态，每个时钟<span><span class="heti-spacing"> </span>+1</span>。<br/>
+<strong>模<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>计数器</strong>：计数到<span><span class="heti-spacing"> </span>N</span>−<span>1<span class="heti-spacing"> </span></span>后归零，需<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>个状态。<br/>
+同步清零 vs 异步清零：同步需等到时钟边沿。</p>
+<p><strong><span>Johnson/<span class="heti-spacing"> </span></span>环形计数器</strong>：<span>n<span class="heti-spacing"> </span></span>个<span><span class="heti-spacing"> </span>FF</span> → <span>2n<span class="heti-spacing"> </span></span>个状态（Johnson<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<h3 id="寄存器register-寄存器传输">寄存器（Register）<span>&amp;<span class="heti-spacing"> </span></span>寄存器传输<a class="headerlink" href="#寄存器register-寄存器传输" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><strong>Register（寄存器）</strong>：<span>n<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>D-FF<span class="heti-spacing"> </span></span>并行，存<span class="heti-skip"><span class="heti-spacing"> </span>n-bit<span class="heti-spacing"> </span></span>数据。<br/>
+<strong>Shift Register（移位寄存器）</strong>：串联<span><span class="heti-spacing"> </span>D-FF</span>，数据逐位移动。<br/>
+微操作：<code class="language-text highlight">sr</code>（右移）、<code class="language-text highlight">sl</code>（左移）、<code class="language-text highlight">R1 ← R1 ⊕ R2</code>（异或）等。</p>
+<hr/>
+<h2 id="isa--risc-v">ISA &amp; RISC-V<a class="headerlink" href="#isa--risc-v" title="Permanent link">¶</a></h2>
+<h3 id="设计原则">设计原则<a class="headerlink" href="#设计原则" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ol>
+<li><strong>Simplicity favors regularity</strong>（简单利于规整）</li>
+<li><strong>Smaller is faster</strong>（越小越快）</li>
+<li><strong>Make the common case fast</strong>（加速常见情况）</li>
+<li><strong>Good design demands good compromises</strong>（好的设计需要好的折中）</li>
+</ol>
+<h3 id="risc-v-指令格式"><span>RISC-V<span class="heti-spacing"> </span></span>指令格式<a class="headerlink" href="#risc-v-指令格式" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><strong><span>6<span class="heti-spacing"> </span></span>种格式</strong>（所有指令<span><span class="heti-spacing"> </span>32-bit</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<div class="language-carbon highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nx">R</span><span class="o">-</span><span class="k">type</span><span class="err">：</span><span class="nx">funct7</span><span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">25</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">rs2</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">rs1</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">funct3</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">rd</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">opcode</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nx">I</span><span class="o">-</span><span class="k">type</span><span class="err">：</span><span class="w">   </span><span class="nx">imm</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">0</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="nx">rs1</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">funct3</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">rd</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">opcode</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nx">S</span><span class="o">-</span><span class="k">type</span><span class="err">：</span><span class="nx">imm</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">25</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">rs2</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">rs1</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">funct3</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">imm</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">][</span><span class="mi">11</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">opcode</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="nx">B</span><span class="o">-</span><span class="k">type</span><span class="err">：</span><span class="nx">imm</span><span class="p">[</span><span class="mi">12</span><span class="o">|</span><span class="mi">10</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">25</span><span class="p">]</span><span class="o">|</span><span class="nx">rs2</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="o">|</span><span class="w"> </span><span class="nx">rs1</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">funct3</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">imm</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">1</span><span class="o">|</span><span class="mi">11</span><span class="p">][</span><span class="mi">11</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">opcode</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nx">U</span><span class="o">-</span><span class="k">type</span><span class="err">：</span><span class="w">            </span><span class="nx">imm</span><span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span><span class="w">                             </span><span class="o">|</span><span class="w"> </span><span class="nx">rd</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">opcode</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nx">J</span><span class="o">-</span><span class="k">type</span><span class="err">：</span><span class="w">   </span><span class="nx">imm</span><span class="p">[</span><span class="mi">20</span><span class="o">|</span><span class="mi">10</span><span class="p">:</span><span class="mi">1</span><span class="o">|</span><span class="mi">11</span><span class="o">|</span><span class="mi">19</span><span class="p">:</span><span class="mi">12</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span><span class="w">                           </span><span class="o">|</span><span class="w"> </span><span class="nx">rd</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">opcode</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>位宽汇总</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">R</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">S</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">U</th>
+<th style="text-align: center;">J</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">opcode</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr>
+<td style="text-align: left;">rd</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">funct3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;">rs1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;">rs2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;">funct7</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;">imm</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">12(×)</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">20(×)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><span>B/J-type<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>imm bit0<span class="heti-spacing"> </span></span>总是<span><span class="heti-spacing"> </span>0</span>（隐含<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，不存储。<span>imm<span class="heti-spacing"> </span></span>拼接公式见下。</p>
+</blockquote>
+<h3 id="risc-v-核心指令--编码"><span>RISC-V<span class="heti-spacing"> </span></span>核心指令<span class="heti-skip"><span class="heti-spacing"> </span>&amp;<span class="heti-spacing"> </span></span>编码<a class="headerlink" href="#risc-v-核心指令--编码" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指令</th>
+<th style="text-align: left;">类型</th>
+<th style="text-align: center;">opcode</th>
+<th style="text-align: center;">funct3</th>
+<th style="text-align: center;">funct7</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">add rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1+rs2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">sub rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;">0100000</td>
+<td style="text-align: left;">rd=rs1−rs2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">sll rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">001</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1&lt;&lt;rs2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">slt rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">010</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=(rs1&lt;rs2)?1:0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">xor rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1^rs2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">srl rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1&gt;&gt;rs2（逻辑）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">sra rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">0100000</td>
+<td style="text-align: left;">rd=rs1&gt;&gt;rs2（算术）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">or rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1|rs2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">and rd, rs1, rs2</code></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">111</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1&amp;rs2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">addi rd, rs1, imm</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=rs1+imm（符号扩展）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">slli rd, rs1, shamt</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">001</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1&lt;&lt;shamt</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">slti rd, rs1, imm</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">010</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=(rs1&lt;imm)?1:0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">xori rd, rs1, imm</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=rs1^imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">srli rd, rs1, shamt</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">0000000</td>
+<td style="text-align: left;">rd=rs1&gt;&gt;shamt（逻辑）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">srai rd, rs1, shamt</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">0100000</td>
+<td style="text-align: left;">rd=rs1&gt;&gt;shamt（算术）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">ori rd, rs1, imm</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=rs1|imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">andi rd, rs1, imm</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">111</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=rs1&amp;imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">lb rd, imm(rs1)</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0000011</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=Mem[rs1+imm]（byte）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">lh rd, imm(rs1)</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0000011</td>
+<td style="text-align: center;">001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=Mem[rs1+imm]（half）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">lw rd, imm(rs1)</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0000011</td>
+<td style="text-align: center;">010</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=Mem[rs1+imm]（word）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">lbu rd, imm(rs1)</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0000011</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=Mem[rs1+imm]（<span>byte<span class="heti-spacing"> </span></span>无符号）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">lhu rd, imm(rs1)</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">0000011</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=Mem[rs1+imm]（<span>half<span class="heti-spacing"> </span></span>无符号）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">jalr rd, rs1, imm</code></td>
+<td style="text-align: left;">I</td>
+<td style="text-align: center;">1100111</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=PC+4; PC=rs1+imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">sb rs2, imm(rs1)</code></td>
+<td style="text-align: left;">S</td>
+<td style="text-align: center;">0100011</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">Mem[rs1+imm]=rs2（byte）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">sh rs2, imm(rs1)</code></td>
+<td style="text-align: left;">S</td>
+<td style="text-align: center;">0100011</td>
+<td style="text-align: center;">001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">Mem[rs1+imm]=rs2（half）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">sw rs2, imm(rs1)</code></td>
+<td style="text-align: left;">S</td>
+<td style="text-align: center;">0100011</td>
+<td style="text-align: center;">010</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">Mem[rs1+imm]=rs2（word）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">beq rs1, rs2, label</code></td>
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">1100011</td>
+<td style="text-align: center;">000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">if(rs1==rs2) PC+=imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">bne rs1, rs2, label</code></td>
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">1100011</td>
+<td style="text-align: center;">001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">if(rs1!=rs2) PC+=imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">blt rs1, rs2, label</code></td>
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">1100011</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">if(rs1&lt;rs2) PC+=imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">bge rs1, rs2, label</code></td>
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">1100011</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">if(rs1&gt;=rs2) PC+=imm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">bltu rs1, rs2, label</code></td>
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">1100011</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"><span>if(rs1&lt;rs2,<span class="heti-spacing"> </span></span>无符号<span><span class="heti-spacing"> </span>)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">bgeu rs1, rs2, label</code></td>
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">1100011</td>
+<td style="text-align: center;">111</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"><span>if(rs1&gt;=rs2,<span class="heti-spacing"> </span></span>无符号<span><span class="heti-spacing"> </span>)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">lui rd, imm</code></td>
+<td style="text-align: left;">U</td>
+<td style="text-align: center;">0110111</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=imm&lt;&lt;12</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">auipc rd, imm</code></td>
+<td style="text-align: left;">U</td>
+<td style="text-align: center;">0010111</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=PC+(imm&lt;&lt;12)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">jal rd, label</code></td>
+<td style="text-align: left;">J</td>
+<td style="text-align: center;">1101111</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">rd=PC+4; PC+=offset</td>
+</tr>
+</tbody>
+</table>
+<h3 id="伪指令pseudoinstructions">伪指令（Pseudoinstructions）<a class="headerlink" href="#伪指令pseudoinstructions" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">伪指令</th>
+<th style="text-align: left;">实际展开</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">nop</code></td>
+<td style="text-align: left;"><code class="language-text highlight">addi x0, x0, 0</code></td>
+<td style="text-align: left;">空操作</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">li rd, imm</code></td>
+<td style="text-align: left;"><code class="language-text highlight">addi rd, x0, imm</code>（<span>±2047<span class="heti-spacing"> </span></span>内） / <code class="language-text highlight">lui+addi</code>（大立即数）</td>
+<td style="text-align: left;">加载立即数</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">mv rd, rs</code></td>
+<td style="text-align: left;"><code class="language-text highlight">addi rd, rs, 0</code></td>
+<td style="text-align: left;">寄存器复制</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">not rd, rs</code></td>
+<td style="text-align: left;"><code class="language-text highlight">xori rd, rs, -1</code></td>
+<td style="text-align: left;">按位取反</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">neg rd, rs</code></td>
+<td style="text-align: left;"><code class="language-text highlight">sub rd, x0, rs</code></td>
+<td style="text-align: left;">取负</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">beqz rs, label</code></td>
+<td style="text-align: left;"><code class="language-text highlight">beq rs, x0, label</code></td>
+<td style="text-align: left;"><span>=0<span class="heti-spacing"> </span></span>则跳</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">bnez rs, label</code></td>
+<td style="text-align: left;"><code class="language-text highlight">bne rs, x0, label</code></td>
+<td style="text-align: left;">≠<span>0<span class="heti-spacing"> </span></span>则跳</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">j label</code></td>
+<td style="text-align: left;"><code class="language-text highlight">jal x0, label</code></td>
+<td style="text-align: left;">无条件跳</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">jr rs</code></td>
+<td style="text-align: left;"><code class="language-text highlight">jalr x0, rs, 0</code></td>
+<td style="text-align: left;">寄存器跳</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">ret</code></td>
+<td style="text-align: left;"><code class="language-text highlight">jalr x0, x1, 0</code></td>
+<td style="text-align: left;">返回</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">call label</code></td>
+<td style="text-align: left;"><code class="language-text highlight">auipc x1, …; jalr x1, …</code></td>
+<td style="text-align: left;">函数调用</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="language-text highlight">sne rd, rs1, rs2</code></td>
+<td style="text-align: left;"><code class="language-text highlight">xor rd, rs1, rs2; sltu rd, x0, rd</code></td>
+<td style="text-align: left;">rd=(rs1≠rs2)?1:0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="risc-v-寄存器约定"><span>RISC-V<span class="heti-spacing"> </span></span>寄存器约定<a class="headerlink" href="#risc-v-寄存器约定" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">寄存器</th>
+<th style="text-align: left;"><span>ABI<span class="heti-spacing"> </span></span>名称</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">x0</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: left;">恒为<span><span class="heti-spacing"> </span>0</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">x1</td>
+<td style="text-align: left;">ra</td>
+<td style="text-align: left;">返回地址（Return Address）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x2</td>
+<td style="text-align: left;">sp</td>
+<td style="text-align: left;">栈指针（Stack Pointer）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x3</td>
+<td style="text-align: left;">gp</td>
+<td style="text-align: left;">全局指针（Global Pointer）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x4</td>
+<td style="text-align: left;">tp</td>
+<td style="text-align: left;">线程指针（Thread Pointer）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x5–x7</td>
+<td style="text-align: left;">t0–t2</td>
+<td style="text-align: left;">临时寄存器（Temporaries）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x8</td>
+<td style="text-align: left;">s0/fp</td>
+<td style="text-align: left;">帧指针（Frame Pointer）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x9</td>
+<td style="text-align: left;">s1</td>
+<td style="text-align: left;">保存寄存器（Saved）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x10–x17</td>
+<td style="text-align: left;">a0–a7</td>
+<td style="text-align: left;">函数参数<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>返回值</td>
+</tr>
+<tr>
+<td style="text-align: center;">x18–x27</td>
+<td style="text-align: left;">s2–s11</td>
+<td style="text-align: left;">保存寄存器（Saved）</td>
+</tr>
+<tr>
+<td style="text-align: center;">x28–x31</td>
+<td style="text-align: left;">t3–t6</td>
+<td style="text-align: left;">临时寄存器（Temporaries）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Caller-saved（调用者保存）</strong>：t0–t6, ra, a0–a7 — 调用者需保存。<br/>
+<strong>Callee-saved（被调用者保存）</strong>：s0–s11, sp — 被调用者负责保存恢复。</p>
+</blockquote>
+<h3 id="函数调用约定calling-convention">函数调用约定（Calling Convention）<a class="headerlink" href="#函数调用约定calling-convention" title="Permanent link">¶</a></h3>
+<p><strong>栈帧（Stack Frame）</strong>：从高地址向低地址增长。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>高地址 → 参数 (argN...)
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>        返回地址 (ra)
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>        旧 fp
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>       局部变量
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>低地址 → sp
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><code class="language-text highlight">a0–a7</code> 传前<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>个参数，其余压栈。</li>
+<li>返回值在 <code class="language-text highlight">a0</code>（和 <code class="language-text highlight">a1</code> 如需要<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li><code class="language-text highlight">sp</code> 始终<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节对齐。</li>
+<li><span>C<span class="heti-spacing"> </span></span>语言：参数从右向左压栈，调用者清理。</li>
+</ul>
+<hr/>
+<h2 id="寻址方式addressing-modes">寻址方式（Addressing Modes）<a class="headerlink" href="#寻址方式addressing-modes" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">寻址方式</th>
+<th style="text-align: left;">有效地址<span><span class="heti-spacing"> </span>E</span></th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Immediate（立即）</td>
+<td style="text-align: left;">操作数在指令中</td>
+<td style="text-align: left;">无地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">Register（寄存器）</td>
+<td style="text-align: left;">操作数在寄存器</td>
+<td style="text-align: left;">无地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">Direct（直接）</td>
+<td style="text-align: left;">E = Disp</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Base（基址）</td>
+<td style="text-align: left;">E = B</td>
+<td style="text-align: left;"><span>B=<span class="heti-spacing"> </span></span>基址寄存器</td>
+</tr>
+<tr>
+<td style="text-align: left;">Base + Displacement（基址<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>偏移）</td>
+<td style="text-align: left;">E = B + Disp</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Scaled Index + Disp（比例变址<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>偏移）</td>
+<td style="text-align: left;">E = I×S + Disp</td>
+<td style="text-align: left;">S=1,2,4,8</td>
+</tr>
+<tr>
+<td style="text-align: left;">Base + Index + Disp</td>
+<td style="text-align: left;">E = B + I + Disp</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Base + Scaled Index + Disp</td>
+<td style="text-align: left;">E = B + I×S + Disp</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">PC-Relative（<span>PC<span class="heti-spacing"> </span></span>相对）</td>
+<td style="text-align: left;">E = PC + Disp</td>
+<td style="text-align: left;">分支<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>跳转</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="单周期-cpu-数据通路single-cycle-datapath">单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>数据通路（Single-Cycle Datapath）<a class="headerlink" href="#单周期-cpu-数据通路single-cycle-datapath" title="Permanent link">¶</a></h2>
+<h3 id="核心部件">核心部件<a class="headerlink" href="#核心部件" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">部件</th>
+<th style="text-align: left;">缩写</th>
+<th style="text-align: left;">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">PC（程序计数器）</td>
+<td style="text-align: left;">PC</td>
+<td style="text-align: left;">存放下一条指令地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">Instruction Memory（指令存储器）</td>
+<td style="text-align: left;">IM</td>
+<td style="text-align: left;">根据<span class="heti-skip"><span class="heti-spacing"> </span>PC<span class="heti-spacing"> </span></span>取出指令</td>
+</tr>
+<tr>
+<td style="text-align: left;">Register File（寄存器堆）</td>
+<td style="text-align: left;">Reg</td>
+<td style="text-align: left;">读<span><span class="heti-spacing"> </span>rs1/rs2</span>，写<span><span class="heti-spacing"> </span>rd</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">ALU（算术逻辑单元）</td>
+<td style="text-align: left;">ALU</td>
+<td style="text-align: left;">执行运算</td>
+</tr>
+<tr>
+<td style="text-align: left;">Data Memory（数据存储器）</td>
+<td style="text-align: left;">DM</td>
+<td style="text-align: left;">读<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>写内存数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">Immediate Generator（立即数生成器）</td>
+<td style="text-align: left;">ImmGen</td>
+<td style="text-align: left;">从指令字段拼接立即数</td>
+</tr>
+<tr>
+<td style="text-align: left;">Control Unit（控制器）</td>
+<td style="text-align: left;">CU</td>
+<td style="text-align: left;">产生控制信号</td>
+</tr>
+<tr>
+<td style="text-align: left;">ALU Control（<span>ALU<span class="heti-spacing"> </span></span>控制器）</td>
+<td style="text-align: left;">ALUCtrl</td>
+<td style="text-align: left;">决定<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>操作</td>
+</tr>
+<tr>
+<td style="text-align: left;">Adder（加法器）</td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;"><span>PC+4<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>PC+imm</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="控制信号表">控制信号表<a class="headerlink" href="#控制信号表" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">信号</th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RegWrite</strong></td>
+<td style="text-align: center;">不写</td>
+<td style="text-align: center;">写</td>
+<td style="text-align: left;">寄存器堆写使能</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ALUSrc</strong></td>
+<td style="text-align: center;">rs2（寄存器）</td>
+<td style="text-align: center;">imm（立即数）</td>
+<td style="text-align: left;"><span>ALU<span class="heti-spacing"> </span></span>第二操作数选择</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MemWrite</strong></td>
+<td style="text-align: center;">不写</td>
+<td style="text-align: center;">写</td>
+<td style="text-align: left;"><span>DM<span class="heti-spacing"> </span></span>写使能</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MemRead</strong></td>
+<td style="text-align: center;">不读</td>
+<td style="text-align: center;">读</td>
+<td style="text-align: left;"><span>DM<span class="heti-spacing"> </span></span>读使能（<span>*<span class="heti-spacing"> </span></span>部分设计用<span class="heti-skip"><span class="heti-spacing"> </span>MemtoReg<span class="heti-spacing"> </span></span>替代）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MemtoReg</strong></td>
+<td style="text-align: center;"><span>ALU<span class="heti-spacing"> </span></span>结果</td>
+<td style="text-align: center;"><span>DM<span class="heti-spacing"> </span></span>数据</td>
+<td style="text-align: left;">写回寄存器数据来源</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Branch</strong></td>
+<td style="text-align: center;">不分支</td>
+<td style="text-align: center;">beq</td>
+<td style="text-align: left;">条件分支</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Jump</strong></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">跳转</td>
+<td style="text-align: left;">jal/jalr</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PCSrc</strong></td>
+<td style="text-align: center;">PC+4</td>
+<td style="text-align: center;">PC+imm</td>
+<td style="text-align: left;"><span>PC<span class="heti-spacing"> </span></span>来源选择</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RegDst</strong>（<span>*<span class="heti-spacing"> </span></span>如有）</td>
+<td style="text-align: center;">rt</td>
+<td style="text-align: center;">rd</td>
+<td style="text-align: left;">写寄存器选择</td>
+</tr>
+</tbody>
+</table>
+<p><strong>各指令控制信号值</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指令</th>
+<th style="text-align: center;">RegWrite</th>
+<th style="text-align: center;">ALUSrc</th>
+<th style="text-align: center;">MemWrite</th>
+<th style="text-align: center;">MemRead</th>
+<th style="text-align: center;">MemtoReg</th>
+<th style="text-align: center;">Branch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">R-type</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">lw</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">sw</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">beq</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ALU Control</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">ALUOp</th>
+<th style="text-align: left;">指令</th>
+<th style="text-align: center;"><span>ALU<span class="heti-spacing"> </span></span>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">00</td>
+<td style="text-align: left;">lw/sw</td>
+<td style="text-align: center;">ADD</td>
+</tr>
+<tr>
+<td style="text-align: center;">01</td>
+<td style="text-align: left;">beq</td>
+<td style="text-align: center;">SUB</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: left;">R-type</td>
+<td style="text-align: center;">由<span class="heti-skip"><span class="heti-spacing"> </span>funct3/funct7<span class="heti-spacing"> </span></span>决定</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关键数据通路连线">关键数据通路连线<a class="headerlink" href="#关键数据通路连线" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li><strong>取值阶段</strong>：PC → IM → 指令 → Control + Reg(rs1,rs2) + ImmGen</li>
+<li><strong>执行阶段</strong>：Reg(data1) → <span>ALU(A); Reg(data2)<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>Imm</span> → ALU(B); ALU → result</li>
+<li><strong>访存阶段</strong>：ALU result → <span>DM addr; DM<span class="heti-spacing"> </span></span>读写</li>
+<li><strong>写回阶段</strong>：<span>ALU result<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>DM data</span> → Reg write data → rd</li>
+</ul>
+<h3 id="单周期数据通路的局限性">单周期数据通路的局限性<a class="headerlink" href="#单周期数据通路的局限性" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>IM<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>DM</span> <strong>不能合并</strong>：因为单周期需要同时取指和访存（如<span class="heti-skip"><span class="heti-spacing"> </span>lw<span class="heti-spacing"> </span></span>需同时读<span class="heti-skip"><span class="heti-spacing"> </span>IM<span class="heti-spacing"> </span></span>取指令<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>读<span class="heti-skip"><span class="heti-spacing"> </span>DM<span class="heti-spacing"> </span></span>取数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。<br/>
+若用统一 MEM，只能用多周期实现（分时复用）。</p>
+<hr/>
+<h2 id="多周期-cpu-设计multi-cycle-cpu">多周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>设计（Multi-Cycle CPU）<a class="headerlink" href="#多周期-cpu-设计multi-cycle-cpu" title="Permanent link">¶</a></h2>
+<h3 id="多周期-vs-单周期">多周期<span class="heti-skip"><span class="heti-spacing"> </span>vs<span class="heti-spacing"> </span></span>单周期<a class="headerlink" href="#多周期-vs-单周期" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">单周期</th>
+<th style="text-align: left;">多周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">每条指令时间</td>
+<td style="text-align: left;">固定<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>最长指令</td>
+<td style="text-align: left;">变长，按需</td>
+</tr>
+<tr>
+<td style="text-align: left;">时钟周期</td>
+<td style="text-align: left;">长（取最长路径）</td>
+<td style="text-align: left;">短（取最长阶段）</td>
+</tr>
+<tr>
+<td style="text-align: left;">CPI</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">&gt;1（通常<span><span class="heti-spacing"> </span>3~5</span>）</td>
+</tr>
+<tr>
+<td style="text-align: left;">硬件复用</td>
+<td style="text-align: left;">少</td>
+<td style="text-align: left;">多（共享<span><span class="heti-spacing"> </span>ALU/MEM</span>）</td>
+</tr>
+<tr>
+<td style="text-align: left;">需要额外寄存器</td>
+<td style="text-align: left;">无</td>
+<td style="text-align: left;">IR, MDR, A, B, ALUout</td>
+</tr>
+<tr>
+<td style="text-align: left;">控制器</td>
+<td style="text-align: left;">组合逻辑</td>
+<td style="text-align: left;"><span>FSM<span class="heti-spacing"> </span></span>或 微程序</td>
+</tr>
+</tbody>
+</table>
+<h3 id="多周期额外寄存器">多周期额外寄存器<a class="headerlink" href="#多周期额外寄存器" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">寄存器</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">IR（<span>Instruction Register /<span class="heti-spacing"> </span></span>指令寄存器）</td>
+<td style="text-align: left;">保存当前指令</td>
+</tr>
+<tr>
+<td style="text-align: left;">MDR（<span>Memory Data Register /<span class="heti-spacing"> </span></span>存储器数据寄存器）</td>
+<td style="text-align: left;">保存从<span class="heti-skip"><span class="heti-spacing"> </span>MEM<span class="heti-spacing"> </span></span>读出的数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">A, B</td>
+<td style="text-align: left;">保存<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>操作数</td>
+</tr>
+<tr>
+<td style="text-align: left;">ALUout</td>
+<td style="text-align: left;">保存<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>计算结果</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong><span>IR<span class="heti-spacing"> </span></span>是多周期独有</strong>，单周期不需要。</p>
+</blockquote>
+<h3 id="执行阶段5-阶段">执行阶段（<span>5<span class="heti-spacing"> </span></span>阶段）<a class="headerlink" href="#执行阶段5-阶段" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">阶段</th>
+<th style="text-align: left;">缩写</th>
+<th style="text-align: left;">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Fetch（取指）</td>
+<td style="text-align: left;">IF</td>
+<td style="text-align: left;">IR = Mem[PC]; PC = PC + 4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Decode（译码）</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">A=Reg[rs1]; B=Reg[rs2]; ALUout=PC+imm</td>
+</tr>
+<tr>
+<td style="text-align: left;">Execute（执行）</td>
+<td style="text-align: left;">EX</td>
+<td style="text-align: left;"><span>ALU<span class="heti-spacing"> </span></span>运算，计算地址或结果</td>
+</tr>
+<tr>
+<td style="text-align: left;">Memory（访存）</td>
+<td style="text-align: left;">MEM</td>
+<td style="text-align: left;">读<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>写数据存储器</td>
+</tr>
+<tr>
+<td style="text-align: left;">Write Back（写回）</td>
+<td style="text-align: left;">WB</td>
+<td style="text-align: left;">结果写回寄存器堆</td>
+</tr>
+</tbody>
+</table>
+<h3 id="控制器实现方式">控制器实现方式<a class="headerlink" href="#控制器实现方式" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Hardwired（硬布线<span><span class="heti-spacing"> </span>/FSM</span>）</th>
+<th style="text-align: left;">Microprogrammed（微程序）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">实现</td>
+<td style="text-align: left;">组合逻辑<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>状态寄存器</td>
+<td style="text-align: left;"><span>ROM<span class="heti-spacing"> </span></span>存储微指令序列</td>
+</tr>
+<tr>
+<td style="text-align: left;">速度</td>
+<td style="text-align: left;">快</td>
+<td style="text-align: left;">慢</td>
+</tr>
+<tr>
+<td style="text-align: left;">灵活性</td>
+<td style="text-align: left;">低</td>
+<td style="text-align: left;">高</td>
+</tr>
+<tr>
+<td style="text-align: left;">复杂度</td>
+<td style="text-align: left;">复杂指令时状态爆炸</td>
+<td style="text-align: left;">整齐，易修改</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="指令格式设计汇总公式">指令格式设计（汇总公式）<a class="headerlink" href="#指令格式设计汇总公式" title="Permanent link">¶</a></h2>
+<p><strong><span>32-bit<span class="heti-spacing"> </span></span>统一格式设计</strong>：</p>
+<ul>
+<li>Opcode bits：<span class="arithmatex">\(\lceil \log_2(\text{指令数}) \rceil\)</span></li>
+<li>Register bits：<span class="arithmatex">\(\lceil \log_2(\text{寄存器数}) \rceil\)</span></li>
+<li>余下<span><span class="heti-spacing"> </span>= 32</span> − opcode − rd − rs1 − rs2 − <span>funct<span class="heti-spacing"> </span></span>等</li>
+</ul>
+<p><strong>主存容量与地址线</strong>：<br/>
+容量 = <span class="arithmatex">\(2^{\text{地址线数}} \times \text{字长}\)</span>。<br/>
+例：256K 字 → 地址线 = <span class="arithmatex">\(\log_2(256\text{K}) = 18\)</span>。</p>
+<hr/>
+<h2 id="逻辑电路分析补充">逻辑电路分析补充<a class="headerlink" href="#逻辑电路分析补充" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="41-mux-通用实现法"><span>4×1 MUX<span class="heti-spacing"> </span></span>通用实现法<a class="headerlink" href="#41-mux-通用实现法" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>用<span class="heti-skip"><span class="heti-spacing"> </span>A, B<span class="heti-spacing"> </span></span>做选择线 → <span>4<span class="heti-spacing"> </span></span>种情况<span class="heti-skip"><span class="heti-spacing"> </span>AB=00,01,10,11<span class="heti-spacing"> </span></span>分别化简<span class="heti-skip"><span class="heti-spacing"> </span>C, D<span class="heti-spacing"> </span></span>的函数。</p>
+<h3 id="译码器级联">译码器级联<a class="headerlink" href="#译码器级联" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><strong>2×3-to-8 → 4-to-16</strong>：用第<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>输入控制使能，反相后分别给两个<span><span class="heti-spacing"> </span>3-to-8</span>。<br/>
+高位=0 → Decoder0 使能（输出 D0~D7）；高位=1 → Decoder1 使能（输出 D8~D15）。</p>
+<p><strong>5×2-to-4 → 4-to-16</strong>：树形结构，<span>1<span class="heti-spacing"> </span></span>个做顶层选片，<span>4<span class="heti-spacing"> </span></span>个做底层输出。</p>
+<h3 id="比较器设计">比较器设计<a class="headerlink" href="#比较器设计" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><strong><span>1-bit<span class="heti-spacing"> </span></span>比较器</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">X(A&gt;B)</th>
+<th style="text-align: center;">Y(A&lt;B)</th>
+<th style="text-align: center;">Z(A==B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>X = A·\(\overline{B}\), Y = \(\overline{A}\)·B, Z = A⊙B = \(\overline{A \oplus B}\)。</p>
+<p><strong><span>2-bit<span class="heti-spacing"> </span></span>级联</strong>：先比高位，高位相等再比低位。<br/>
+A&gt;B: (A1&gt;B1) OR (A1==B1 AND A0&gt;B0)。</p>
+<hr/>
+<h2 id="高频易错点">高频易错点<a class="headerlink" href="#高频易错点" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ol>
+<li><strong>补码范围</strong>：<span>n-bit<span class="heti-spacing"> </span></span>补码范围是<span><span class="heti-spacing"> </span><span class="arithmatex">\(-2^{n-1}\)</span> ~ <span class="arithmatex">\(2^{n-1}-1\)</span></span>，不对称！8-bit: −128~+127。</li>
+<li><strong><span>IEEE 754<span class="heti-spacing"> </span></span>隐含<span><span class="heti-spacing"> </span>1</span></strong>：规格化数<span class="heti-skip"><span class="heti-spacing"> </span>F<span class="heti-spacing"> </span></span>前面隐含 <code class="language-cbmbas highlight"><span class="mf">1.</span></code>，非规格化数隐含 <code class="language-cbmbas highlight"><span class="mf">0.</span></code>。</li>
+<li><strong>B-type imm</strong>：<span>bit0<span class="heti-spacing"> </span></span>不存（恒为<span><span class="heti-spacing"> </span>0</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>imm<span class="heti-spacing"> </span></span>字段重排：<code class="language-text highlight">imm[12|10:5]</code> 在<span><span class="heti-spacing"> </span>[31:25]</span>，<code class="language-text highlight">imm[4:1|11]</code> 在<span><span class="heti-spacing"> </span>[11:7]</span>。</li>
+<li><strong>J-type imm</strong>：<code class="language-text highlight">imm[20|10:1|11|19:12]</code>，<span>bit0<span class="heti-spacing"> </span></span>也不存。</li>
+<li><strong><span>lw<span class="heti-spacing"> </span></span>是最长路径</strong>：单周期时钟<span class="heti-skip"><span class="heti-spacing"> </span>= lw<span class="heti-spacing"> </span></span>的延迟（Fetch+Reg+ALU+Mem+WB<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li><strong><span>S-R Latch<span class="heti-spacing"> </span></span>非法态</strong>：<span>NOR<span class="heti-spacing"> </span></span>型<span class="heti-skip"><span class="heti-spacing"> </span>S=R=1<span class="heti-spacing"> </span></span>非法（<span>Q=\(\overline{Q}\)=0<span class="heti-spacing"> </span></span>但违反互补<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；<span>NAND<span class="heti-spacing"> </span></span>型<span class="heti-skip"><span class="heti-spacing"> </span>S=R=0<span class="heti-spacing"> </span></span>非法。</li>
+<li><strong><span>D-FF<span class="heti-spacing"> </span></span>是最简触发器</strong>：没有非法态，没有翻转态，设计首选。</li>
+<li><strong>Moore vs Mealy</strong>：<span>Moore<span class="heti-spacing"> </span></span>输出只看状态（更稳定<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；<span>Mealy<span class="heti-spacing"> </span></span>输出看状态<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>输入（更快响应但可能毛刺<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li><strong>大端序<span class="heti-skip"><span class="heti-spacing"> </span>vs<span class="heti-spacing"> </span></span>小端序</strong>：网络字节序<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>大端；<span>x86/RISC-V(<span class="heti-spacing"> </span></span>默认<span class="heti-skip"><span class="heti-spacing"> </span>) =<span class="heti-spacing"> </span></span>小端。</li>
+<li><strong>调用约定</strong>：<code class="language-text highlight">call</code> = push IP + jmp；<code class="language-text highlight">ret</code> = pop IP。<code class="language-text highlight">int</code> = push FLAGS→CS→IP + jmp far；<code class="language-text highlight">iret</code> = pop IP→CS→FLAGS。</li>
+<li><strong>repne vs loop</strong>：<code class="language-text highlight">repne</code> 先判<span><span class="heti-spacing"> </span>CX=0</span>（<span>0<span class="heti-spacing"> </span></span>次机会<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；<code class="language-teratermmacro highlight"><span class="k">loop</span></code> 先<span class="heti-skip"><span class="heti-spacing"> </span>dec<span class="heti-spacing"> </span></span>后判（CX=0→循环<span class="heti-skip"><span class="heti-spacing"> </span>10000h<span class="heti-spacing"> </span></span>次<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li><strong><span>inc/dec<span class="heti-spacing"> </span></span>不影响<span><span class="heti-spacing"> </span>CF</span></strong>；<code class="language-text highlight">not</code> 不影响任何标志位；<code class="language-text highlight">lea</code> 不访问内存只算地址。</li>
+<li><strong><span>K-Map<span class="heti-spacing"> </span></span>边缘相邻</strong>：最左列和最右列相邻，最上行和最下行相邻，四角可圈。</li>
+</ol>
+<hr/>
+<h2 id="考试解题套路">考试解题套路<a class="headerlink" href="#考试解题套路" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="性能题">性能题<a class="headerlink" href="#性能题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ol>
+<li>找瓶颈（最长指令<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，算<span><span class="heti-spacing"> </span><span class="arithmatex">\(T_c\)</span></span>。</li>
+<li>给<span class="heti-skip"><span class="heti-spacing"> </span>CPI<span class="heti-spacing"> </span></span>和频率 → CPU Time = IC×CPI/f。</li>
+<li>优化后反推：新执行时间 → 新<span><span class="heti-spacing"> </span>IC</span> → 新<span><span class="heti-spacing"> </span>CPI</span> → 新<span><span class="heti-spacing"> </span>f</span>。</li>
+</ol>
+<h3 id="ieee-754-转换题"><span>IEEE 754<span class="heti-spacing"> </span></span>转换题<a class="headerlink" href="#ieee-754-转换题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>十进制 → 二进制科学计数 → <span>S + E(Bias) + F(<span class="heti-spacing"> </span></span>去<span><span class="heti-spacing"> </span>1.)</span> → 拼<span><span class="heti-spacing"> </span>32-bit</span>。</p>
+<h3 id="补码溢出题">补码<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>溢出题<a class="headerlink" href="#补码溢出题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>求补码：正数直接写，负数各位取反<span><span class="heti-spacing"> </span>+1</span>。</li>
+<li>判溢出：看符号位，同加得异为溢出。</li>
+</ul>
+<h3 id="risc-v-编码题"><span>RISC-V<span class="heti-spacing"> </span></span>编码题<a class="headerlink" href="#risc-v-编码题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ol>
+<li>确定指令类型（R/I/S/B/U/J<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>按格式填<span><span class="heti-spacing"> </span>opcode/funct3/funct7/reg/imm</span>。</li>
+<li><span>imm<span class="heti-spacing"> </span></span>符号扩展到<span><span class="heti-spacing"> </span>32-bit</span>（如果有<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+</ol>
+<h3 id="数据通路题">数据通路题<a class="headerlink" href="#数据通路题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ol>
+<li>画部件：<span>PC, IM, Reg, ALU, DM, MUX,<span class="heti-spacing"> </span></span>加法器。</li>
+<li>连线：数据流<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>控制信号。</li>
+<li>新增指令：分析需要哪些阶段，加<span class="heti-skip"><span class="heti-spacing"> </span>MUX +<span class="heti-spacing"> </span></span>连线。</li>
+</ol>
+<h3 id="k-map-题"><span>K-Map<span class="heti-spacing"> </span></span>题<a class="headerlink" href="#k-map-题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ol>
+<li>填<span><span class="heti-spacing"> </span>1, 0, d</span>（无关项<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>圈必要质蕴含 → 圈最大质蕴含 → 覆盖所有<span><span class="heti-spacing"> </span>1</span>。</li>
+<li><span>SOP:<span class="heti-spacing"> </span></span>圈<span><span class="heti-spacing"> </span>1</span>；<span>POS:<span class="heti-spacing"> </span></span>圈<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>取反。</li>
+</ol>
+<h3 id="时序电路题">时序电路题<a class="headerlink" href="#时序电路题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ol>
+<li>画状态图（圈圈<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>箭头<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>标注<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>写状态表（现态<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>输入→次态<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>输出<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>编码状态 → 写次态方程 → 化简（K-map）→ 画电路（<span>D-FF+<span class="heti-spacing"> </span></span>门<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+</ol>
+<h3 id="计数器题">计数器题<a class="headerlink" href="#计数器题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>D-FF<span class="heti-spacing"> </span></span>实现：写出状态转换表 → 推导<span><span class="heti-spacing"> </span><span class="arithmatex">\(D_i = f(Q_2, Q_1, Q_0)\)</span></span> → 化简 → 连线。</p>
+<h3 id="指令格式设计题">指令格式设计题<a class="headerlink" href="#指令格式设计题" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>opcode bits = ⌈log₂<span>(<span class="heti-spacing"> </span></span>指令数<span><span class="heti-spacing"> </span>)</span>⌉；寄存器<span><span class="heti-spacing"> </span>bits =</span> ⌈log₂<span>(<span class="heti-spacing"> </span></span>寄存器数<span><span class="heti-spacing"> </span>)</span>⌉；余下给<span><span class="heti-spacing"> </span>imm/address</span>。</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../js/mathjax.js"></script>
+<script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
