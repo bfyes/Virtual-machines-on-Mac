@@ -1510,42 +1510,6 @@
 
         本题区域为 $-1<y<1$，$y^2<x<1$。求 $P[Y\le X]$ 时要分 $y\le0$ 和 $y>0$ 两段讨论。
 
-!!! question "9. [模拟] — 指数分布"
-    Let $X$ be a random variable following an exponential distribution with parameter $\lambda=2$.
-
-    (1) Write the PDF and CDF of $X$;
-
-    (2) Find $P[X>1]$;
-
-    (3) Find $E(X)$ and $\text{Var}(X)$.
-
-    ??? info "点击查看参考翻译"
-        设 $X$ 服从参数 $\lambda=2$ 的指数分布。
-
-        (1) 写出 $X$ 的 PDF 和 CDF；
-
-        (2) 求 $P[X>1]$；
-
-        (3) 求 $E(X)$ 和 $\text{Var}(X)$。
-
-    ??? info "点击查看答案"
-        $X\sim\text{指数分布}(\lambda=2)$。
-
-        **(1)** PDF：$f_X(x)=2e^{-2x},\ x>0$；CDF：$F_X(x)=1-e^{-2x},\ x>0$。
-
-        **(2)** $P[X>1] = 1-F_X(1) = e^{-2} \approx 0.1353$。
-
-        **(3)** $E(X)=\dfrac{1}{\lambda}=\dfrac{1}{2}=0.5$，$\text{Var}(X)=\dfrac{1}{\lambda^2}=\dfrac{1}{4}=0.25$。
-
-    ??? info "解法提示"
-        指数分布参数 $\lambda$：
-
-        - PDF：$f_X(x)=\lambda e^{-\lambda x},\ x>0$
-        - CDF：$F_X(x)=1-e^{-\lambda x},\ x>0$
-        - 期望 $E(X)=\frac{1}{\lambda}$，方差 $\mathrm{Var}(X)=\frac{1}{\lambda^2}$
-
-        本题 $\lambda=2$，直接代入公式即可。
-
 ---
 
 ### 概率论术语表
