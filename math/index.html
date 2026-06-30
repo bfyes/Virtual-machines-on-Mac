@@ -1641,21 +1641,21 @@ P(\text{戴口罩}) &amp;= P(\text{有雾})\cdot P(\text{戴口罩}\mid\text{有
 </details>
 <details class="info">
 <summary>点击查看答案</summary>
-<p><span class="arithmatex">\(X\sim\text{泊松分布}(\lambda=10)\)</span>（每<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>分钟<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p><span class="arithmatex">\(X\sim\text{泊松分布}(\alpha=10)\)</span>（每<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>分钟<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p><strong>(1)</strong></p>
 <div class="arithmatex">\[P(X\ge 1) = 1 - P(X=0) = 1 - e^{-10} \approx 1 - 4.54\times10^{-5} \approx 0.99995\]</div>
-<p><strong>(2)</strong> <span>8<span class="heti-spacing"> </span></span>分钟参数：<span class="arithmatex">\(\lambda_8 = 10\times\frac{8}{20}=4\)</span>。</p>
+<p><strong>(2)</strong> <span>8<span class="heti-spacing"> </span></span>分钟参数：<span class="arithmatex">\(\alpha_8 = 10\times\frac{8}{20}=4\)</span>。</p>
 <div class="arithmatex">\[P(X_8=2) = \dfrac{e^{-4}\cdot 4^2}{2!} = e^{-4}\cdot 8 \approx 0.1465\]</div>
 </details>
 <details class="info">
 <summary>解法提示</summary>
-<p>泊松分布公式：<span class="arithmatex">\(P(X=k)=\dfrac{e^{-\lambda}\lambda^k}{k!}\)</span></p>
+<p>泊松分布公式：<span class="arithmatex">\(P(X=k)=\dfrac{\alpha^k e^{-\alpha}}{k!}\)</span>，期望和方差均为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha\)</span></span>。</p>
 <ul>
 <li>
-<p><strong><span><span class="arithmatex">\(\lambda\)</span><span class="heti-spacing"> </span></span>按时间比例缩放</strong>：如本题每<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>分钟<span><span class="heti-spacing"> </span><span class="arithmatex">\(\lambda=10\)</span></span>，则<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>分钟<span><span class="heti-spacing"> </span><span class="arithmatex">\(\lambda_8=10\times\frac{8}{20}=4\)</span></span></p>
+<p><strong><span><span class="arithmatex">\(\alpha\)</span><span class="heti-spacing"> </span></span>按时间比例缩放</strong>：如本题每<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>分钟<span><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha=10\)</span></span>，则<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>分钟<span><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha_8=10\times\frac{8}{20}=4\)</span></span></p>
 </li>
 <li>
-<p><strong>至少一个</strong>用补事件：<span class="arithmatex">\(P(X\ge 1)=1-P(X=0)=1-e^{-\lambda}\)</span></p>
+<p><strong>至少一个</strong>用补事件：<span class="arithmatex">\(P(X\ge 1)=1-P(X=0)=1-e^{-\alpha}\)</span></p>
 </li>
 <li>
 <p><strong>恰好<span class="heti-skip"><span class="heti-spacing"> </span>k<span class="heti-spacing"> </span></span>个</strong>直接代入公式</p>
