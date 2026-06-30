@@ -1196,22 +1196,22 @@
         (2) 求 $8$ 分钟内恰好 $2$ 位顾客到达的概率。
 
     ??? info "点击查看答案"
-        $X\sim\text{泊松分布}(\lambda=10)$（每 20 分钟）。
+        $X\sim\text{泊松分布}(\alpha=10)$（每 20 分钟）。
 
         **(1)**
 
         $$P(X\ge 1) = 1 - P(X=0) = 1 - e^{-10} \approx 1 - 4.54\times10^{-5} \approx 0.99995$$
 
-        **(2)** 8 分钟参数：$\lambda_8 = 10\times\frac{8}{20}=4$。
+        **(2)** 8 分钟参数：$\alpha_8 = 10\times\frac{8}{20}=4$。
 
         $$P(X_8=2) = \dfrac{e^{-4}\cdot 4^2}{2!} = e^{-4}\cdot 8 \approx 0.1465$$
 
     ??? info "解法提示"
-        泊松分布公式：$P(X=k)=\dfrac{e^{-\lambda}\lambda^k}{k!}$
+        泊松分布公式：$P(X=k)=\dfrac{\alpha^k e^{-\alpha}}{k!}$，期望和方差均为 $\alpha$。
 
-        - **$\lambda$ 按时间比例缩放**：如本题每 20 分钟 $\lambda=10$，则 8 分钟 $\lambda_8=10\times\frac{8}{20}=4$
+        - **$\alpha$ 按时间比例缩放**：如本题每 20 分钟 $\alpha=10$，则 8 分钟 $\alpha_8=10\times\frac{8}{20}=4$
 
-        - **至少一个**用补事件：$P(X\ge 1)=1-P(X=0)=1-e^{-\lambda}$
+        - **至少一个**用补事件：$P(X\ge 1)=1-P(X=0)=1-e^{-\alpha}$
 
         - **恰好 k 个**直接代入公式
 
