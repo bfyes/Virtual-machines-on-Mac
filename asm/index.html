@@ -5,9 +5,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Virtual-machines-on-Mac" name="description"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>《汇编语言程序设计与调试》考前练习 - Bill</title>
-<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -28,7 +28,7 @@
 </div>
 <div data-md-component="announce">
 </div>
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
 <a aria-label="Bill" class="md-header__button md-logo" data-md-component="logo" href=".." title="Bill">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -106,12 +106,27 @@
 </nav>
 </header>
 <div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+          
+  
+  
+  首页
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
 <main class="md-main" data-md-component="main">
 <div class="md-main__inner md-grid">
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
 <a aria-label="Bill" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Bill">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -129,12 +144,35 @@
 </a>
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    首页
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="..">
 <span class="md-ellipsis">
     
   
-    首页
+    记录
   
 
     
@@ -176,6 +214,9 @@
     
   </span>
 </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -1508,13 +1549,13 @@ D 错：软件断点（<code class="language-text highlight">int 3</code>）会�
 <div class="admonition tip">
 <p class="admonition-title">第<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>周 — 堆栈框架</p>
 <p><code class="language-text highlight">push bp; mov bp, sp</code> 建立框架，<code class="language-text highlight">[bp+4]</code> 起引用参数。堆栈变化：</p>
-<div class="language-actionscript3 highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
 <span class="normal"><a href="#__codelineno-9-2">2</a></span>
 <span class="normal"><a href="#__codelineno-9-3">3</a></span>
-<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FF8</span><span class="w">  </span><span class="n">old</span><span class="w"> </span><span class="n">bp</span><span class="w">    </span><span class="err">←</span><span class="w"> </span><span class="n">bp</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFA</span><span class="w">  </span><span class="n">back</span><span class="w">      </span><span class="err">←</span><span class="w"> </span><span class="err">返回地址</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFC</span><span class="w">  </span><span class="err">参数</span><span class="mi">2</span><span class="w">     </span><span class="err">←</span><span class="w"> </span><span class="o">[</span><span class="n">bp</span><span class="o">+</span><span class="mi">4</span><span class="o">]</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFE</span><span class="w">  </span><span class="err">参数</span><span class="mi">1</span><span class="w">     </span><span class="err">←</span><span class="w"> </span><span class="o">[</span><span class="n">bp</span><span class="o">+</span><span class="mi">6</span><span class="o">]</span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>SS:0FF8  old bp    ← bp
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>SS:0FFA  back      ← 返回地址
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>SS:0FFC  参数2     ← [bp+4]
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>SS:0FFE  参数1     ← [bp+6]
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition tip">
@@ -1850,15 +1891,15 @@ D 错：软件断点（<code class="language-text highlight">int 3</code>）会�
 </details>
 <details class="info">
 <summary>堆栈框架（<span>near call + Pascal<span class="heti-spacing"> </span></span>方式）</summary>
-<div class="language-actionscript3 highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
 <span class="normal"><a href="#__codelineno-18-2">2</a></span>
 <span class="normal"><a href="#__codelineno-18-3">3</a></span>
 <span class="normal"><a href="#__codelineno-18-4">4</a></span>
-<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FF8</span><span class="w"> </span><span class="n">old</span><span class="w"> </span><span class="n">bp</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">BP</span><span class="w"> </span><span class="err">指向此处</span><span class="w"> </span><span class="o">([</span><span class="n">bp</span><span class="o">+</span><span class="mi">0</span><span class="o">])</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFA</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="err">返回地址</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="o">([</span><span class="n">bp</span><span class="o">+</span><span class="mi">2</span><span class="o">])</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFC</span><span class="w"> </span><span class="err">参数</span><span class="mi">2</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="o">[</span><span class="n">bp</span><span class="o">+</span><span class="mi">4</span><span class="o">]</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="n">SS</span><span class="o">:</span><span class="mi">0</span><span class="n">FFE</span><span class="w"> </span><span class="err">参数</span><span class="mi">1</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="o">[</span><span class="n">bp</span><span class="o">+</span><span class="mi">6</span><span class="o">]</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="n">SS</span><span class="o">:</span><span class="mi">1000</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="err">初始</span><span class="w"> </span><span class="n">SP</span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>SS:0FF8 old bp ← BP 指向此处 ([bp+0])
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>SS:0FFA back ← 返回地址 IP ([bp+2])
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>SS:0FFC 参数2 ← [bp+4]
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>SS:0FFE 参数1 ← [bp+6]
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>SS:1000 ← 初始 SP
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p>口诀：<code class="language-text highlight">[bp+0]</code>=old_bp，<code class="language-text highlight">[bp+2]</code><span>=<span class="heti-spacing"> </span></span>返回地址，<code class="language-text highlight">[bp+N]</code>(N≥<span>4)=<span class="heti-spacing"> </span></span>参数。<span>BP+N<span class="heti-spacing"> </span></span>引用参数，BP−<span>N<span class="heti-spacing"> </span></span>引用局部变量。</p>
@@ -2150,8 +2191,8 @@ D 错：软件断点（<code class="language-text highlight">int 3</code>）会�
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer", "navigation.tabs"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../js/mathjax.js"></script>
 <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
