@@ -1,5 +1,13 @@
 # Windows XP on Apple Silicon Mac
 
+新仓库已准备好，本文新地址为
+
+**部署方法(安装教程)：<https://bfyes.github.io/tools/xp_1>**
+
+配置记录：<https://bfyes.github.io/tools/xp>
+
+以下是配置记录旧仓库文章：
+
 !!! tip
     对于汇编课友：无需完成后续完整的操作，仅需通过[从`.utm`文件夹](#直接从utm文件夹部署对应已经下载了utm文件夹的情况)这一章节完成部署。(点击可直接跳转对应章节)
 

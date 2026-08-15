@@ -3,7 +3,7 @@
 这里是基于 MkDocs Material 构建的文档站点。
 
 !!! info
-    BillFeng的主页(施工中): [点击跳转](https://bfyes.github.io)
+    BillFeng的主页[https://bfyes.github.io](https://bfyes.github.io)
 
 ## 文章列表
 
